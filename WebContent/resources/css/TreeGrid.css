@@ -1,0 +1,40 @@
+body{
+	font-size:11px;
+}
+table thead tr{height:24px;}
+.TreeGrid{width:100%; margin:7px auto 0px; font-family:Tahoma,Verdana,Arial;border-collapse:collapse;}
+.TreeGrid .header {color:#333;font-weight:bold;background:#F0F0F0;height: 30px;}
+.TreeGrid .header a{color:#004b8d; text-decoration:none}
+.TreeGrid .header a:hover{color:#4192d9; text-decoration:none}
+.TreeGrid .row:hover{background-color: #EFF7FF;}
+.TreeGrid th, .TreeGrid td{border:1px #eee solid; padding: 5px; text-align: center;}
+.TreeGrid td a{color:#004b8d; text-decoration:none}
+.TreeGrid td a:hover{color:#4192d9; text-decoration:none}
+.TreeGrid td{text-align: left;}
+
+.TreeGrid .image_hand{
+	border: 0;
+	cursor:hand;
+	align:absmiddle;
+}
+
+.TreeGrid .image_nohand{
+	border: 0;
+	align:absmiddle;
+}
+
+.cont .row_hover{
+	background-color: #E6E6FA;
+}
+
+.cont .row_active{
+	background-color: #E0FFFF;
+}
+
+.cont1 {
+	background-color: #F8F8F8;
+}
+.cont2 {
+	background-color: #FFFFFF;
+}
+

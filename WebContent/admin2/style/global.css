@@ -1,0 +1,117 @@
+/* CSS Document */
+body { background: #e4eaec }
+/**********
+	字体图标
+**********/
+@font-face {
+  font-family: 'iconfont';  /* project id 230566 */
+  src: url('//at.alicdn.com/t/font_397n86f45ttep14i.eot');
+  src: url('//at.alicdn.com/t/font_397n86f45ttep14i.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_397n86f45ttep14i.woff') format('woff'),
+  url('//at.alicdn.com/t/font_397n86f45ttep14i.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_397n86f45ttep14i.svg#iconfont') format('svg');
+}
+.iconfont { font-family: "iconfont"; font-style: normal; -webkit-font-smoothing: antialiased; }
+/*后台头部*/
+.header { height: 110px;left:0; line-height: 110px; top: 0; background: #1199c4 }
+.header a { color: #fff }
+.logo { width: 160px; padding: 0 20px; }
+.logo i { vertical-align: top; margin-right: 10px; }
+.nav { margin-right: 190px; }
+.nav li:hover, .nav li:active { background: #17b2e2 }
+.nav a { line-height: 110px; padding: 0 20px; }
+/*菜单*/
+.menu-scroll { width: 200px; top: 110px; left: 0; background: #dde6e9; }
+.menu { width: 220px; overflow-y: scroll; overflow-x: hidden }
+.menu ol { width: 200px; line-height: 50px; padding: 0 20px; height: 40px; color: #98a6ad }
+.menu li a { width: 160px; padding: 0 20px; height: 40px; line-height: 40px; }
+.menu li a.active { background: #fff; }
+.menu li a:hover { background: #f6f8f8 }
+.menu li span { color: #141719 }
+.menu li .iconfont.icon-arrow { width: 14px; right: 10px; top: 0; color: #98a6ad; transition: all 1s; -moz-transition: all 1s; -webkit-transition: all 1s; -o-transition: all 1s; }/*箭头*/
+.menu li.active .iconfont.icon-arrow { transform: rotate(90deg); -ms-transform: rotate(90deg); -webkit-transform: rotate(90deg); -o-transform: rotate(90deg); -moz-transform: rotate(90deg); }/*箭头动画*/
+.menu li .iconfont { width: 28px; display: inline-block; font-size: 16px; }
+.menu li:nth-child(2) .iconfont.list { color: #CC0099 }
+.menu li:nth-child(3) .iconfont.list { color: #4775FF }
+.menu li:nth-child(4) .iconfont.list { color: #0086B3 }
+.menu li:nth-child(5) .iconfont.list { color: #6633FF }
+.menu li:nth-child(6) .iconfont.list { color: #003DF5 }
+.menu li:nth-child(7) .iconfont.list { color: #B88A00 }
+.menu li:nth-child(8) .iconfont.list { color: #CC0099 }
+.menu li:nth-child(9) .iconfont.list { color: #CC33FF }
+.menu li:nth-child(10) .iconfont.list { color: #002EB8 }
+.menu li:nth-child(11) .iconfont.list { color: #F5B800 }
+.menu li:nth-child(12) .iconfont.list { color: #6633FF }
+.menu li:nth-child(13) .iconfont.list { color: #FF33CC }
+.menu li:nth-child(14) .iconfont.list { color: #FF3366 }
+.menu li:nth-child(15) .iconfont.list { color: #3366FF }
+.menu li:nth-child(16) .iconfont.list { color: #003DF5 }
+.menu li:nth-child(17) .iconfont.list { color: #002EB8 }
+.menu li:nth-child(18) .iconfont.list { color: #003DF5 }
+/*二级菜单*/
+.menu li.active .twoLevel-menu { width: 200px; height: auto; }
+.menu .twoLevel-menu { height: 0px; }
+.menu .twoLevel-menu a { background: #f5f5f5; opacity: 0.3; transition: all 1s; -moz-transition: all 1s; -webkit-transition: all 1s; -o-transition: all 1s; }
+.menu li.active .twoLevel-menu a { padding: 0 45px; opacity: 1 }
+/*内联框架*/
+.iframe-box { margin-left: 200px; margin-top: 110px; }
+.iframe { width: 100%; }
+
+/*管理*/
+.operation{height:50px;line-height:50px;padding:0 20px 0 10px;border:2px solid #dcdcdc}
+.operation .operationLeft span.color{color:#0b6fd4}
+.operation .operationLeft a{height:28px;line-height:28px;padding:0 15px;display:inline-block;background:#f7f7f7;border:1px solid #dcdcdc}
+.operation .operationLeft a i{margin-right:5px; font-size:16px}
+.operation .operationRight a{height:28px;line-height:28px;padding:0 15px;display:inline-block;background:#f7f7f7;border:1px solid #dcdcdc}
+.operation .operationRight a i{margin-right:5px; font-size:16px}
+.operationBtn a{height:28px;line-height:28px;padding:0 15px;display:inline-block;background:#f7f7f7;border:1px solid #dcdcdc}
+.operationBtn a i{margin-right:5px; font-size:16px}
+.bg-f8 {background:#f8f8f8;}
+/*筛选*/
+.screen{padding:16px 20px;background:#eee;border:1px solid #dcdcdc}
+.screen h2{line-height:50px;}
+.screen-list{width:33%;height:50px;min-width:300px;}
+.screen-list input{padding:5px;min-width:200px;width:200px;}
+.screen-list select{padding:5px;min-width:200px;width:212px;border:1px solid #ccc}
+.screen-list select option{text-indent:10px;height:20px;}
+.screen-list span{width:80px;}
+.screen .screenSubmit{width:80px;height:34px;line-height:34px;background:#7266ba}
+/*表格*/
+.tableBox{margin:20px;border:1px solid #dcdcdc}
+.tableBox table{background:#dcdcdc;}
+.tableBox table th{background:#eee;text-align:center;border-bottom:1px solid #dcdcdc}
+.tableBox table tr:nth-child(odd){background:#fff}
+.tableBox table tr:nth-child(even){background:#f9fafa }
+.tableBox table tr:hover td{background:#73cfce;color:#fff}
+.tableBox table th,.tableBox table td{padding:16px 8px;}
+.tableBox table span.trChange,.tableBox table span.trDelete{cursor:pointer; opacity:0}
+.tableBox table tr:hover span.trChange,.tableBox table tr:hover span.trDelete{opacity:1}
+.tableBox table span.trChange:hover,.tableBox table span.trDelete:hover{color:#333}
+.tableBox table[function-type="edit"] input[type="text"]{text-align:center;border:none;background:none;width:100%;}
+/*分页*/
+.page{height:30px;}
+.page a{border:1px solid #ccc;padding:3px 10px;}
+.page a i{font-size:12px;vertical-align:middle}
+.page a.number-page{}
+.page a.active{background:#96C;color:#fff;}
+.page input.input-page{width:20px;}
+/*表单*/
+.form-list{padding:15px 0}
+.form-list .form-title{width:150px;padding-right:10px;text-align:right}
+.form-list .form-error{top:30px;left:180px;color:red;font-size:12px;opacity:0}
+.form-list input[type="text"],.form-list input[type="tel"],.form-list input[type="email"],.form-list input[type="password"]{border:1px solid #dcdcdc;padding:5px;min-width:200px;border-radius:5px;}
+.form-list textarea{vertical-align:top}
+.form-list input.red{border:1px solid red}
+/*密码强度*/
+.form-passwordLevel{width:150px;height:20px; vertical-align:top;background:#fff;border:1px solid #eee}
+.form-passwordLevel span{}
+.form-passwordLevel i{width:0;height:20px;transition:all 0.5s}
+.form-passwordLevel.pw-defule i{width:0;background:#fff}
+.form-passwordLevel.pw-weak i{width:33%;background:#ec3701}
+.form-passwordLevel.pw-medium i{width:66%;background:#f7c015}
+.form-passwordLevel.pw-strong i{width:100%;background:#6ba001}
+
+/*选项卡*/
+.tabBox ul{border-bottom:1px solid #dcdcdc;height:36px;}
+.tabBox ul li{height:36px;line-height:36px;padding:0 15px;border:solid #dcdcdc;border-width:1px 1px 0 0;float:left;cursor:pointer}
+.tabBox ul li.active{border-top:2px solid #00a3cb;height:35px;line-height:34px;}

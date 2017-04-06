@@ -1,0 +1,181 @@
+/* CSS Document */
+/*闃块噷瀛椾綋鍥炬爣*/
+@font-face {
+  font-family: 'iconfont';  /* project id 233567 */
+  src: url('//at.alicdn.com/t/font_ijtiwuugas3ba9k9.eot');
+  src: url('//at.alicdn.com/t/font_ijtiwuugas3ba9k9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_ijtiwuugas3ba9k9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_ijtiwuugas3ba9k9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_ijtiwuugas3ba9k9.svg#iconfont') format('svg');
+}
+.iconfont {font-family: "iconfont"; font-style: normal;}
+
+.wrap{width:1100px;margin:0 auto}
+/*鎸夐挳鏍峰紡*/
+.btn1{width:600px;height:70px;line-height:70px;font-size:34px;display:inline-block;background:#31ce06;color:#fff;}
+.btn1:hover{background:#2fae0c;color:#fff}
+/*鍏敤澶�*/
+.header{height:28px;line-height:28px;padding:36px 0 20px 0}
+.header .logo img{height:35px; vertical-align:middle}
+.nav li{margin-left:22px;}
+.nav a{color:#333;}
+.nav a:hover{color:#4ce622;}
+body.nav1 li.nav1 a,body.nav2 li.nav2 a,body.nav3 li.nav3 a,body.nav4 li.nav4 a,body.nav5 li.nav5 a{color:#31ce06;}
+/*棣栭〉banner*/
+.banner{min-width:1100px;min-height:481px}
+.banner .btn{top:50%;font-size:50px;}
+.banner .btn a{width:75px;height:75px;background:rgba(0,0,0,0.5);color:#fff}
+
+/*棣栭〉婊氬姩鍏憡*/
+.rollNotice-box{height:36px;line-height:36px;padding:15px 0;}
+.rollNotice{height:36px;color:#7d7a6b}
+.rollNotice-title {width:150px;}
+.rollNotice-title i{margin-right:20px;color:#75dcc1; vertical-align:middle}
+
+/*棣栭〉鍐呭*/
+.indexContent{border-top:18px solid #f4f8f7}
+.indexContent h2{height:40px;line-height:40px;font-size:40px;padding:45px 0 85px 0}
+.indexContent a{width:1216px;padding-bottom:66px}
+.indexContent div.d-ib{width:184px;height:154px;margin-right:120px;color:#7d7a6b;}
+.indexContent div p{width:184px;height:130px; display:table}
+.indexContent div span{display:table-cell; vertical-align:middle}
+
+/*棣栭〉鍏充簬鎴戜滑*/
+.indexAbout{border-top:32px solid #f4f8f7;}
+.indexAbout h2{padding-top:50px;height:128px;background:url(../image/indexAbout-icon.png) no-repeat center center}
+.indexAbout h2 p{font-size:40px}
+.indexAbout h2 span{color:#7d7a6b}
+.indexAbout .indexAbout-content p{color:#7d7a6b;line-height:40px;padding:10px 0;border-bottom:1px solid #dcdcdc}
+.indexAbout-list{padding:15px 0}
+.indexAbout-list li{height:50px;line-height:50px;}
+.indexAbout-list .iconfont{color:#52d3b2; vertical-align:middle;margin-right:10px;}
+.indexAbout-list span{color:#7d7a6b}
+/*棣栭〉澶�*/
+.indexFooter{padding:64px 0 104px 0;border-top:1px solid #dcdcdc}
+.indexFooter a{width:600px;height:92px;line-height:92px;background:#31ce06}
+
+/*鐢宠*/
+.apply-form {margin-top:54px;}
+.apply-form form{border:1px solid #dcdcdc}
+.apply-form h2{height:40px;line-height:40px;padding:34px 0 50px 0;font-size:40px;}
+.apply-form .form-list{height:94px;}
+.apply-form .form-list input{text-indent:15px;}
+.apply-form .form-list input,.apply-form .form-list select{height:44px;border:1px solid #dcdcdc;font-size:22px;color:#666}
+.apply-form .form-title{width:200px;padding-left:110px;font-size:24px;color:#333;}
+.apply-form input[name="form-name"],.apply-form input[name="form-nickname"],.apply-form input[name="form-password"],.apply-form input[name="form-confirmPassword"]{width:660px;}
+.apply-form .select{width:218px;margin-right:39px;-webkit-appearance:none;-moz-appearance:none;appearance:none;padding-left:10px;}
+.apply-form .select option:nth-child(1){display:none}
+.apply-form .select[name="town"]{margin:0;}
+.apply-form input[name="form-tel"],.apply-form input[name="form-telCode"]{width:410px;}
+.apply-form a.hairCode{width:224px;height:44px;line-height:44px;vertical-align:top;background:#f3f3f3;margin-left:15px;text-indent:0}
+.apply-form label{width:303px;height:100px;margin:24px 63px 74px 90px;border:1px solid #dcdcdc;background:#f3f3f3;border:1px solid #fff;line-height:100px;font-size:40px; transition:all 0.3s}
+.apply-form input[name="applyType"]{opacity:0; filter:alpha(opacity=0);}
+.apply-form label.active{border-color:#30cf06;color:#30cf06;background:#fff}
+.apply-form label.active i{right:-1px;top:0;color:#30cf06;line-height:100%;}
+.apply-form .file-a{width:600px;height:56px;line-height:56px;border:1px solid #dcdcdc; vertical-align:middle}
+.apply-form .file-route{margin-left:15px}
+.apply-form .file-sub{background:#f3f3f3;padding:0 66px 0 40px;}
+.apply-form input[name="form-file"],.apply-form input[name="form-file2"]{width:600px;left:314px;top:0; opacity:0; filter:alpha(opacity=0);}
+.apply-form .form-error{top:10px;left:330px;color:red;font-size:20px;opacity:0}
+.apply-form .submit{padding:36px 0}
+/*瀵嗙爜寮哄害*/
+.form-passwordLevel{width:468px;height:44px; vertical-align:top;background:#fff;border:1px solid #eee}
+.form-passwordLevel-text{line-height:44px;margin-left:15px}
+.form-passwordLevel i{width:0;height:44px;transition:all 0.5s}
+.form-passwordLevel.pw-defule i{width:0;background:#fff}
+.form-passwordLevel.pw-weak i{width:33%;background:#ec3701}
+.form-passwordLevel.pw-medium i{width:66%;background:#f7c015}
+.form-passwordLevel.pw-strong i{width:100%;background:#6ba001}
+.apply-form input.red{border-color:red}
+/*鐢宠缁撳熬*/
+.applyFooter{padding:45px 0;margin-top:40px;border-top:1px solid #dcdcdc}
+.applyFooter .wrap{text-indent:80px;}
+.applyFooter a{color:#3a73e9}
+
+
+/*杩涢┗*/
+.inBanner {height:120px;padding-top:300px;background:url(../image/inBanner.jpg) no-repeat center center}
+.inIntroduce{border:solid #f4f7ff;border-width:15px 0}
+.inIntroduce-list{width:230px;margin:80px 0 70px 0;height:250px;}
+.inIntroduce-list i{font-size:70px}
+.inIntroduce-list.s1 i{color:#00c800}
+.inIntroduce-list.s2 i{color:#ff4f4b}
+.inIntroduce-list.s3 i{color:#09cbcd}
+.inIntroduce-list.s2{margin-left:70px;padding:0 130px;border:solid #dcdcdc;border-width:0 1px}
+.inIntroduce-list p{color:#7d7a6b;line-height:34px;}
+.inProcess h2{padding:60px 0 50px 0;height:46px;line-height:46px;font-size:46px;border-bottom:1px solid #dcdcdc}
+.inProcess table{margin:75px 0}
+.inProcess td.ta-r span{padding-right:60px}
+.inProcess td.ta-l span{padding-left:60px}
+.inProcess-step{background:#00c800;height:36px;line-height:36px;color:#fff;font-size:35px;padding:10px 20px;top:-50px;}
+.inProcess-step i{color:#00c800;}
+.inProcess-step i.right{right:-9px;}
+.inProcess-step i.left{left:-9px;}
+.inProcess td.ta-r .inProcess-step i.circular{right:-82px;}
+.inProcess td.ta-l .inProcess-step i.circular{left:-85px;}
+.inProcess td.ta-r .inProcess-step{right:60px}
+.inProcess td.ta-l .inProcess-step{left:60px}
+.inProcess-line{background:#00c800;}
+.inProcess-line i{font-size:37px;color:#00c800;left:-15px;width:38px;height:34px;line-height:38px;}
+.inProcess-line i.top{top:-33px;}
+.inProcess-line i.bottom{bottom:-33px;}
+
+/*鎺ュ叆*/
+.accessBanner{height:420px;background:url(../image/accessBanner.jpg) no-repeat center center;}
+.accessContent{border-bottom:1px solid #dcdcdc;padding:100px 0 78px 0}
+.accessImg {width:430px;}
+.accessText{width:600px;}
+.accessText h2{font-size:40px;padding-bottom:20px;}
+.accessText p{color:#7d7a6b;line-height:46px;}
+.accessBtn{padding:74px 0;border-top:1px solid #dcdcdc;margin-top:-1px}
+
+/*瀹℃牳鐘舵�佹煡璇�*/
+.stateBanner{height:420px;background:url(../image/accessBanner.jpg) no-repeat center center;}
+.state-form form{border:1px solid #dcdcdc;margin:60px 0;}
+.state h2{padding:60px 0 50px 0;height:46px;line-height:46px;font-size:46px;}
+.state-form .form-list{height:94px;}
+.state-form .form-list input{text-indent:15px;height:44px;border:1px solid #dcdcdc;font-size:22px;color:#666}
+.state-form a.stateCode{width:224px;height:44px;line-height:44px;vertical-align:top;background:#f3f3f3;margin-left:15px;text-indent:0}
+.state-form .form-title{width:200px;padding-right:80px;text-align:right;font-size:24px;color:#333;}
+.state-form input[name="state-tel"]{width:410px;}
+.state-form input[name="state-password"],.state-form input[state="form-telCode"]{width:410px}
+.state-form p{padding:55px 0 48px 80px;}
+.state-form .form-error{top:10px;left:330px;color:red;font-size:20px;opacity:0}
+
+
+/*鐧诲綍*/
+.loginBox{width:100%;height:100%;top:0;left:0;}
+.loginBg{width:100%;height:100%;background:#000;opacity:0.5; filter:alpha(opacity=50);}
+.login{width:100%;top:200px;}
+.login form{height:620px;border:9px solid #828e9e}
+.login form h2{padding:60px 0 50px 0;height:46px;line-height:46px;font-size:46px;}
+.login .form-list{height:80px;}
+.login .form-list input{text-indent:15px;height:44px;border:1px solid #dcdcdc;font-size:22px;color:#666}
+.login a.loginCode{width:224px;height:44px;line-height:44px;vertical-align:top;background:#f3f3f3;margin-left:15px;text-indent:0}
+.login .form-title{width:230px;padding-right:80px;text-align:right;font-size:24px;color:#333;}
+.login input[name="login-tel"]{width:466px;}
+.login input[name="login-password"],.login input[name="login-telCode"]{width:712px}
+.login p{padding:55px 0 48px 80px;}
+.login .form-error{top:10px;left:330px;color:red;font-size:20px;opacity:0}
+.login i.iconfont{right:20px;top:20px;line-height:30px;color:red}
+
+/*关于我们*/
+.about h2{font-size:36px;color:#4d4d4d;padding:65px 0 35px 0;height:36px;line-height:36px;margin-left:-150%}
+.about h3{margin-right:-150%}
+.about h3 p{width:234px;height:60px;border-top:1px solid #808080}
+.about h3 p span{width:134px;margin-top:-26px;color:#4d4d4d}
+.about .about-img{margin-left:-100%}
+.about .about-img img{width:535px;}
+.about .about-text{line-height:30px;margin-right:-100%}
+
+.about .about-text ul{padding-top:30px;color:#9d1273}
+.about .swiper-container a.iconfont{width:15px;top:45%;font-size:15px;color:#999}
+.about .swiper-container a.iconfont.btnLeft{left:0}
+.about .swiper-container a.iconfont.btnRight{right:0;}
+.about .swiper-container a.iconfont:hover{color:red}
+
+.about .about-content{height:390px;}
+.about .swiper-container{margin-top:100%}
+.about .swiper-wrapper li span{width:245px;margin:0 15px;height:208px;overflow:hidden}
+.about .swiper-wrapper li img{height:100%}
+.about #about-swiper4  li span{height:364px}

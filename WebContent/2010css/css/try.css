@@ -1,0 +1,154 @@
+@charset "utf-8";
+/*===== 城市切换 =====*/
+	.t_h_icon{background:url(../global/bg_gb_try.png) 0 0 no-repeat;}
+
+	.logo_center a.at_city{height:24px;margin:0;text-align:left;color:#fff;font:bold 14px/20px Microsoft YaHei,"宋体";display:block;background-position:-409px -242px;padding-left:12px;width:70px;}
+	.logo_center a.at_city:hover{text-decoration:none;cursor:pointer;}
+	.logo_center a.at_city em{background-position:-436px -266px;display:block;height:22px;width:65px;text-align:left;padding:2px 0 0 5px;}
+
+	#at_city{font-size:14px;padding:5px;text-align:left;width:315px;background:#fff;position:absolute;z-index:202;overflow:visible;border:2px solid #2C6812;margin-left:30px;}
+	#at_city a{display:block;float:left;padding:6px;white-space:nowrap;width:50px;color:#666;text-align:center;}
+	#at_city a.kt{color:#2C6812;font-weight:bold;}
+	#at_city a:hover{background:#2C6812;color:#fff;padding:6px;text-decoration:none;}
+
+	/*===== 基本信息 =====*/
+	.tody_buy_group{position:relative; z-index:1;}
+	.basic_buy_group{zoom:1; padding:7px; width:706px; background-color:#C0D0A1;}
+	.basic_buy_group:after{display:block; clear:both; overflow:hidden; height:0; content:".";}
+
+	.basic_buy_group .hd{padding:15px 17px; border:1px solid #FFFFFF; border-bottom:1px solid #C0D0A1; background-color:#F1F5E7;}
+	.basic_buy_group .hd h3{font-size:28px; font-family:"微软雅黑","黑体"; color:#000000; line-height:34px; text-shadow:1px 1px 1px #999999;}
+	.basic_buy_group .hd h3 span{color:#A30027;}
+
+	
+	/*===== 该团属性 =====*/
+	.basic_buy_group .attribute{position:relative; z-index:1; display:inline; float:left; width:206px; height:348px; border:1px solid #FFFFFF; background-color:#FFFFFF; font-size:14px; line-height:24px;}
+	.basic_buy_group .price_attr{height:114px;}
+	.basic_buy_group .price_attr .primary_price,
+	.basic_buy_group .price_attr .rebate{overflow:hidden; position:absolute; top:0; height:46px; line-height:50px; *line-height:54px;}
+	.basic_buy_group .price_attr .primary_price{left:14px; width:108px;}
+	.basic_buy_group .price_attr .rebate{left:115px; width:92px;}
+	.basic_buy_group .price_attr del,.basic_buy_group .price_attr span{font-weight:bold;}
+	.basic_buy_group .current_price{position:absolute; z-index:9; left:-15px; top:29px; width:249px; height:85px; background:url(../global/bg_gb_try.png) no-repeat 0 0; color:#FFFFFF; font-family:"arial";}
+	.basic_buy_group .current_price em{position:absolute; left:30px; top:20px; font-size:14px; font-style:normal;}
+	.basic_buy_group .current_price span{position:absolute; left:30px; top:40px; height:40px; font-size:36px; font-weight:normal; line-height:40px;}
+	.basic_buy_group .current_price .button{overflow:hidden; position:absolute; left:120px; top:28px; padding:0; width:101px; height:43px; background:url(../global/bg_gb_try.png) no-repeat -306px -37px; text-indent:-999em;}
+	.basic_buy_group .current_price .button.disabled{cursor:default; background-position:-306px -82px;}
+	
+	.basic_buy_group .time_attr{margin:0 5px; padding-top:3px; height:70px; border-bottom:1px dotted #B1B1B1;}
+	.basic_buy_group .time_attr p{margin-left:2px; width:192px; vertical-align:middle;}
+	.basic_buy_group .time_attr .last_time{margin-top:-5px; height:32px; background:url(../global/bg_gb_try.png) no-repeat -301px 0; line-height:32px;}
+	.basic_buy_group .time_attr .last_time span{display:inline; float:left; text-align:center; font-size:12px;}
+	.basic_buy_group .time_attr .last_time em{overflow:hidden; float:left;  width:190px;text-align:center; font-size:18px; font-style:normal; font-weight:bold;  white-space:nowrap;margin-top:1px;}
+	.basic_buy_group .time_attr .last_time span.hour{margin-left:11px; width:69px;}
+	.basic_buy_group .time_attr .last_time span.hour em{width:42px;}
+	.basic_buy_group .time_attr .last_time span.minute{width:50px;}
+	.basic_buy_group .time_attr .last_time span.second{width:54px;}
+
+	.basic_buy_group .buy_state{overflow:hidden; padding:10px 14px 0; width:178px;}
+	.basic_buy_group .buy_state p{margin-bottom:2px;}
+	.basic_buy_group .buy_state .rule{font-size:12px; text-align:center;}
+	.basic_buy_group .buy_state .buy_people{font-weight:bold; font-family:"微软雅黑"; font-size:16px; text-align:center;}
+	.c_tx1{color:#D80000!important;}
+	.c_tx2{color:#888888!important;}
+	.basic_buy_group .buy_state .buy_people span{font-size:20px;}
+	.basic_buy_group .buy_state .finish_time{margin-left:-14px; width:206px; white-space:nowrap; font-size:12px; text-align:center;}
+	.basic_buy_group .buy_state .buy_success{padding:10px 0 10px 80px; background:url(../global/iconok.gif) no-repeat 15px 0; text-align:left; font-size:12px;}
+	.basic_buy_group .buy_state .buy_success span{display:block; font-size:18px; font-weight:bold; font-family:"微软雅黑";}
+	.basic_buy_group .buy_state .state_1{padding-top:6px; height:49px;}
+	.basic_buy_group .buy_state .state_2{padding-top:17px; height:38px;}
+	.basic_buy_group .buy_state .buy_fail{padding:16px 0 10px 80px; height:39px; background:url(../global/icon_tip.png) no-repeat 10px 0; text-align:left; font-size:12px; color:#373737;}
+	.basic_buy_group .buy_state .buy_fail span{display:block; font-size:18px; font-weight:bold; font-family:"微软雅黑";}
+
+	.basic_buy_group .buy_plan{padding-top:38px; margin:0 auto; width:180px;}
+	.basic_buy_group p{margin-bottom:5px;}
+	.basic_buy_group .progress_txt{margin-bottom:10px; font-size:16px; font-family:"微软雅黑"; font-weight:bold; color:#636363;}
+	.basic_buy_group .progress_txt em{font-style:normal; font-size:20px;}
+	.basic_buy_group .progress_bar{overflow:hidden; height:10px; border:1px solid #B7B7B7; background:url(../global/bg_gb_try.png) no-repeat 0 -98px; line-height:80px;}
+	.basic_buy_group .progress_bar span{display:none;}
+	.basic_buy_group .progress_bar em{overflow:hidden; float:left; height:100%; background:url(../global/bg_gb_try.png) no-repeat 0 -88px;}
+
+	.basic_buy_group .buy_time_over{margin-top:15px; padding:20px 20px 0; border-top:1px dotted #B1B1B1;}
+	.basic_buy_group .buy_time_over p{margin-bottom:0;}
+	
+	/*===== 该团广告图 =====*/
+	.basic_buy_group .photo{overflow:hidden; float:right; width:498px; height:350px;}
+	.basic_buy_group .photo img{width:498px; height:350px;}
+	
+	/*===== 该团特别提示 =====*/
+	.basic_buy_group .special_info{clear:both; overflow:hidden; padding:10px 20px; border-top:1px solid #C0D0A1; background-color:#F1F5EB;}
+	.basic_buy_group .special_info h4{font-size:12px;}
+	.basic_buy_group .special_info ul{overflow:hidden; zoom:1;}
+	.basic_buy_group .special_info li{display:inline; float:left; margin-right:20px; width:303px; text-indent:10px;background: url('../global/ugolfbg.png') -297px -1px no-repeat;}
+
+
+	/*===== 今日团购详细信息 =====*/
+	.detail_today_buy{overflow:hidden; zoom:1; position:relative; margin-top:10px; border:1px solid #D9D9D9; line-height:2.2em;}
+	.detail_today_buy h4{margin-bottom:15px; font-size:14px; color:#D80000;}
+	.detail_today_buy .info p{margin-bottom:10px;}
+	.detail_today_buy .info a{color:#CD0000; text-decoration:underline;}
+
+	.detail_today_buy .left_col,.detail_today_buy .right_col{overflow:hidden; display:inline; margin-bottom:-10000px; padding-bottom:10000px;}
+	.detail_today_buy .left_col{float:left; width:502px; font-size:14px;}
+	.detail_today_buy .right_col{float:right; width:215px; border-left:1px solid #D9D9D9; background-color:#F1F5E7;background:url(../global/helpbg.png) repeat-y left top}
+
+	.detail_today_buy .spe_tip,
+	.detail_today_buy .this_detail,
+	.detail_today_buy .shop_address,
+	.detail_today_buy .custom_say,
+	.detail_today_buy .we_say{padding:20px;}
+
+	.detail_today_buy h4{overflow:hidden; height:18px; background:url(../global/bg_gb_try.png) no-repeat; line-height:80px;}
+	.detail_today_buy .spe_tip h4{width:91px; background-position:0 -220px;}
+	.detail_today_buy .this_detail h4{width:91px; background-position:-93px -220px;}
+	.detail_today_buy .custom_say h4{width:72px; background-position:-185px -220px;}
+	.detail_today_buy .we_say h4{width:72px; background-position:-258px -220px;}
+	.detail_today_buy .shop_address h4{width:78px; background-position:-331px -220px;}
+
+	.detail_today_buy .custom_say .info,
+	.detail_today_buy .we_say .info{padding-left:40px; background:url(../global/bg_gb_try.png) no-repeat -473px -194px;}
+	.detail_today_buy .custom_say .author,
+	.detail_today_buy .we_say .author{text-align:right;}
+	
+	/*===== 商家信息 =====*/
+	.detail_today_buy .show_review li{overflow:hidden; zoom:1;}
+	.detail_today_buy .show_review li span{float:left;}
+	.detail_today_buy .show_review li span em{margin:0 4px 0 2px; font-style:normal;}
+	.detail_today_buy .show_review .btns_op{padding-bottom:10px;}
+	.detail_today_buy .show_review .btns_op a{margin-top:10px;}
+
+	/*===== 商户地图 =====*/
+	.detail_today_buy .maps{margin:0 auto; width:173px; border:1px solid #CDCDCD; background-color:#F9F9F9; text-align:center;}
+	.detail_today_buy .maps img{display:block; width:173px; height:222px;}
+	.detail_today_buy .maps a{padding-left:20px; background:url(../global/bg_gb_try.png) no-repeat -486px -101px;}
+
+
+
+/*===== 往期团购 =====*/
+	/*===== 团购列表 =====*/
+	.former_buy_group .hd{border-bottom:none;}
+	.former_buy_group .hd .lite_page_mod{display:inline; float:right; margin-top:10px; height:19px; line-height:19px;}
+	.former_buy_group .list li{margin:0 10px 10px; padding:8px; height:116px; border-top:1px solid #E7E7E7; background-color:#F9F9F9;}
+	.former_buy_group .list .time,
+	.former_buy_group .list .photo,
+	.former_buy_group .list .info{overflow:hidden; display:inline; float:left; height:115px;}
+	.former_buy_group .list .time{margin-right:10px; width:77px; background:url(../global/bg_gb_try.png) no-repeat -408px -36px; text-align:center;}
+	.former_buy_group .list .time span{display:block; font-family:"arial";}
+	.former_buy_group .list .time .info_month{margin-top:2px; height:33px; line-height:33px; color:#FFFFFF;}
+	.former_buy_group .list .time .info_day{margin:15px 0 10px; font-size:32px; font-weight:bold;}
+	.former_buy_group .list .tag_vip_tuan .time .info_day{margin:8px 0 8px;}
+	.former_buy_group .list .tag_vip_tuan .time .info_vip_tuan{color:#9A6260;}
+	.former_buy_group .list .photo{position:relative;}
+	.former_buy_group .list .photo img{display:block; width:190px; height:115px; background-color:#EBEBEB;}
+	.former_buy_group .list .photo sup{overflow:hidden; position:absolute; right:0; bottom:0; width:61px; height:61px; background:url(../global/bg_gb_try.png) no-repeat 0 -289px; line-height:300px;}
+	.former_buy_group .list .info{margin-left:15px; width:368px;}
+	.former_buy_group .list .info h4{overflow:hidden; margin-top:-5px; height:30px; border-bottom:1px solid #E4E4E4; width:368px;white-space:nowrap;text-overflow:ellipsis; line-height:25px; font-size:14px;}
+	.former_buy_group .list .info .p_1{margin:10px 0 5px; height:24px; line-height:24px;}
+	.former_buy_group .list .info .p_1 span{font-size:24px; font-family:"arial";}
+	.former_buy_group .list .info .p_2{overflow:hidden; margin-bottom:10px; *margin-bottom:12px; height:22px;}
+	.former_buy_group .list .info .p_2 span{display:inline; float:left; width:106px;}
+	.former_buy_group .list .info .p_2 em{font-size:16px; font-style:normal; font-family:"arial";}
+	.former_buy_group .list .info .p_3 span{font-weight:bold;}
+	
+	/*===== 无数据状态 =====*/
+	.former_buy_group .no_data{margin:0 10px; padding:50px 0; border-top:1px solid #DDDDDD; text-align:center;}

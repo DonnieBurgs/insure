@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="jquery.js"></script>
+<link href="common.css" rel="stylesheet"/>
+<script type="text/javascript" src="rater-star.js"></script>
+<link href="rater-star.css" rel="stylesheet"/>
+<title>jQuery Rater Star Plugin</title>
+</head>
+
+<body>
+<div id="header">
+<h1>jQuery Rater Star Plugin</h1>
+基于jQuery的投票插件
+</div>
+
+<div class="main">
+<h2>Author</h2>
+RayChou
+[<a href="http://www.raychou.com">Website</a>]
+ 
+<h2>Update</h2>
+<ul>
+	<li>
+        <strong>2010-01-24</strong>
+        <br/>
+		新增<a href="#demo11">Demo11</a>：自定义Title
+        <br/>
+        &nbsp;
+    </li>
+	<li>
+        <strong>2009-06-21</strong>
+        <br/>
+		修正步长不为1时，默认值显示不正确的Bug（感谢网友蓝色的风之精灵）
+        <br/>
+        &nbsp;
+    </li>
+	<li>
+        <strong>2009-06-18</strong>
+        <br/>
+		更改步长显示方式，参照<a href="#demo7">Demo7</a>
+        <br/>
+        &nbsp;
+    </li>
+	<li>
+        <strong>2009-06-11</strong>
+        <br/>
+		新增示例：点击后不可更改<a href="#demo10">Demo10</a>
+        <br/>
+        &nbsp;
+    </li>
+    <li>
+        <strong>2009-05-29</strong>
+        <br/>
+		重构代码，加入<a href="http://www.raychou.com/chou/labs/">labs</a>
+        <br/>
+        &nbsp;
+    </li>
+</ul>
+
+<h2>Download</h2>
+<ul>
+    <li>
+       <a href="rater-star.zip">rater-star.zip</a>
+		共下载 <script type="text/javascript" src="rater-star.zip.count.js"></script> 次
+    </li>
+</ul>
+
+
+<h2>Demo</h2>
+
+<div class="main">
+	
+<h3><a name="install">安装</a></h3>
+<pre name="code" class="js">
+&lt;script type="text/javascript" src="jquery.rater.js"&gt;&lt;/script&gt;
+&lt;link href="jquery.rater.css" rel="stylesheet"/&gt;
+</pre>
+	
+<!-- demo1 -->
+<h3><a name="demo1">Demo1：不带参数</a></h3>
+
+<div id="demo1"></div>
+
+<script type="text/javascript">
+$('#demo1').rater();
+</script>
+
+<pre name="code" class="js">
+$('#demo1').rater();
+</pre>
+
+
+<!-- demo2 -->
+<h3><a name="demo2">Demo2：设置参数，指定默认值</a></h3>
+
+<div id="demo2"></div>
+
+<script type="text/javascript">
+var options	= {
+	value	: 1
+}
+$('#demo2').rater(options);
+</script>
+
+<pre name="code" class="js">
+var options	= {
+	value	: 1
+}
+$('#demo2').rater(options);
+</pre>
+
+<!-- demo3 -->
+<h3><a name="demo3">Demo3：默认值不可修改</a></h3>
+
+<div id="demo3"></div>
+
+<script type="text/javascript">
+var options	= {
+	value	: 1,
+	enabled	: false
+}
+$('#demo3').rater(options);
+</script>
+
+<pre name="code" class="js">
+var options	= {
+	value	: 1,
+	enabled	: false
+}
+$('#demo3').rater(options);
+</pre>
+
+<!-- demo4 -->
+<h3><a name="demo4">Demo4：自定义星星个数</a></h3>
+
+<div id="demo4"></div>
+
+<script type="text/javascript">
+var options	= {
+	max	: 10
+}
+$('#demo4').rater(options);
+</script>
+
+<pre name="code" class="js">
+var options	= {
+	max	: 10
+}
+$('#demo4').rater(options);
+</pre>
+
+<!-- demo5 -->
+<h3><a name="demo5">Demo5：点击后触发事件</a></h3>
+
+<div id="demo5"></div>
+<input type="text" />
+
+<script type="text/javascript">
+var options	= {
+	after_click	: function(ret) {
+		$('#demo5 + input').val(ret.number);
+	}
+}
+$('#demo5').rater(options);
+</script>
+
+<pre name="code" class="js">
+var options	= {
+	after_click	: function(ret) {
+		$('#demo5 + input').val(ret.number);
+	}
+}
+$('#demo5').rater(options);
+</pre>
+
+<!-- demo6 -->
+<h3><a name="demo6">Demo6：AJAX调用，成功后触发事件</a></h3>
+
+<div id="demo6"></div>
+
+<script type="text/javascript">
+var options	= {
+	url	: 'ajax.php',
+	after_ajax	: function(ret) {
+		alert(ret.ajax);
+	}
+}
+$('#demo6').rater(options);
+</script>
+
+<pre name="code" class="js">
+var options	= {
+	url	: 'ajax.php',
+	after_ajax	: function(ret) {
+		alert(ret.ajax);
+	}
+}
+$('#demo6').rater(options);
+</pre>
+
+<!-- demo7 -->
+<h3><a name="demo7">Demo7：自定义最大，最小值，以及递增步长</a></h3>
+
+<div id="demo7"></div>
+
+<script type="text/javascript">
+var options	= {
+	min	: 4.5,
+	max	: 10,
+	step: 0.5,
+	url	: 'ajax.php',
+	after_ajax	: function(ret) {
+		alert(ret.ajax);
+	}
+}
+$('#demo7').rater(options);
+</script>
+
+<pre name="code" class="js">
+var options	= {
+	min	: 5,
+	max	: 10,
+	step: 0.5,
+	url	: 'ajax.php',
+	after_ajax	: function(ret) {
+		alert(ret.ajax);
+	}
+}
+$('#demo7').rater(options);
+</pre>
+
+<!-- demo8 -->
+<h3><a name="demo8">Demo8：自定义AJAX请求方式（默认POST）</a></h3>
+
+<div id="demo8"></div>
+
+<script type="text/javascript">
+var options	= {
+	url	: 'ajax.php',
+	method	:'GET',
+	after_ajax	: function(ret) {
+		alert(ret.ajax);
+	}
+}
+$('#demo8').rater(options);
+</script>
+
+<pre name="code" class="js">
+var options	= {
+	url	: 'ajax.php',
+	method	:'GET',
+	after_ajax	: function(ret) {
+		alert(ret.ajax);
+	}
+}
+$('#demo8').rater(options);
+</pre>
+
+<!-- demo9 -->
+<h3><a name="demo9">Demo9：自定义图片</a></h3>
+
+<div id="demo9"></div>
+
+<script type="text/javascript">
+var options	= {
+	image	: 'star2.gif',
+	width	: 16,
+	height	: 16
+}
+$('#demo9').rater(options);
+</script>
+
+<pre name="code" class="js">
+var options	= {
+	image	: 'star2.gif',
+	width	: 16,
+	height	: 16
+}
+$('#demo9').rater(options);
+</pre>
+
+<!-- demo10 -->
+<h3><a name="demo10">Demo10：点击后不可更改</a></h3>
+
+<div id="demo10"></div>
+
+<script type="text/javascript">
+var options	= {
+	max	: 10,
+	after_click	: function(ret) {
+		this.value	= ret.value;
+		this.enabled= false;
+		$('#demo10').rater(this);
+	}
+}
+$('#demo10').rater(options);
+</script>
+
+<pre name="code" class="js">
+var options	= {
+	max	: 10,
+	after_click	: function(ret) {
+		this.value	= ret.value;
+		this.enabled= false;
+		$('#demo10').rater(this);
+	}
+}
+$('#demo10').rater(options);
+</pre>
+
+
+
+
+
+
+
+<!-- demo11 -->
+<h3><a name="demo11">Demo11：自定义title</a></h3>
+
+<div id="demo11"></div>
+
+<script type="text/javascript">
+var options	= {
+	max	: 10,
+	title_format	: function(value) {
+		var title = '';
+		switch (value) {
+			case 1 : 
+				title	= '一';
+				break;
+			case 7 : 
+				title	= '七';
+				break;
+			default :
+				title = value;
+				break;
+		}
+		return title;
+	}
+}
+$('#demo11').rater(options);
+</script>
+
+<pre name="code" class="js">
+var options	= {
+	max	: 10,
+	title_format	: function(value) {
+		var title = '';
+		switch (value) {
+			case 1 : 
+				title	= '一';
+				break;
+			case 7 : 
+				title	= '七';
+				break;
+			default :
+				title = value;
+				break;
+		}
+		return title;
+	}
+}
+$('#demo11').rater(options);
+</pre>
+
+
+</div>
+</div>
+
+
+<link type="text/css" rel="stylesheet" href="../common/syntaxhighlighter/Styles/SyntaxHighlighter.css"></link>
+<script language="javascript" src="../common/syntaxhighlighter/Scripts/shCore.js"></script>
+<script language="javascript" src="../common/syntaxhighlighter/Scripts/shBrushJScript.js"></script>
+<script language="javascript" src="../common/syntaxhighlighter/Scripts/shBrushXml.js"></script>
+<script language="javascript">
+dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-8822947-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<urlrewrite>
+	<rule>
+		<from>^/(.*).jsp$</from>
+		<to last="true">/$1.jsp</to>
+	</rule>
+	<rule>
+		<from>^/2010css/(.*)$</from>
+		<to last="true">/2010css/$1</to>
+	</rule>
+	<rule>
+		<from>^/contactServer_([0-9]+).html$</from>
+		<to last="true">/weixin.do?method=cs&amp;xx=$1</to>
+	</rule>
+	<rule>
+		<from>^/ftp.html$</from>
+		<to last="true">/weixin.do?method=getIP</to>
+	</rule>
+	<rule>
+		<from>^/pages/(.*).html$</from>
+		<to last="true">/pages/$1.html</to>
+	</rule>
+	<!-- 内页 -->
+	<rule>
+		<from>^/([a-zA-Z]+)/detail-([0-9]+).html$</from>
+		<to last="true">/$1/detail.jsp?id=$2</to>
+	</rule>
+	<!-- chinamobile内页 -->
+	<rule>
+		<from>^/([a-zA-Z]+)/([a-zA-Z]+)/detail-([0-9]+).html$</from>
+		<to last="true">/$1/$2/detail.jsp?id=$3</to>
+	</rule>
+	
+	<!-- 列表 -->
+	<rule>
+		<from>^/([a-zA-Z]+)/promote.html$</from>
+		<to last="true">/$1Servlet.do?method=promote</to>
+	</rule>
+	<rule>
+		<from>^/([a-zA-Z]+)/buy.html$</from>
+		<to last="true">/$1Servlet.do?method=buy</to>
+	</rule>
+	<rule>
+		<from>^/([a-zA-Z]+)/sale.html$</from>
+		<to last="true">/$1Servlet.do?method=sale</to>
+	</rule>
+	<rule>
+		<from>^/([a-zA-Z]+)/custom.html$</from>
+		<to last="true">/$1Servlet.do?method=custom</to>
+	</rule>
+	<rule>
+		<from>^/([a-zA-Z]+)/list.html$</from>
+		<to last="true">/$1Servlet.do?method=list</to>
+	</rule>
+	<rule>
+		<from>^/([a-zA-Z]+)/list-([a-zA-Z]+)([^\s^-]+).html$</from>
+		<to last="true">/$1Servlet.do?method=list&amp;$2=$3</to>
+	</rule>
+	<rule>
+		<from>^/([a-zA-Z]+)/list-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+).html$</from>
+		<to last="true">/$1Servlet.do?method=list&amp;$2=$3&amp;$4=$5</to>
+	</rule>
+	<rule>
+		<from>^/([a-zA-Z]+)/list-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+).html$</from>
+		<to last="true">/$1Servlet.do?method=list&amp;$2=$3&amp;$4=$5&amp;$6=$7</to>
+	</rule>
+	<rule>
+		<from>^/([a-zA-Z]+)/list-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+).html$</from>
+		<to last="true">/$1Servlet.do?method=list&amp;$2=$3&amp;$4=$5&amp;$6=$7&amp;$8=$9</to>
+	</rule>
+	<rule>
+		<from>^/([a-zA-Z]+)/list-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+).html$</from>
+		<to last="true">/$1Servlet.do?method=list&amp;$2=$3&amp;$4=$5&amp;$6=$7&amp;$8=$9&amp;$10=$11</to>
+	</rule>
+	<rule>
+		<from>^/([a-zA-Z]+)/list-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+)-([a-zA-Z]+)([^\s^-]+).html$</from>
+		<to last="true">/$1Servlet.do?method=list&amp;$2=$3&amp;$4=$5&amp;$6=$7&amp;$8=$9&amp;$10=$11&amp;$12=$13</to>
+	</rule>
+</urlrewrite>
+

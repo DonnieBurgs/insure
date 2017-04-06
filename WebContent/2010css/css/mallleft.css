@@ -1,0 +1,22 @@
+/*Left*/
+.leftsortf {
+	width:144px;
+}
+.leftsortf H4 {
+	padding:10px 0 0 5px;FONT-SIZE: 14px; COLOR: #FF8507; TEXT-DECORATION: none;
+}
+.leftsortf .top {
+	padding:0 0 0 5px;
+}
+.leftsortf H4 A {
+	FONT-SIZE: 14px; COLOR:#CF6600; TEXT-DECORATION: none
+}
+.leftsortf H4 A:hover {
+	FONT-SIZE: 14px; COLOR:#CF6600; TEXT-DECORATION: underline
+}
+.leftsortf ul {
+	padding: 0px; DISPLAY: block;width:100%;TEXT-ALIGN: left;MARGIN: 5px 0 0; 
+}
+.leftsortf li {
+	padding:0 5px;DISPLAY: inline; FONT-WEIGHT: normal; FLOAT: left; PADDING-BOTTOM: 0px; WORD-BREAK: keep-all; WHITE-SPACE: nowrap;FONT-SIZE: 12px;MARGIN: 2px 0px;
+}

@@ -1,0 +1,99 @@
+@charset "utf-8"; 
+*{padding:0px; margin:0px; font-size:12px}
+html{overflow-y:auto;scrollbar-face-color: #6EA7D1; scrollbar-shadow-color: #FFFFFF; scrollbar-highlight-color: #FFFFFF; scrollbar-3dlight-color: #6EA7D1; scrollbar-darkshadow-color: #6EA7D1; scrollbar-track-color: #FFFFFF; scrollbar-arrow-color: #FFFFFF;}
+body{color:#000000; padding:10px; font-size:12px;background:#fff;font-family:Verdana,Arial,Helvetica,sans-serif;}
+img{border:none}
+ul,dl{list-style:none;}
+.right{text-align: right;}
+.left{text-align: left;}
+a{color:#004b8d; text-decoration:none}
+a:hover{color:#4192d9; text-decoration:none}
+.fc_red{color:#f26101}
+.fc_blue{color:#004b8d}
+.fc_gray{color:#656565}
+button, input{vertical-align:middle}
+input[type=text],input[type=password]{height:18px; width: 180px; font-size: 12px; line-height: 18px; border: 1px solid #7F9DB9; background: #fcfdfd; color: #222222;}
+input[type=text]:hover,input[type=password]:hover{ border: 1px solid #0093FF;}
+button{margin-right:5px;cursor:pointer;}
+textarea{width: 98%; height: 80px; margin: 2px; font-size: 12px; border: 1px solid #7F9DB9; background: #fcfdfd; overflow: auto;}
+textarea:hover{ border: 1px solid #0093FF;}
+.btn1{height:22px;padding:0 3px;font-size:12px;line-height:22px;color:#333;border:1px #959595 solid;background:url(images/button_bg1.gif) repeat-x; cursor:pointer;}
+.btn2{height:20px;margin-bottom: 3px; padding:0 3px;font-size:12px;line-height:20px;color:#333;border:1px #959595 solid;background-color: #EAF4FD;}
+.btn3{height:22px;margin: 1px; padding:0 3px;font-size:12px;line-height:22px;color:#333;border:1px #959595 solid;background-color: #EAF4FD;}
+.mtitle{height: 29px;}
+.mtitle h1{height:29px; float:left; line-height:27px; font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;}
+.mtitle span{float: left; margin: 5px 0 0 12px;}
+table thead tr{height:24px;}
+table .title{color:#333;background:#F8F8F8;height: 30px;}
+.tform{width:100%; margin:7px auto 0px; font-family:Tahoma,Verdana,Arial;border-collapse:collapse;}
+.tform th{border:1px #959595 solid; background-color: #A0C0C0; padding: 5px; text-align: center;}
+.tform td{text-align: left;border:1px #959595 solid; background-color: #eee; padding: 5px;}
+.tform td a{color:#004b8d; text-decoration:none}
+.tform td a:hover{color:#4192d9; text-decoration:none}
+.dhtmlxTree td{border:0;padding: 1px;}
+.tform td.right{text-align: right;padding: 5px;}
+.tform td.center{text-align: center;padding: 5px;}
+.tform td.left{text-align: left; padding: 5px;}
+.tform span.err{display:-moz-inline-box;display:inline-block; margin: 0 0 0 5px;border:1px solid #F8B3D0;background-color: #FFF5FA;color: #FF0000; padding: 2px;}
+.tform .btn1{left: 40%;position: relative;}
+.tlist{width:100%; margin:7px auto 0px; font-family:Tahoma,Verdana,Arial;border-collapse:collapse;}
+.tlist thead th{cursor: pointer;}
+.tlist thead a{color:#004b8d; text-decoration:none}
+.tlist thead a:hover{color:#4192d9; text-decoration:none}
+.tlist tr{background-color: #eee;}
+.tlist th{border:1px #959595 solid; background-color: #A0C0C0; padding: 5px; text-align: center;}
+.tlist td{border:1px #959595 solid;  padding: 5px; text-align: center;}
+.tlist .row{height: 36px;}
+.tlist .row:hover{background-color: #EFF7FF;}
+.tlist td a{color:#004b8d; text-decoration:none}
+.tlist td a:hover{color:#4192d9; text-decoration:none}
+.tleft td{text-align: left;}
+.tcform{width:100%; margin:7px auto 0px; font-family:Tahoma,Verdana,Arial;border-collapse:collapse;}
+.tcform th{border:1px #eee solid; padding: 5px; text-align: center;}
+.tcform td{text-align: left;border:1px #eee solid; padding: 5px;}
+.tcform td a{color:#004b8d; text-decoration:none}
+.tcform td a:hover{color:#4192d9; text-decoration:none}
+
+.ib{width: 100%; height: 400px; overflow-y: auto;}
+
+.search{margin-top: 5px; width: 100%; background-color: #F8F8F8;}
+.search li {float: left; padding: 2px; margin: 2px; white-space: nowrap; height: 24px; width: 32%;}
+.error{color: #FF0000;}
+
+DIV.bar {MARGIN: 3px; PADDING: 3px;TEXT-ALIGN: center;}
+DIV.bar A {BORDER: #ddd 1px solid;PADDING-RIGHT: 5px;PADDING-LEFT: 5px;PADDING-BOTTOM: 2px;COLOR: #0E6AD0;MARGIN-RIGHT: 2px;PADDING-TOP: 2px;TEXT-DECORATION: none;}
+DIV.bar A:hover {BORDER: #0E6AD0 1px solid;COLOR: #0E6AD0;BACKGROUND-COLOR: #F2F6FA;}
+DIV.bar A:active {BORDER-RIGHT: #0E6AD0 1px solid;COLOR: #0E6AD0;BACKGROUND-COLOR: #F2F6FA;}
+DIV.bar SPAN.current {BORDER: #0E6AD0 1px solid;PADDING-RIGHT: 5px;PADDING-LEFT: 5px;FONT-WEIGHT: bold;PADDING-BOTTOM: 2px;COLOR: #0E6AD0;MARGIN-RIGHT: 2px;PADDING-TOP: 2px;BACKGROUND-COLOR: #F2F6FA;}
+DIV.bar SPAN.disabled {BORDER: 0;PADDING-RIGHT: 5px;PADDING-LEFT: 5px;PADDING-BOTTOM: 2px;COLOR: #ccc;MARGIN-RIGHT: 2px;PADDING-TOP: 2px;}
+
+/* Multiselect
+----------------------------------*/
+.multiselect{width: 460px; height: 200px;}
+.ui-multiselect { border: solid 1px; font-size: 0.8em; }
+.ui-multiselect ul { -moz-user-select: none; }
+.ui-multiselect li { margin: 0; padding: 0; cursor: default; line-height: 20px; height: 20px; font-size: 11px; list-style: none; }
+.ui-multiselect li a { color: #999; text-decoration: none; padding: 0; display: block; float: left; cursor: pointer;}
+.ui-multiselect li.ui-draggable-dragging { padding-left: 10px; }
+
+.ui-multiselect div.selected { position: relative; padding: 0; margin: 0; border: 0; float:left; }
+.ui-multiselect ul.selected { position: relative; padding: 0; overflow: auto; overflow-x: hidden; background: #fff; margin: 0; list-style: none; border: 0; position: relative; width: 100%; }
+.ui-multiselect ul.selected li { }
+
+.ui-multiselect div.available { position: relative; padding: 0; margin: 0; border: 0; float:left; border-left: 1px solid; }
+.ui-multiselect ul.available { position: relative; padding: 0; overflow: auto; overflow-x: hidden; background: #fff; margin: 0; list-style: none; border: 0; width: 100%; }
+.ui-multiselect ul.available li { padding-left: 10px; }
+ 
+.ui-multiselect .ui-state-default { border: none; margin-bottom: 1px; position: relative; padding-left: 20px;}
+.ui-multiselect .ui-state-hover { border: none; }
+.ui-multiselect .ui-widget-header {border: none; font-size: 11px; margin-bottom: 1px;}
+ 
+.ui-multiselect .add-all { float: right; padding: 7px;}
+.ui-multiselect .remove-all { float: right; padding: 7px;}
+.ui-multiselect .search { float: left; padding: 4px;}
+.ui-multiselect .count { float: left; padding: 7px;}
+
+.ui-multiselect li span.ui-icon-arrowthick-2-n-s { position: absolute; left: 2px; }
+.ui-multiselect li a.action { position: absolute; right: 2px; top: 2px; }
+ 
+.ui-multiselect input.search { height: 14px; padding: 1px; opacity: 0.5; margin: 4px; width: 100px; }

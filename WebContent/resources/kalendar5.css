@@ -1,0 +1,41 @@
+@charset "utf-8";
+.kalwrap{border: 0px solid;overflow: hidden;} 
+.kalmain{float: left;width: 100%;} 
+.kaltoolscenter{height: 50px;margin-top:0px;margin-bottom:0px;margin-left:50px;margin-right:50px;line-height:50px;text-align:center;vertical-align:middle;} 
+.kaltoolsleft{float: left;width: 50px;height: 50px;margin-left: -100%;line-height:50px;} 
+.kaltoolsright{float: left;width: 50px;height: 50px;margin-left: -50px;line-height:50px;}
+
+.kalTitle{margin-top:2px;margin-left:auto;margin-right:auto;margin-bottom:0px;border:0px solid #dddddd}
+.kalTitle{width:100%;height:40px;display:inline-table;-webkit-box-orient:horizontal;-moz-box-orient:horizontal;box-orient:horizontal;}
+.kalTitle div.kalTitleBox{width:14%;height:40px;display:table-cell;text-align:center;vertical-align:middle;}
+.kalTitle div.kalTitleBox{-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;text-align:center;font-size:18px;}
+.kalTitle span{ vertical-align:middle}
+.kalTitle div.block{width:1px;}
+.kalTitleBox1{background:#4699f6;color:#fff;}
+.kalTitleBox2{background:#4699f6;color:#fff;}
+.kalTitleBox3{background:#4699f6;color:#fff;}
+.kalTitleBox4{background:#4699f6;color:#fff;}
+.kalTitleBox5{background:#4699f6;color:#fff;}
+.kalTitleBox6{background:#4699f6;color:#fff;}
+.kalTitleBox7{background:#4699f6;color:#fff;}
+
+.kalDate{margin-top:1px;margin-left:auto;margin-right:auto;margin-bottom:0px;border:0px solid #dddddd}
+.kalDate{width:100%;height:60px;display:inline-table;-webkit-box-orient:horizontal;-moz-box-orient:horizontal;box-orient:horizontal;}
+.kalDate div.kalDateBox{width:14%;height:40px;display:table-cell;text-align:center;vertical-align:middle;}
+.kalDate div.kalDateBox{-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;text-align:center;font-size:18px;}
+.kalDate span{ vertical-align:middle}
+.kalDate div.block{width:1px;}
+.kalNone{background:#4699f6;color:#555555;}
+.kalTodayWeekend{background:#FF676C;color:#555555;}
+.kalWeekend{background:#FFFF99;color:#555555;}
+.kalToday{background:#FF676C;color:#555555;}
+.kalOther{background:#fff;color:#555555;}
+
+.kalHidden{display:none;}
+.kalVisable{display:;}
+.kalDateFont{font-size:14px;line-height:15px;}
+
+.kalMenu{position:absolute;left:0;width:80px;display:none;}
+.kalMenu a{color:#fff; text-decoration:none; display:block; float:left; width:80px;height:30px; line-height:30px; padding:0px 15px; font-size:12px;background:#636871;}
+
+

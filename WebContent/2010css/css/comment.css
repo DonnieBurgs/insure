@@ -1,0 +1,127 @@
+
+.club_comment {width:740px;margin:0; padding:0; text-align:center; font-size:12px;border:0; vertical-align:middle;}
+.club_comment .blue_main{float:left; clear:both; border-left:1px #C0CEE0 solid; border-bottom:1px #C0CEE0 solid; border-right:1px #C0CEE0 solid;}
+.club_comment .blue_main {width:738px;}
+.club_comment .unline{padding:5px 9px; float:left; clear:both;}
+.club_comment .unline{width:720px;}
+.club_comment .unline li{background:url(comment/icon01.gif) left 6px no-repeat; line-height:20px; height:20px; float:left; clear:both; padding-left:10px; text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.club_comment .unline li{width:710px;}
+
+
+.fleft, .fcenter, .f_left{display:block; float:left;}
+.fright, .f_right{display:block; float:right;}
+
+.blue_head02{height:30px; background:url(comment/all.gif) 0 -150px repeat-x; float:left; clear:both;}
+.blue_head02 .fleft{background:url(comment/all.gif) -220px -24px no-repeat; padding-left:10px; line-height:30px; height:30px;}
+.blue_head02 .fright{background:url(comment/all.gif) -1px -360px no-repeat; padding-right:5px; width:199px; line-height:30px; height:30px;}
+.blue_head02 .fright a{margin:0 5px; float:right;}
+
+.blue_head02 li{width:83px; height:24px; line-height:24px; margin:6px 4px 0 0; display:inline; color:#33569C; float:left; cursor:pointer; background:url(comment/all.gif) -320px -32px no-repeat; }
+.blue_head02 .at{background:url(comment/all.gif) -320px 0 no-repeat; padding-top:2px; margin:4px 4px 0 0; font-weight:700; font-size:14px;}
+
+
+
+.dp_wd{padding:15px 0 5px 0; float:left; width:738px;}
+
+.dp_wd p{width:480px; float:left; text-align:left; line-height:25px;}
+.dp_wd p span{color:#FF6000;}
+.dp_wd p strong{color:#FF6000; font-size:18px; font-family:Tahoma; font-weight:normal; margin:0 5px;}
+
+.dp_wd .ping{width:730px; margin:0 4px;float:left; display:inline; padding:10px 0;}
+.dp_wd .ping .tit{ width:708px; padding:0 11px; float:left; line-height:30px;}
+.dp_wd .ping .tit .yh{float:left; text-align:left;}
+.dp_wd .ping .tit .yh img{margin:0 4px 4px 0;}
+.dp_wd .ping .tit .yh strong{color:#FF6000;}
+.dp_wd .ping .tit .time{float:right; text-align:right; color:#666;}
+.dp_wd .ping .nr{width:602px; float:left; margin-left:11px; display:inline; text-align:left; line-height:22px;}
+.dp_wd .ping .shang{width:602px; height:15px; background:url(comment/all.gif) 0 -204px no-repeat; float:left;}
+.dp_wd .ping .zhong{width:583px; padding:0 10px 0 9px; background:url(comment/all.gif) repeat-y; float:left; min-height:45px; _height:45px;}
+.dp_wd .ping .xia{width:602px; height:6px; background:url(comment/all.gif) 0 -455px no-repeat; float:left; }
+.dp_wd .ping .zhong ul{width:560px; float:left;}
+.dp_wd .ping .zhong ul li{width:124px; float:left; margin:0 10px; display:inline; padding:5px 0;}
+.dp_wd .ping .zhong ul li img{width:120px; height:118px; border:1px solid #ccc; padding:1px;}
+
+.dp_wd .ping .jj{width:104px; height:48px; padding:15px 0 5px 0; line-height:24px; background:url(comment/all.gif) -420px 10px no-repeat; float:right; margin-right:11px; display:inline; color:#666; }
+.dp_wd .ping .jj span{color:#FF6000; font-size:14px; font-weight:700;}
+
+.dp_wd .ask{width:730px; margin:0 4px; border-bottom:1px dashed #ccc; float:left; display:inline; padding:5px 0; line-height:25px; text-align:left; color:#666;}
+.dp_wd .ask .zx,.dp_wd .ask .hf{width:710px; padding:0 10px; float:left;}
+.dp_wd .ask .zx .zxnr{width:460px; float:left; background:url(comment/all.gif) 0 -1076px no-repeat; text-indent:20px; white-space:nowrap;overflow:hidden;text-overflow:ellipsis;} 
+.dp_wd .ask .zx .wy{width:135px; float:left;}
+.dp_wd .ask .sj{width:105px; float:right; text-align:center;}
+.dp_wd .ask .hf .tchf{width:595px; float:left; background:url(comment/all.gif) 0 -1101px no-repeat; text-indent:20px; white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+
+
+.head{ float:left; width:700px;margin-left:30px; display:inline;}
+.head dl{ float:left;}
+.head dl dt{ float:left; border-bottom:none; text-align:left; padding-left:15px; font-size:14px; font-weight:bold; padding-top:5px; border-left:1px solid #ccc;border-top:1px solid #ccc;}
+.head dl dd{ float:left;width:670px; line-height:25px; background:#CCCCCC; padding-left:10px; text-align:left;}
+
+
+.pingj{ float:left;width:190px; padding-top:5px; padding-left:30px; padding-bottom:7px;}
+.pingj dl{ float:left; line-height:20px; width:190px}
+.pingj dl dt{ float:left; padding-right:5px; }
+.pingj dl dd{ float:left;}
+.pingj_dd{width:83px; height:12px; border:1px solid #ccc; float:left; margin:4px 5px 0 0; display:inline;}
+.pingj span{ float:left; font-weight:bold;line-height:30px;}
+.hong{ background:url(comment/bg07_1.gif) repeat-x; height:10px; margin:1px 1px 0 1px; overflow:hidden;}
+
+/***ÐÇÐÇÑùÊ½**/
+.pingf{ float:left; width:230px;padding-top:14px; padding-bottom:7px;}
+.pingf ul{ float:left;width:200px; padding-top:2px; padding-left:30px;}
+.pingf ul li{padding-top:4px; text-align: left;}
+.c-value li{line-height:30px; white-space:nowrap}
+.c-value-no{background:url(comment/star.gif); background-repeat:no-repeat;no-repeat scroll 0 0 transparent;padding-right:4px}
+.c-value-no{display:inline-block; height:16px; overflow:hidden; vertical-align:middle; width:60px}
+.c-value-5d0{background-position:0 0px}
+.c-value-4d9, .c-value-4d8, .c-value-4d7, .c-value-4d6, .c-value-4d5, .c-value-4d4, .c-value-4d3, .c-value-4d2, .c-value-4d1{background-position:0 -16px}
+.c-value-4d0{background-position:0 -32px}
+.c-value-3d9, .c-value-3d8, .c-value-3d7, .c-value-3d6, .c-value-3d5, .c-value-3d4, .c-value-3d3, .c-value-3d2, .c-value-3d1{background-position:0 -48px}
+.c-value-3d0{background-position:0 -66px}
+.c-value-2d9, .c-value-2d8, .c-value-2d7, .c-value-2d6, .c-value-2d5, .c-value-2d4, .c-value-2d3, .c-value-2d2, .c-value-2d1{background-position:0 -82px}
+.c-value-2d0{background-position:0 -98px}
+.c-value-1d9, .c-value-1d8, .c-value-1d7, .c-value-1d6, .c-value-1d5, .c-value-1d4, .c-value-1d3, .c-value-1d2, .c-value-1d1{background-position:0 -116px}
+.c-value-1d0{background-position:0 -130px}
+.c-value-0d9, .c-value-0d8, .c-value-0d7, .c-value-0d6, .c-value-0d5, .c-value-0d4, .c-value-0d3, .c-value-0d2, .c-value-0d1{background-position:0 -146px}
+.c-value-0d0{background-position:0 -162px}
+
+.pingd{ float:left;}
+.pingd ul{ float:left; text-align:left; padding-top:12px;}
+.pingd ul li{ line-height:26px;height:26px;}
+.pingd_sp{ margin-left:55px;}
+.pingd_sp img{ width:109px; }
+
+
+
+.zyleft_tr1{ float:left; width:738px;  border-bottom:1px dashed #ccc;}
+
+
+.zyleft_tr2{ float:left;width:738px; padding-bottom:10px; padding-top:12px; }
+.trsp1{ float:left; background:url(comment/bg03.gif) 20px 2px no-repeat; width:112px; height:68px;}
+.trsp2{ float:left;}
+.trsp1_sp1{ display:block; padding-top:15px; font-size:20px; color:#ff6000; font-family:Verdana, Arial, Helvetica, sans-serif; padding-bottom:5px;}
+.trsp1_sp2{ color:#666;}
+.zyleft_tr2 ul{ float:left; font-size:12px;text-align:left; padding-left:0px; width:605px; padding-left:10px;}
+.zyleft_tr2 li{ float:left; width:615px; line-height:16px; padding-bottom:6px;}
+.zyleft_tr2 .sp1{ padding:2px 8px 0 8px; background:#666; color:#fff; margin-right:1px;}
+.zyleft_tr2 .sp2{ padding:2px 8px 0 8px; background:#db94ff; color:#fff; margin-right:1px;}
+.zyleft_tr2 .sp3{ padding:2px 8px 0 8px; background:#4c94db; color:#fff; margin-right:1px;}
+.zyleft_tr2 .sp4{ padding:2px 8px 0 8px; background:#94b770; color:#fff; margin-right:1px;}
+.zyleft_tr2 .sp5{ padding:2px 8px 0 8px; background:#ff7094; color:#fff; margin-right:1px;}
+.zyleft_tr2 .sp6{ padding:2px 8px 0 8px; background:#ff8300; color:#fff; margin-right:1px;}
+.zyleft_tr2 .sp7{ padding:2px 8px 0 8px; background:#FEDC82; color:#fff; margin-right:1px;}
+.zyleft_tr2 .sp8{ padding:2px 8px 0 8px; background:#356880; color:#fff; margin-right:1px;}
+.zyleft_tr2 .sp9{ padding:2px 8px 0 8px; background:#c79810; color:#fff; margin-right:1px;}
+.zyleft_tr2.info .sp10{ padding:2px 8px 0 8px; background:#3f4c6b; color:#fff; margin-right:1px;}
+
+
+
+
+.zyleft_tr3{ background:#f7f7f7; float:left;width:738px; padding-bottom:10px; padding-top:12px; }
+.trsp{ float:left; background:url(comment/bg05.gif) 20px 2px no-repeat; width:112px; height:68px;}
+.zyleft_tr3 ul{ float:left; font-size:12px;text-align:left; padding-left:0px; width:605px; padding-left:10px;}
+.zyleft_tr3 li{ float:left; width:615px; line-height:16px; padding-bottom:6px;}
+
+
+.none{display:none;}

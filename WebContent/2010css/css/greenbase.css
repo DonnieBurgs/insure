@@ -1,0 +1,716 @@
+﻿@charset "utf-8";
+@import url("global.css");/*公共样式*/
+
+/*通用表单提示tip*/
+.tipinput { padding: 3px 15px; background: #eefacf; border: 1px solid #019945; color: #000;}
+
+/*通用表单按钮class*/
+.btn-regist{ border:0;width:166px;height:32px;background:url(../global/ugolfbg.png) no-repeat 0 -610px;font-size:14px;font-weight:bold;color:#fff;cursor:pointer; }
+.btn-cx { border:0; background:url(../global/ugolfbg.png) repeat-x left -770px; color:#fff; padding:2px 8px 1px; *padding:2px 8px 1px;cursor:pointer }
+.btn-cx a {color:#fff;}
+
+/*通用Box*/
+.uBox { border:1px solid #D5E2B7;}
+.uBoxno { border:none;}
+.uBoxgrey { border:1px solid #D9D9D9;}
+.uBoxbg { background:#f1f5eb;}
+.uBox .tit{background:#f1f5eb;padding:6px 10px;height:18px;}
+.uBox .titno{padding:8px 10px 0 10px;height:18px;background:none;}
+.uBox .tit .mark {float:left;font-size:14px;font-weight:bold;color:#2a6613; }
+.uBox .tit .org {color:#CF6600; }
+.uBox .tit .subMark { height:100%;float:right; }
+.uBox .tit .subMark a {color:#2a6613; }
+.uBox .cont{padding:10px 10px 5px;display:inline-block;}
+.uBox .cont .liBlank { line-height:23px;padding-bottom:5px;margin-bottom:5px;}
+
+/*通用单列文字列表*/
+.txtlist li{*float: left;height:24px;text-indent:10px;background: url('../global/ugolfbg.png') -297px -1px no-repeat;}  /*点样式*/
+.txtlistdot li{*float: left;height:24px;text-indent:15px;background: url('../global/ugolfbg.png') -296px -23px no-repeat;} /*三角样式*/
+
+/*通用单列文字排行*/
+.txtrank ul {background: url(../global/ugolfbg.png) no-repeat -286px -397px;}
+.txtrank li {height:24px;line-height:24px;width:100%;overflow:hidden;text-indent:20px;}
+
+/*通用两列文字列表*/
+.txttwo {clear:both;}
+.txttwo li{*float: left;width:100%;height:24px;text-indent:10px;background: url('../global/ugolfbg.png') -297px -1px no-repeat;overflow:hidden;}
+.txttwo a {float:left;}
+.txttwo span {float:right;text-align:right;}
+.txttwo .price {color:#CF6600;font-family:"Courier New",Simsun;}
+.txttwo .price dfn {font-family:Arial;font-style:normal;}
+
+/*右侧220px图文列表*/
+.textpic {width: 198px;margin:3px 0 12px 0;overflow:hidden;}
+.textpic li {width: 198px;height: 60px;padding:0;float:left;border-bottom:1px dashed #c8c8c8;overflow:hidden;}
+.textpic i {display:block;float:left;overflow:hidden;}
+.textpic .iPic {width: 70px;margin:0 5px 0 0;}
+.textpic .iPic img{width: 60px;height: 45px;padding:2px;border:1px solid #e8eee0;}
+.textpic .iPic a:hover img{border-color:#639805;}
+.textpic .iDes {width: 120px;}
+.textpic .eTit {height: 20px;overflow:hidden;font-size:12px;font-weight:bold;display:block;}
+.textpic .eTit a{color:#00529B}
+.textpic .eDes {color:#555555;display:block;line-height:16px;}
+.textpic .ePrice {display:block;line-height:16px;font-size:12px;color:#CF6600;}
+
+/*分页*/
+.ppage {width: 100%;overflow:hidden;}
+
+/*文章列表*/
+.newslist .liBlank{padding-top:12px;margin-top:12px;}
+.newslist ul{margin-left:20px;padding:10px 0;}
+.newslist li{line-height:28px;color:#0B3B8D;} 
+.newslist a{font-size:14px;color:#0B3B8C} 
+.newslist a:hover{text-decoration:underline;}
+.newslist .nsort{width:120px;float:left;text-align:center;color:#090;font-size:14px;}
+.newslist .nsort a{color:#FE5E02; text-decoration:none;}
+.newslist .ntit{float:left;width:502px;padding-left:8px;font-size:14px;}
+.newslist .ntime{color:#8e8e8e;display:inline-block;width:160px;text-align:right;}
+
+/*文章内容*/
+.newsmain { text-align:left;}
+.newsmain .ntit, .newsmain .ncont { padding:0 20px; margin:0 auto; overflow:hidden; zoom:1; }
+.newsmain .ntit {text-align:center;padding-top:22px;padding-bottom:0px;}
+.newsmain h1 {-x-system-font:none;color:#000;font-family:"宋体",arial;font-size:26px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;line-height:30px;margin-bottom:6px;font-weight:800;}
+.newsmain h2 {-x-system-font:none;color:#2C7EAF;font-family:"宋体",arial;font-size:16px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;line-height:22px;margin-bottom:2px;font-weight:700;}
+.newsmain .titBar {overflow:hidden;zoom:1;padding:0px 5px;position:relative;color:#7E7E7E;height:16px;}
+.newsmain .Line {height:1px;font-size:0;border-top:1px solid #E5E5E5;margin-top:18px;}
+.newsmain .feedfull {text-align:right;color:#7C7C7C}
+#Ugolf-ArtMainCnt { line-height:25px; padding-bottom:20px;font-size:14px;}
+#Ugolf-ArtMainCnt p { margin:20px auto 0 auto; }
+
+/*帮助中心*/
+.hothelp { margin-bottom:10px; border:1px solid #DBDBDB; overflow:hidden; zoom:1; background:url(../global/helpbg.png) repeat-y left top }
+.hotbar { float:left; width:235px; padding:15px 0 }
+.hotbar li { height:40px; line-height:40px; font-size:14px; text-indent:30px }
+.hotbar li.current { font-weight:700; background:#fff; border:1px solid #DBDBDB; border-left:0; border-right:0 }
+.hotbar li.current a { color:#DC902F }
+.hotcont { float:right; width:680px; padding:10px 0 }
+.hotcont li { float:left; width:49.3%; height:26px; line-height:26px; overflow:hidden;text-indent:10px;background: url('../global/ugolfbg.png') -297px 0 no-repeat; }
+.hotcont li a, .hotcont li a:visited { color:#7c7c7c }
+
+/*logo*/
+.logo { margin-bottom:10px; }
+.logo_left { float:left; width: 280px;height:69px;margin-right:10px; }
+.logo_center { float:left;width:120px;margin-right:10px; }
+.logo_right { float:right;width:520px;}
+.logo_right .login li {float:left;}
+.logo_right .login a{margin:0 5px;padding:0;position:relative;}
+.logo_right .login {text-align:right;color:#D9D9D9;margin:0 2px 0 0;height:30px;line-height:30px;float:right;} 
+.logo_right .login .toppay{background:url(../global/ugolfbg.png) no-repeat 0px -550px;padding-left:15px;}
+.logo_right .login .toppay a{color:#a74b00;}
+.logo_right .login .topugolf{background:url(../global/001.png) no-repeat 0px 5px;padding-left:15px;}
+.logo_right .login .topugolf a{color:#a74b00;}
+.logo_right .login .topwap{background:url(../global/ugolfbg.png) no-repeat 5px -865px; padding-left:13px;position:relative;margin-right:5px;}
+.logo_right .login .topwap span{width:21px; height:13px;background:url(../global/ugolfbg.png) no-repeat right -870px;position:absolute; right:-17px; top:2px;}
+.logo_right .login .topwap a{color:#a74b00;}
+.logo_right .tel { text-align:right;}
+.logo_right .tel .top_tel {width:218px;height:20px;background:url('../global/ugolfbg.png') left -77px no-repeat; font-size:24px; font-family:Arial, Helvetica, sans-serif;color:#D8453D; float:right; text-align:left; padding:13px 0 0 33px; overflow:hidden; }
+.logo_right a{color:#2a6613;}
+
+/*nav*/
+.topnav{position:relative;height:38px;background:url(../global/bg_tab.png);margin-bottom:10px;}
+.topnav_left {background: url('../global/ugolfbg.png') left 0 no-repeat;position:absolute;top:0;height:37px;display:block;overflow:hidden;left:0;width:3px; }
+.topnav_right {background: url('../global/ugolfbg.png') left -38px no-repeat;position:absolute;top:0;height:38px;display:block;overflow:hidden;right:0;width:2px; }
+
+/*蓝色版
+.topnav{position:relative;height:37px;background:url(../global/navbg.png);margin-bottom:10px;}
+.topnav_left {background: url('../global/ugolfbg.png') right 0 no-repeat;position:absolute;top:0;height:37px;display:block;overflow:hidden;left:0;width:4px; }
+.topnav_right {background: url('../global/ugolfbg.png') right -37px no-repeat;position:absolute;top:0;height:37px;display:block;overflow:hidden;right:0;width:4px; }*/
+
+.topnav ul{position:relative;top:5px;padding:0 0 0 15px;}
+.topnav li{position:relative;float:left;margin-right:10px;}
+.topnav a{font-size:14px;color:#fff;padding-left:3px;line-height:22px;display:inline-block;margin-top:3px;zoom:1;}
+.topnav a b{float:left;padding:0 13px 0 10px;cursor:pointer;}
+.topnav a:hover{color:#fff;text-decoration:underline;}
+.topnav li.current{margin-top:-3px;}
+.topnav li.current a,.topnav li.current a:hover{background:url('../global/ugolfbg.png') left -110px no-repeat; }
+.topnav li.current a b,.topnav li.current a:hover b{padding-top:5px;padding-bottom:6px;color:#2a6613;background:url('../global/ugolfbg.png') right -110px no-repeat;}
+.topnav li span.new{position:absolute;top:-7px;right:-7px;display:block;text-indent:-999em;}
+.topnav li.current span.new{top:-4px;}
+.topnav .spec a{color:#fffbb5;padding-left:30px;background:url('../global/ugolfbg.png') 8px -157px no-repeat;}
+.topnav .spec a b{padding-left:0;}
+.topnav .spec a:hover,.topnav .speccurrent a{color:#ee7818;padding-left:30px;background:url('../global/ugolfbg.png') left -184px no-repeat;text-decoration:none;}
+.topnav .spec a:hover b,.topnav .speccurrent a b{background:url('../global/ugolfbg.png') right -210px no-repeat;}
+
+#search{position:absolute;top:7px;_top:6px;right:10px;}
+#search .text{width:160px;border:0;padding:4px 3px 4px 25px;vertical-align:middle;font-size:12px;line-height:18px;background: url('../global/ugolfbg.png') left -235px no-repeat #fff;}
+#search .text:focus{background: url('../global/ugolfbg.png') left -262px no-repeat;}
+#search .submit{margin-left:5px;border:0;cursor:pointer;vertical-align:middle;background: url('../global/ugolfbg.png') left -289px no-repeat;width: 62px;height: 22px;}
+#search .submit:hover{background: url('../global/ugolfbg.png') left -311px no-repeat;}
+#search .focusClear{color:#999;}
+
+
+/*热门标签*/
+.hottag{position:relative;right:-8px;}
+.hottag li{float:left;width:33.3%;text-indent:10px;background:url(../global/ugolfbg.png) -296px -25px no-repeat;height:24px;}
+.hottag li a{color:#00529B;}
+
+/*热门工具*/
+.hottool{position:relative;right:-8px;}
+.hottool li{float:left;width:50%;text-indent:10px;background: url('../global/ugolfbg.png') -297px -3px no-repeat;height:26px;}
+.hottool li a{color:#00529B;}
+
+
+/*首页CSS开始*/
+/*首页搜索框*/
+.searchBox { width:280px; color:#555; height: 210px;}
+.searchBox .qn_title { width:270px; background:url(../global/search_bg.png) -265px -36px no-repeat; }
+.searchBox .ct { padding:9px 15px;  border:1px solid #CED9B6; border-width:0 1px;background:#F1F6ED url(../global/search_bg.png) 72px -155px no-repeat; }
+.searchBox .tblSearch { border:0; width:100%; height: 129px; font-family:SimSun; font-size:12px; }
+.searchBox .tblSearch th { padding:5px 0; width:40px; }
+.searchBox .tblSearch th span.t { display:block; padding-top:2px; *padding-top:1px; font-weight:700; }
+.searchBox .tblSearch td { padding:5px 0; }
+.searchBox .tblSearch td.arriDate { height:25px; }
+.searchBox .ft { width:280px;height:30px; text-align:center; background:url(../global/search_bg.png) -265px -70px no-repeat; color:#f60; }
+.searchBox .ft p { padding-top:8px; }
+.searchBox .ft p a { padding:0 3px;color:#f60; }
+.searchBox .ft p a:hover { color:#f60; }
+
+.qn_title{ padding:4px 0 0 10px; width:300px; height:30px; font:bold 14px/30px 宋体; text-indent:0; background:url(../global/search_bg.png) 0 0 no-repeat; color:#2A6613; }
+.qn_title .info { float:right; padding-right:10px; font:normal 12px/30px SimSun,Arial,sans-serif; }
+.qn_title li { float:left; display:inline; margin-left:-2px; padding-left:11px; cursor:pointer; }
+.qn_title li span { float:left; padding-right:10px; cursor:pointer; }
+.qn_title li.active { background:url(../global/search_bg.png) -495px -100px no-repeat; cursor:default; }
+.qn_title li.active span { background:url(../global/search_bg.png) 100% -100px no-repeat; cursor:default; }
+
+.cityInputWrap { padding-left:24px; height:22px; }
+.keyInputWrap { padding-left:24px; position:relative;z-index:9;float:left;}
+.priceInputWrap { padding-left:24px; height:22px; }
+.priceInputWrap select {width:110px;height:22px;font-size:13px;vertical-align:middle;}
+.priceInputWrap2 span.t { float:left; display:block; padding-top:4px; *padding-top:3px; width:24px; overflow:hidden; }
+.priceInputWrap2 span.t2 { float:left; display:block; padding-left:15px; padding-top:4px; *padding-top:3px; width:24px; overflow:hidden; }
+.methodWrap { height:21px;padding-left:25px; }
+.methodWrap .radio { float:left; margin:3px 6px 0 0; *margin-top:4px; width:13px; height:13px; cursor:pointer; }
+.methodWrap label { float:left; margin-right:24px; padding-top:3px; white-space:nowrap; cursor:pointer; }
+
+.qcbox { display:block; float:left; padding:0; border: 1px solid #bababa; background-color:#fff; }
+.qcbox input { display:block; float:left; height:18px;line-height:18px; border:0 none; padding:2px 18px 1px 4px; width:150px;font-family:宋体,Tahoma,Geneva,sans-serif; *font-family:SimSun,sans-serif; font-size:14px;vertical-align:middle;}
+.qcity input { width: 128px;}
+.qcity img {CURSOR: pointer;padding:2px 3px 0 0;height:16px;line-height:16px;}
+.qqc input { color:#555555;}
+.qcprice .flightinput { width:43px; }
+
+.searchButton {display:inline; margin-left:24px; border:0; width:69px; height:21px; background:url(../global/search_bg.png) -130px -70px no-repeat; cursor:pointer;}
+.searchButton span { display:none; }
+
+/*首页公告*/
+.promote{margin-top:3px;padding-top:2px;border-top:1px dashed #ccc}
+.promote .title{font-size:12px;font-weight:bold;height:24px;}
+
+/*首页球场左侧广告*/
+.hv{width:280px;height:125px;background:url(http://pic.lvmama.com/img/index1008/hvbg_gz.gif) no-repeat; position:relative;color:#555; line-height:18px;}
+.hvzt{ position:absolute; top:16px;left:158px; font-size:13px; text-decoration:underline;}
+.hvp1{ position:absolute; top:40px;left:16px; }
+.hvp2{ position:absolute; top:67px;right:95px; }
+.hvp2 span{color:#ff4e00;font-size:30px;font-weight:700;font-family:Arial, Helvetica, sans-serif; line-height:20px;}
+.hvp2 del{font-size:16px;color:#555;margin-right:20px;text-decoration:none;background:url(http://pic.lvmama.com/img/viewspot/vs_line01.jpg) repeat-x left 9px;}
+.hvp3{ position:absolute; bottom:10px;right:93px; text-align:right; line-height:16px; }
+.hvorder{position:absolute; bottom:5px;right:10px; display:block;width:68px;height:68px; }
+.hvdest{position:absolute; top:10px;left:20px; display:block;width:92px;height:25px;}
+
+/*首页特惠球场切换*/
+.course_hot{position:relative;top:-4px;margin:10px auto;}
+.course_hot h3{float:left;margin:0 128px 0 0;font-size:14px;color:#ee7818;}
+.course_hot .course_hot_main{position:relative;padding:10px;border:1px solid #d5e2b7;border-top:3px solid #2a6613;}
+
+.course_hot .tab li{background:url('../global/ugolfbg.png') left -335px;float:left;margin:2px 2px 0 0;padding-left:10px;color:#000;background-color:#ededed;cursor:pointer;}
+.course_hot .tab li span{background:url('../global/ugolfbg.png') right -335px;display:inline-block;height:23px;line-height:23px;padding-right:10px;}
+.course_hot .tab li span a{color: #000000;}
+.course_hot .tab li.selected{background:url('../global/ugolfbg.png') left -360px;margin-top:0;font-weight:bold;color:#fff;}
+.course_hot .tab li.selected span{background:url('../global/ugolfbg.png') right -360px;height:25px;line-height:25px;}
+.course_hot .tab li.selected span a{color: #FFFFFF;}
+
+.course_hot .course_hot_pic { float:left;width:150px;}
+.course_hot .course_hot_pic img { width:140px;height:170px;overflow:hidden;}
+.course_hot .course_hot_rc { float:right;width:485px;z-index:5;}
+.course_hot .course_hot_cont { margin: 5px 0 0; }
+.course_hot .course_hot_cont li {width:140px;padding:2px 10px;float:left;}
+.course_hot .course_hot_cont span {float:right;text-align:right;}
+.course_hot .course_hot_cont a {float:left;width:95px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#00529B;}
+.course_hot .course_hot_cont .price {color:#CF6600;font-family:"Courier New",Simsun;}
+.course_hot .course_hot_cont .price dfn {font-family:Arial;font-style:normal;}
+
+.course_hot .more{float:left;margin:8px 0 0 10px;width:75px;}
+.course_hot .more a{font-weight:bold;color:#00529B}
+.course_hot .hot-tag{float:right;z-index:5;margin:8px 0 0 5px;color:#333;width:395px;}
+.course_hot .hot-tag a{margin-right:2px;color:#2a6613;border-left:1px solid #d9d9d9;padding-left:5px;_margin-left:-4px;}
+.course_hot .hot-tag a.first{border:0;padding-left:0;}
+
+
+/*首页旅游*/
+.tour_hot{width:660px;overflow:hidden;position:relative;top:0px;}
+.tour_hot .tit{height:32px;border-bottom:2px solid #2A6613;}
+.tour_hot .tit .mark {float:left;font-size:14px;font-weight:bold;color:#ee7818;vertical-align:bottom;margin:10px 0 0 1px; }
+.tour_hot .tit .subMark { height:100%;float:right; }
+.tour_hot span.recommend{position:absolute;left:-2px;top:0px;width:43px;height:52px;text-indent:-9999px;height:52px!important;}
+
+.tour_hot .cont{width:660px;overflow:hidden;padding:0 0 5px;}
+.tour_hot .cont_pic {padding:15px 0 0 0;}
+.tour_hot .cont .hot{float:left;width:205px;padding:0 0 0 10px;}
+.tour_hot .cont .pic { float:left;display:inline;}
+.tour_hot .cont .pic img { width:80px; height:60px;padding:2px;border:1px solid #e8eee0;}
+.tour_hot .cont .pic a:hover img{border-color:#639805;}
+.tour_hot .cont .title {float:left; width:110px;margin:0 0 6px 8px;line-height:20px; color:#FF6600;font-size:14px;font-weight:bold; height: 40px; overflow: hidden;}
+.tour_hot .cont .title a { color:#00529B;font-size:12px;font-weight:normal;}
+.tour_hot .cont dfn {font-family:Arial;font-style:normal;color:#FF6600;}
+.tour_hot .cont .add { float:left; height:22px;}
+.tour_hot .cont .add a{ float:left; color:#2A6613; margin:0 0 0 8px; padding:0 0 0 8px;text-indent:3px;background:url(../global/ugolfbg.png) -296px -25px no-repeat;}
+
+.tour_hot .cont_txt {width:660px;overflow:hidden;padding:5px 0 0;}
+.tour_hot .cont .hd {width:100%;line-height:23px;height:48px;border-bottom:#dbe7e7 1px dashed;}
+.tour_hot .cont .hd li{float:left;width:33%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.tour_hot .cont .hd li a{color:#00529B;}
+.tour_hot .cont .hd a {color:#333;}
+.tour_hot .cont .flt {height:26px;line-height:26px;width:100%;color:#c9dce6;}
+.tour_hot .cont .flt s { font:12px Arial; color:#333; text-decoration:none;}
+.tour_hot .cont .flt s b { font:bold 12px verdana; color:#f60;}
+.tour_hot .cont .flt a{font:12px Arial;color:#2A6613;}
+
+/*排行榜（首页练习场）*/
+	.train_hot .rank {height:180px;}
+	.train_hot .rank1 {height:100px;}
+		.train_hot .rank dt {background:url(../global/mallc_bg.png) no-repeat 10px -255px;}
+		.train_hot .rank dd ul {width:248px;}
+			.train_hot .rank_on { height:100px; width:196px;}
+			.train_hot .rank_name { width:228px; }
+			.train_hot .rank_name a { width:204px; }
+	.rank1 {height:100px;}
+	.rank1 dd ul {width:248px;}
+	.mark1 {  float:left;padding-left:10px;padding-top:6px; font-size:16px; color:#F60;font-weight:bold; }
+	.rank1 {border:1px solid #eaeaea;overflow:hidden;}
+	.rank1 dt {height:39px;border-bottom:1px solid #eaeaea;position:relative;}
+	.rank1 .recommend{position:absolute;right:3px;top:3px;width:43px;height:52px;text-indent:-9999px;height:52px!important;}
+
+	.train_hot .rank2 {height:160px;}
+	.rank2 {height:160px;}
+	.rank2 dd ul {width:248px;}
+	.mark2 {  float:left;padding-left:10px;padding-top:0px; font-size:16px; color:#F60;font-weight:bold; }
+	.rank2 {border:1px solid #eaeaea;overflow:hidden;}
+	.rank2 dt {height:39px;border-bottom:1px solid #eaeaea;position:relative;}
+	.rank2 .recommend{position:absolute;right:3px;top:0px;width:43px;height:52px;text-indent:-9999px;height:52px!important;}
+
+	.rank {border:1px solid #eaeaea;}
+		.rank dt {height:39px;border-bottom:1px solid #eaeaea;position:relative;}
+		.rank .recommend{position:absolute;right:3px;top:3px;width:43px;height:52px;background:url(../global/alltag.png) no-repeat 2px -68px;text-indent:-9999px;height:52px!important;}
+		.rank dd {height:auto; margin:0 14px;}
+		.rank dd ul {border-bottom:1px solid #eaeaea;}
+			.rank_on { padding:10px 0;}
+				.rank_img { position:relative; float:left; margin-right:10px;}
+				.rank_span { display:block; width:17px; height:14px;background:url(../global/ugolfbg.png) no-repeat 0 -900px; color:#666; text-align:center; font-weight:bold; font-size:12px; position:absolute; line-height:14px;}
+				.rank_spanon {color:#fff;background:url(../global/ugolfbg.png) no-repeat 0 -914px;}
+				.rank_off font { font-size:12px;color:#c90809; font-family:Arial, Helvetica, sans-serif;}
+				.rankon_name { padding-bottom:5px;}
+			.rank_off { height:22px; padding-top:10px;}
+			.rank_name { float:left; position:relative;}
+			.rank_name a { padding-left:22px;height:15px;line-height:15px; }
+.sina_weibo{ background: url(/images/weibo_bg.png) no-repeat left top; height:80px; width:277px;}
+
+
+/*首页球具模块*/
+.proeachbox h2,.proeachbox h3{font-size:100%;}
+.proeachbox{position:relative;overflow:hidden;zoom:1;clear:both;}
+.h2_indextitle,.h3_sublinks{background:#F0F0F0;}
+.h2_indextitle .a_title{float:left;background:url(../global/mallindexnav.png) no-repeat 0 -247px;display:block;height:33px;width:130px;text-indent:-999em;overflow:hidden;}
+
+.h3_sublinks{float:right;width:810px;color:#ccc;padding:0 10px 0 0;height:33px;line-height:33px;text-align:right}
+.h3_sublinks a{margin:0 5px;font-weight:normal;}
+.h3_sublinks a.a_more{color:#c00;}
+
+
+.cat_left { width:190px;float:left;overflow:hidden;margin-right:10px;}
+.cat_mid {width:510px;float:left;margin:0 auto;overflow:hidden;}
+	.cat_ul {height:250px;text-align:center;width:170px;float:left;}
+		.cat_ul li { width:160px; text-align:left;color:#666666;}
+		.cat_ul .sc span { font-size:12px;font-weight:normal;color:#999999;text-decoration:line-through;line-height:20px;}
+		.cat_ul .yy span { color:#C7000B;font-size:14px;line-height:20px;font-weight:bold;}
+		.cat_ul li a { line-height:18px;}
+		.cat_img { position:relative; padding-bottom:6px;display:table-cell;vertical-align:middle;text-align:center;*display: block;*font-size: 140px;*font-family:Arial;width:160px;height:160px;}
+		.cat_img img{text-align:center;vertical-align:middle;max-width:160px;max-height:160px;width:expression(this.width>160&&this.width>this.height&&160*this.height/this.width<160?160:true);height:expression(this.height>160?160:true); }
+
+.cat_right {width:240px;float:left;overflow:hidden;}
+
+
+/*底部广告*/
+.banner_list { width: 950px; overflow:hidden;float:left;clear:both;background:#F1F1F1;}
+.banner_list li { float: left; width: 220px;overflow:hidden;padding:10px 0 10px 14px;}
+.banner_list .hotcity { padding: 10px 13px;margin-bottom: 8px;}
+.banner_list .hotcity p { margin-bottom: 3px; background: #f3f3f3; color:#666; }
+.banner_list .hotcity a { float: left; margin-right: 12px; white-space: nowrap;color:#00529B }
+
+/*球场频道搜索补充*/
+.gra { height:250px }
+.sidebar { width:280px; float:left; color:#7c7c7c; position:relative; z-index:2 }
+.ClubSearch { width:275px;border:3px solid #D5E2B7; background:#fff;position:absolute; left:0;  top:0 }
+.ClubSearch .tblSearch { border:0; width:100%; font-family:SimSun; font-size:12px; }
+.ClubSearch .tblSearch th { padding:5px 0; width:40px; }
+.ClubSearch .tblSearch th span.t { display:block; padding-top:2px; *padding-top:1px; font-weight:700; }
+.ClubSearch .tblSearch td { padding:5px 0; }
+.ClubSearch .tblSearch td.arriDate { height:25px; }
+.ClubSearch .searchmore { width:100%;line-height:18px;margin:0 auto; padding:8px 0 3px 0; text-align:left;border-top:1px dashed #ddd; color:#666666; }
+.ClubSearch .searchmore a { color:#00529B;font-size:12px;font-weight:normal;}
+.ClubSearch .sMore { display:none;}
+.ClubSearch dl { width:100%;color:#666666;}
+.ClubSearch dd { width:100%;}
+.ClubSearch dd li {float:left;height:24px; white-space:nowrap;}
+
+/*球场频道列表220px搜索补充*/
+.ClubListSearch { float:left;width:198px;overflow:hidden;}
+.ClubListSearch .tblSearch { border:0;width:188px;font-family:SimSun; font-size:12px; }
+.ClubListSearch .tblSearch th { padding:5px 0; width:40px; }
+.ClubListSearch .tblSearch th span.t { display:block; padding-top:2px; *padding-top:1px; font-weight:700; }
+.ClubListSearch .tblSearch td { padding:5px 0; }
+.ClubListSearch .tblSearch td.arriDate { height:25px; }
+.ClubListSearch .qcbox input { width:87px;}
+.ClubListSearch .qcity input { width: 65px;}
+.ClubListSearch .qcprice .flightinput { width:12px; }
+.ClubListSearch .searchButton { margin-left:0; }
+.ClubListSearch .methodWrap label { margin-right:16px; }
+
+/*球场频道特惠球场切换*/
+.club_hot{position:relative;margin:0 auto;}
+.club_hot h3{float:left;margin:0 40px 0 0;font-size:14px;color:#ee7818;}
+.club_hot .club_hot_main{position:relative;padding:10px;border:1px solid #d5e2b7;border-top:3px solid #2a6613;}
+
+.club_hot .more{float:left;margin:10px 0 0 0;}
+.club_hot .more a{font-weight:bold;color:#00529B}
+.club_hot .more span.seemore{font-weight:bold;color:#00529B;cursor:pointer;}
+.club_hot .hot-tag{float:left;margin:10px 0 0 5px;color:#333;}
+.club_hot .hot-tag a{margin-right:2px;color:#2a6613;border-left:1px solid #d9d9d9;padding-left:5px;_margin-left:-4px;}
+.club_hot .hot-tag a.first{border:0;padding-left:0;}
+
+.club_hot .tab li{background:url('../global/ugolfbg.png') left -335px;float:left;margin:2px 2px 0 0;padding-left:10px;color:#000;background-color:#ededed;cursor:pointer;}
+.club_hot .tab li span{background:url('../global/ugolfbg.png') right -335px;display:inline-block;height:23px;line-height:23px;padding-right:10px;}
+.club_hot .tab li span a{color: #000000;}
+.club_hot .tab li.selected{background:url('../global/ugolfbg.png') left -360px;margin-top:0;font-weight:bold;color:#fff;}
+.club_hot .tab li.selected span{background:url('../global/ugolfbg.png') right -360px;height:25px;line-height:25px;}
+.club_hot .tab li.selected span a{color: #FFFFFF;}
+
+.club_hot .club_hot_cont { margin: 5px 0 0; background-position: 190px -352px; }
+.club_hot .club_hot_cont li {width:184px;padding:2px 10px;float:left;}
+.club_hot .club_hot_cont span {float:right;text-align:right;}
+.club_hot .club_hot_cont a {float:left;width:132px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#00529B;}
+.club_hot .club_hot_cont .price {color:#CF6600;font-family:"Courier New",Simsun;}
+.club_hot .club_hot_cont .price dfn {font-family:Arial;font-style:normal;}
+
+.club_hot .more{float:left;margin:8px 0 0 10px;width:78px;}
+.club_hot .more a{font-weight:bold;color:#00529B}
+.club_hot .hot-tag{float:right;z-index:5;margin:8px 0 0 5px;color:#333;width:540px;height:36px;overflow:hidden;}
+.club_hot .hot-tag a{margin-right:2px;color:#2a6613;border-left:1px solid #d9d9d9;padding-left:5px;_margin-left:-4px;}
+.club_hot .hot-tag a.first{border:0;padding-left:0;}
+
+
+/*球场频道特色球场*/
+.content_wrap { width:100%;overflow: hidden;_margin-bottom:-12px;background:url('../global/course_bg.jpg') repeat-x; }
+
+.content_main { display:inline; float: left; width: 425px; margin: 0 12px 0 3px; }
+.content_main .tit{color:#EE7818;text-align:left;font-size: 14px;}
+.content_main .tit .mark {  float:left;font-size:14px; color:#EE7818;font-weight:bold;background:url('../global/ugolfbg.png') no-repeat -20px -938px;height:63px;width:170px;line-height:63px; }
+.content_main .tit .subMark { height:100%; margin-right:15px; float:right; }
+.content_main .tit .subMark a { color:#FFF; }
+
+/*===== 城市切换 =====*/
+	.content_main .t_h_icon{background:url(../global/ugolfbg.png) 0 0 no-repeat;}
+	.content_main a.at_city{height:24px;margin:0;text-align:left;color:#fff;font:bold 14px/20px Microsoft YaHei,"宋体";display:block;background-position:-0px -1010px;padding-left:12px;width:70px;}
+	.content_main a.at_city:hover{text-decoration:none;cursor:pointer;}
+	.content_main a.at_city em{background-position:-27px -1034px;display:block;height:22px;width:65px;text-align:left;padding:2px 0 0 5px;}
+	.content_main #at_city{font-size:14px;padding:5px;text-align:left;width:315px;background:#fff;position:absolute;z-index:202;overflow:visible;border:2px solid #2C6812;margin-left:30px;}
+	.content_main #at_city a{display:block;float:left;padding:6px;white-space:nowrap;width:50px;color:#666;text-align:center;}
+	.content_main #at_city a.kt{color:#2C6812;font-weight:bold;}
+	.content_main #at_city a:hover{background:#2C6812;color:#fff;padding:6px;text-decoration:none;}
+
+.content_main .cont{width: 100%;margin:0 auto;overflow:hidden;}
+.content_main .cont li {width: 425px;height: 69px;padding:3px 0 8px;float:left;border-bottom:1px dashed #c8c8c8;overflow:hidden;}
+
+.content_main .cont .hot-img{float:left;margin-right:10px;}
+.content_main .cont img{width: 80px;height: 60px;padding:2px;border:1px solid #e8eee0;}
+.content_main .cont a:hover img{border-color:#639805;}
+.content_main .cont a{display:block;padding:3px 0;overflow:hidden;}
+.content_main .cont a:hover{cursor:pointer;text-decoration:none;background-color:#F0F4D9;}
+.content_main .cont .hot-box{padding:0px 0 3px;height:69px;}
+.content_main .cont a:hover .hot-box{border-color:#f1eee7;}
+.content_main .cont h4{height:20px;overflow:hidden;font-size:12px;color:#00529B;}
+.content_main .cont h4 .city{color:#000000;}
+.content_main .cont h4 .price{padding-left:10px;color:#CF6600; font-size:12px;font-weight:normal;}
+.content_main .cont p{height:45px;overflow:hidden;color:#333333;}
+.content_main .cont .hot-box a{padding:4px 5px 5px;}
+.content_main .cont .end {border-bottom:none;padding-bottom:5px;}
+
+.content_side { float: right; width: 210px; }
+	.content_side .rank {height:480px;border:none;}
+		.content_side .rank dt {background:url(../global/ugolfbg.png) no-repeat -105px -1005px;height:66px;border:none;}
+		.content_side .rank dd ul {width:178px;}
+			.content_side .rank_on { height:80px;width:126px;}
+			.content_side .rank_name { width:158px; }
+			.content_side .rank_name a { width:134px; }
+
+
+/*球场频道列表页球场选取框*/
+.listtop {float:left;}
+.listtop .tit  {position:relative;}
+.listtop .tit .qMark { height:100%;float:left;padding-left:18px; }
+.listtop .tit .qMark i{color:#F60;font-weight:bold;font-family:Verdana}
+.listtop .tit .subMark {height:100%;position:absolute;height:100%;float:right;right:5px;top:5px; }
+.listtop .tit .subMark a {margin:0 auto;display:block;float:left;overflow:hidden;}
+.listtop .tit .subMark .cerrent {width: 78px;height: 26px;background:url(../global/ugolfbg.png) no-repeat -38px -457px;text-align:center;line-height:26px;color:#f60;z-index:5}
+.listtop .tit .subMark .toc {width:78px;height: 26px;text-align:center;line-height:26px;color:#777;z-index:5}
+
+.gl {zoom:1;padding:10px 0 5px; }
+.gl .iSelected {border-bottom:1px solid #E7E7E7;padding:0 15px 10px; }
+.gl .iSelect {font-weight:bold;color:#777777;}
+.gl .iOption {border:1px solid #FFB35C;font-weight:bold;overflow:hidden;padding:3px 5px;background:#FFFFD9;color:#333333;}
+.gl .iC { text-decoration:none;cursor:pointer;margin:2px 0 0 8px; padding:0px 4px; background:url(../global/ugolfbg.png) no-repeat 0 -535px;height:19px;line-height:19px;}
+.gl .iC a:hover {text-decoration:none;}
+.gl .iClear a{color:#555;}
+.gl .iClear a:hover{color:#840;}
+.gl table{width:715px;margin:0 auto;line-height:22px;}
+.gl table td{padding:5px 0 5px 4px;border-bottom:1px dashed #D7D7D7;}
+.gl table strong {color:#777777;}
+.gl .noBorder td{border:0;}
+.gl .pOption a,.gl .price a{color:#003399;}
+.gl .pOption a.curr:link,.gl .pOption a.curr:visited,.gl .price a.curr:link,.gl .price a.curr:visited{color:#FF6600;font-weight:bold;}
+.gl .sGray {color:#777;}
+.gl .pOption{height:auto;}
+.gl .pOption span{width:89px; height:22px; float:left; overflow:hidden;}
+.gl .price span{height:22px; float:left; overflow:hidden;padding-right:15px;}
+.gl .inpTxt{width:30px;border:1px solid #C2C2C2;}
+.gl .submit{cursor:pointer;width:35px;height:17px;background:url(../global/ugolfbg.png) no-repeat 0 -400px;line-height:17px;border:none;margin:0px;padding:0px;}
+
+
+/*球场频道列表详细块*/
+.clubList {float:left;overflow:hidden;}
+.plist {position:relative;width: 738px;margin:10px auto;overflow:hidden;background:url('../global/greenbg.jpg') repeat-x; border:1px solid #D5E2B7;}
+.plist li {width: 100%;height:auto;padding:15px 20px 5px 20px;float:left;overflow:hidden;}
+.plist i {display:block;float:left;overflow:hidden;}
+.plist .iTit {width: 100%;height: 24px;overflow:hidden;font-size:14px;font-weight:bold;display:block;background:url(../global/ugolfbg.png) no-repeat -280px -75px;text-indent:28px;padding:0 0 8px 0;}
+.plist .iTit a{color:#00529B;}
+.plist .iTit .eName{padding-left:10px;color: #FF7E00; font-size:12px;font-weight:normal;}
+.plist .iPic {width: 100px;margin:0 15px 0 0;padding:8px; border:1px #ccc solid; background:#FFF;display:block;float:left;}
+.plist .iPic img{width: 100px;height: 75px;}
+.plist .ePic {display:block;}
+.plist .eMore {display:block;text-align:center;height:24px;line-height:24px;border-bottom:1px solid #CCCCCC;}
+.plist .eMore a{color:#00529B;}
+.plist .eComment {display:block;text-align:center;line-height:20px;padding-top:8px;background:url(../global/ugolfbg.png) no-repeat -280px -45px;text-indent:8px;}
+.plist .ePleased {display:block;text-align:center;line-height:22px;color:#f60;font-family:Arial;}
+.plist .eSeeCom {display:block;text-align:center;margin:3px auto; }
+.plist .eSeeCom a {background:url(../global/ugolfbg.png) no-repeat left -510px; color:#777; zoom:1; display:inline-block;width:74px;height:19px; }
+.plist .iDes {width:560px;}
+.plist .iDes a{color:#00529B;}
+.plist .eDes {color:#000000;margin:2px 0;display:block;line-height:18px;}
+.plist .eNav {color:#000000;display:block;line-height:20px;}
+.plist .eDao {color:#000000;line-height:24px;}
+.plist .ePrice {margin:8px 0;display:block;width:100%;}
+.plist .eSpecial {display:block;width:540px;;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;height:28px;line-height:28px;}
+.plist .eSpecial a { color:#FF0000;}
+.plist .eSpecial .qcr { background:url(../global/alltag.png) no-repeat -88px -70px;width:30px;height:16px;display:inline-block;margin-right:5px; }
+.Price_List { clear:both; margin-top:2px; }
+.Price_List th { background:#F0F0F0;height:25px; line-height:25px;padding:0 10px;color:#777777;font-weight:normal;border-bottom:1px #D9D9D9 solid; }
+.Price_List td { border-bottom:1px #D9D9D9 solid; height:33px; text-align:center;line-height:33px; }
+.Price_List .uprice a { color:#f60;}
+
+.clubList a.hidden{
+        cursor:pointer;
+}
+.clubList span.tag0
+{
+	width: 200px;
+	white-space:normal;
+	word-break:break-all;
+	border: 1px solid #639A00;
+	padding-right: 10px;
+	padding-left: 10px;
+	line-height: 150%;
+	background-color: #FFFFFF;
+	z-index:9999;
+	font-size:12px;
+	font-weight:normal;
+        text-align:left;
+}
+.clubList span.tag0{ width:220px;padding:0 0 3px 0; display:none; background:#999; border:none;}
+.clubList span.tag0 em{ display:none; font-style:normal;}
+.clubList span.showspan{ display:block; position:absolute;}
+.clubList span.showspan em{ display:block; position:relative; width:200px; margin:-5px 0 0 -5px; padding:5px 10px; background:#fff; border:1px solid #639A00; z-index:999;}
+.btnOrder { background:url(../global/ugolfbg.png) no-repeat left -490px; color:#777; zoom:1; display:inline-block;width:59px;height:20px; }
+
+.plist_sright {position:relative;width: 390px;margin:10px auto;overflow:hidden;background:url('../global/greenbg.jpg') repeat-x; border:1px solid #D5E2B7;}
+.plist_sright li {width: 100%;height:auto;padding:15px 20px 5px 20px;float:left;overflow:hidden;}
+
+
+/*球场频道列表页球场搜索框*/
+.Qsearch{padding:10px;background:#FFF7E3; border:1px solid #DDDDDD; overflow:hidden; clear:both;}
+.Qsearch .qsea {width:95%;float:left;vertical-align:middle; }
+.Qsearch .qtop {width:5%;float:right;text-align:right;}
+.Qsearch strong {color:#FF6600;font-size:14px;font-weight:bold;}
+.Qsearch .inpTxt{width:260px;height:17px;border:1px solid #C2C2C2;vertical-align:middle;}
+.Qsearch .btnSearch{position:relative; z-index:3; display:inline;margin:0px;border:0; width:69px; height:21px; background:url(../global/search_bg.png) -130px -70px no-repeat; cursor:pointer;vertical-align:middle;}
+
+/*球场频道列表页筛选*/
+.clubkey { width:178px;overflow:hidden;}
+.clubkey dl { width:100%;}
+.clubkey dd { width:100%;padding-left:15px;}
+.clubkey dt {height:24px;line-height:24px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-indent:15px;background: url('../global/ugolfbg.png') -296px -23px no-repeat;color:#000;}
+.clubkey dt.current a,.clubkey dt.current a:hover{font-weight: bolder;}
+.clubkey dd li {*float: left;height:22px;line-height:22px;background: url('../global/ugolfbg.png') -297px -2px no-repeat;overflow:hidden;text-indent:10px;}
+.clubkey li.current a,.clubkey li.current a:hover{color:#DC8F2F;font-weight:bold; }
+.clubkey li.current a {background:url(../global/bg_filter_selected.gif) no-repeat  148px center;display: block;} 
+/*球场频道内页*/
+.pshow {width: 698px;margin:0 auto;overflow:hidden;background:url('../global/greenbg.jpg') repeat-x; border:1px solid #D5E2B7;padding:15px 20px;}
+.pshow i {display:block;float:left;overflow:hidden;}
+
+.pshow .aTit {width: 100%; height: 32px;overflow:hidden;font-size:18px;font-weight:bold;display:block;background:url(../global/ugolfbg.png) no-repeat -280px -75px;text-indent:32px;padding:0;vertical-align: bottom;}
+.pshow .aTit a{color:#00529B;}
+.pshow .aTit .eName{padding-left:10px;color: #FF7E00; font-size:12px;font-weight:normal;}
+
+.pshow .aBase {width: 100%;padding:0;}
+.pshow .iPic {width: 135px;margin:0 15px 0 0;padding:8px; border:1px #ccc solid; background:#FFF;display:block;float:left;}
+.pshow .iPic img{width: 135px;height: 100px;}
+.pshow .ePic {display:block;}
+.pshow .eMore {display:block;text-align:center;height:24px;line-height:24px;border-bottom:1px solid #CCCCCC;}
+.pshow .eMore a{color:#00529B;}
+.pshow .eComment {display:block;text-align:center;line-height:20px;padding-top:8px;background:url(../global/ugolfbg.png) no-repeat -280px -45px;text-indent:8px;}
+.pshow .ePleased {display:block;text-align:center;line-height:22px;color:#f60;font-family:Arial;}
+.pshow .eSeeCom {display:block;text-align:center;margin:3px auto; }
+.pshow .eSeeCom a {background:url(../global/ugolfbg.png) no-repeat left -510px; color:#777; zoom:1; display:inline-block;width:74px;height:19px; }
+
+.pshow .iDes {width:530px;}
+.pshow .iDes a{color:#00529B;}
+.pshow .eDes {color:#000000;margin:2px 0;display:block;line-height:18px;}
+.pshow .eNav {color:#000000;display:block;line-height:20px;}
+.pshow .eDao {color:#000000;line-height:24px;}
+.pshow .ePrice {margin:8px 0;display:block;width:100%;}
+.pshow .eSpecial {display:block;width:530px;;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;height:28px;line-height:28px;}
+.pshow .eSpecial a { color:#FF0000;}
+.pshow .eSpecial .qcr { background:url(../global/alltag.png) no-repeat -88px -70px;width:30px;height:16px;display:inline-block;margin-right:5px; }
+.pshow .uprice a { color:#f60;}
+
+.pshow .eCommon10 {width: 100%;padding:10px 0 5px;}
+.pshow .eCommon {width: 100%;padding:20px 0 0;}
+.pshow .eCommon .etit {background:#F5FAFE;height:28px;line-height:28px;font-size:14px;color:#000000;font-weight:bold;text-indent:15px;border:1px solid #D1E2F3;}
+.pshow .eCommon .econt{float:left;padding:10px 5px;line-height:22px;color:#131313;}
+.pshow .eCommon .econt .eleft {float:left;}
+.pshow .eCommon .econt .eright {float:right;width:220px;margin: 3px;}
+.pshow .eCommon .econt .emap {border:1px solid #D5E2B7;background:#F1F5EB;text-align:center;}
+.pshow .eCommon .econt .emap a {line-height:25px;color:#2A6613} 
+
+
+.pshow .tishi { width:400px;text-align:left;background:#fff; border:1px solid #639A00;position:absolute;display:none;z-index:1000;padding:5px 10px;}
+
+.pshow .eCommon .fuwu ul{text-align:left; padding-bottom:5px;}
+.pshow .eCommon .fuwu ul li{width:700px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:30px; border-bottom:1px dashed #CCC;}
+
+
+/*评论*/
+.column_760 {width:700px;}
+
+
+/*旅游频道搜索*/
+.travel_left {height:68px;width:80px;float:left;padding:0 10px 5px 10px}
+.travel_left .searchpic{width:79px;height:65px;background:url(../global/search.gif) no-repeat;}
+.travel_right {width:580px;float:right;padding:5px 0;}
+.travel_right .search li{text-align:left;line-height:22px;float:left;padding-right:10px;}
+.travel_right .search strong{font-size:14px;font-weight:bold;padding-left:2px;}
+.travel_right .search .inputc {border: 1px solid rgb(204, 204, 204); width: 175px; height: 18px; line-height: 18px; font-size: 14px; background-color:#fff;color:#555;}
+.travel_right .hot {width:580px;padding:5px 0;color:#565656;}
+.travel_right .hot li{padding:0 3px;line-height:23px;float:left;}
+.travel_right .hot li a{color:#565656;}
+
+
+/*旅游频道特惠*/
+.hotelList, .hbox { overflow:hidden; zoom:1;background:url(../global/l-y.gif) repeat-y center top; }
+.hotelList dl { border-top:1px dashed #dedede; float:left; height:100px; padding:10px 0; width:50%; overflow:hidden }
+.hotelList dl.noneline { border-top:none }
+.hotelList dt { position:relative;float:left; display:inline; width:104px; height:79px; overflow:hidden; margin:5px 5px 0 8px }
+.hotelList dt img { border:1px solid #CCC; padding:1px; width:100px; height:75px; }
+.hotelList dd { line-height:18px; color:#999; overflow:hidden; padding-right:5px }
+.hotelList dd div { float:left; display:inline; }
+.hotelList dd.title { height:45px; line-height:22px }
+
+.hotelList dd.content { height:40px; line-height:22px;overflow:hidden; }
+.hotelList dd.title h2 { height:22px; font-size:12px;overflow:hidden; }
+.hotelList dd.title h2 a {color:#00529B;}
+.hotelList dd.title span {  float:left;height:22px;color:#F30; font-family:Arial, Helvetica, sans-serif; font-weight:700 }
+.hotelList dd.title span b{ font-weight:normal; color:#7c7c7c}
+.hotelList dd.title strong { font-weight:bold; font-size:14px }
+.hotelList dd.title dfn {font-family:Arial;font-style:normal;}
+
+/*旅游频道热门*/
+.travel_hot { width: 220px; }
+	.travel_hot .rank {height:440px;border-color:#D5E2B7;}
+		.travel_hot .rank dt {background:url(../global/mallc_bg.png) no-repeat 10px -292px;height:38px;}
+		.travel_hot .rank dd ul {width:188px;}
+			.travel_hot .rank_on { height:80px;width:136px;}
+			.travel_hot .rank_name { width:168px; }
+			.travel_hot .rank_name a { width:144px; }
+
+
+
+/*旅游频道列表部分*/
+.travellist {float:left;overflow:hidden;width:718px;}
+.travellist .tit  {position:relative;}
+.travellist .tit .subMark {height:100%;position:absolute;height:100%;float:right;right:5px;top:5px; }
+.travellist .tit .subMark a {margin:0 auto;display:block;float:left;overflow:hidden;cursor:pointer;}
+.travellist .tit .subMark .cerrent {width: 78px;height: 26px;background:url(../global/ugolfbg.png) no-repeat -38px -457px;text-align:center;line-height:26px;color:#f60;z-index:5}
+.travellist .tit .subMark .toc {width:78px;height: 26px;text-align:center;line-height:26px;color:#777;z-index:5}
+
+.travellist .tlist {width: 660px;margin:0 auto 20px;overflow:hidden;}
+.travellist .tlist li {width: 660px;height: 106px;padding:15px 0;float:left;border-bottom:1px dashed #c8c8c8;overflow:hidden;}
+.travellist .tlist i {display:block;float:left;overflow:hidden;}
+.travellist .tlist .iPic {width: 130px;margin:0 7px 0 0;}
+.travellist .tlist .iPic img{width: 120px;height: 90px;padding:2px;border:1px solid #e8eee0;}
+.travellist .tlist .iPic a:hover img{border-color:#639805;}
+.travellist .tlist .iDes {width:500px;}
+.travellist .tlist .eTit {width:450px;height:35px;overflow:hidden;font-size:14px;font-weight:bold;display:block;}
+.travellist .tlist .eTit a{color:#4E9100;}
+.travellist .tlist .eTit .ename{padding-left:10px;color: #FF7E00; font-size:12px;font-weight:normal;}
+.travellist .tlist .ePrice {line-height:35px;display:block;float:right;width:90px;text-align:right;}
+.travellist .tlist .eP1 {font-size:14px;font-weight:bold;color:#f60;}
+.travellist .tlist .eDes {color:#404040;margin:2px 0;display:block;line-height:18px;}
+
+
+/*旅游频道内页部分*/
+.slide_player {float:left; width:495px;height:313px;padding-bottom:5px;}
+
+.details_info { float:right;width:395px;border:1px solid #FEF2DE;color:#2c2c2c;background-color:#FDF8F0;padding:5px 15px;}
+.details_info .name { height:70px; margin:15px 0 0 0; color:#00529B;font-size:18px;font-weight:bold;line-height:20px; overflow:hidden;width: 100%; overflow:hidden;display:block;background:url(../global/namebg.png) no-repeat;text-indent:32px; vertical-align: bottom;}
+.details_info .base_txtdiv {color:#0055aa; border-bottom:1px #0055aa dashed; cursor:pointer}
+.details_info .base_txtdiv a:hover {text-decoration:none;color:#0055aa;}
+.details_info .base_price { height:40px; color:#EC5F00; line-height:40px; }
+.details_info .base_price dfn { font-size:30px; font-family:Arial Black;font-style:normal; }
+.details_date {height:40px;overflow:hidden;width:100%;}
+.details_date .txt_line{color:#B2B2B2;text-decoration:line-through;}
+.details_info .compare { text-align:right; padding:5px 0 22px; border-bottom:1px dashed #c8c8c8; }
+.details_info .pm_intro { padding:3px 0 0 0; color:#707070;}
+.details_info .pm_intro p {height:70px;line-height:18px; overflow:hidden;}
+.details_info .pm_intro strong { display:block; color:#434343; line-height:28px;}
+.detailcont .tem_tabs { position:relative; height:40px; overflow:hidden; margin-top:20px; margin-bottom:-1px; border-left:1px solid #AFCEF0;}
+.detailcont .tem_tabs li {float:left; font-size:14px; height:40px;padding:0 20px; border-right:1px solid #AFCEF0; background:url(../global/un_tabs.gif) right 0; line-height:40px; overflow:hidden; color:#0053AA; cursor:pointer;font-weight:bold;}
+.detailcont .tem_tabs li.package_current { background:url(../global/un_tabs.gif) right -40px;color:#b24800;}
+.detailcont .tem_tabs li span { position:absolute; top:0; display:block; width:1px; height:1px; background:#fff; overflow:hidden; }
+.detailcont .tem_tabs .l span { left:0; }
+.detailcont .tem_tabs .r span { margin-left:74px;}
+.detailcont .detail_tab { height:30px; padding-left:8px;background:url(../global/ugolfbg.png) repeat-x 0 -800px;}
+.detailcont .detail_tab li { position:relative; float:left; width:137px; height:25px; margin-left:5px; padding-top:5px; background:url(../global/ugolfbg.png) no-repeat -137px -830px; text-align:center; line-height:25px; font-size:14px; font-weight:bold;color:#fff; cursor:pointer; }
+.detailcont .detail_tab li.tab_current { background:url(../global/ugolfbg.png) no-repeat 0 -830px; color:#000; cursor:auto;}
+.detailcont .detail_tab li.tab_nocurrent {background:url(../global/ugolfbg.png) no-repeat -137px -830px; }
+.detailcont .detail_tab .tag { position:absolute;top:-7px;right:3px;display:block;text-indent:-999em; }
+
+.detailcont .cont{ border:1px solid #CDCDCD; padding:15px;margin:0 auto;}
+
+.important_tips dt { padding:0 16px; background:#EDEDED; color:#434343; font-size:14px; font-weight:bold; line-height:26px; }
+.important_tips dd { margin-bottom:5px; padding:8px 16px;  color:#7D7D7D; }
+.important_tips .listnum li {list-style:decimal;margin-left:20px;}
+
+.package_destinations {  margin:10px 0 5px 0; }
+.package_destinations ul { clear:both; padding:5px; border:1px solid #eee; border-top:0; overflow:hidden;zoom:1; }
+.package_destinations li { display:inline; float:left; width:170px; margin:2px 4px; white-space:nowrap; overflow:hidden; }
+
+
+/*部分通用头部*/
+.stepout { overflow:hidden; zoom:1; padding:10px 5px;height:62px;background:url(../global/ugolfbg.png) no-repeat -240px -695px; }
+.stepout h1 { float:left;font-size:20px; color:#d06700; font-weight:700; font-weight:normal; font-family:SimHei, arial, sans-serif; vertical-align: bottom; padding-left:75px; margin-top:5px;}
+.stepout h1 em { font-size:12px; font-family:宋体; color:#7c7c7c;display:block;margin-top:10px;}
+.stepout h1 span { font-size:16px; }
+.stepout h2 { font-size:14px; text-indent:5px }
+.stepout ul { float:right;font-weight:normal; margin-top:25px; }
+.stepout li { float:left; margin-left:3px; display:inline; border-top:3px solid #ccc; height:22px; line-height:22px; padding:0 7px; color:#999 }
+.stepout li.current { border-top:3px solid #f7852d; color:#666 }
+
