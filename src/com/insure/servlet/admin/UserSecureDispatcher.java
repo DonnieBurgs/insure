@@ -81,5 +81,12 @@ public class UserSecureDispatcher extends Dispatcher
     	}
     }
 
-
+    protected boolean checkAuthority(String authName, HttpServletRequest request, HttpServletResponse response) {
+    	String auth = String.valueOf(request.getAttribute(authName));
+    	if("".equals(auth)) {
+    		prompt(response, "没有权限，请联系管理员！");
+    		return false;
+    	}
+    	return true;
+    }
 }
