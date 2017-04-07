@@ -28,9 +28,7 @@ public class Em##ClassName##Servlet extends UserSecureDispatcher {
 	
 	public void blank(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth##AuthorNum2## = request.getAttribute("auth##AuthorNum2##");
-    	if(auth##AuthorNum2##.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+    	if(checkAuthority("auth##AuthorNum2##", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -49,9 +47,7 @@ public class Em##ClassName##Servlet extends UserSecureDispatcher {
 
 	public void add(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth##AuthorNum2## = request.getAttribute("auth##AuthorNum2##");
-    	if(auth##AuthorNum2##.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth##AuthorNum2##", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -114,9 +110,7 @@ public class Em##ClassName##Servlet extends UserSecureDispatcher {
 
 	public void update(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth##AuthorNum2## = request.getAttribute("auth##AuthorNum2##");
-    	if(auth##AuthorNum2##.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth##AuthorNum2##", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -201,9 +195,7 @@ public class Em##ClassName##Servlet extends UserSecureDispatcher {
 
 	public void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth##AuthorNum2## = request.getAttribute("auth##AuthorNum2##");
-    	if(auth##AuthorNum2##.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth##AuthorNum2##", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
