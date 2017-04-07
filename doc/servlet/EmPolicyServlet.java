@@ -24,13 +24,11 @@ import com.web.util.*;
 
 public class EmPolicyServlet extends UserSecureDispatcher {
 
-	private static final long serialVersionUID = 1491449283638L;
+	private static final long serialVersionUID = 1491555808387L;
 	
 	public void blank(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth18 = request.getAttribute("auth18");
-    	if(auth18.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+    	if(checkAuthority("auth18", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -49,9 +47,7 @@ public class EmPolicyServlet extends UserSecureDispatcher {
 
 	public void add(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth18 = request.getAttribute("auth18");
-    	if(auth18.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth18", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -118,9 +114,7 @@ public class EmPolicyServlet extends UserSecureDispatcher {
 
 	public void update(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth18 = request.getAttribute("auth18");
-    	if(auth18.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth18", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -209,9 +203,7 @@ public class EmPolicyServlet extends UserSecureDispatcher {
 
 	public void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth18 = request.getAttribute("auth18");
-    	if(auth18.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth18", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;

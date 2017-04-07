@@ -9,6 +9,6 @@ public class EmGroupInsurancePolicy extends BaseModel {
 	public float premium;
 	public String periodbegin;
 	public String periodend;
-	public long policyfaid;
+	public long policyid;
 	public String ywxpolicynumb;
 }

@@ -24,13 +24,11 @@ import com.web.util.*;
 
 public class EmGroupInsurancePolicyServlet extends UserSecureDispatcher {
 
-	private static final long serialVersionUID = 1491449283785L;
+	private static final long serialVersionUID = 1491555808433L;
 	
 	public void blank(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth32 = request.getAttribute("auth32");
-    	if(auth32.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+    	if(checkAuthority("auth32", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -49,9 +47,7 @@ public class EmGroupInsurancePolicyServlet extends UserSecureDispatcher {
 
 	public void add(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth32 = request.getAttribute("auth32");
-    	if(auth32.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth32", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -76,7 +72,7 @@ public class EmGroupInsurancePolicyServlet extends UserSecureDispatcher {
 			float premium = Putil.getFloat(request.getParameter("premium"));
 			String periodbegin = Putil.getString(request.getParameter("periodbegin"));
 			String periodend = Putil.getString(request.getParameter("periodend"));
-			int policyfaid = Putil.getInt(request.getParameter("policyfaid"));
+			int policyid = Putil.getInt(request.getParameter("policyid"));
 			String ywxpolicynumb = Putil.getString(request.getParameter("ywxpolicynumb"));
 
 
@@ -85,7 +81,7 @@ public class EmGroupInsurancePolicyServlet extends UserSecureDispatcher {
 
 
 			
-			StringBuilder select = new StringBuilder("insert into em_groupinsurancepolicy (applicantcompanyid,insurercompanyid,groupinsurancepolicyname,policynumber,premium,periodbegin,periodend,policyfaid,ywxpolicynumb) values ("
+			StringBuilder select = new StringBuilder("insert into em_groupinsurancepolicy (applicantcompanyid,insurercompanyid,groupinsurancepolicyname,policynumber,premium,periodbegin,periodend,policyid,ywxpolicynumb) values ("
 				+ "" + applicantcompanyid + ""
 				+ "," + insurercompanyid + ""
 				+ ",'" + groupinsurancepolicyname.replace("'", "''") + "'"
@@ -93,7 +89,7 @@ public class EmGroupInsurancePolicyServlet extends UserSecureDispatcher {
 				+ "," + premium + ""
 				+ ",'" + periodbegin.replace("'", "''") + "'"
 				+ ",'" + periodend.replace("'", "''") + "'"
-				+ "," + policyfaid + ""
+				+ "," + policyid + ""
 				+ ",'" + ywxpolicynumb.replace("'", "''") + "'"
 				+ ")"
 			);
@@ -132,9 +128,7 @@ public class EmGroupInsurancePolicyServlet extends UserSecureDispatcher {
 
 	public void update(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth32 = request.getAttribute("auth32");
-    	if(auth32.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth32", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -156,7 +150,7 @@ public class EmGroupInsurancePolicyServlet extends UserSecureDispatcher {
 			float premium = Putil.getFloat(request.getParameter("premium"));
 			String periodbegin = Putil.getString(request.getParameter("periodbegin"));
 			String periodend = Putil.getString(request.getParameter("periodend"));
-			int policyfaid = Putil.getInt(request.getParameter("policyfaid"));
+			int policyid = Putil.getInt(request.getParameter("policyid"));
 			String ywxpolicynumb = Putil.getString(request.getParameter("ywxpolicynumb"));
 
 
@@ -171,7 +165,7 @@ public class EmGroupInsurancePolicyServlet extends UserSecureDispatcher {
 					+ ",premium=" + premium + ""
 					+ ",periodbegin='" + periodbegin.replace("'", "''") + "'"
 					+ ",periodend='" + periodend.replace("'", "''") + "'"
-					+ ",policyfaid=" + policyfaid + ""
+					+ ",policyid=" + policyid + ""
 					+ ",ywxpolicynumb='" + ywxpolicynumb.replace("'", "''") + "'"
 				+ " where groupinsurancepolicyid=" + groupinsurancepolicyid + "" 
 			);
@@ -237,9 +231,7 @@ public class EmGroupInsurancePolicyServlet extends UserSecureDispatcher {
 
 	public void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth32 = request.getAttribute("auth32");
-    	if(auth32.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth32", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;

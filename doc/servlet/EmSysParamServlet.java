@@ -24,13 +24,11 @@ import com.web.util.*;
 
 public class EmSysParamServlet extends UserSecureDispatcher {
 
-	private static final long serialVersionUID = 1491449284424L;
+	private static final long serialVersionUID = 1491555808622L;
 	
 	public void blank(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth88 = request.getAttribute("auth88");
-    	if(auth88.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+    	if(checkAuthority("auth88", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -49,9 +47,7 @@ public class EmSysParamServlet extends UserSecureDispatcher {
 
 	public void add(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth88 = request.getAttribute("auth88");
-    	if(auth88.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth88", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -128,9 +124,7 @@ public class EmSysParamServlet extends UserSecureDispatcher {
 
 	public void update(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth88 = request.getAttribute("auth88");
-    	if(auth88.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth88", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -229,9 +223,7 @@ public class EmSysParamServlet extends UserSecureDispatcher {
 
 	public void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth88 = request.getAttribute("auth88");
-    	if(auth88.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth88", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;

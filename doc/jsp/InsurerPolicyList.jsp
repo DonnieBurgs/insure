@@ -56,7 +56,7 @@ if(uf_parentid==null) uf_parentid = "";
 <table class="tlist">
 	<thead>
 		<tr class="title">
-<th>方案</th>
+<th>团保方案</th>
 <th>被保险人</th>
 <th>主被保险人</th>
 <th>保险期间（起）</th>
@@ -71,7 +71,7 @@ if(uf_parentid==null) uf_parentid = "";
 <c:when test="${not empty resultRows}">
 <c:forEach var="item" items="${resultRows}">
 			<tr>
-<td>${item.policyid}</td>
+<td>${item.groupinsurancepolicyid}</td>
 <td>${item.insuredid}</td>
 <td>${item.attachedtoid}</td>
 <td>${item.periodbegin_}</td>

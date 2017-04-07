@@ -65,8 +65,8 @@
 <td><input type="text" id="periodend" name="periodend" readonly="readonly" value="${item.periodend_}" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
 </tr>
 <tr>
-<td width="120" class="right">团保方案名：</td>
-<td><input type="text" id="policyfaid" name="policyfaid" value="${fn:replace(item.policyfaid,'"','&quot;')}" size=50></td>
+<td width="120" class="right">（团保）方案名：</td>
+<td><input type="text" id="policyid" name="policyid" value="${fn:replace(item.policyid,'"','&quot;')}" size=50></td>
 </tr>
 <tr>
 <td width="120" class="right">意外险保单号：</td>
@@ -111,7 +111,7 @@ function checkf() {
 	if(commonForm.premium.value=="" || commonForm.premium.value!="" && !(is_float(commonForm.premium.value) || is_int(commonForm.premium.value))) {alert("请正确输入保费合计！");return false;}
 	if(commonForm.periodbegin.value=="") {alert("请正确输入保险期间（起）！");return false;}
 	if(commonForm.periodend.value=="") {alert("请正确输入保险期间（止）！");return false;}
-	if(commonForm.policyfaid.value=="" || commonForm.policyfaid.value!="" && !is_int(commonForm.policyfaid.value)) {alert("请正确输入团保方案名！");return false;}
+	if(commonForm.policyid.value=="" || commonForm.policyid.value!="" && !is_int(commonForm.policyid.value)) {alert("请正确输入（团保）方案名！");return false;}
 	if(commonForm.ywxpolicynumb.value=="") {alert("请正确输入意外险保单号！");return false;}
 
 	document.getElementById("commonForm").submit() ;
