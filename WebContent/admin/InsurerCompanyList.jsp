@@ -23,17 +23,17 @@ if(uf_parentid==null) uf_parentid = "";
 <script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript">var root = "";</script>
 <script type="text/javascript" src="/resources/js/admin.js"></script>
-<title>个人保单列表</title>
+<title>承保公司列表</title>
 </head>
 <body id="right">
 <div class="operation o-h bg-f8">
-	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">个人保单列表</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<c:if test="${auth22 eq '1'}"><a href="/emInsurerPolicy.do?method=blank&uf_parentid=${uf_parentid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增个人保单</a></c:if></div>
+	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">承保公司列表</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<c:if test="${auth14 eq '1'}"><a href="/emInsurerCompany.do?method=blank&uf_parentid=${uf_parentid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增承保公司</a></c:if></div>
 	<div class="operationRight f-r">
 	</div>
 </div>
 <table class="tlist">
-	 <form action="/emInsurerPolicy.do?method=list" id="searchForm" name="searchForm" method="post">
+	 <form action="/emInsurerCompany.do?method=list" id="searchForm" name="searchForm" method="post">
 	 <thead>
 	 <tr class="title">
 	 <th width=10%>关键字</th>
@@ -56,11 +56,8 @@ if(uf_parentid==null) uf_parentid = "";
 <table class="tlist">
 	<thead>
 		<tr class="title">
-<th>团保方案</th>
-<th>被保险人</th>
-<th>主被保险人</th>
-<th>保险期间（起）</th>
-<th>保险期间（止）</th>
+<th>公司名称</th>
+<th>代码</th>
 
 <th width="60">操作</th>
 		</tr>
@@ -71,17 +68,14 @@ if(uf_parentid==null) uf_parentid = "";
 <c:when test="${not empty resultRows}">
 <c:forEach var="item" items="${resultRows}">
 			<tr>
-<td>${item.groupinsurancepolicyid}</td>
-<td>${item.insuredid}</td>
-<td>${item.attachedtoid}</td>
-<td>${item.periodbegin_}</td>
-<td>${item.periodend_}</td>
+<td>${item.insurercompanyname}</td>
+<td>${item.insurercompanycode}</td>
 
 				<td width="250" class="operationBtn">
-				<c:if test="${auth22 eq '1'}"><a href="/emInsurerPolicy.do?method=fill&insurerpolicyid=${item.insurerpolicyid}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
-					<a href="javascript:deleteInsurerPolicy(${item.insurerpolicyid}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
+				<c:if test="${auth14 eq '1'}"><a href="/emInsurerCompany.do?method=fill&insurercompanyid=${item.insurercompanyid}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
+					<a href="javascript:deleteInsurerCompany(${item.insurercompanyid}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
 				</c:if>
-				<c:if test="${auth22 ne '1'}"><a href="/emInsurerPolicy.do?method=fill&insurerpolicyid=${item.insurerpolicyid}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
+				<c:if test="${auth14 ne '1'}"><a href="/emInsurerCompany.do?method=fill&insurercompanyid=${item.insurercompanyid}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
 				</c:if>
 				</td>
 			</tr>
@@ -160,8 +154,8 @@ if(uf_parentid==null) uf_parentid = "";
 	
 			StringBuilder buffer = new StringBuilder();
 	
-			String u = "/emInsurerPolicy.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid + "&m=" + pageSize;
-			String u1 = "/emInsurerPolicy.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid;
+			String u = "/emInsurerCompany.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid + "&m=" + pageSize;
+			String u1 = "/emInsurerCompany.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid;
 	
 			out.write("<div class='bar'><span class=\"disabled\">共: " + totalCount + " 条记录</span> <span class=\"disabled\">每页显示: "
 					+ "<a href=\"" + u1 + "&m=15\"" + (pageSize==15?" class=\"current\"":"") + ">15</a>"
@@ -195,8 +189,8 @@ if(uf_parentid==null) uf_parentid = "";
 %>
 	
 </form>
-<form action="/emInsurerPolicy.do?method=delete" id="deleteForm" name="deleteForm" method="post">
-<input type="hidden" id="insurerpolicyid" name="insurerpolicyid" value="">
+<form action="/emInsurerCompany.do?method=delete" id="deleteForm" name="deleteForm" method="post">
+<input type="hidden" id="insurercompanyid" name="insurercompanyid" value="">
 <input type="hidden" id="t" name="t" value="">
 <input type="hidden" name="uf_parentid" value="${uf_parentid}">
 <input type="hidden" name="key_isvalid" value="${key_isvalid }">
@@ -209,9 +203,9 @@ if(uf_parentid==null) uf_parentid = "";
 function submitform(){
 	searchForm.submit();
 }
-function deleteInsurerPolicy(insurerpolicyid){
+function deleteInsurerCompany(insurercompanyid){
 	if(confirm("是否删除会员资料？")) {
-		$("#insurerpolicyid").val(insurerpolicyid);
+		$("#insurercompanyid").val(insurercompanyid);
 		$("#t").val(t);
 		deleteForm.submit();
 		

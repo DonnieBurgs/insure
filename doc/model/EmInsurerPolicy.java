@@ -2,7 +2,7 @@ package com.juyou.app.model;
 
 public class EmInsurerPolicy extends BaseModel {
 	public long id;
-	public long policyid;
+	public long groupinsurancepolicyid;
 	public long insuredid;
 	public long attachedtoid;
 	public String periodbegin;
@@ -12,7 +12,6 @@ public class EmInsurerPolicy extends BaseModel {
 	public String shiarea;
 	public String joblocal;
 	public String relation;
-	public String clientid;
 	public String jobnumber;
 	public String bankname;
 	public String accountname;

@@ -37,8 +37,8 @@
 <form id="commonForm" action="/emInsurerPolicy.do?method=add" method="post">
 	<table class="tform">
 <tr>
-<td width="120" class="right">方案：</td>
-<td><input type="text" id="policyid" name="policyid" value="" size=50></td>
+<td width="120" class="right">团保方案：</td>
+<td><input type="text" id="groupinsurancepolicyid" name="groupinsurancepolicyid" value="" size=50></td>
 </tr>
 <tr>
 <td width="120" class="right">被保险人：</td>
@@ -75,10 +75,6 @@
 <tr>
 <td width="120" class="right">关系：</td>
 <td><input type="text" id="relation" name="relation" value="" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right">保险编号：</td>
-<td><input type="text" id="clientid" name="clientid" value="" size=50></td>
 </tr>
 <tr>
 <td width="120" class="right">雇员编号：</td>
@@ -118,7 +114,7 @@
 </html>
 <script language=javascript>
 function checkf() {
-	if(commonForm.policyid.value=="" || commonForm.policyid.value!="" && !is_int(commonForm.policyid.value)) {alert("请正确输入方案！");return false;}
+	if(commonForm.groupinsurancepolicyid.value=="" || commonForm.groupinsurancepolicyid.value!="" && !is_int(commonForm.groupinsurancepolicyid.value)) {alert("请正确输入团保方案！");return false;}
 	if(commonForm.insuredid.value=="" || commonForm.insuredid.value!="" && !is_int(commonForm.insuredid.value)) {alert("请正确输入被保险人！");return false;}
 	if(commonForm.attachedtoid.value=="" || commonForm.attachedtoid.value!="" && !is_int(commonForm.attachedtoid.value)) {alert("请正确输入主被保险人！");return false;}
 	if(commonForm.periodbegin.value=="") {alert("请正确输入保险期间（起）！");return false;}
@@ -128,7 +124,6 @@ function checkf() {
 	if(commonForm.shiarea.value=="") {alert("请正确输入医保地点！");return false;}
 	if(commonForm.joblocal.value=="") {alert("请正确输入工作地！");return false;}
 	if(commonForm.relation.value=="") {alert("请正确输入关系！");return false;}
-	if(commonForm.clientid.value=="") {alert("请正确输入保险编号！");return false;}
 	if(commonForm.jobnumber.value=="") {alert("请正确输入雇员编号！");return false;}
 	if(commonForm.bankname.value=="") {alert("请正确输入开户行！");return false;}
 	if(commonForm.accountname.value=="") {alert("请正确输入账户名！");return false;}

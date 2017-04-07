@@ -24,13 +24,11 @@ import com.web.util.*;
 
 public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 
-	private static final long serialVersionUID = 1491449283469L;
+	private static final long serialVersionUID = 1491555808371L;
 	
 	public void blank(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth22 = request.getAttribute("auth22");
-    	if(auth22.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+    	if(checkAuthority("auth22", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -49,9 +47,7 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 
 	public void add(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth22 = request.getAttribute("auth22");
-    	if(auth22.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth22", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -69,7 +65,7 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 			return ;
 		}
 		try {
-			int policyid = Putil.getInt(request.getParameter("policyid"));
+			int groupinsurancepolicyid = Putil.getInt(request.getParameter("groupinsurancepolicyid"));
 			int insuredid = Putil.getInt(request.getParameter("insuredid"));
 			int attachedtoid = Putil.getInt(request.getParameter("attachedtoid"));
 			String periodbegin = Putil.getString(request.getParameter("periodbegin"));
@@ -79,7 +75,6 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 			String shiarea = Putil.getString(request.getParameter("shiarea"));
 			String joblocal = Putil.getString(request.getParameter("joblocal"));
 			String relation = Putil.getString(request.getParameter("relation"));
-			String clientid = Putil.getString(request.getParameter("clientid"));
 			String jobnumber = Putil.getString(request.getParameter("jobnumber"));
 			String bankname = Putil.getString(request.getParameter("bankname"));
 			String accountname = Putil.getString(request.getParameter("accountname"));
@@ -92,8 +87,8 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 
 
 			
-			StringBuilder select = new StringBuilder("insert into em_insurerpolicy (policyid,insuredid,attachedtoid,periodbegin,periodend,policystate,shistate,shiarea,joblocal,relation,clientid,jobnumber,bankname,accountname,accountnumber,clientid) values ("
-				+ "" + policyid + ""
+			StringBuilder select = new StringBuilder("insert into em_insurerpolicy (groupinsurancepolicyid,insuredid,attachedtoid,periodbegin,periodend,policystate,shistate,shiarea,joblocal,relation,jobnumber,bankname,accountname,accountnumber,clientid) values ("
+				+ "" + groupinsurancepolicyid + ""
 				+ "," + insuredid + ""
 				+ "," + attachedtoid + ""
 				+ ",'" + periodbegin.replace("'", "''") + "'"
@@ -103,7 +98,6 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 				+ ",'" + shiarea.replace("'", "''") + "'"
 				+ ",'" + joblocal.replace("'", "''") + "'"
 				+ ",'" + relation.replace("'", "''") + "'"
-				+ ",'" + clientid.replace("'", "''") + "'"
 				+ ",'" + jobnumber.replace("'", "''") + "'"
 				+ ",'" + bankname.replace("'", "''") + "'"
 				+ ",'" + accountname.replace("'", "''") + "'"
@@ -146,9 +140,7 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 
 	public void update(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth22 = request.getAttribute("auth22");
-    	if(auth22.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth22", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
@@ -163,7 +155,7 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 
 		try {
 			String insurerpolicyid = Putil.getString(request.getParameter("insurerpolicyid")) ;
-			int policyid = Putil.getInt(request.getParameter("policyid"));
+			int groupinsurancepolicyid = Putil.getInt(request.getParameter("groupinsurancepolicyid"));
 			int insuredid = Putil.getInt(request.getParameter("insuredid"));
 			int attachedtoid = Putil.getInt(request.getParameter("attachedtoid"));
 			String periodbegin = Putil.getString(request.getParameter("periodbegin"));
@@ -173,7 +165,6 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 			String shiarea = Putil.getString(request.getParameter("shiarea"));
 			String joblocal = Putil.getString(request.getParameter("joblocal"));
 			String relation = Putil.getString(request.getParameter("relation"));
-			String clientid = Putil.getString(request.getParameter("clientid"));
 			String jobnumber = Putil.getString(request.getParameter("jobnumber"));
 			String bankname = Putil.getString(request.getParameter("bankname"));
 			String accountname = Putil.getString(request.getParameter("accountname"));
@@ -185,7 +176,7 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 
 			
 			StringBuilder select = new StringBuilder("update em_insurerpolicy set "
-					+ "policyid=" + policyid + ""
+					+ "groupinsurancepolicyid=" + groupinsurancepolicyid + ""
 					+ ",insuredid=" + insuredid + ""
 					+ ",attachedtoid=" + attachedtoid + ""
 					+ ",periodbegin='" + periodbegin.replace("'", "''") + "'"
@@ -195,7 +186,6 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 					+ ",shiarea='" + shiarea.replace("'", "''") + "'"
 					+ ",joblocal='" + joblocal.replace("'", "''") + "'"
 					+ ",relation='" + relation.replace("'", "''") + "'"
-					+ ",clientid='" + clientid.replace("'", "''") + "'"
 					+ ",jobnumber='" + jobnumber.replace("'", "''") + "'"
 					+ ",bankname='" + bankname.replace("'", "''") + "'"
 					+ ",accountname='" + accountname.replace("'", "''") + "'"
@@ -265,9 +255,7 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 
 	public void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String auth22 = request.getAttribute("auth22");
-    	if(auth22.equals("")) {
-    		this.prompt(response, "没有权限，请联系管理员！");
+		if(checkAuthority("auth22", request, response)) {
     		return;
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;

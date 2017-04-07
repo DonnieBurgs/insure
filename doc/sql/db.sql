@@ -16,7 +16,7 @@ CREATE TABLE `em_applicantcompany` (
 
 CREATE TABLE `em_insurerpolicy` (
 	`id`    INT(10) NOT NULL AUTO_INCREMENT,
-	`policyid`    INT(10) NOT NULL DEFAULT 0,
+	`groupinsurancepolicyid`    INT(10) NOT NULL DEFAULT 0,
 	`insuredid`    INT(10) NOT NULL DEFAULT 0,
 	`attachedtoid`    INT(10) NOT NULL DEFAULT 0,
 	`periodbegin`    DATETIME NULL,
@@ -26,7 +26,6 @@ CREATE TABLE `em_insurerpolicy` (
 	`shiarea`    VARCHAR(100) NULL,
 	`joblocal`    VARCHAR(100) NULL,
 	`relation`    VARCHAR(100) NULL,
-	`clientid`    VARCHAR(100) NULL,
 	`jobnumber`    VARCHAR(100) NULL,
 	`bankname`    VARCHAR(100) NULL,
 	`accountname`    VARCHAR(100) NULL,
@@ -81,14 +80,6 @@ CREATE TABLE `em_insurance` (
    UNIQUE INDEX `id` (`id`)
 ) engine=myisam AUTO_INCREMENT=10001;
 
-CREATE TABLE `em_policyfa` (
-	`id`    INT(10) NOT NULL AUTO_INCREMENT,
-	`policyfaname`    VARCHAR(100) NULL,
-	`policyfanumber`    VARCHAR(100) NULL,
-   primary key (`id`),
-   UNIQUE INDEX `id` (`id`)
-) engine=myisam AUTO_INCREMENT=10001;
-
 CREATE TABLE `em_groupinsurancepolicy` (
 	`id`    INT(10) NOT NULL AUTO_INCREMENT,
 	`applicantcompanyid`    INT(10) NOT NULL DEFAULT 0,
@@ -98,7 +89,7 @@ CREATE TABLE `em_groupinsurancepolicy` (
 	`premium`    FLOAT(10,2) NOT NULL DEFAULT 0,
 	`periodbegin`    DATETIME NULL,
 	`periodend`    DATETIME NULL,
-	`policyfaid`    INT(10) NOT NULL DEFAULT 0,
+	`policyid`    INT(10) NOT NULL DEFAULT 0,
 	`ywxpolicynumb`    VARCHAR(100) NULL,
    primary key (`id`),
    UNIQUE INDEX `id` (`id`)
