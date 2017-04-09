@@ -2,7 +2,7 @@ package com.insure.servlet.admin;
 /*
 	<servlet>
 		<servlet-name>emInsurerCompany</servlet-name>
-		<servlet-class>com.web.servlet.admin.EmInsurerCompanyServlet</servlet-class>
+		<servlet-class>com.insure.servlet.admin.EmInsurerCompanyServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>emInsurerCompany</servlet-name>
@@ -24,7 +24,7 @@ import com.web.util.*;
 
 public class EmInsurerCompanyServlet extends UserSecureDispatcher {
 
-	private static final long serialVersionUID = 1491555808333L;
+	private static final long serialVersionUID = 1491580694438L;
 	
 	public void blank(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -102,9 +102,9 @@ public class EmInsurerCompanyServlet extends UserSecureDispatcher {
 		request.setAttribute("m", m+"");
 		request.setAttribute("s", s+"");
 
-		String insurercompanyid = Putil.getString(request.getParameter("insurercompanyid")) ;
-		if(insurercompanyid.length()>0) {
-			Map<String, Object> row = DbUtils.queryOne("select p.* from em_insurercompany p where p.insurercompanyid="+insurercompanyid);
+		String id = Putil.getString(request.getParameter("id")) ;
+		if(id.length()>0) {
+			Map<String, Object> row = DbUtils.queryOne("select p.* from em_insurercompany p where p.id="+id);
 			request.setAttribute("item", row);
 		}
 
@@ -128,7 +128,7 @@ public class EmInsurerCompanyServlet extends UserSecureDispatcher {
 		request.setAttribute("s", s+"");
 
 		try {
-			String insurercompanyid = Putil.getString(request.getParameter("insurercompanyid")) ;
+			String id = Putil.getString(request.getParameter("id")) ;
 			String insurercompanyname = Putil.getString(request.getParameter("insurercompanyname"));
 			String insurercompanycode = Putil.getString(request.getParameter("insurercompanycode"));
 
@@ -139,7 +139,7 @@ public class EmInsurerCompanyServlet extends UserSecureDispatcher {
 			StringBuilder select = new StringBuilder("update em_insurercompany set "
 					+ "insurercompanyname='" + insurercompanyname.replace("'", "''") + "'"
 					+ ",insurercompanycode='" + insurercompanycode.replace("'", "''") + "'"
-				+ " where insurercompanyid=" + insurercompanyid + "" 
+				+ " where id=" + id + "" 
 			);
 			int result = DbUtils.save(select.toString());
 
@@ -171,7 +171,7 @@ public class EmInsurerCompanyServlet extends UserSecureDispatcher {
 			if(m==0) m = 15 ;
 			List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
 
-			StringBuilder countSql = new StringBuilder("select count(p.insurercompanyid) as total from em_insurercompany p where p.insurercompanyid>=0"
+			StringBuilder countSql = new StringBuilder("select count(p.id) as total from em_insurercompany p where p.id>=0"
 					+ (keyword.length()>0?" and p.insurercompanyname like '%" + keyword + "%'":"")
 					);
 			Map<String, Object> countMap = DbUtils.queryOne(countSql.toString());
@@ -180,9 +180,9 @@ public class EmInsurerCompanyServlet extends UserSecureDispatcher {
 			}
 			
 			// 列表分页语句
-			resultRows = DbUtils.query("select p.* from em_insurercompany p where p.insurercompanyid>=0"
+			resultRows = DbUtils.query("select p.* from em_insurercompany p where p.id>=0"
 					+ (keyword.length()>0?" and p.insurercompanyname like '%" + keyword + "%'":"")
-					+ " order by p.seq desc limit " + (s-1)*m + "," + m + ""
+					+ " order by p.id desc limit " + (s-1)*m + "," + m + ""
 				);
 			
 			
@@ -217,10 +217,10 @@ public class EmInsurerCompanyServlet extends UserSecureDispatcher {
 		request.setAttribute("s", s+"");
 
 		try {
-			String insurercompanyid = Putil.getString(request.getParameter("insurercompanyid"));
+			String id = Putil.getString(request.getParameter("id"));
 
 			StringBuilder select = new StringBuilder("delete from em_insurercompany "
-					+ " where insurercompanyid=" + insurercompanyid + "" 
+					+ " where id=" + id + "" 
 					);
 
 			int result = DbUtils.save(select.toString());

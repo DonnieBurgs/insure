@@ -2,7 +2,7 @@ package com.insure.servlet.admin;
 /*
 	<servlet>
 		<servlet-name>em##ClassName##</servlet-name>
-		<servlet-class>com.web.servlet.admin.Em##ClassName##Servlet</servlet-class>
+		<servlet-class>com.insure.servlet.admin.Em##ClassName##Servlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>em##ClassName##</servlet-name>
@@ -98,9 +98,9 @@ public class Em##ClassName##Servlet extends UserSecureDispatcher {
 		request.setAttribute("m", m+"");
 		request.setAttribute("s", s+"");
 
-		String ##ClassNameLower##id = Putil.getString(request.getParameter("##ClassNameLower##id")) ;
-		if(##ClassNameLower##id.length()>0) {
-			Map<String, Object> row = DbUtils.queryOne("select p.* from em_##ClassNameLower## p where p.##ClassNameLower##id="+##ClassNameLower##id);
+		String id = Putil.getString(request.getParameter("id")) ;
+		if(id.length()>0) {
+			Map<String, Object> row = DbUtils.queryOne("select p.* from em_##ClassNameLower## p where p.id="+id);
 			request.setAttribute("item", row);
 		}
 
@@ -124,14 +124,14 @@ public class Em##ClassName##Servlet extends UserSecureDispatcher {
 		request.setAttribute("s", s+"");
 
 		try {
-			String ##ClassNameLower##id = Putil.getString(request.getParameter("##ClassNameLower##id")) ;
+			String id = Putil.getString(request.getParameter("id")) ;
 ##Parameter##
 ##str_date##
 ##str_filename##
 ##str_fileSuc##
 ##str_if_update##			
 			StringBuilder select = new StringBuilder("update em_##ClassNameLower## set "
-##UpdateColumns##				+ " where ##ClassNameLower##id=" + ##ClassNameLower##id + "" 
+##UpdateColumns##				+ " where id=" + id + "" 
 			);
 			int result = DbUtils.save(select.toString());
 
@@ -163,7 +163,7 @@ public class Em##ClassName##Servlet extends UserSecureDispatcher {
 			if(m==0) m = 15 ;
 			List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
 
-			StringBuilder countSql = new StringBuilder("select count(p.##ClassNameLower##id) as total from em_##ClassNameLower## p where p.##ClassNameLower##id>=0"
+			StringBuilder countSql = new StringBuilder("select count(p.id) as total from em_##ClassNameLower## p where p.id>=0"
 					+ (keyword.length()>0?" and p.##ClassNameLower##name like '%" + keyword + "%'":"")
 					);
 			Map<String, Object> countMap = DbUtils.queryOne(countSql.toString());
@@ -172,9 +172,9 @@ public class Em##ClassName##Servlet extends UserSecureDispatcher {
 			}
 			
 			// 列表分页语句
-			resultRows = DbUtils.query("select p.* from em_##ClassNameLower## p where p.##ClassNameLower##id>=0"
+			resultRows = DbUtils.query("select p.* from em_##ClassNameLower## p where p.id>=0"
 					+ (keyword.length()>0?" and p.##ClassNameLower##name like '%" + keyword + "%'":"")
-					+ " order by p.seq desc limit " + (s-1)*m + "," + m + ""
+					+ " order by p.id desc limit " + (s-1)*m + "," + m + ""
 				);
 			
 			
@@ -209,10 +209,10 @@ public class Em##ClassName##Servlet extends UserSecureDispatcher {
 		request.setAttribute("s", s+"");
 
 		try {
-			String ##ClassNameLower##id = Putil.getString(request.getParameter("##ClassNameLower##id"));
+			String id = Putil.getString(request.getParameter("id"));
 
 			StringBuilder select = new StringBuilder("delete from em_##ClassNameLower## "
-					+ " where ##ClassNameLower##id=" + ##ClassNameLower##id + "" 
+					+ " where id=" + id + "" 
 					);
 
 			int result = DbUtils.save(select.toString());

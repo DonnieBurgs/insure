@@ -240,9 +240,9 @@ function hideLoginBox() {
 }
 
 function toLogin() {
-	$('#logintel').val("");
-	$('#logintelCode').val("");
-	$('#loginpassword').val("");
+	$('#logintel').val("13700000005");
+	$('#logintelCode').val("111111");
+	$('#loginpassword').val("111111");
 	$('#loginAlertStr').html("");
 	$('.loginBox').show()
 

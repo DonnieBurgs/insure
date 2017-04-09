@@ -4,6 +4,12 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%
+String keyword = (String)request.getAttribute("keyword");
+String uf_parentid = (String)request.getAttribute("uf_parentid");
+if(keyword==null) keyword = "";
+if(uf_parentid==null) uf_parentid = "";
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,55 +20,73 @@
 <link type="text/css" rel="stylesheet" href="/admin/style/global.css" />
 <link href="/resources/css/main.css" rel="stylesheet" type="text/css" />
 <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript">var root = "";</script>
 <script type="text/javascript" src="/resources/js/admin.js"></script>
+<title>权限列表</title>
 </head>
-<%
-StringBuilder param = new StringBuilder();
-%>
 <body id="right">
 <div class="operation o-h bg-f8">
 	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">权限列表</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<c:if test="${auth84 eq '1'}"><a href="/emAuthority.do?method=blank" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增权限</a></c:if></div>
+		<c:if test="${auth84 eq '1'}"><a href="/emAuthority.do?method=blank&uf_parentid=${uf_parentid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增权限</a></c:if></div>
 	<div class="operationRight f-r">
 	</div>
 </div>
+<table class="tlist">
+	 <form action="/emAuthority.do?method=list" id="searchForm" name="searchForm" method="post">
+	 <thead>
+	 <tr class="title">
+	 <th width=10%>关键字</th>
+	 <th width=80% align=left style="background-color:#ffffff;text-align:left;">
+	 	<input type="text" id="keyword" name="keyword" value="${keyword}">
+	 </th>
+	 	<th width="20%" class="operationBtn">
+	 		<a href="javascript:submitform();"><i class="iconfont">&#xe608;</i>搜索</a>
+	 	</th>
+	 </tr></thead>
+	 <tbody>
+
+	 </tbody>
+		<input id="uf_parentid" name="uf_parentid" type="hidden" value="${uf_parentid}"/>
+	 </form>
+</table>
+
+	 
 <form action="" id="op" name="op" method="get">
 <table class="tlist">
 	<thead>
 		<tr class="title">
-<th onclick="sort('name', 'Desc');">
-名称
-</th>
-<th>
-类别
-</th>
-<th onclick="sort('alias', 'Desc');">
-备注
-</th>
+<th>权限名称</th>
+<th>权限代码</th>
+<th>类别：</th>
+<th>备注</th>
+
 <th width="60">操作</th>
 		</tr>
 	</thead>
 	<tbody>
 		
 <c:choose>
-<c:when test="${fn:length(resultRows) > 0}">
+<c:when test="${not empty resultRows}">
 <c:forEach var="item" items="${resultRows}">
 			<tr>
-				<td width="250px;">${item.authorityname}</td>
-				<td width="250px;"><c:if test="${item.ctype eq 2}"> 平台客服</c:if><c:if test="${item.ctype eq 3}"> 第三方客服</c:if><c:if test="${item.ctype eq 4}"> 销售</c:if></td>
-				<td>${item.note}</td>
-				<td width="200px;" class="operationBtn">
-				<c:if test="${auth84 eq '1'}"><a href="/emAuthority.do?method=fill&id=${item.authorityid}&uf_parentid=${uf_parentid}&key_usertype=${key_usertype}&key_isvalid=${key_isvalid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
-					<a href="javascript:deleteAuthority(${item.authorityid}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
+<td>${item.authorityname}</td>
+<td>${item.authorityno}</td>
+<td>${item.ctype}</td>
+<td>${item.note}</td>
+
+				<td width="250" class="operationBtn">
+				<c:if test="${auth84 eq '1'}"><a href="/emAuthority.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
+					<a href="javascript:deleteAuthority(${item.id}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
 				</c:if>
-				<c:if test="${auth84 ne '1'}"><a href="/emAuthority.do?method=fill&id=${item.authorityid}&uf_parentid=${uf_parentid}&key_usertype=${key_usertype}&key_isvalid=${key_isvalid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
+				<c:if test="${auth84 ne '1'}"><a href="/emAuthority.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
 				</c:if>
+				</td>
 			</tr>
 </c:forEach>
 </c:when>
 <c:otherwise>
-			<tr><td colspan=4>
+			<tr><td colspan=5>
       <p><span>非常抱歉！</span></p><p>没有找到与您选择的搜索条件相符的资料。</p>
     	</td></tr>
 </c:otherwise>
@@ -71,7 +95,7 @@ StringBuilder param = new StringBuilder();
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="4"></td>
+			<td colspan="7"></td>
 		</tr>
 	</tfoot>
 </table>
@@ -84,8 +108,6 @@ StringBuilder param = new StringBuilder();
 	totalCount = 0;
 	int[] indexs = new int[0];
 	String parameters;
-	String _parentNo = (String)request.getAttribute("parentNo");
-	if(_parentNo==null) _parentNo = "" ;
 
 
 	String _page = (String)request.getAttribute("s");
@@ -136,11 +158,16 @@ StringBuilder param = new StringBuilder();
 	
 			StringBuilder buffer = new StringBuilder();
 	
+			String u = "/emAuthority.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid + "&m=" + pageSize;
+			String u1 = "/emAuthority.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid;
+	
+			out.write("<div class='bar'><span class=\"disabled\">共: " + totalCount + " 条记录</span> <span class=\"disabled\">每页显示: "
+					+ "<a href=\"" + u1 + "&m=15\"" + (pageSize==15?" class=\"current\"":"") + ">15</a>"
+					+ "<a href=\"" + u1 + "&m=40\"" + (pageSize==40?" class=\"current\"":"") + ">40</a>"
+					+ "<a href=\"" + u1 + "&m=100\"" + (pageSize==100?" class=\"current\"":"") + ">100</a>") ;
 			if (pageCount > 1) {
 				
-				String u = "/emAuthority.do?method=list&parentNo=" + _parentNo;
-				
-				buffer.append("<div class='bar'><span class=\"disabled\">共: " + totalCount + "</span> <span class=\"disabled\">每页显示: "+pageSize+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页码：</span>");
+				buffer.append("<font style=\"margin-left:250px;\"></font>页码：");
 				if (startIndex > 1) {
 					buffer.append("<a href=\"" + u + "&s=" + (startIndex-1) + "\">上一页</a>");
 					if (startIndex > this.getFirstIndex() + 5 && indexs.length < pageCount) {
@@ -148,11 +175,7 @@ StringBuilder param = new StringBuilder();
 					}
 				}
 				for (int index : indexs) {
-					if (startIndex == index) {
-						buffer.append("<span class=\"current\">").append(index).append("</span>");
-					} else {
-						buffer.append("<a href=\"" + u + "&s=" + index + "\">").append(index).append("</a>");
-					}
+					buffer.append("<a href=\"" + u + "&s=" + index + "\"" + (startIndex == index?" class=\"current\"":"") + ">").append(index).append("</a>");
 				}
 	
 				if (startIndex < pageCount) {
@@ -161,14 +184,36 @@ StringBuilder param = new StringBuilder();
 					}
 					buffer.append("<a href=\"" + u + "&s=" + getNextIndex() + "\">下一页</a>");
 				}
-				buffer.append("</div>");
 	
 				out.write(buffer.toString());
 			}
+			out.write("</span></div>");			
 		}
 	}
 %>
 	
 </form>
+<form action="/emAuthority.do?method=delete" id="deleteForm" name="deleteForm" method="post">
+<input type="hidden" id="id" name="id" value="">
+<input type="hidden" id="t" name="t" value="">
+<input type="hidden" name="uf_parentid" value="${uf_parentid}">
+<input type="hidden" name="key_isvalid" value="${key_isvalid }">
+<input type="hidden" name="keyword" value="${keyword }">
+<input type="hidden" name="m" value="${m }">
+<input type="hidden" name="s" value="${s }">
+</form>
 </body>
+<script type="text/javascript">
+function submitform(){
+	searchForm.submit();
+}
+function deleteAuthority(id){
+	if(confirm("是否删除会员资料？")) {
+		$("#id").val(id);
+		$("#t").val(t);
+		deleteForm.submit();
+		
+	}
+}
+</script>
 </html>

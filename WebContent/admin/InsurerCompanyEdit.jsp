@@ -47,7 +47,7 @@
 
 		<tr>
 			<td colspan="2">
-			<input id="insurercompanyid" name="insurercompanyid" type="hidden" value="${item.insurercompanyid}"/>
+			<input id="id" name="id" type="hidden" value="${item.id}"/>
 
 				<input id="uf_parentid" name="uf_parentid" type="hidden" value="${uf_parentid}"/>
 				<input id="keyword" name="keyword" type="hidden" value="${keyword}"/>
@@ -67,7 +67,7 @@
 
 </body>
 <form id="deleteForm" action="/emInsurerCompany.do?method=delete" method="post">
-<input id="insurercompanyid" name="insurercompanyid" type="hidden" value="${item.insurercompanyid}"/>
+<input id="id" name="id" type="hidden" value="${item.id}"/>
 <input id="uf_parentid" name="uf_parentid" type="hidden" value="${uf_parentid}"/>
 <input id="keyword" name="keyword" type="hidden" value="${keyword}"/>
 <input id="m" name="m" type="hidden" value="${m}"/>

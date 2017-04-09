@@ -398,6 +398,188 @@
 		<url-pattern>/scApply.do</url-pattern>
 	</servlet-mapping>
 	
+	
+	
+	
+	
+	<servlet>
+		<servlet-name>emApplicantCompany</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmApplicantCompanyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emApplicantCompany</servlet-name>
+		<url-pattern>/emApplicantCompany.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emArea</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmAreaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emArea</servlet-name>
+		<url-pattern>/emArea.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emAttachedTo</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmAttachedToServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emAttachedTo</servlet-name>
+		<url-pattern>/emAttachedTo.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emClaimArchive</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmClaimArchiveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emClaimArchive</servlet-name>
+		<url-pattern>/emClaimArchive.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emClaimImage</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmClaimImageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emClaimImage</servlet-name>
+		<url-pattern>/emClaimImage.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emClaim</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmClaimServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emClaim</servlet-name>
+		<url-pattern>/emClaim.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emCompany_1</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmCompanyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emCompany_1</servlet-name>
+		<url-pattern>/emCompany_1.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emDereason</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmDereasonServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emDereason</servlet-name>
+		<url-pattern>/emDereason.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emDetermine</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmDetermineServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emDetermine</servlet-name>
+		<url-pattern>/emDetermine.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emDisease</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmDiseaseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emDisease</servlet-name>
+		<url-pattern>/emDisease.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emGroupInsurancePolicy</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmGroupInsurancePolicyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emGroupInsurancePolicy</servlet-name>
+		<url-pattern>/emGroupInsurancePolicy.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emHospital_1</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmHospitalServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emHospital_1</servlet-name>
+		<url-pattern>/emHospital_1.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emInsuranceGroup</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmInsuranceGroupServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emInsuranceGroup</servlet-name>
+		<url-pattern>/emInsuranceGroup.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emInsurance</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmInsuranceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emInsurance</servlet-name>
+		<url-pattern>/emInsurance.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emInsured</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmInsuredServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emInsured</servlet-name>
+		<url-pattern>/emInsured.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emInsurerCompany</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmInsurerCompanyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emInsurerCompany</servlet-name>
+		<url-pattern>/emInsurerCompany.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emInsurerPolicy</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmInsurerPolicyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emInsurerPolicy</servlet-name>
+		<url-pattern>/emInsurerPolicy.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emPolicy</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmPolicyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emPolicy</servlet-name>
+		<url-pattern>/emPolicy.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emReceipt</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmReceiptServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emReceipt</servlet-name>
+		<url-pattern>/emReceipt.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emSysParam</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmSysParamServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emSysParam</servlet-name>
+		<url-pattern>/emSysParam.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emSyslog</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmSyslogServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emSyslog</servlet-name>
+		<url-pattern>/emSyslog.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emSyslogtype</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmSyslogtypeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emSyslogtype</servlet-name>
+		<url-pattern>/emSyslogtype.do</url-pattern>
+	</servlet-mapping>
+	
+	
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
@@ -414,7 +596,12 @@
 			<taglib-uri>/WEB-INF/UTIL</taglib-uri>
 			<taglib-location>/WEB-INF/util.tld</taglib-location>
 		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/dict</taglib-uri>
+			<taglib-location>/WEB-INF/dict_tag.tld</taglib-location>
+		</taglib>
 	</jsp-config>
+	
 
 	<welcome-file-list>
 		<welcome-file>index.do</welcome-file>

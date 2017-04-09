@@ -37,7 +37,7 @@
 <form id="commonForm" action="/emInsurerCompany.do?method=add" method="post">
 	<table class="tform">
 <tr>
-<td width="120" class="right">公司名称：</td>
+<td width="120" class="right"><font color="red">*</font>公司名称：</td>
 <td><input type="text" id="insurercompanyname" name="insurercompanyname" value="" size=50></td>
 </tr>
 <tr>

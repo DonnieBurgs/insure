@@ -39,7 +39,7 @@
 ##ParametersEdit##
 		<tr>
 			<td colspan="2">
-			<input id="##ClassNameLower##id" name="##ClassNameLower##id" type="hidden" value="${item.##ClassNameLower##id}"/>
+			<input id="id" name="id" type="hidden" value="${item.id}"/>
 ##PhotoHidden##
 				<input id="uf_parentid" name="uf_parentid" type="hidden" value="${uf_parentid}"/>
 				<input id="keyword" name="keyword" type="hidden" value="${keyword}"/>
@@ -59,7 +59,7 @@
 ##PhotoFile##
 </body>
 <form id="deleteForm" action="/em##ClassName##.do?method=delete" method="post">
-<input id="##ClassNameLower##id" name="##ClassNameLower##id" type="hidden" value="${item.##ClassNameLower##id}"/>
+<input id="id" name="id" type="hidden" value="${item.id}"/>
 <input id="uf_parentid" name="uf_parentid" type="hidden" value="${uf_parentid}"/>
 <input id="keyword" name="keyword" type="hidden" value="${keyword}"/>
 <input id="m" name="m" type="hidden" value="${m}"/>

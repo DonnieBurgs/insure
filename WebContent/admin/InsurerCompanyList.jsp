@@ -72,10 +72,10 @@ if(uf_parentid==null) uf_parentid = "";
 <td>${item.insurercompanycode}</td>
 
 				<td width="250" class="operationBtn">
-				<c:if test="${auth14 eq '1'}"><a href="/emInsurerCompany.do?method=fill&insurercompanyid=${item.insurercompanyid}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
-					<a href="javascript:deleteInsurerCompany(${item.insurercompanyid}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
+				<c:if test="${auth14 eq '1'}"><a href="/emInsurerCompany.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
+					<a href="javascript:deleteInsurerCompany(${item.id}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
 				</c:if>
-				<c:if test="${auth14 ne '1'}"><a href="/emInsurerCompany.do?method=fill&insurercompanyid=${item.insurercompanyid}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
+				<c:if test="${auth14 ne '1'}"><a href="/emInsurerCompany.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
 				</c:if>
 				</td>
 			</tr>
@@ -190,7 +190,7 @@ if(uf_parentid==null) uf_parentid = "";
 	
 </form>
 <form action="/emInsurerCompany.do?method=delete" id="deleteForm" name="deleteForm" method="post">
-<input type="hidden" id="insurercompanyid" name="insurercompanyid" value="">
+<input type="hidden" id="id" name="id" value="">
 <input type="hidden" id="t" name="t" value="">
 <input type="hidden" name="uf_parentid" value="${uf_parentid}">
 <input type="hidden" name="key_isvalid" value="${key_isvalid }">
@@ -203,9 +203,9 @@ if(uf_parentid==null) uf_parentid = "";
 function submitform(){
 	searchForm.submit();
 }
-function deleteInsurerCompany(insurercompanyid){
+function deleteInsurerCompany(id){
 	if(confirm("是否删除会员资料？")) {
-		$("#insurercompanyid").val(insurercompanyid);
+		$("#id").val(id);
 		$("#t").val(t);
 		deleteForm.submit();
 		

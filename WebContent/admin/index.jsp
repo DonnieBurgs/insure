@@ -22,7 +22,7 @@ if(authorityno==null) authorityno = "" ;
 
 <body>
 <div class="header fs-14 p-f w1">
-	<div class="logo f-l"><a class="d-ib w1" href="/"><i class="iconfont c-f fs-34">&#xe676;</i><span class="fs-20 fw-6">医疗快线</span></a></div>
+	<div class="logo f-l"><!-- <a class="d-ib w1" href="/"><i class="iconfont c-f fs-34">&#xe676;</i><span class="fs-20 fw-6">医疗快线</span></a> --></div>
     <ul class="nav f-r lif-l">
     	<li><a href="/">首页</a></li>
         <li><a href="#">${username }</a></li>
@@ -34,18 +34,77 @@ if(authorityno==null) authorityno = "" ;
         <ol class="fs-12">管理</ol>
         <li class="twoLevel-menu-box">
             <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">
-                <i class="iconfont list">&#xe654;</i><span class="fw-6 fs-14">会员管理</span>
+                <i class="iconfont list">&#xe654;</i><span class="fw-6 fs-14">方案管理</span>
                 <i class="iconfont icon-arrow p-a">&#xe687;</i>
             </a>
             <ul class="twoLevel-menu o-h">
                 <li>
-                    <a class="d-ib" data-cookie="会员资料管理" target="iframe" href="/emUser.do?method=list"><span class="fs-14">会员资料管理</span></a>
-                    <a class="d-ib" data-cookie="个人财务管理" target="iframe" href="/emUser.do?method=list"><span class="fs-14">个人财务管理</span></a>
-                    <a class="d-ib" data-cookie="业绩管理" target="iframe" href="/emUser.do?method=list"><span class="fs-14">业绩管理</span></a>
-                    <a class="d-ib" data-cookie="提现管理" target="iframe" href="/emUser.do?method=list"><span class="fs-14">提现管理</span></a>
+                    <a class="d-ib" data-cookie="投保公司" target="iframe" href="/emInsurerCompany.do?method=list"><span class="fs-14">投保公司</span></a>
+                    <a class="d-ib" data-cookie="方案管理" target="iframe" href="/emPolicy.do?method=list"><span class="fs-14">方案管理</span></a>
+                    <a class="d-ib" data-cookie="团保方案" target="iframe" href="/emGroupInsurancePolicy.do?method=list"><span class="fs-14">团保方案</span></a>
+                    <a class="d-ib" data-cookie="个人保单管理" target="iframe" href="/emInsurerPolicy.do?method=list"><span class="fs-14">个人保单管理</span></a>
+                    <a class="d-ib" data-cookie="承保公司" target="iframe" href="/emApplicantCompany.do?method=list"><span class="fs-14">承保公司</span></a>
                 </li>
             </ul>
         </li>
+        <li class="twoLevel-menu-box">
+            <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">
+                <i class="iconfont list">&#xe6bc;</i><span class="fw-6 fs-14">数据管理</span>
+                <i class="iconfont icon-arrow p-a">&#xe687;</i>
+            </a>
+            <ul class="twoLevel-menu o-h">
+                <li>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">保全导入</span></a>
+                    <a class="d-ib" data-cookie="报表导出" target="iframe" href="/emOrder.do?method=list&key_status=1"><span class="fs-14">报表导出</span></a>
+                </li>
+            </ul>
+        </li>
+        <li class="twoLevel-menu-box">
+            <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">
+                <i class="iconfont list">&#xe6bc;</i><span class="fw-6 fs-14">理赔管理</span>
+                <i class="iconfont icon-arrow p-a">&#xe687;</i>
+            </a>
+            <ul class="twoLevel-menu o-h">
+                <li>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">案卷列表</span></a>
+                    <a class="d-ib" data-cookie="报表导出" target="iframe" href="/emOrder.do?method=list&key_status=1"><span class="fs-14">案件受理</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">理算录入</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">理算复核</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">案件列表</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">理赔列表</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">影像件上传</span></a>
+                </li>
+            </ul>
+        </li>
+        <li class="twoLevel-menu-box">
+            <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">
+                <i class="iconfont list">&#xe6bc;</i><span class="fw-6 fs-14">医保信息</span>
+                <i class="iconfont icon-arrow p-a">&#xe687;</i>
+            </a>
+            <ul class="twoLevel-menu o-h">
+                <li>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">拒赔原因</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">疾病库</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">医院</span></a>
+                </li>
+            </ul>
+        </li>
+        <li class="twoLevel-menu-box">
+            <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">
+                <i class="iconfont list">&#xe6bc;</i><span class="fw-6 fs-14">用户管理</span>
+                <i class="iconfont icon-arrow p-a">&#xe687;</i>
+            </a>
+            <ul class="twoLevel-menu o-h">
+                <li>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">在线用户</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">菜单</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">角色</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">用户组</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">用户</span></a>
+                </li>
+            </ul>
+        </li>
+        <!--  
         <li class="twoLevel-menu-box">
             <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">
                 <i class="iconfont list">&#xe6bc;</i><span class="fw-6 fs-14">订单管理</span>
@@ -143,7 +202,7 @@ if(authorityno==null) authorityno = "" ;
                 </li>
             </ul>
     
-        </li>
+        </li>-->
         <ol class="fs-12">管理</ol>
         <li class="twoLevel-menu-box">
             <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">

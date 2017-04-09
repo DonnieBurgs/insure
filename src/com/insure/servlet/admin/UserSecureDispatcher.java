@@ -55,6 +55,9 @@ public class UserSecureDispatcher extends Dispatcher
         } else {
           	def(request, response);
         }
+        
+
+		request.setAttribute("pid", request.getParameter("pid"));
 
     }
     
@@ -85,8 +88,8 @@ public class UserSecureDispatcher extends Dispatcher
     	String auth = String.valueOf(request.getAttribute(authName));
     	if("".equals(auth)) {
     		prompt(response, "没有权限，请联系管理员！");
-    		return false;
+    		return true;
     	}
-    	return true;
+    	return false;
     }
 }
