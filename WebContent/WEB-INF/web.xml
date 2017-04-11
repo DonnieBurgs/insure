@@ -181,6 +181,7 @@
 		<servlet-name>emCoupon</servlet-name>
 		<url-pattern>/emCoupon.do</url-pattern>
 	</servlet-mapping>
+	<!-- 
 	<servlet>
 		<servlet-name>emCompany</servlet-name>
 		<servlet-class>com.web.servlet.admin.EmCompanyServlet</servlet-class>
@@ -196,7 +197,7 @@
 	<servlet-mapping>
 		<servlet-name>emCompany1</servlet-name>
 		<url-pattern>/emCompany1.do</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	<servlet>
 		<servlet-name>emDoctor</servlet-name>
 		<servlet-class>com.web.servlet.admin.EmDoctorServlet</servlet-class>
@@ -213,6 +214,7 @@
 		<servlet-name>emDoctorType</servlet-name>
 		<url-pattern>/emDoctorType.do</url-pattern>
 	</servlet-mapping>
+	<!-- 
 	<servlet>
 		<servlet-name>emHospital</servlet-name>
 		<servlet-class>com.web.servlet.admin.EmHospitalServlet</servlet-class>
@@ -220,7 +222,7 @@
 	<servlet-mapping>
 		<servlet-name>emHospital</servlet-name>
 		<url-pattern>/emHospital.do</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	<servlet>
 		<servlet-name>emInformation</servlet-name>
 		<servlet-class>com.web.servlet.admin.EmInformationServlet</servlet-class>
@@ -451,12 +453,12 @@
 		<url-pattern>/emClaim.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>emCompany_1</servlet-name>
+		<servlet-name>emCompany</servlet-name>
 		<servlet-class>com.insure.servlet.admin.EmCompanyServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>emCompany_1</servlet-name>
-		<url-pattern>/emCompany_1.do</url-pattern>
+		<servlet-name>emCompany</servlet-name>
+		<url-pattern>/emCompany.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>emDereason</servlet-name>
@@ -491,12 +493,12 @@
 		<url-pattern>/emGroupInsurancePolicy.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>emHospital_1</servlet-name>
+		<servlet-name>emHospital</servlet-name>
 		<servlet-class>com.insure.servlet.admin.EmHospitalServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>emHospital_1</servlet-name>
-		<url-pattern>/emHospital_1.do</url-pattern>
+		<servlet-name>emHospital</servlet-name>
+		<url-pattern>/emHospital.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>emInsuranceGroup</servlet-name>

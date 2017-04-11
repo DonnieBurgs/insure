@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import com.alibaba.fastjson.JSON;
 import com.web.servlet.Dispatcher;
 import com.web.util.Putil;
 
@@ -56,9 +57,6 @@ public class UserSecureDispatcher extends Dispatcher
           	def(request, response);
         }
         
-
-		request.setAttribute("pid", request.getParameter("pid"));
-
     }
     
     public boolean checkAuthority(HttpServletRequest request, HttpServletResponse response) {
@@ -92,4 +90,21 @@ public class UserSecureDispatcher extends Dispatcher
     	}
     	return false;
     }
+    
+    protected void toJson(Object o, HttpServletResponse response) {
+    	response.setCharacterEncoding("UTF-8");
+    	response.setContentType("application/json; charset=utf-8");
+    	String jsonStr = JSON.toJSONString(o);
+    	PrintWriter out = null;
+    	try {
+    	    out = response.getWriter();
+    	    out.write(jsonStr);
+    	} catch (IOException e) {
+    	    e.printStackTrace();
+    	} finally {
+    	    if (out != null) {
+    	        out.close();
+    	    }
+    	}
+	}
 }

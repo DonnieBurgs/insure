@@ -88,7 +88,7 @@ public class EmInsuranceGroupServlet extends UserSecureDispatcher {
 			e.printStackTrace(System.out);
 		}
 
-		redirect(request, response, "/emInsuranceGroup.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s);
+		redirect(request, response, "/emInsuranceGroup.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s+"&policyid="+Putil.getString(request.getParameter("policyid")));
 		
 	}
 
@@ -129,9 +129,9 @@ public class EmInsuranceGroupServlet extends UserSecureDispatcher {
 		request.setAttribute("m", m+"");
 		request.setAttribute("s", s+"");
 
+		int policyid = Putil.getInt(request.getParameter("policyid"));
 		try {
 			String id = Putil.getString(request.getParameter("id")) ;
-			int policyid = Putil.getInt(request.getParameter("policyid"));
 			String insurancegroupname = Putil.getString(request.getParameter("insurancegroupname"));
 			String insurancegroupcode = Putil.getString(request.getParameter("insurancegroupcode"));
 
@@ -152,7 +152,7 @@ public class EmInsuranceGroupServlet extends UserSecureDispatcher {
 		} finally {
 		}
 
-		redirect(request, response, "/emInsuranceGroup.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s);
+		redirect(request, response, "/emInsuranceGroup.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s+ "&policyid=" + policyid);
 		
 	}
 
@@ -168,6 +168,7 @@ public class EmInsuranceGroupServlet extends UserSecureDispatcher {
 			int m = Putil.getInt(request.getParameter("m")); 
 			String o = Putil.getString(request.getParameter("o")); // 排序字
 			String sort = Putil.getString(request.getParameter("sort")); // 顺序
+			int policyid = Putil.getInt(request.getParameter("policyid"));
 			
 
 			// 列表
@@ -177,7 +178,7 @@ public class EmInsuranceGroupServlet extends UserSecureDispatcher {
 
 			StringBuilder countSql = new StringBuilder("select count(p.id) as total from em_insurancegroup p where p.id>=0"
 					+ (keyword.length()>0?" and p.insurancegroupname like '%" + keyword + "%'":"")
-					);
+					+ (policyid != 0 ? " and p.policyid = " + policyid : ""));
 			Map<String, Object> countMap = DbUtils.queryOne(countSql.toString());
 			if (countMap!=null) {
 				totalCount = Putil.getInt(countMap.get("total"));

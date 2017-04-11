@@ -39,7 +39,7 @@
 	<table class="tform">
 <tr>
 <td width="120" class="right">方案：</td>
-<td><dict:select path="policyid" name="id" label="groupinsurancepolicyname" table="em_groupinsurancepolicy" />
+<td><dict:select path="policyid" name="id" value="${param.policyid }" label="groupinsurancepolicyname" table="em_groupinsurancepolicy" />
 </td>
 </tr>
 <tr>

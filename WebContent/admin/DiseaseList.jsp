@@ -74,7 +74,11 @@ if(uf_parentid==null) uf_parentid = "";
 <td>${item.diseasename}</td>
 <td>${item.diseasecode}</td>
 <td>${item.pinyin}</td>
-<td>${item.critical}</td>
+<td>
+<c:choose>
+	<c:when test="${item.critical eq '1' }">是</c:when>
+	<c:otherwise>否</c:otherwise>
+</c:choose></td>
 <td>${item.domain}</td>
 
 				<td width="250" class="operationBtn">

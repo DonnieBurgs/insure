@@ -4,6 +4,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
 <%
 String keyword = (String)request.getAttribute("keyword");
 String uf_parentid = (String)request.getAttribute("uf_parentid");
@@ -28,7 +29,7 @@ if(uf_parentid==null) uf_parentid = "";
 <body id="right">
 <div class="operation o-h bg-f8">
 	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">险种列表</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<c:if test="${auth30 eq '1'}"><a href="/emInsurance.do?method=blank&uf_parentid=${uf_parentid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增险种</a></c:if></div>
+		<c:if test="${auth30 eq '1'}"><a href="/emInsurance.do?method=blank&uf_parentid=${uf_parentid}&keyword=${keyword}&m=${m}&s=${s}&policyid=${param.policyid}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增险种</a></c:if></div>
 	<div class="operationRight f-r">
 	</div>
 </div>
@@ -39,6 +40,7 @@ if(uf_parentid==null) uf_parentid = "";
 	 <th width=10%>关键字</th>
 	 <th width=80% align=left style="background-color:#ffffff;text-align:left;">
 	 	<input type="text" id="keyword" name="keyword" value="${keyword}">
+	 	&nbsp;&nbsp;方案：<dict:select path="policyid" value="${param.policyid }" name="id" label="groupinsurancepolicyname" defaultValue="true" table="em_groupinsurancepolicy" />
 	 </th>
 	 	<th width="20%" class="operationBtn">
 	 		<a href="javascript:submitform();"><i class="iconfont">&#xe608;</i>搜索</a>
@@ -56,7 +58,7 @@ if(uf_parentid==null) uf_parentid = "";
 <table class="tlist">
 	<thead>
 		<tr class="title">
-<th>方案ID</th>
+<th>方案</th>
 <th>名称</th>
 <th>险别代码</th>
 <th>险别类型</th>
@@ -70,7 +72,7 @@ if(uf_parentid==null) uf_parentid = "";
 <c:when test="${not empty resultRows}">
 <c:forEach var="item" items="${resultRows}">
 			<tr>
-<td>${item.policyid}</td>
+<td><dict:itemdesc name="groupinsurancepolicyname" value="${item.policyid }" table="em_groupinsurancepolicy" path="id"/></td>
 <td>${item.insurancename}</td>
 <td>${item.insurancecode}</td>
 <td>${item.insurancetype}</td>

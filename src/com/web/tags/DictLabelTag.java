@@ -2,6 +2,7 @@ package com.web.tags;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,31 +53,43 @@ public class DictLabelTag extends SimpleTagSupport {
 
 	@Override
 	public void doTag() throws JspException, IOException {
-		List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
-		resultRows = DbUtils.query("select p.* from " + table + " p");
-		JspWriter out = getJspContext().getOut();
-		StringBuffer sb = new StringBuffer();
-//		System.out.println(name);
-//		System.out.println(path);
-		for (Map<String, Object> map : resultRows) {
-			String n = String.valueOf(map.get(name));
-			String l = String.valueOf(map.get(path));
-//			System.out.println("aaaaaaa" + name);
-//			System.out.println("bbbb" + path);
-//			System.out.println("ccccccc" + n);
-//			System.out.println("dddd" + l);
-//			System.out.println("fffffff" + this.getValue());
-			if (l.equals(this.getValue())) {
-				sb.append(n);
-				break;
+		String key = String.format("%s_%s_%s", table, path, value);
+		Map<String, Object> result = null;
+
+		if (System.currentTimeMillis() - queryTime > 5000)
+			cache.clear();
+
+		if (cache.containsKey(key)) {
+			// System.out.println("query for cache");
+			result = cache.get(key);
+		} else {
+			queryTime = System.currentTimeMillis();
+			// System.out.println("query for db");
+			List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
+			resultRows = DbUtils.query("select p.* from " + table + " p");
+			for (Map<String, Object> map : resultRows) {
+				String l = String.valueOf(map.get(path));
+				if (l.equals(this.getValue())) {
+					cache.put(key, map);
+					result = map;
+					break;
+				}
 			}
 		}
-		try {
-			out.write(sb.toString());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			throw new JspException(e);
+		if (result != null) {
+			JspWriter out = getJspContext().getOut();
+			StringBuffer sb = new StringBuffer();
+			try {
+				sb.append(String.valueOf(result.get(name)));
+				out.write(sb.toString());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				throw new JspException(e);
+			}
 		}
 		super.doTag();
 	}
+
+	static final LinkedHashMap<String, Map<String, Object>> cache = new LinkedHashMap<>();
+	static long queryTime = 0;
 }

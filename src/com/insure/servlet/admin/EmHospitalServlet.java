@@ -269,5 +269,13 @@ public class EmHospitalServlet extends UserSecureDispatcher {
     	return true;
     	
     }
+    
+    @Override
+    public void def(HttpServletRequest httpservletrequest, HttpServletResponse httpservletresponse)
+    		throws ServletException, IOException {
+		List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
+    	resultRows = DbUtils.query("select p.* from em_hospital p where p.id>=0");
+    	toJson(resultRows, httpservletresponse);
+    }
 }
 

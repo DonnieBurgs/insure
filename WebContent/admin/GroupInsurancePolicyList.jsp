@@ -84,8 +84,8 @@ if(uf_parentid==null) uf_parentid = "";
 				<td width="250" class="operationBtn">
 				<c:if test="${auth32 eq '1'}">
 				<a href="/emGroupInsurancePolicy.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
-				<a href="/emInsuranceGroup.do?method=list&pid=${item.id}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>分组</a>
-				<a href="/emInsurance.do?method=list&pid=${item.id}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>险别</a>
+				<a href="/emInsuranceGroup.do?method=list&policyid=${item.id}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>分组</a>
+				<a href="/emInsurance.do?method=list&policyid=${item.id}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>险别</a>
 					<a href="javascript:deleteGroupInsurancePolicy(${item.id}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
 				</c:if>
 				<c:if test="${auth32 ne '1'}"><a href="/emGroupInsurancePolicy.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>

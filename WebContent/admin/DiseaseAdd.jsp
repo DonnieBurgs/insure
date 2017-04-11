@@ -50,7 +50,9 @@
 </tr>
 <tr>
 <td width="120" class="right">是否重疾：</td>
-<td><input type="text" id="critical" name="critical" value="" size=50></td>
+<td>
+<label><input type="radio"  name="critical" value="0">否</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<label><input type="radio"  name="critical" value="1">是</label></td>
 </tr>
 <tr>
 <td width="120" class="right">数据范围：</td>
@@ -77,7 +79,8 @@ function checkf() {
 	if(commonForm.diseasename.value=="" || commonForm.diseasename.value!="" && !is_int(commonForm.diseasename.value)) {alert("请正确输入疾病名称！");return false;}
 	if(commonForm.diseasecode.value=="") {alert("请正确输入疾病代码！");return false;}
 	if(commonForm.pinyin.value=="") {alert("请正确输入拼音缩写！");return false;}
-	if(commonForm.critical.value=="" || commonForm.critical.value!="" && !is_int(commonForm.critical.value)) {alert("请正确输入是否重疾！");return false;}
+	var critical = $("input[name='critical'][checked]").val();
+	if(critical==undefined) {alert("请正确输入是否重疾！");return false;}
 	if(commonForm.domain.value=="") {alert("请正确输入数据范围！");return false;}
 
 	document.getElementById("commonForm").submit() ;

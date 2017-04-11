@@ -84,8 +84,8 @@ if(authorityno==null) authorityno = "" ;
             <ul class="twoLevel-menu o-h">
                 <li>
                     <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">拒赔原因</span></a>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">疾病库</span></a>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">医院</span></a>
+                    <a class="d-ib" data-cookie="疾病库" target="iframe" href="/emDisease.do?method=list"><span class="fs-14">疾病库</span></a>
+                    <a class="d-ib" data-cookie="医院" target="iframe" href="/emHospital.do?method=list"><span class="fs-14">医院</span></a>
                 </li>
             </ul>
         </li>
