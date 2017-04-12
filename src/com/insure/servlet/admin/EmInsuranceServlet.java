@@ -190,6 +190,7 @@ public class EmInsuranceServlet extends UserSecureDispatcher {
 			// 列表分页语句
 			resultRows = DbUtils.query("select p.* from em_insurance p where p.id>=0"
 					+ (keyword.length()>0?" and p.insurancename like '%" + keyword + "%'":"")
+					+ (policyid != 0 ? " and p.policyid = " + policyid : "")
 					+ " order by p.id desc limit " + (s-1)*m + "," + m + ""
 				);
 			
@@ -252,6 +253,20 @@ public class EmInsuranceServlet extends UserSecureDispatcher {
     	}
     	return true;
     	
+    }
+    
+    @Override
+    public void def(HttpServletRequest request, HttpServletResponse response)
+    		throws ServletException, IOException {
+
+    	int policyid = Putil.getInt(request.getParameter("policyid"));
+    	List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
+		// 列表分页语句
+		resultRows = DbUtils.query("select p.* from em_insurance p where p.id>=0"
+				+ (policyid != 0 ? " and p.policyid = " + policyid : "")
+				+ " order by p.id desc"
+			);
+		toJson(resultRows, response);
     }
 }
 

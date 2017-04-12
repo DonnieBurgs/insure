@@ -41,8 +41,17 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 		request.setAttribute("m", m+"");
 		request.setAttribute("s", s+"");
 
+		fillGroupInsurancePolicy(request);
+		
 		forward(request, response, "/admin/InsurerPolicyAdd.jsp");
 	
+	}
+
+	private void fillGroupInsurancePolicy(HttpServletRequest request) {
+		List<Map<String, Object>> resultRows = DbUtils.query("select p.* from em_groupinsurancepolicy p where p.id>=0"
+				+ " order by p.groupinsurancepolicyname"
+			);
+		request.setAttribute("groupinsurancepolicyItems", resultRows);
 	}
 
 	public void add(HttpServletRequest request, HttpServletResponse response)
@@ -64,9 +73,54 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 		if(admin==null) {
 			return ;
 		}
+		
+		
+		//先保存被保险人
+		int insuredID=0;
+		try {
+			String insuredname = Putil.getString(request.getParameter("insured.insuredname"));
+			String gender = Putil.getString(request.getParameter("insured.gender"));
+			String idnumber = Putil.getString(request.getParameter("insured.idnumber"));
+			String passport = Putil.getString(request.getParameter("insured.passport"));
+			String birthdate = Putil.getString(request.getParameter("insured.birthdate"));
+			String employer = Putil.getString(request.getParameter("insured.employer"));
+			String jobnumber = Putil.getString(request.getParameter("insured.jobnumber"));
+			String bankname = Putil.getString(request.getParameter("insured.bankname"));
+			String accountname = Putil.getString(request.getParameter("insured.accountname"));
+			String accountnumber = Putil.getString(request.getParameter("insured.accountnumber"));
+			String email = Putil.getString(request.getParameter("insured.email"));
+			String department = Putil.getString(request.getParameter("insured.department"));
+			
+			StringBuilder select = new StringBuilder("insert into em_insured (insuredname,gender,idnumber,passport,birthdate,employer,jobnumber,bankname,accountname,accountnumber,email,department) values ("
+				+ "'" + insuredname.replace("'", "''") + "'"
+				+ ",'" + gender.replace("'", "''") + "'"
+				+ ",'" + idnumber.replace("'", "''") + "'"
+				+ ",'" + passport.replace("'", "''") + "'"
+				+ ",'" + birthdate.replace("'", "''") + "'"
+				+ ",'" + employer.replace("'", "''") + "'"
+				+ ",'" + jobnumber.replace("'", "''") + "'"
+				+ ",'" + bankname.replace("'", "''") + "'"
+				+ ",'" + accountname.replace("'", "''") + "'"
+				+ ",'" + accountnumber.replace("'", "''") + "'"
+				+ ",'" + email.replace("'", "''") + "'"
+				+ ",'" + department.replace("'", "''") + "'"
+				+ ")"
+			);
+
+			insuredID= DbUtils.save1(select.toString());
+	
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		}
+		if(insuredID == 0){
+			prompt(response, "被保险人保存失败");
+			return;
+		}
+		
 		try {
 			int groupinsurancepolicyid = Putil.getInt(request.getParameter("groupinsurancepolicyid"));
-			int insuredid = Putil.getInt(request.getParameter("insuredid"));
+			int insurancegroupid = Putil.getInt(request.getParameter("insurancegroupid"));
+			int insuranceid = Putil.getInt(request.getParameter("insuranceid"));
 			int attachedtoid = Putil.getInt(request.getParameter("attachedtoid"));
 			String periodbegin = Putil.getString(request.getParameter("periodbegin"));
 			String periodend = Putil.getString(request.getParameter("periodend"));
@@ -80,16 +134,12 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 			String accountname = Putil.getString(request.getParameter("accountname"));
 			String accountnumber = Putil.getString(request.getParameter("accountnumber"));
 			String clientid = Putil.getString(request.getParameter("clientid"));
-
-
-
-
-
-
 			
-			StringBuilder select = new StringBuilder("insert into em_insurerpolicy (groupinsurancepolicyid,insuredid,attachedtoid,periodbegin,periodend,policystate,shistate,shiarea,joblocal,relation,jobnumber,bankname,accountname,accountnumber,clientid) values ("
+			StringBuilder select = new StringBuilder("insert into em_insurerpolicy (groupinsurancepolicyid,insuredid,insurancegroupid, insuranceid, attachedtoid,periodbegin,periodend,policystate,shistate,shiarea,joblocal,relation,jobnumber,bankname,accountname,accountnumber,clientid) values ("
 				+ "" + groupinsurancepolicyid + ""
-				+ "," + insuredid + ""
+				+ "," + insuredID + ""
+						+ "," + insurancegroupid + ""
+								+ "," + insuranceid + ""
 				+ "," + attachedtoid + ""
 				+ ",'" + periodbegin.replace("'", "''") + "'"
 				+ ",'" + periodend.replace("'", "''") + "'"
@@ -133,6 +183,7 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 			Map<String, Object> row = DbUtils.queryOne("select p.* from em_insurerpolicy p where p.id="+id);
 			request.setAttribute("item", row);
 		}
+		fillGroupInsurancePolicy(request);
 
 		forward(request, response, "/admin/InsurerPolicyEdit.jsp");
 		
@@ -154,9 +205,50 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 		request.setAttribute("s", s+"");
 
 		try {
+			String id = Putil.getString(request.getParameter("insuredid")) ;
+			String insuredname = Putil.getString(request.getParameter("insured.insuredname"));
+			String gender = Putil.getString(request.getParameter("insured.gender"));
+			String idnumber = Putil.getString(request.getParameter("insured.idnumber"));
+			String passport = Putil.getString(request.getParameter("insured.passport"));
+			String birthdate = Putil.getString(request.getParameter("insured.birthdate"));
+			String employer = Putil.getString(request.getParameter("insured.employer"));
+			String jobnumber = Putil.getString(request.getParameter("insured.jobnumber"));
+			String bankname = Putil.getString(request.getParameter("insured.bankname"));
+			String accountname = Putil.getString(request.getParameter("insured.accountname"));
+			String accountnumber = Putil.getString(request.getParameter("insured.accountnumber"));
+			String email = Putil.getString(request.getParameter("insured.email"));
+			String department = Putil.getString(request.getParameter("insured.department"));
+
+
+			
+			StringBuilder select = new StringBuilder("update em_insured set "
+					+ "insuredname='" + insuredname.replace("'", "''") + "'"
+					+ ",gender='" + gender.replace("'", "''") + "'"
+					+ ",idnumber='" + idnumber.replace("'", "''") + "'"
+					+ ",passport='" + passport.replace("'", "''") + "'"
+					+ ",birthdate='" + birthdate.replace("'", "''") + "'"
+					+ ",employer='" + employer.replace("'", "''") + "'"
+					+ ",jobnumber='" + jobnumber.replace("'", "''") + "'"
+					+ ",bankname='" + bankname.replace("'", "''") + "'"
+					+ ",accountname='" + accountname.replace("'", "''") + "'"
+					+ ",accountnumber='" + accountnumber.replace("'", "''") + "'"
+					+ ",email='" + email.replace("'", "''") + "'"
+					+ ",department='" + department.replace("'", "''") + "'"
+				+ " where id=" + id + "" 
+			);
+			int result = DbUtils.save(select.toString());
+
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		} finally {
+		}
+		
+		try {
 			String id = Putil.getString(request.getParameter("id")) ;
 			int groupinsurancepolicyid = Putil.getInt(request.getParameter("groupinsurancepolicyid"));
 			int insuredid = Putil.getInt(request.getParameter("insuredid"));
+			int insurancegroupid = Putil.getInt(request.getParameter("insurancegroupid"));
+			int insuranceid = Putil.getInt(request.getParameter("insuranceid"));
 			int attachedtoid = Putil.getInt(request.getParameter("attachedtoid"));
 			String periodbegin = Putil.getString(request.getParameter("periodbegin"));
 			String periodend = Putil.getString(request.getParameter("periodend"));
@@ -178,6 +270,8 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 			StringBuilder select = new StringBuilder("update em_insurerpolicy set "
 					+ "groupinsurancepolicyid=" + groupinsurancepolicyid + ""
 					+ ",insuredid=" + insuredid + ""
+							+ ",insurancegroupid=" + insurancegroupid + ""
+									+ ",insuranceid=" + insuranceid + ""
 					+ ",attachedtoid=" + attachedtoid + ""
 					+ ",periodbegin='" + periodbegin.replace("'", "''") + "'"
 					+ ",periodend='" + periodend.replace("'", "''") + "'"

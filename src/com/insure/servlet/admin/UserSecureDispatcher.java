@@ -95,6 +95,7 @@ public class UserSecureDispatcher extends Dispatcher
     	response.setCharacterEncoding("UTF-8");
     	response.setContentType("application/json; charset=utf-8");
     	String jsonStr = JSON.toJSONString(o);
+    	System.out.println(jsonStr);
     	PrintWriter out = null;
     	try {
     	    out = response.getWriter();

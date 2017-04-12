@@ -66,11 +66,11 @@ if(authorityno==null) authorityno = "" ;
             </a>
             <ul class="twoLevel-menu o-h">
                 <li>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">案卷列表</span></a>
+                    <a class="d-ib" data-cookie="案卷列表" target="iframe" href="/emClaimArchive.do?method=list"><span class="fs-14">案卷列表</span></a>
                     <a class="d-ib" data-cookie="报表导出" target="iframe" href="/emOrder.do?method=list&key_status=1"><span class="fs-14">案件受理</span></a>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">理算录入</span></a>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">理算复核</span></a>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">案件列表</span></a>
+                    <a class="d-ib" data-cookie="理算录入" target="iframe" href="/emDetermine.do?method=list"><span class="fs-14">理算录入</span></a>
+                    <a class="d-ib" data-cookie="理算复核" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">理算复核</span></a>
+                    <a class="d-ib" data-cookie="案件列表" target="iframe" href="/emClaim.do?method=list"><span class="fs-14">案件列表</span></a>
                     <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">理赔列表</span></a>
                     <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">影像件上传</span></a>
                 </li>

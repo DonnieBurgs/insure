@@ -4,6 +4,8 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
+<%@ taglib prefix="util" uri="/WEB-INF/util.tld" %>
 <%
 String keyword = (String)request.getAttribute("keyword");
 String uf_parentid = (String)request.getAttribute("uf_parentid");
@@ -56,11 +58,14 @@ if(uf_parentid==null) uf_parentid = "";
 <table class="tlist">
 	<thead>
 		<tr class="title">
-<th>团保方案</th>
 <th>被保险人</th>
-<th>主被保险人</th>
-<th>保险期间（起）</th>
-<th>保险期间（止）</th>
+<th>出生年月</th>
+<th>保单号</th>
+<th>团保方案</th>
+<th>险种组</th>
+<th>方案编号</th>
+<th>保险期间</th>
+<th>保险状态</th>
 
 <th width="60">操作</th>
 		</tr>
@@ -71,11 +76,21 @@ if(uf_parentid==null) uf_parentid = "";
 <c:when test="${not empty resultRows}">
 <c:forEach var="item" items="${resultRows}">
 			<tr>
-<td>${item.groupinsurancepolicyid}</td>
-<td>${item.insuredid}</td>
-<td>${item.attachedtoid}</td>
-<td>${item.periodbegin_}</td>
-<td>${item.periodend_}</td>
+<td>
+<dict:itemdesc name="insuredname" value="${item.insuredid }" table="em_insured" path="id"/>
+&nbsp;&nbsp;
+<dict:itemdesc name="idnumber" value="${item.insuredid }" table="em_insured" path="id"/>
+</td>
+<td><dict:itemdesc name="birthdate_" value="${item.insuredid }" table="em_insured" path="id"/></td>
+<td>${item.clientid}</td>
+<td><dict:itemdesc name="groupinsurancepolicyname" value="${item.groupinsurancepolicyid }" table="em_groupinsurancepolicy" path="id"/></td>
+<td><dict:itemdesc name="insurancegroupname" value="${item.insurancegroupid }" table="em_insurancegroup" path="id"/></td>
+<c:set var="policyid">
+	${util:query("em_groupinsurancepolicy","id",item.groupinsurancepolicyid,"policyid") }
+</c:set>
+<td><dict:itemdesc name="policyname" value="${policyid}" table="em_policy" path="id"/></td>
+<td>${item.periodbegin_} - ${item.periodend_}</td>
+<td>${item.policystate}</td>
 
 				<td width="250" class="operationBtn">
 				<c:if test="${auth22 eq '1'}"><a href="/emInsurerPolicy.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
@@ -88,7 +103,7 @@ if(uf_parentid==null) uf_parentid = "";
 </c:forEach>
 </c:when>
 <c:otherwise>
-			<tr><td colspan=5>
+			<tr><td colspan=9>
       <p><span>非常抱歉！</span></p><p>没有找到与您选择的搜索条件相符的资料。</p>
     	</td></tr>
 </c:otherwise>
@@ -97,7 +112,7 @@ if(uf_parentid==null) uf_parentid = "";
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="7"></td>
+			<td colspan="9"></td>
 		</tr>
 	</tfoot>
 </table>

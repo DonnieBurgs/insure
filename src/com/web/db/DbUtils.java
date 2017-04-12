@@ -26,9 +26,10 @@ public class DbUtils {
 		try {
 			InitialContext ctx = new InitialContext();
 			Context context = (Context) ctx.lookup("java:comp/env");
-			DataSource dataSource = (DataSource)context.lookup("emt");
-			//javax.naming.Context ctx = new javax.naming.InitialContext();
-			//javax.sql.DataSource ds = (javax.sql.DataSource)ctx.lookup("emt");
+			DataSource dataSource = (DataSource) context.lookup("emt");
+			// javax.naming.Context ctx = new javax.naming.InitialContext();
+			// javax.sql.DataSource ds =
+			// (javax.sql.DataSource)ctx.lookup("emt");
 			return dataSource;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -72,7 +73,7 @@ public class DbUtils {
 
 	public static List<Map<String, Object>> query(String sql) {
 		List<Map<String, Object>> items = new ArrayList<Map<String, Object>>();
-		
+
 		Connection connection = DbUtils.getConnection();
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -81,7 +82,7 @@ public class DbUtils {
 			resultSet = statement.executeQuery(sql);
 			Map<String, Object> map = null;
 			ResultSetMetaData metaData = resultSet.getMetaData();
-			
+
 			while (resultSet.next()) {
 				map = new HashMap<String, Object>();
 				int col = metaData.getColumnCount();
@@ -89,17 +90,20 @@ public class DbUtils {
 				for (int i = 1; i <= col; i++) {
 					columnName = metaData.getColumnLabel(i);
 					columnType = metaData.getColumnTypeName(i);
-					if (columnType.indexOf("INT")>=0) {
+					if (columnType.indexOf("INT") >= 0) {
 						map.put(columnName.toLowerCase(), resultSet.getInt(columnName));
 					} else if (columnType.equals("DATETIME")) {
-						if(resultSet.getTimestamp(columnName)!=null) {
-							map.put(columnName.toLowerCase(), Putil.format2(resultSet.getTimestamp(columnName).getTime()));
-							map.put(columnName.toLowerCase()+"_", Putil.format4(resultSet.getTimestamp(columnName).getTime()));
-							map.put(columnName.toLowerCase()+"__", Putil.format5(resultSet.getTimestamp(columnName).getTime()));
+						if (resultSet.getTimestamp(columnName) != null) {
+							map.put(columnName.toLowerCase(),
+									Putil.format2(resultSet.getTimestamp(columnName).getTime()));
+							map.put(columnName.toLowerCase() + "_",
+									Putil.format4(resultSet.getTimestamp(columnName).getTime()));
+							map.put(columnName.toLowerCase() + "__",
+									Putil.format5(resultSet.getTimestamp(columnName).getTime()));
 						} else {
 							map.put(columnName.toLowerCase(), "");
-							map.put(columnName.toLowerCase()+"_", "");
-							map.put(columnName.toLowerCase()+"__", "");
+							map.put(columnName.toLowerCase() + "_", "");
+							map.put(columnName.toLowerCase() + "__", "");
 						}
 					} else {
 						map.put(columnName.toLowerCase(), resultSet.getString(columnName));
@@ -119,7 +123,7 @@ public class DbUtils {
 
 	public static Map<String, Object> queryOne(String sql) {
 		Map<String, Object> map = null;
-		
+
 		Connection connection = DbUtils.getConnection();
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -127,29 +131,33 @@ public class DbUtils {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(sql);
 			ResultSetMetaData metaData = resultSet.getMetaData();
-			
-			if(resultSet.next()) {
+
+			if (resultSet.next()) {
 				map = new HashMap<String, Object>();
 				int col = metaData.getColumnCount();
 				String columnName, columnType;
 				for (int i = 1; i <= col; i++) {
 					columnName = metaData.getColumnName(i);
 					columnType = metaData.getColumnTypeName(i);
-					//Putil.printLog(metaData.getColumnLabel(i));
-					//if (columnType.equals("TIMESTAMP")) {
-					//	map.put(columnName.toLowerCase(), resultSet.getTimestamp(columnName));
-					//} else 
-					if (columnType.indexOf("INT")>=0) {
+					// Putil.printLog(metaData.getColumnLabel(i));
+					// if (columnType.equals("TIMESTAMP")) {
+					// map.put(columnName.toLowerCase(),
+					// resultSet.getTimestamp(columnName));
+					// } else
+					if (columnType.indexOf("INT") >= 0) {
 						map.put(columnName.toLowerCase(), resultSet.getInt(columnName));
 					} else if (columnType.equals("DATETIME")) {
-						if(resultSet.getTimestamp(columnName)!=null) {
-							map.put(columnName.toLowerCase(), Putil.format2(resultSet.getTimestamp(columnName).getTime()));
-							map.put(columnName.toLowerCase()+"_", Putil.format4(resultSet.getTimestamp(columnName).getTime()));
-							map.put(columnName.toLowerCase()+"__", Putil.format5(resultSet.getTimestamp(columnName).getTime()));
+						if (resultSet.getTimestamp(columnName) != null) {
+							map.put(columnName.toLowerCase(),
+									Putil.format2(resultSet.getTimestamp(columnName).getTime()));
+							map.put(columnName.toLowerCase() + "_",
+									Putil.format4(resultSet.getTimestamp(columnName).getTime()));
+							map.put(columnName.toLowerCase() + "__",
+									Putil.format5(resultSet.getTimestamp(columnName).getTime()));
 						} else {
 							map.put(columnName.toLowerCase(), "");
-							map.put(columnName.toLowerCase()+"_", "");
-							map.put(columnName.toLowerCase()+"__", "");
+							map.put(columnName.toLowerCase() + "_", "");
+							map.put(columnName.toLowerCase() + "__", "");
 						}
 					} else {
 						map.put(columnName.toLowerCase(), resultSet.getString(columnName));
@@ -164,17 +172,17 @@ public class DbUtils {
 
 		return map;
 	}
-	
+
 	public static int[] updateBatch(ArrayList<String> sql) {
 		Connection connection = DbUtils.getConnection();
 		Statement statement = null;
 		ResultSet resultSet = null;
 		try {
 			statement = connection.createStatement();
-			if(sql==null || sql.size()==0) {
+			if (sql == null || sql.size() == 0) {
 				return null;
 			}
-			for(String s:sql) {
+			for (String s : sql) {
 				statement.addBatch(s);
 			}
 			return statement.executeBatch();
@@ -186,15 +194,14 @@ public class DbUtils {
 
 		return null;
 	}
-	
+
 	public static int save(String sql) {
-		int count = 0 ;
+		int count = 0;
 		Connection connection = DbUtils.getConnection();
 		Statement statement = null;
 		try {
 			statement = connection.createStatement();
 			count = statement.executeUpdate(sql);
-			
 		} catch (SQLException e) {
 			e.printStackTrace(System.out);
 		} finally {
@@ -202,6 +209,28 @@ public class DbUtils {
 		}
 
 		return count;
+	}
+
+	public static int save1(String sql) {
+		int id = 0;
+		Connection connection = DbUtils.getConnection();
+		Statement statement = null;
+		try {
+			statement = connection.createStatement();
+			int result = statement.executeUpdate(sql,  Statement.RETURN_GENERATED_KEYS);
+			if (result != 0) {
+				ResultSet rs = statement.getGeneratedKeys();
+				if (rs.next()) {
+					id = rs.getInt(1);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace(System.out);
+		} finally {
+			DbUtils.close(statement, connection);
+		}
+
+		return id;
 	}
 
 	public static void close(Object... args) {
@@ -215,21 +244,24 @@ public class DbUtils {
 					try {
 						connection.close();
 					} catch (SQLException e) {
-						Putil.printLog(e.toString());;
+						Putil.printLog(e.toString());
+						;
 					}
 				} else if (o instanceof Statement) {
 					Statement statement = (Statement) o;
 					try {
 						statement.close();
 					} catch (SQLException e) {
-						Putil.printLog(e.toString());;
+						Putil.printLog(e.toString());
+						;
 					}
 				} else if (o instanceof ResultSet) {
 					ResultSet resultSet = (ResultSet) o;
 					try {
 						resultSet.close();
 					} catch (SQLException e) {
-						Putil.printLog(e.toString());;
+						Putil.printLog(e.toString());
+						;
 					}
 				}
 			}

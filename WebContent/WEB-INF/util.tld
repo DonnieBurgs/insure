@@ -66,4 +66,16 @@
       ${util:percent(value)}
     </example>
 	</function>
+	
+	<function>
+		<description>
+      	字符串替换
+    </description>
+		<name>query</name>
+		<function-class>com.web.util.QueryUtils</function-class>
+		<function-signature>java.lang.String query(java.lang.String, java.lang.String, java.lang.String, java.lang.String)</function-signature>
+		<example>
+      ${util:query(value, value, value, value)}
+    </example>
+	</function>
 </taglib>
