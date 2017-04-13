@@ -4,6 +4,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,7 +39,9 @@
 	<table class="tform">
 <tr>
 <td width="120" class="right">团保方案ID：</td>
-<td><input type="text" id="groupinsurancepolicyid" name="groupinsurancepolicyid" value="${fn:replace(item.groupinsurancepolicyid,'"','&quot;')}" size=50></td>
+<td>
+<dict:select path="groupinsurancepolicyid" name="id"  value="${item.groupinsurancepolicyid }" label="groupinsurancepolicyname" table="em_groupinsurancepolicy" />
+</td>
 </tr>
 <tr>
 <td width="120" class="right">收单日期：</td>

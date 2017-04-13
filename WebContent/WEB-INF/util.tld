@@ -8,14 +8,15 @@
 	<tlib-version>1.1</tlib-version>
 	<short-name>util</short-name>
 	<uri>/WEB-INF/UTIL</uri>
-	
+
 	<function>
 		<description>
       字符串替换
     </description>
 		<name>replace</name>
 		<function-class>com.web.util.StringUtils</function-class>
-		<function-signature>java.lang.String replace(java.lang.String, java.lang.String)</function-signature>
+		<function-signature>java.lang.String replace(java.lang.String,
+			java.lang.String)</function-signature>
 		<example>
       ${util:replace(value, value)}
     </example>
@@ -26,7 +27,9 @@
     </description>
 		<name>limit</name>
 		<function-class>com.web.util.StringUtils</function-class>
-		<function-signature>java.lang.String limitLengthByGBK(java.lang.String, java.lang.Integer, java.lang.String)</function-signature>
+		<function-signature>java.lang.String
+			limitLengthByGBK(java.lang.String, java.lang.Integer,
+			java.lang.String)</function-signature>
 		<example>
       ${util:limit(value, 100, '...')}
     </example>
@@ -49,7 +52,8 @@
 		<name>percent</name>
 		<function-class>com.web.util.NumberUtils</function-class>
 		<function-signature>java.lang.String percent(java.math.BigDecimal,
-			java.math.BigDecimal)</function-signature>
+			java.math.BigDecimal)
+		</function-signature>
 		<example>
       ${util:percent(value)}
     </example>
@@ -61,21 +65,35 @@
 		<name>city</name>
 		<function-class>com.web.util.CityUtils</function-class>
 		<function-signature>java.lang.String getCityName(java.lang.String,
-			java.lang.String)</function-signature>
+			java.lang.String)
+		</function-signature>
 		<example>
       ${util:percent(value)}
     </example>
 	</function>
-	
+
 	<function>
 		<description>
-      	字符串替换
+      	${util:query("表彰","匹配的字段",匹配的值,"要显示的数据字段") }
     </description>
 		<name>query</name>
 		<function-class>com.web.util.QueryUtils</function-class>
-		<function-signature>java.lang.String query(java.lang.String, java.lang.String, java.lang.String, java.lang.String)</function-signature>
+		<function-signature>java.lang.String query(java.lang.String,
+			java.lang.String, java.lang.String, java.lang.String)</function-signature>
 		<example>
       ${util:query(value, value, value, value)}
     </example>
+	</function>
+
+	<function>
+		<description>
+      	${util:queryTable4Array("表彰","排序字段","顺序") }
+    	</description>
+		<name>queryTable4Array</name>
+		<function-class>com.web.util.QueryUtils</function-class>
+		<function-signature>java.lang.String queryTable4Array(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+		<example>
+      ${util:queryTable4Array(value, value, value)}
+    	</example>
 	</function>
 </taglib>

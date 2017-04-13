@@ -4,6 +4,8 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
+<%@ taglib prefix="util" uri="/WEB-INF/util.tld" %>
 <%
 String keyword = (String)request.getAttribute("keyword");
 String uf_parentid = (String)request.getAttribute("uf_parentid");
@@ -56,9 +58,12 @@ if(uf_parentid==null) uf_parentid = "";
 <table class="tlist">
 	<thead>
 		<tr class="title">
-<th>团保方案ID</th>
-<th>收单日期</th>
 <th>案卷号</th>
+<th>收单日期</th>
+<th>团保方案</th>
+<th>所属保单号</th>
+<th>所属保单方案编号</th>
+<th>所属保单年限</th>
 
 <th width="60">操作</th>
 		</tr>
@@ -68,10 +73,14 @@ if(uf_parentid==null) uf_parentid = "";
 <c:choose>
 <c:when test="${not empty resultRows}">
 <c:forEach var="item" items="${resultRows}">
-			<tr>
-<td>${item.groupinsurancepolicyid}</td>
-<td>${item.acceptdate_}</td>
-<td>${item.claimarchivenumber}</td>
+			<tr><td>${item.claimarchivenumber}</td><td>${item.acceptdate_}</td>
+<td><dict:itemdesc name="groupinsurancepolicyname" value="${item.groupinsurancepolicyid }" table="em_groupinsurancepolicy" path="id"/></td>
+<c:set var="policyid">
+	${util:query("em_groupinsurancepolicy","id",item.groupinsurancepolicyid,"policyid") }
+</c:set>
+<td><dict:itemdesc name="policyname" value="${policyid}" table="em_policy" path="id"/></td>
+<td><dict:itemdesc name="policynumber" value="${item.groupinsurancepolicyid }" table="em_groupinsurancepolicy" path="id"/></td>
+<td><dict:itemdesc name="periodbegin_" value="${item.groupinsurancepolicyid }" table="em_groupinsurancepolicy" path="id"/> - <dict:itemdesc name="periodend_" value="${item.groupinsurancepolicyid }" table="em_groupinsurancepolicy" path="id"/></td>
 
 				<td width="250" class="operationBtn">
 				<c:if test="${auth42 eq '1'}"><a href="/emClaimArchive.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
