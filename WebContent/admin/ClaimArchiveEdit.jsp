@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
+<%@ taglib prefix="util" uri="/WEB-INF/util.tld" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,6 +15,8 @@
 <link type="text/css" rel="stylesheet" href="/admin/style/base.css" />
 <link type="text/css" rel="stylesheet" href="/admin/style/global.css" />
 <link href="/resources/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/resources/js/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="/resources/js/jquery-ui/themes/base/jquery.ui.autocomplete.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/resources/jquery/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/resources/js/xheditor/xheditor-zh-cn.min.js"></script>
@@ -38,9 +41,10 @@
 <form id="commonForm" action="/emClaimArchive.do?method=update" method="post">
 	<table class="tform">
 <tr>
-<td width="120" class="right">团保方案ID：</td>
+<td width="120" class="right">团保方案：</td>
 <td>
-<dict:select path="groupinsurancepolicyid" name="id"  value="${item.groupinsurancepolicyid }" label="groupinsurancepolicyname" table="em_groupinsurancepolicy" />
+<input type="hidden" id="groupinsurancepolicyid" name="groupinsurancepolicyid" value="${item.groupinsurancepolicyid }" size=50>
+<input type="text" id="groupinsurancepolicy" name="groupinsurancepolicy" value='<dict:itemdesc path="id" name="groupinsurancepolicyname"  value="${item.groupinsurancepolicyid }"  table="em_groupinsurancepolicy" />' size=50>
 </td>
 </tr>
 <tr>
@@ -99,5 +103,23 @@ function checkdelete() {
 	}
 	
 }
-
+$(function() {
+	jQuery.curCSS = jQuery.css;
+    var availableTags = ${util:queryTable4Array("em_groupinsurancepolicy","groupinsurancepolicyname","asc")};
+    $("#groupinsurancepolicy").autocomplete({
+    	source: function(request,response){  
+            response($.map(availableTags,function(item){  
+	                return {
+	                    label:item.groupinsurancepolicyname,
+	                    value:item.groupinsurancepolicyname,
+	                    id:item.id
+	                }
+            	}
+            ));  
+		},
+	    select: function( event, ui ) {
+	    	$("#groupinsurancepolicyid").val(ui.item.id);
+	    }
+    });
+ });
 </script>

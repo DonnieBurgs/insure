@@ -285,5 +285,41 @@ public class EmInsuredServlet extends UserSecureDispatcher {
     	return true;
     	
     }
+    
+    @Override
+    public void def(HttpServletRequest request, HttpServletResponse response)
+    		throws ServletException, IOException {
+
+		String keyword = Putil.getString(request.getParameter("term")) ;
+		String inc = Putil.getString(request.getParameter("inc")) ;
+		List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
+		StringBuilder sql = new StringBuilder("select p.* from em_insured p where p.id>=0");
+		if(keyword.length() > 0){
+			sql.append(" and p.insuredname like '%" + keyword + "%'");
+			if(StringUtils.hasLength(inc)){
+				String[] arr = inc.split(",");
+				for (String string : arr) {
+					sql.append(" or p." + string + " like '%" + keyword + "%'");
+				}
+			}
+		}
+		sql.append(" order by p.id desc limit 50");
+    	resultRows = DbUtils.query(sql.toString());
+		
+    	if(resultRows != null && !resultRows.isEmpty()){
+    		List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
+    		for (Map<String, Object> map : resultRows) {
+    			Map<String, Object> row = new HashMap<>();
+    			row.put("id", map.get("id"));
+    			row.put("label", map.get("insuredname"));
+    			row.put("value", map.get("insuredname"));
+    			rows.add(row);
+			}
+    		toJson(rows, response);
+    	}else {
+			toJson(new ArrayList<>(), response);
+		}
+    	
+    }
 }
 

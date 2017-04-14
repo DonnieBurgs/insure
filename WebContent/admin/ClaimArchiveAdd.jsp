@@ -41,9 +41,10 @@
 <form id="commonForm" action="/emClaimArchive.do?method=add" method="post">
 	<table class="tform">
 <tr>
-<td width="120" class="right">团保方案ID：</td>
+<td width="120" class="right">团保方案：</td>
 <td>
-<input type="text" id="groupinsurancepolicyid" name="groupinsurancepolicyid" value="" size=50>
+<input type="hidden" id="groupinsurancepolicyid" name="groupinsurancepolicyid" value="" size=50>
+<input type="text" id="groupinsurancepolicy" name="groupinsurancepolicy" value="" size=50>
 </td>
 </tr>
 <tr>
@@ -81,7 +82,7 @@ function checkf() {
 $(function() {
 	jQuery.curCSS = jQuery.css;
     var availableTags = ${util:queryTable4Array("em_groupinsurancepolicy","groupinsurancepolicyname","asc")};
-    $("#groupinsurancepolicyid").autocomplete({
+    $("#groupinsurancepolicy").autocomplete({
     	source: function(request,response){  
             response($.map(availableTags,function(item){  
 	                return {
@@ -91,7 +92,10 @@ $(function() {
 	                }
             	}
             ));  
-		}
+		},
+	    select: function( event, ui ) {
+	    	$("#groupinsurancepolicyid").val(ui.item.id);
+	    }
     });
  });
 

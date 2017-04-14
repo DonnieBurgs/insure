@@ -64,8 +64,45 @@ public class EmDetermineServlet extends UserSecureDispatcher {
 		if(admin==null) {
 			return ;
 		}
+		int claimid = Putil.getInt(request.getParameter("claimid"));
+		
+		//先保存被保险人
+		int receiptID=0;
 		try {
-			int claimid = Putil.getInt(request.getParameter("claimid"));
+			String receiptnumber = Putil.getString(request.getParameter("receiptr.receiptnumber"));
+			int hospitalid = Putil.getInt(request.getParameter("receiptr.hospitalid"));
+			String visitdate = Putil.getString(request.getParameter("receiptr.visitdate"));
+			String hospitaldate = Putil.getString(request.getParameter("receiptr.hospitaldate"));
+			String dischargedate = Putil.getString(request.getParameter("receiptr.dischargedate"));
+			float fundpaid = Putil.getFloat(request.getParameter("receiptr.fundpaid"));
+			float cashpaid = Putil.getFloat(request.getParameter("receiptr.cashpaid"));
+			float total = Putil.getFloat(request.getParameter("receiptr.total"));
+
+			StringBuilder select = new StringBuilder("insert into em_receipt (claimid,receiptnumber,hospitalid,visitdate,hospitaldate,dischargedate,fundpaid,cashpaid,total) values ("
+				+ "" + claimid + ""
+				+ ",'" + receiptnumber.replace("'", "''") + "'"
+				+ "," + hospitalid + ""
+				+ ",'" + visitdate.replace("'", "''") + "'"
+				+ ",'" + hospitaldate.replace("'", "''") + "'"
+				+ ",'" + dischargedate.replace("'", "''") + "'"
+				+ "," + fundpaid + ""
+				+ "," + cashpaid + ""
+				+ "," + total + ""
+				+ ")"
+			);
+
+			receiptID= DbUtils.save1(select.toString());
+	
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		}
+		if(receiptID == 0){
+			prompt(response, "发票保存失败");
+			return;
+		}
+		
+		try {
+			
 			int diseaseid = Putil.getInt(request.getParameter("diseaseid"));
 			String claimtype = Putil.getString(request.getParameter("claimtype"));
 			int claimstatus = Putil.getInt(request.getParameter("claimstatus"));
@@ -267,6 +304,8 @@ public class EmDetermineServlet extends UserSecureDispatcher {
 			request.setAttribute("keyword", keyword);
 			request.setAttribute("m", m+"");
 			request.setAttribute("s", s+"");
+			request.setAttribute("claimtypeItems", claimtypeItems);
+			request.setAttribute("claimstatusItems", claimstatusItems);
 
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
@@ -320,6 +359,22 @@ public class EmDetermineServlet extends UserSecureDispatcher {
     	}
     	return true;
     	
+    }
+    
+    static final HashMap<String, String> claimtypeItems = new HashMap<>();
+    static final HashMap<String, String> claimstatusItems = new HashMap<>();
+    static{
+    	claimtypeItems.put("1-0", "内诊");
+    	claimtypeItems.put("1-1", "门诊");
+    	claimtypeItems.put("1-2", "门诊急诊");
+    	claimtypeItems.put("2", "住院");
+    	claimtypeItems.put("4", "意外医疗");
+    	claimtypeItems.put("5", "女性生育");
+    	
+    	claimstatusItems.put("1", "正常赔付");
+    	claimstatusItems.put("2", "拒赔");
+    	claimstatusItems.put("3", "部分拒赔");
+    	claimstatusItems.put("4", "不受理");
     }
 }
 

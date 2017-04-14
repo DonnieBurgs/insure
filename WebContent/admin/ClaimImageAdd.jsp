@@ -4,6 +4,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,8 +38,10 @@
 <form id="commonForm" action="/emClaimImage.do?method=add" method="post">
 	<table class="tform">
 <tr>
-<td width="120" class="right">案件ID：</td>
-<td><input type="text" id="claimid" name="claimid" value="" size=50></td>
+<td width="120" class="right">案件序号：</td>
+<td><input type="hidden" id="claimid" name="claimid" value="${claimid }" size=50>
+<input type="text" readonly="readonly" value="<dict:itemdesc name="serialnumber" value="${claimid}" table="em_claim" path="id"/>">
+</td>
 </tr>
 <tr>
 <td width="120" class="right">图片地址：</td>

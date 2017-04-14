@@ -4,6 +4,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
 <%
 String keyword = (String)request.getAttribute("keyword");
 String uf_parentid = (String)request.getAttribute("uf_parentid");
@@ -19,16 +20,20 @@ if(uf_parentid==null) uf_parentid = "";
 <link type="text/css" rel="stylesheet" href="/admin/style/base.css" />
 <link type="text/css" rel="stylesheet" href="/admin/style/global.css" />
 <link href="/resources/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/resources/js/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="/resources/js/jquery-ui/themes/base/jquery.ui.autocomplete.css" rel="stylesheet" type="text/css" />
 <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript">var root = "";</script>
 <script type="text/javascript" src="/resources/js/admin.js"></script>
+<script type="text/javascript" src="/resources/js/common.js"></script>
+<script type="text/javascript" src="/resources/js/photo.js"></script>
 <title>案件列表</title>
 </head>
 <body id="right">
 <div class="operation o-h bg-f8">
 	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">案件列表</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<c:if test="${auth44 eq '1'}"><a href="/emClaim.do?method=blank&uf_parentid=${uf_parentid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增案件</a></c:if></div>
+		</div>
 	<div class="operationRight f-r">
 	</div>
 </div>
@@ -36,9 +41,10 @@ if(uf_parentid==null) uf_parentid = "";
 	 <form action="/emClaim.do?method=list" id="searchForm" name="searchForm" method="post">
 	 <thead>
 	 <tr class="title">
-	 <th width=10%>关键字</th>
+	 <th width=10%>案卷</th>
 	 <th width=80% align=left style="background-color:#ffffff;text-align:left;">
-	 	<input type="text" id="keyword" name="keyword" value="${keyword}">
+	 	<input type="hidden" id="keyword" name="keyword" value="${keyword}">
+	 	<input type="text" id="emClaimArchive" name="emClaimArchive" value="<dict:itemdesc name="claimarchivenumber" value="${keyword}" table="em_claimarchive" path="id"/>">
 	 </th>
 	 	<th width="20%" class="operationBtn">
 	 		<a href="javascript:submitform();"><i class="iconfont">&#xe608;</i>搜索</a>
@@ -51,17 +57,48 @@ if(uf_parentid==null) uf_parentid = "";
 	 </form>
 </table>
 
-	 
+<table width="100%">
+<tr>
+<td width="48%">
+<c:if test="${auth44 eq '1'}">
+<form id="commonForm" action="/emClaim.do?method=add" method="post">
+<input type="hidden" id="claimarchiveid" name="claimarchiveid" value="${keyword}">
+<input type="hidden" id="insuredid" name="insuredid">
+	<table>
+<tr>
+<td>序号</td>
+<td>被保人</td>
+<td>报案人电话</td>
+</tr>
+<tr>
+<td><input type="text" id="serialnumber" name="serialnumber" value="" style="width: 140px;"></td>
+<td><input type="text" id="emInsured" name="emInsured" value="" style="width: 140px;"></td>
+<td><input type="text" id="bardh" name="bardh" value="" style="width: 140px;"></td>
+</tr>
+
+		<tr>
+			<td colspan="3" class="right">
+<br/>
+				<input id="uf_parentid" name="uf_parentid" type="hidden" value="${uf_parentid}"/>
+				<input id="keyword" name="keyword" type="hidden" value="${keyword}"/>
+				<input id="m" name="m" type="hidden" value="${m}"/>
+				<input id="s" name="s" type="hidden" value="${s}"/>
+				<input type="button" class="btn1" value=" 提  交 " onclick="checkf()"/>
+			</td>
+		</tr>
+	</table>
+</form>
+</c:if>
+</td><td></td>
+<td width="48%">
 <form action="" id="op" name="op" method="get">
 <table class="tlist">
 	<thead>
 		<tr class="title">
-<th>案卷ID</th>
+<th>案卷</th>
 <th>序号</th>
 <th>被保人</th>
 <th>报案人电话</th>
-
-<th width="60">操作</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -70,18 +107,10 @@ if(uf_parentid==null) uf_parentid = "";
 <c:when test="${not empty resultRows}">
 <c:forEach var="item" items="${resultRows}">
 			<tr>
-<td>${item.claimarchiveid}</td>
+<td><dict:itemdesc name="claimarchivenumber" value="${item.claimarchiveid}" table="em_claimarchive" path="id"/></td>
 <td>${item.serialnumber}</td>
-<td>${item.insuredid}</td>
+<td><dict:itemdesc name="insuredname" value="${item.insuredid}" table="em_insured" path="id"/></td>
 <td>${item.bardh}</td>
-
-				<td width="250" class="operationBtn">
-				<c:if test="${auth44 eq '1'}"><a href="/emClaim.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
-					<a href="javascript:deleteClaim(${item.id}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
-				</c:if>
-				<c:if test="${auth44 ne '1'}"><a href="/emClaim.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
-				</c:if>
-				</td>
 			</tr>
 </c:forEach>
 </c:when>
@@ -202,6 +231,11 @@ if(uf_parentid==null) uf_parentid = "";
 <input type="hidden" name="m" value="${m }">
 <input type="hidden" name="s" value="${s }">
 </form>
+</td>
+</tr>
+</table>
+	 
+
 </body>
 <script type="text/javascript">
 function submitform(){
@@ -215,5 +249,32 @@ function deleteClaim(id){
 		
 	}
 }
+function checkf() {
+	if(commonForm.claimarchiveid.value=="" || commonForm.claimarchiveid.value!="" && !is_int(commonForm.claimarchiveid.value)) {alert("请正确输入案卷ID！");return false;}
+	if(commonForm.serialnumber.value=="") {alert("请正确输入序号！");return false;}
+	if(commonForm.insuredid.value=="" || commonForm.insuredid.value!="" && !is_int(commonForm.insuredid.value)) {alert("请正确输入被保人！");return false;}
+	if(commonForm.bardh.value=="") {alert("请正确输入报案人电话！");return false;}
+
+	document.getElementById("commonForm").submit() ;
+  
+}
+$(function() {
+	jQuery.curCSS = jQuery.css;
+    $("#emClaimArchive").autocomplete({
+    	source: "/emClaimArchive.do?method=autocomplete",
+	    select: function( event, ui ) {
+	    	$("#keyword").val(ui.item.id);
+	    	$("#claimarchiveid").val(ui.item.id);
+	    	
+	    }
+    });
+    $("#emInsured").autocomplete({
+    	source: "/emInsured.do?method=autocomplete",
+	    select: function( event, ui ) {
+	    	$("#insuredid").val(ui.item.id);
+	    	
+	    }
+    });
+ });
 </script>
 </html>

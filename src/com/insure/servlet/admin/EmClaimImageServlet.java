@@ -33,7 +33,8 @@ public class EmClaimImageServlet extends UserSecureDispatcher {
     	}
 		String uf_parentid = Putil.getString(request.getParameter("uf_parentid")) ;
 		request.setAttribute("uf_parentid", uf_parentid);
-
+		String claimid = Putil.getString(request.getParameter("claimid")) ;
+		request.setAttribute("claimid", claimid);
 		String keyword = Putil.getString(request.getParameter("keyword")) ;
 		int s = Putil.getInt(request.getParameter("s")); 
 		int m = Putil.getInt(request.getParameter("m")); 

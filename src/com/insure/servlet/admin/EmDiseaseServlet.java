@@ -257,5 +257,37 @@ public class EmDiseaseServlet extends UserSecureDispatcher {
     	return true;
     	
     }
+    
+    @Override
+    public void def(HttpServletRequest request, HttpServletResponse response)
+    		throws ServletException, IOException {
+
+		String keyword = Putil.getString(request.getParameter("term")) ;
+		List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
+		StringBuilder sql = new StringBuilder("select p.* from em_disease p where p.id>=0");
+		if(keyword.length() > 0){
+			sql.append(" and (p.diseasename like '%" + keyword + "%'");
+			sql.append(" or p.diseasecode like '%" + keyword + "%'");
+			sql.append(" or p.pinyin like '%" + keyword + "%'");
+			sql.append(")");
+		}
+		sql.append(" order by p.id desc limit 50");
+    	resultRows = DbUtils.query(sql.toString());
+		
+    	if(resultRows != null && !resultRows.isEmpty()){
+    		List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
+    		for (Map<String, Object> map : resultRows) {
+    			Map<String, Object> row = new HashMap<>();
+    			row.put("id", map.get("id"));
+    			row.put("label", map.get("diseasename"));
+    			row.put("value", map.get("diseasename"));
+    			rows.add(row);
+			}
+    		toJson(rows, response);
+    	}else {
+			toJson(new ArrayList<>(), response);
+		}
+    	
+    }
 }
 

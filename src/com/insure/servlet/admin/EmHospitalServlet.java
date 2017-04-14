@@ -271,11 +271,46 @@ public class EmHospitalServlet extends UserSecureDispatcher {
     }
     
     @Override
-    public void def(HttpServletRequest httpservletrequest, HttpServletResponse httpservletresponse)
+    public void def(HttpServletRequest request, HttpServletResponse response)
     		throws ServletException, IOException {
-		List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
-    	resultRows = DbUtils.query("select p.* from em_hospital p where p.id>=0");
-    	toJson(resultRows, httpservletresponse);
+    	  String method = request.getParameter("method");
+          if("autocomplete".equals(method)) {
+              autocomplate(request, response);
+          } else {
+        	  List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
+	          	resultRows = DbUtils.query("select p.* from em_hospital p where p.id>=0");
+	          	toJson(resultRows,  response);
+          }
+          
+    	
     }
+    
+    private void autocomplate(HttpServletRequest request, HttpServletResponse response) {
+    	String keyword = Putil.getString(request.getParameter("term")) ;
+		List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
+		StringBuilder sql = new StringBuilder("select p.* from em_hospital p where p.id>=0");
+		if(keyword.length() > 0){
+			sql.append(" and (p.hospitalname like '%" + keyword + "%'");
+			sql.append(" or p.hospitalcode like '%" + keyword + "%'");
+			sql.append(" or p.pinyin like '%" + keyword + "%'");
+			sql.append(")");
+		}
+		sql.append(" order by p.id desc limit 50");
+    	resultRows = DbUtils.query(sql.toString());
+		
+    	if(resultRows != null && !resultRows.isEmpty()){
+    		List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
+    		for (Map<String, Object> map : resultRows) {
+    			Map<String, Object> row = new HashMap<>();
+    			row.put("id", map.get("id"));
+    			row.put("label", map.get("hospitalname"));
+    			row.put("value", map.get("hospitalname"));
+    			rows.add(row);
+			}
+    		toJson(rows, response);
+    	}else {
+			toJson(new ArrayList<>(), response);
+		}
+	}
 }
 
