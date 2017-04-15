@@ -40,6 +40,8 @@ public class EmDetermineServlet extends UserSecureDispatcher {
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("m", m+"");
 		request.setAttribute("s", s+"");
+		request.setAttribute("claimtypeItems", claimtypeItems);
+		request.setAttribute("claimstatusItems", claimstatusItems);
 
 		forward(request, response, "/admin/DetermineAdd.jsp");
 	

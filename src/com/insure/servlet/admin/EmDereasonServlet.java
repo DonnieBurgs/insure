@@ -245,5 +245,38 @@ public class EmDereasonServlet extends UserSecureDispatcher {
     	return true;
     	
     }
+    
+    @Override
+    public void def(HttpServletRequest request, HttpServletResponse response)
+    		throws ServletException, IOException {
+    	autocomplate(request, response);
+    }
+    
+    private void autocomplate(HttpServletRequest request, HttpServletResponse response) {
+    	String keyword = Putil.getString(request.getParameter("term")) ;
+		List<Map<String, Object>> resultRows = new ArrayList<Map<String, Object>>();
+		StringBuilder sql = new StringBuilder("select p.* from em_dereason p where p.id>=0");
+		if(keyword.length() > 0){
+			sql.append(" and (p.dereasoncode like '%" + keyword + "%'");
+			sql.append(" or p.dereasonname like '%" + keyword + "%'");
+			sql.append(")");
+		}
+		sql.append(" order by p.id desc limit 50");
+    	resultRows = DbUtils.query(sql.toString());
+		
+    	if(resultRows != null && !resultRows.isEmpty()){
+    		List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
+    		for (Map<String, Object> map : resultRows) {
+    			Map<String, Object> row = new HashMap<>();
+    			row.put("id", map.get("id"));
+    			row.put("label", map.get("dereasonname"));
+    			row.put("value", map.get("dereasonname"));
+    			rows.add(row);
+			}
+    		toJson(rows, response);
+    	}else {
+			toJson(new ArrayList<>(), response);
+		}
+	}
 }
 

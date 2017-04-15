@@ -4,6 +4,8 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
+<%@ taglib prefix="util" uri="/WEB-INF/util.tld" %>
 <%
 String keyword = (String)request.getAttribute("keyword");
 String uf_parentid = (String)request.getAttribute("uf_parentid");
@@ -19,193 +21,54 @@ if(uf_parentid==null) uf_parentid = "";
 <link type="text/css" rel="stylesheet" href="/admin/style/base.css" />
 <link type="text/css" rel="stylesheet" href="/admin/style/global.css" />
 <link href="/resources/css/main.css" rel="stylesheet" type="text/css" />
-<link href="/resources/js/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-<link href="/resources/js/jquery-ui/themes/base/jquery.ui.autocomplete.css" rel="stylesheet" type="text/css" />
 <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript">var root = "";</script>
 <script type="text/javascript" src="/resources/js/admin.js"></script>
-<script type="text/javascript" src="/resources/js/common.js"></script><script type="text/javascript" src="/resources/js/My97DatePicker/config.js"></script>
-<script type="text/javascript" src="/resources/js/My97DatePicker/lang/zh-cn.js"></script>
-<link rel="stylesheet" type="text/css" href="/resources/js/My97DatePicker/skin/WdatePicker.css" />
-<link rel="stylesheet" type="text/css" href="/resources/js/My97DatePicker/skin/default/datepicker.css" />
-<script type="text/javascript" src="/resources/js/My97DatePicker/WdatePicker.js"></script>
 <title>理算列表</title>
-<style type="text/css">
-#fff input{width: 120px;}
-#fff span{color: red;}
-</style>
 </head>
 <body id="right">
 <div class="operation o-h bg-f8">
 	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">理算列表</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<!--<c:if test="${auth44 eq '1'}"><a href="/emDetermine.do?method=blank&uf_parentid=${uf_parentid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增理算</a></c:if>--></div>
+		<c:if test="${auth44 eq '1'}"><a href="/emDetermine.do?method=blank&uf_parentid=${uf_parentid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增理算</a></c:if></div>
 	<div class="operationRight f-r">
 	</div>
 </div>
 <table class="tlist">
+	 <form action="/emDetermine.do?method=list" id="searchForm" name="searchForm" method="post">
 	 <thead>
 	 <tr class="title">
-	 <th width=10%>案卷</th>
-	  <th width=30% align=left style="background-color:#ffffff;text-align:left;">
-	 	<input type="text" id="emClaimArchive" name="emClaimArchive" value="">
-	 </th>
-	 <th width=10%>案件</th>
-	 <th width=30% align=left style="background-color:#ffffff;text-align:left;">
-	 	<input type="text" id="emClaim" name="emClaim" value="">
+	 <th width=10%>关键字</th>
+	 <th width=80% align=left style="background-color:#ffffff;text-align:left;">
+	 	<input type="text" id="keyword" name="keyword" value="${keyword}">
 	 </th>
 	 	<th width="20%" class="operationBtn">
+	 		<a href="javascript:submitform();"><i class="iconfont">&#xe608;</i>搜索</a>
 	 	</th>
 	 </tr></thead>
+	 <tbody>
+
+	 </tbody>
+		<input id="uf_parentid" name="uf_parentid" type="hidden" value="${uf_parentid}"/>
+	 </form>
 </table>
 
-<table width="100%" id="fff">
-<tr>
-<td width="48%">
-<form id="commonForm" action="/emDetermine.do?method=add" method="post">
-	 	<input type="hidden" id="claimarchiveid" name="claimarchiveid" value="${claimarchiveid}">
-	 	<input type="hidden" id="claimid" name="claimid" value="${claimid}">
-<br/>
-<span>发票信息</span>
-	<table class="tform">
-		<tr>
-		<td>发票号</td><td colspan="3">医院名称</td>
-		</tr>
-		<tr>
-		<td><input type="text" id="receiptr_eceiptnumber" name="receiptr.receiptnumber" value=""></td>
-		<td colspan="3"><input type="hidden" id="receiptr_hospitalid" name="receiptr.hospitalid" value="">
-		<input type="text" id="emHospital" name="emHospital" value=""></td>
-		</tr>
-		<tr>
-		<td>就诊日期</td><td>住院日期</td><td>出院日期</td>
-		</tr>
-		<tr>
-		<td><input type="text" id="receiptr_visitdate" name="receiptr.visitdate" readonly="readonly" value="" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
-		<td><input type="text" id="receiptr_hospitaldate" name="receiptr.hospitaldate" readonly="readonly" value="" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
-		<td><input type="text" id="receiptr_dischargedate" name="receiptr.dischargedate" readonly="readonly" value="" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
-		</tr>
-		<tr>
-		<td>统筹金额</td><td>个人缴费</td><td>合计</td>
-		</tr>
-		<tr>
-		<td><input type="text" id="receiptr_fundpaid" name="receiptr.fundpaid" value=""></td>
-		<td><input type="text" id="receiptr_cashpaid" name="receiptr.cashpaid" value=""></td>
-		<td><input type="text" id="receiptr_total" name="receiptr.total" value=""></td>
-		</tr> 
-	</table>
-	<br/>
-<span>诊断信息</span>
-	<table class="tform">
-		<tr>
-		<td>疾病</td><td>赔付类型</td><td>赔付状态</td>
-		</tr>
-		<tr>
-		<td><input type="hidden" id="diseaseid" name="diseaseid" value=""><input type="text" id="emDisease" name="emDisease" value=""></td>
-		<td>
-		<select id="claimtype" name="claimtype">
-		<option value="">请选择</option>
-		<c:forEach var="it" items="${claimtypeItems }"><option value="${it.key }">${it.value}</option></c:forEach>
-		</select>
-		</td>
-		<td><select id="claimstatus" name="claimstatus">
-		<option value="">请选择</option>
-		<c:forEach var="it" items="${claimstatusItems }"><option value="${it.key }">${it.value}</option></c:forEach>
-		</select></td>
-		</tr>
-		<tr>
-		<td>床位费</td><td>他方赔付金额</td><td>公共保额</td>
-		</tr>
-		<tr>
-		<td><input type="text" id="cwfamount" name="cwfamount" value=""></td>
-		<td><input type="text" id="tfpfamount" name="tfpfamount" value=""></td>
-		<td><input type="text" id="sqamount" name="sqamount" value=""></td>
-		</tr>
-		<tr>
-		<td colspan="6">扣除原因</td>
-		</tr>
-		<tr>
-		<td colspan="6"><input type="text" id="dereason" name="dereason" value=""></td>
-		</tr> 
-	</table>
-	<br/>
-<span>医药费</span>
-	<table class="tform">
-		<tr>
-		<td>医药费</td><td>精神病医药费</td><td>自费医药费</td>
-		</tr>
-		<tr>
-		<td><input type="text" id="yyfamount" name="yyfamount" value=""></td>
-		<td><input type="text" id="jsbyyfamount" name="jsbyyfamount" value=""></td>
-		<td><input type="text" id="zfyyfamount" name="zfyyfamount" value=""></td>
-		</tr>
-		<tr>
-		<td>自费医药费说明</td><td>医药费剔除金额</td><td>医药费剔除说明</td>
-		</tr>
-		<tr>
-		<td><input type="text" id="fzyyfremark" name="fzyyfremark" value=""></td>
-		<td><input type="text" id="yyftcamount" name="yyftcamount" value=""></td>
-		<td><input type="text" id="yyfremark" name="yyfremark" value=""></td>
-		</tr>
-	</table>
-	<br/>
-<span>检查费</span>
-	<table class="tform">
-		<tr>
-		<td>检查费</td><td>高科技检查费</td><td>高科技检查结果</td>
-		</tr>
-		<tr>
-		<td><input type="text" id="jcfamount" name="jcfamount" value=""></td>
-		<td><input type="text" id="gkjjcfamount" name="gkjjcfamount" value=""></td>
-		<td>
-		<select id="gkjjcjgpool" name="gkjjcjgpool">
-		<option value="">请选择</option>
-		<option value="0">正常</option>
-		<option value="1">异常</option>
-		</select>
-		<input type="text" id="gkjjcjgpool" name="gkjjcjgpool" value=""></td>
-		</tr>
-		<tr>
-		<td>自费检查费</td><td>自费检查费说明</td><td>检查费剔除金额</td>
-		</tr>
-		<tr>
-		<td><input type="text" id="zfjcfamount" name="zfjcfamount" value=""></td>
-		<td><input type="text" id="zfjcfremark" name="zfjcfremark" value=""></td>
-		<td><input type="text" id="jcftcamount" name="jcftcamount" value=""></td>
-		</tr>
-		<tr>
-		<td colspan="6">检查费剔除说明</td>
-		</tr>
-		<tr>
-		<td colspan="6"><input type="text" id="jcftcremark" name="jcftcremark" value=""></td>
-		</tr> 
-	</table>
-	
-	<br/>
-	<br/>
-	<table>
-		<tr>
-			<td colspan="2">
-
-				<input id="uf_parentid" name="uf_parentid" type="hidden" value="${uf_parentid}"/>
-				<input id="keyword" name="keyword" type="hidden" value="${keyword}"/>
-				<input id="m" name="m" type="hidden" value="${m}"/>
-				<input id="s" name="s" type="hidden" value="${s}"/>
-				<input type="button" class="btn1" value=" 提  交 " onclick="checkf()"/>
-			</td>
-		</tr>
-	</table>
-</td>
-<td width="2%"></td>
-<td width="48%" valign="top">
+	 
 <form action="" id="op" name="op" method="get">
 <table class="tlist">
 	<thead>
 		<tr class="title">
 <th>案件ID</th>
-<th>疾病ID</th>
+<th>案件序号</th>
+<th>出险人</th>
+<th>发票号</th>
 <th>赔付类型</th>
-<th>赔付状态</th>
-<th>床位费</th>
+<th>疾病名称</th>
+<th>赔付金额</th>
+<th>赔付比例</th>
+<th>住院津贴</th>
+
+<th width="60">操作</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -213,12 +76,25 @@ if(uf_parentid==null) uf_parentid = "";
 <c:choose>
 <c:when test="${not empty resultRows}">
 <c:forEach var="item" items="${resultRows}">
+<c:set var="claim" value="${util:queryObject('em_claim','id',item.claimid)}" />
 			<tr>
 <td>${item.claimid}</td>
-<td>${item.diseaseid}</td>
-<td>${item.claimtype}</td>
-<td>${item.claimstatus}</td>
-<td>${item.cwfamount}</td>
+<td>${claim.serialnumber }</td>
+<td><dict:itemdesc name="insuredname" value="${claim.insuredid }" table="em_insured" path="id"/> <dict:itemdesc name="idnumber" value="${claim.insuredid }" table="em_insured" path="id"/></td>
+<td><dict:itemdesc name="receiptnumber" value="${item.insuredid }" table="em_receipt" path="id"/></td>
+<td>${claimtypeItems.get(item.claimtype)}</td>
+<td><dict:itemdesc name="diseasename" value="${item.diseaseid }" table="em_disease" path="id"/></td>
+<td>${item.tfpfamount}</td>
+<td></td>
+<td></td>
+
+				<td width="250" class="operationBtn">
+				<c:if test="${auth44 eq '1'}"><a href="/emDetermine.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
+					<a href="javascript:deleteDetermine(${item.id}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
+				</c:if>
+				<c:if test="${auth44 ne '1'}"><a href="/emDetermine.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
+				</c:if>
+				</td>
 			</tr>
 </c:forEach>
 </c:when>
@@ -329,9 +205,9 @@ if(uf_parentid==null) uf_parentid = "";
 	}
 %>
 	
-</form></td></tr> </table>
+</form>
 <form action="/emDetermine.do?method=delete" id="deleteForm" name="deleteForm" method="post">
-<input type="hidden" id="id" name="id" value="">
+<input type="hidden" id="determineid" name="determineid" value="">
 <input type="hidden" id="t" name="t" value="">
 <input type="hidden" name="uf_parentid" value="${uf_parentid}">
 <input type="hidden" name="key_isvalid" value="${key_isvalid }">
@@ -344,76 +220,13 @@ if(uf_parentid==null) uf_parentid = "";
 function submitform(){
 	searchForm.submit();
 }
-function deleteDetermine(id){
+function deleteDetermine(determineid){
 	if(confirm("是否删除会员资料？")) {
-		$("#id").val(id);
+		$("#determineid").val(determineid);
 		$("#t").val(t);
 		deleteForm.submit();
 		
 	}
 }
-function checkf() {
-	
-	
-	var claimid = $("#claimid").val();
-	if(claimid=="" || (claimid!="" && !is_int(claimid))) {alert("请正确输入案件ID！");return false;}
-	
-	if($("#receiptr_eceiptnumber").val() == "") {alert("请正确输入发票号！");return false;}
-	if($("#receiptr_hospitalid").val() == "") {alert("请正确输入医院ID！");return false;}
-	if($("#receiptr_visitdate").val() == "") {alert("请正确输入就诊日期！");return false;}
-	if($("#receiptr_hospitaldate").val() == "") {alert("请正确输入住院日期！");return false;}
-	if($("#receiptr_dischargedate").val() == "") {alert("请正确输入出院日期！");return false;}
-	var fundpaid = $("#receiptr_fundpaid").val();
-	alert(fundpaid);
-	alert(!is_float(fundpaid));
-	alert(!is_int(fundpaid));
-	if(fundpaid == "" || !(is_float(fundpaid) || is_int(fundpaid))) {alert("请正确输入统筹金额！");return false;}
-	var cashpaid = $("#receiptr_cashpaid").val();
-	if(cashpaid =="" || !(is_float(cashpaid) || is_int(cashpaid))) {alert("请正确输入个人缴费！");return false;}
-	var total = $("#receiptr_total").val();
-	if(total=="" || !(is_float(total) || is_int(total))) {alert("请正确输入合计！");return false;}
-
-	
-	if(commonForm.diseaseid.value=="" || commonForm.diseaseid.value!="" && !is_int(commonForm.diseaseid.value)) {alert("请正确输入疾病ID！");return false;}
-	if(commonForm.claimtype.value=="") {alert("请正确输入赔付类型！");return false;}
-	if(commonForm.claimstatus.value=="" || commonForm.claimstatus.value!="" && !is_int(commonForm.claimstatus.value)) {alert("请正确输入赔付状态！");return false;}
-
-
-	
-	
-	document.getElementById("commonForm").submit() ;
-  
-}
-$(function() {
-	jQuery.curCSS = jQuery.css;
-    $("#emClaimArchive").autocomplete({
-    	source: "/emClaimArchive.do?method=autocomplete",
-	    select: function( event, ui ) {
-	    	$("#claimarchiveid").val(ui.item.id);
-			var id = ui.item.id;
-			$("#claimid").val("");
-			$("#emClaim").val("");
-	        $("#emClaim").autocomplete({
-	        	source: "/emClaim.do?method=autocomplete&claimarchiveid=" + id,
-	    	    select: function( event, ui ) {
-	    	    	$("#claimid").val(ui.item.id);
-	    	    	
-	    	    }
-	        });
-	    }
-    });
-    $("#emDisease").autocomplete({
-    	source: "/emDisease.do?method=autocomplete",
-	    select: function( event, ui ) {
-	    	$("#diseaseid").val(ui.item.id);
-	    }
-    });
-    $("#emHospital").autocomplete({
-    	source: "/emHospital.do?method=autocomplete",
-	    select: function( event, ui ) {
-	    	$("#receiptr_hospitalid").val(ui.item.id);
-	    }
-    });
- });
 </script>
 </html>

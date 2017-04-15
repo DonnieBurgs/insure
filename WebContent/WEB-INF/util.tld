@@ -74,6 +74,18 @@
 
 	<function>
 		<description>
+      	${util:queryObject("表彰","匹配的字段",匹配的值) }
+    </description>
+		<name>queryObject</name>
+		<function-class>com.web.util.QueryUtils</function-class>
+		<function-signature>java.lang.String queryObject(java.lang.String,
+			java.lang.String, java.lang.String)</function-signature>
+		<example>
+      ${util:queryObject(value, value, value)}
+    </example>
+	</function>
+	<function>
+		<description>
       	${util:query("表彰","匹配的字段",匹配的值,"要显示的数据字段") }
     </description>
 		<name>query</name>
