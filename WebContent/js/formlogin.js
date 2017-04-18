@@ -142,7 +142,7 @@ $('.login-must input').blur(
 
 		});
 
-$('input[name="login-tel"]').on('focus input propertychange click', function() {// 清除数字以外的字符
+$('input[name="login-tel"]').focus(function() {// 清除数字以外的字符
 	tel = $(this).val()
 	var bbb = tel.replace(/[^\d]/g, "")
 	$(this).val(bbb)
@@ -299,21 +299,18 @@ function setupLogout() {
 }
 
 function loginformsubmit() {
-	$('#loginAlertStr').html("");
+	$('.form-error').text("");
 
 	if(loginformcheck()==0) {
 		$.ajax({ 
 		    type: "post", 
 		    url: "/emApp.do", 
 		    dataType: "json",
-		    data:{"method": "userLogin","mobile": logintel.value,"code": logintelCode.value,"ps": loginpassword.value},
+		    data:{"method": "userLogin","mobile": $('#login-tel').val(),"code": $('#login-telCode').val(),"ps": $('#login-password').val()},
 		    success: function (data) {
 		    	if(data.ret==1) {
 					$('#loginAlertStr').html(data.msg);
-					window.localStorage.setItem("uu", "" + data.data.userid);
-					setupL();
-					setTimeout('hideLoginBox()', 2300);
-		    		
+					window.location.href = "/admin";
 		    	} else {
 		    		$('#loginAlertStr').html(data.msg);
 		    	}

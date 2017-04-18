@@ -26,13 +26,13 @@ public class WebIndexServlet extends Dispatcher {
 	public void dispatcher(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
         String method = request.getParameter("method");
-        if("n".equals(method)) {
-        	forward(request,response,"/web/noLogin.jsp") ;
-        } else {
-        	index(request, response);
-        }
-		
-		
+//        if("n".equals(method)) {
+//        	forward(request,response,"/web/noLogin.jsp") ;
+//        } else {
+//        	index(request, response);
+//        }
+//		
+        index(request, response);
 	}
 		
 	private void index(HttpServletRequest request, HttpServletResponse response) {
@@ -44,11 +44,11 @@ public class WebIndexServlet extends Dispatcher {
 	      	} else {
 	    		request.setAttribute("islogin", "0");
 			}
-			List<Map<String, Object>> newsList = DbUtils.query("select p.* from em_news p where p.isshow=1 and p.isdelete=0"
-					+ " order by p.createdate desc limit 0,5"
-					);
-		
-    		request.setAttribute("newsList", newsList);
+//			List<Map<String, Object>> newsList = DbUtils.query("select p.* from em_news p where p.isshow=1 and p.isdelete=0"
+//					+ " order by p.createdate desc limit 0,5"
+//					);
+//		
+//    		request.setAttribute("newsList", newsList);
     		forward(request,response,"/web/index.jsp") ;
     		return ;
 		} catch (Exception e) {

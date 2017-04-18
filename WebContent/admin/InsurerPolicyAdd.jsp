@@ -52,44 +52,73 @@
 <table class="tform">
 <tr>
 <td width="120" class="right">姓名：</td>
-<td><input type="text" id="insured.insuredname" name="insured.insuredname" value="" size=50></td>
+<td><input type="text" id="insured.insuredname" name="insured.insuredname" value="${insured.insuredname }" size=50></td>
 <td width="120" class="right">性别：</td>
-<td><select name="insured.gender" id="insured.gender" class="select100">
-<option value="男">男</option>
-<option value="女">女</option>
+<td>
+<select name="insured.gender" id="insured.gender" class="select100">
+<option value="男" <c:if test="${insured.gender eq '男' }">selected="selected"</c:if>>男</option>
+<option value="女" <c:if test="${insured.gender eq '女'}">selected="selected"</c:if>>女</option>
 </select></td>
 </tr>
 <tr>
+<td width="120" class="right">证件类型：</td>
+<td colspan="3"><input type="text" id="insured.idtype" name="insured.idtype" value="${insured.idtype }" size=50></td>
+</tr>
+<tr>
 <td width="120" class="right">身份证：</td>
-<td><input type="text" id="insured.idnumber" name="insured.idnumber" value="" size=50></td>
+<td><input type="text" id="insured.idnumber" name="insured.idnumber" value="${insured.idnumber}" size=50></td>
 <td width="120" class="right">护照：</td>
-<td><input type="text" id="insured.passport" name="insured.passport" value="" size=50></td>
+<td><input type="text" id="insured.passport" name="insured.passport" value="${insured.passport }" size=50></td>
 </tr>
 <tr>
 <td width="120" class="right">出生年月：</td>
-<td colspan="3"><input type="text" id="insured.birthdate" name="insured.birthdate" readonly="readonly" value="" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
+<td colspan="3"><input type="text" id="insured.birthdate" name="insured.birthdate" readonly="readonly" value="${insured.birthdate_}" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
 </tr>
 <tr>
 <td width="120" class="right">工作单位：</td>
-<td><input type="text" id="insured.employer" name="insured.employer" value="" size=50></td>
+<td><input type="text" id="insured.employer" name="insured.employer" value="${insured.employer}" size=50></td>
 <td width="120" class="right">工号：</td>
-<td><input type="text" id="insured.jobnumber" name="insured.jobnumber" value="" size=50></td>
+<td><input type="text" id="insured.jobnumber" name="insured.jobnumber" value="${insured.jobnumber }" size=50></td>
+</tr>
+<tr>
+<td width="120" class="right">工龄：</td>
+<td><input type="text" id="insured.workage" name="insured.workage" value="${insured.workage}" size=50></td>
+<td width="120" class="right">科室：</td>
+<td><input type="text" id="insured.title" name="insured.title" value="${insured.title }" size=50></td>
+</tr>
+<tr>
+<td width="120" class="right">人员类别：</td>
+<td><input type="text" id="insured.insuredtype" name="insured.insuredtype" value="${insured.insuredtype}" size=50></td>
+<td width="120" class="right">年龄：</td>
+<td><input type="text" id="insured.age" name="insured.age" value="${insured.age }" size=50></td>
+</tr>
+<tr>
+<td width="120" class="right">开户行省：</td>
+<td><input type="text" id="insured.bankprovince" name="insured.bankprovince" value="${insured.bankprovince }" size=50></td>
+<td width="120" class="right">开户行市：</td>
+<td><input type="text" id="insured.bankcity" name="insured.bankcity" value="${insured.bankcity}" size=50></td>
+</tr>
+<tr>
+<td width="120" class="right">开户行支行：</td>
+<td><input type="text" id="insured.subbranch" name="insured.subbranch" value="${insured.subbranch }" size=50></td>
+<td width="120" class="right">银行账号：</td>
+<td><input type="text" id="insured.accountnumber" name="insured.accountnumber" value="${insured.accountnumber }" size=50></td>
 </tr>
 <tr>
 <td width="120" class="right">开户行：</td>
-<td><input type="text" id="insured.bankname" name="insured.bankname" value="" size=50></td>
+<td><input type="text" id="insured.bankname" name="insured.bankname" value="${insured.bankname }" size=50></td>
 <td width="120" class="right">账户名：</td>
-<td><input type="text" id="insured.accountname" name="insured.accountname" value="" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right">银行账号：</td>
-<td colspan="3"><input type="text" id="insured.accountnumber" name="insured.accountnumber" value="" size=50></td>
+<td><input type="text" id="insured.accountname" name="insured.accountname" value="${insured.accountname}" size=50></td>
 </tr>
 <tr>
 <td width="120" class="right">电子邮件：</td>
-<td><input type="text" id="insured.email" name="insured.email" value="" size=50></td>
+<td><input type="text" id="insured.email" name="insured.email" value="${insured.email }" size=50></td>
 <td width="120" class="right">机构：</td>
-<td><input type="text" id="insured.department" name="insured.department" value="" size=50></td>
+<td><input type="text" id="insured.department" name="insured.department" value="${insured.department }" size=50></td>
+</tr>
+<tr>
+<td width="120" class="right">手机号：</td>
+<td colspan="3"><input type="text" id="insured.mobile" name="insured.mobile" value="${insured.mobile }" size=50></td>
 </tr>
 </table>
 <br/><br/>

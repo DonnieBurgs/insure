@@ -580,6 +580,14 @@
 		<servlet-name>emSyslogtype</servlet-name>
 		<url-pattern>/emSyslogtype.do</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>emData</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emData</servlet-name>
+		<url-pattern>/emData.do</url-pattern>
+	</servlet-mapping>
 	
 	
 	<session-config>

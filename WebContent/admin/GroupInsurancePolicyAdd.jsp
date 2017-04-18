@@ -68,7 +68,7 @@
 <td><dict:select path="policyid" name="id" label="policyname" defaultValue="true" table="em_policy" />
 </td>
 <td width="120" class="right">意外险保单号：</td>
-<td><input type="text" id="ywxpolicynumb" name="ywxpolicynumb" value="" size=50></td>
+<td colspan="3"><input type="text" id="ywxpolicynumb" name="ywxpolicynumb" value="" size=50></td>
 </tr>
 
 		<tr>

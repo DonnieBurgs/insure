@@ -13,6 +13,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -522,25 +523,37 @@ public class ExcelReader {
 //    }
     
     @SuppressWarnings("static-access")
-    private String getValue(XSSFCell xssfRow) {
+    public static String getValue(Cell cell) {
+    	if(cell==null) return "";
+        if (cell.getCellType() == cell.CELL_TYPE_BOOLEAN) {
+            return String.valueOf(cell.getBooleanCellValue()).trim();
+        } else if (cell.getCellType() == cell.CELL_TYPE_NUMERIC) {
+            return String.valueOf(cell.getNumericCellValue()).trim();
+        } else {
+            return String.valueOf(cell.getStringCellValue()).trim();
+        }
+    }
+    
+    @SuppressWarnings("static-access")
+    public static String getValue(XSSFCell xssfRow) {
     	if(xssfRow==null) return "";
         if (xssfRow.getCellType() == xssfRow.CELL_TYPE_BOOLEAN) {
-            return String.valueOf(xssfRow.getBooleanCellValue());
+            return String.valueOf(xssfRow.getBooleanCellValue()).trim();
         } else if (xssfRow.getCellType() == xssfRow.CELL_TYPE_NUMERIC) {
-            return String.valueOf(xssfRow.getNumericCellValue());
+            return String.valueOf(xssfRow.getNumericCellValue()).trim();
         } else {
-            return String.valueOf(xssfRow.getStringCellValue());
+            return String.valueOf(xssfRow.getStringCellValue()).trim();
         }
     }
 
     @SuppressWarnings("static-access")
-    private String getValue(HSSFCell hssfCell) {
+    public static String getValue(HSSFCell hssfCell) {
         if (hssfCell.getCellType() == hssfCell.CELL_TYPE_BOOLEAN) {
-            return String.valueOf(hssfCell.getBooleanCellValue());
+            return String.valueOf(hssfCell.getBooleanCellValue()).trim();
         } else if (hssfCell.getCellType() == hssfCell.CELL_TYPE_NUMERIC) {
-            return String.valueOf(hssfCell.getNumericCellValue());
+            return String.valueOf(hssfCell.getNumericCellValue()).trim();
         } else {
-            return String.valueOf(hssfCell.getStringCellValue());
+            return String.valueOf(hssfCell.getStringCellValue()).trim();
         }
     }
     

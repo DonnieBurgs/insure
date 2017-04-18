@@ -39,11 +39,11 @@ if(authorityno==null) authorityno = "" ;
             </a>
             <ul class="twoLevel-menu o-h">
                 <li>
-                    <a class="d-ib" data-cookie="投保公司" target="iframe" href="/emInsurerCompany.do?method=list"><span class="fs-14">投保公司</span></a>
+                    <a class="d-ib" data-cookie="投保公司" target="iframe" href="/emApplicantCompany.do?method=list"><span class="fs-14">投保公司</span></a>
                     <a class="d-ib" data-cookie="方案管理" target="iframe" href="/emPolicy.do?method=list"><span class="fs-14">方案管理</span></a>
                     <a class="d-ib" data-cookie="团保方案" target="iframe" href="/emGroupInsurancePolicy.do?method=list"><span class="fs-14">团保方案</span></a>
                     <a class="d-ib" data-cookie="个人保单管理" target="iframe" href="/emInsurerPolicy.do?method=list"><span class="fs-14">个人保单管理</span></a>
-                    <a class="d-ib" data-cookie="承保公司" target="iframe" href="/emApplicantCompany.do?method=list"><span class="fs-14">承保公司</span></a>
+                    <a class="d-ib" data-cookie="承保公司" target="iframe" href="/emInsurerCompany.do?method=list"><span class="fs-14">承保公司</span></a>
                 </li>
             </ul>
         </li>
@@ -54,7 +54,7 @@ if(authorityno==null) authorityno = "" ;
             </a>
             <ul class="twoLevel-menu o-h">
                 <li>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">保全导入</span></a>
+                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emData.do?method=blank"><span class="fs-14">保全导入</span></a>
                     <a class="d-ib" data-cookie="报表导出" target="iframe" href="/emOrder.do?method=list&key_status=1"><span class="fs-14">报表导出</span></a>
                 </li>
             </ul>
