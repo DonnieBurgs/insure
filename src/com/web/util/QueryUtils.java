@@ -1,6 +1,7 @@
 package com.web.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class QueryUtils {
 
 	public static Map<String, Object> queryObject(String table, String path, String value) {
 		String key = String.format("%s_%s_%s", table, path, value);
-		Map<String, Object> result = null;
+		Map<String, Object> result = new HashMap<>();
 
 		if (System.currentTimeMillis() - queryTime > 5000)
 			cache.clear();

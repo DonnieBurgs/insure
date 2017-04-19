@@ -55,7 +55,7 @@ if(authorityno==null) authorityno = "" ;
             <ul class="twoLevel-menu o-h">
                 <li>
                     <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emData.do?method=blank"><span class="fs-14">保全导入</span></a>
-                    <a class="d-ib" data-cookie="报表导出" target="iframe" href="/emOrder.do?method=list&key_status=1"><span class="fs-14">报表导出</span></a>
+                    <a class="d-ib" data-cookie="报表导出" target="iframe" href="/emDataExport.do?method=blank"><span class="fs-14">报表导出</span></a>
                 </li>
             </ul>
         </li>
@@ -72,6 +72,22 @@ if(authorityno==null) authorityno = "" ;
                     <a class="d-ib" data-cookie="理算复核" target="iframe" href="/emDetermine.do?method=list"><span class="fs-14">理算复核</span></a>
                     <a class="d-ib" data-cookie="案件列表" target="iframe" href="/emClaim.do?method=list"><span class="fs-14">案件列表</span></a>
                     <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emDetermine.do?method=list"><span class="fs-14">理赔列表</span></a>
+                    <a class="d-ib" data-cookie="影像件上传" target="iframe" href="/emClaim.do?method=image"><span class="fs-14">影像件上传</span></a>
+                </li>
+            </ul>
+        </li>
+        <li class="twoLevel-menu-box">
+            <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">
+                <i class="iconfont list">&#xe6bc;</i><span class="fw-6 fs-14">理赔管理2</span>
+                <i class="iconfont icon-arrow p-a">&#xe687;</i>
+            </a>
+            <ul class="twoLevel-menu o-h">
+                <li>
+                    <a class="d-ib" data-cookie="案卷列表" target="iframe" href="/emClaimArchive.do?method=list"><span class="fs-14">案卷列表</span></a>
+                    <a class="d-ib" data-cookie="案件列表" target="iframe" href="/emClaim.do?method=list"><span class="fs-14">案件列表</span></a>
+                    <a class="d-ib" data-cookie="费用项列表" target="iframe" href="/emFee.do?method=list"><span class="fs-14">费用项列表</span></a>
+                    <a class="d-ib" data-cookie="案件受理" target="iframe" href="/emClaim.do?method=blank"><span class="fs-14">案件受理</span></a>
+                    <a class="d-ib" data-cookie="理算录入2" target="iframe" href="/emClaim2.do?method=list"><span class="fs-14">理算录入</span></a>
                     <a class="d-ib" data-cookie="影像件上传" target="iframe" href="/emClaim.do?method=image"><span class="fs-14">影像件上传</span></a>
                 </li>
             </ul>
