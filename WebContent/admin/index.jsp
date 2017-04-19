@@ -22,7 +22,7 @@ if(authorityno==null) authorityno = "" ;
 
 <body>
 <div class="header fs-14 p-f w1">
-	<div class="logo f-l"><!-- <a class="d-ib w1" href="/"><i class="iconfont c-f fs-34">&#xe676;</i><span class="fs-20 fw-6">医疗快线</span></a> --></div>
+	<div class="logo f-l"><a class="d-ib w1" href="/"><img src="/resources/images/logo.png" width="100" style="margin-top:20px;margin-left:50px;"/></a> </div>
     <ul class="nav f-r lif-l">
     	<li><a href="/">首页</a></li>
         <li><a href="#">${username }</a></li>
@@ -86,21 +86,6 @@ if(authorityno==null) authorityno = "" ;
                     <a class="d-ib" data-cookie="拒赔原因" target="iframe" href="/emDereason.do?method=list"><span class="fs-14">拒赔原因</span></a>
                     <a class="d-ib" data-cookie="疾病库" target="iframe" href="/emDisease.do?method=list"><span class="fs-14">疾病库</span></a>
                     <a class="d-ib" data-cookie="医院" target="iframe" href="/emHospital.do?method=list"><span class="fs-14">医院</span></a>
-                </li>
-            </ul>
-        </li>
-        <li class="twoLevel-menu-box">
-            <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">
-                <i class="iconfont list">&#xe6bc;</i><span class="fw-6 fs-14">用户管理</span>
-                <i class="iconfont icon-arrow p-a">&#xe687;</i>
-            </a>
-            <ul class="twoLevel-menu o-h">
-                <li>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">在线用户</span></a>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">菜单</span></a>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">角色</span></a>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">用户组</span></a>
-                    <a class="d-ib" data-cookie="保全导入" target="iframe" href="/emOrder.do?method=list"><span class="fs-14">用户</span></a>
                 </li>
             </ul>
         </li>
@@ -202,24 +187,7 @@ if(authorityno==null) authorityno = "" ;
                 </li>
             </ul>
     
-        </li>-->
-        <ol class="fs-12">管理</ol>
-        <li class="twoLevel-menu-box">
-            <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">
-                <i class="iconfont list">&#xe638;</i><span class="fw-6 fs-14">消息中心</span>
-                <i class="iconfont icon-arrow p-a">&#xe687;</i>
-            </a>
-            <ul class="twoLevel-menu o-h">
-                <li>
-                    <a class="d-ib" data-cookie="系统消息" target="iframe" href="/emTransType.do?method=list"><span class="fs-14">系统消息</span></a>
-                    <a class="d-ib" data-cookie="推广消息" target="iframe" href="/emTransType.do?method=list"><span class="fs-14">推广消息</span></a>
-                    <a class="d-ib" data-cookie="订单通知" target="iframe" href="/emTransType.do?method=list"><span class="fs-14">订单通知</span></a>
-                    <a class="d-ib" data-cookie="客服消息" target="iframe" href="/emMessageMan.do?method=list"><span class="fs-14">客服消息</span></a>
-                    <a class="d-ib" data-cookie="公告" target="iframe" href="/emNotice.do?method=list"><span class="fs-14">公告</span></a>
-                </li>
-            </ul>
-        </li>
-        <li><a class="d-ib" data-cookie="统计" target="iframe" href="/emTransType.do?method=list"><i class="iconfont list">&#xe7a5;</i><span class="fw-6 fs-14">统计</span></a></li>
+        </li>--> 
         <ol class="fs-12">管理</ol>
         <li>
             <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">

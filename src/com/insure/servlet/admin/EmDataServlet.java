@@ -246,6 +246,7 @@ public class EmDataServlet extends Dispatcher {
 		connection.commit();
 		connection.setAutoCommit(true);
 		connection.close();
+		cacheMap.clear();
 		return i;
 	}
 
@@ -276,9 +277,14 @@ public class EmDataServlet extends Dispatcher {
 		}
 		return new Date(0);
 	}
+	
+	final HashMap<String, long[] > cacheMap = new HashMap<>();
 
 	long[] queryInfos(String applicantcompanyname, String policynumber, String ywxpolicynumb, String insurancegroupname,
 			String insurancename) {
+		String key = String.format("%s%s%s%s%s", applicantcompanyname, policynumber, ywxpolicynumb, insurancegroupname, insurancename);
+		if(cacheMap.containsKey(key))
+			return cacheMap.get(key);
 		String sql = "SELECT a.id aid, b.id bid, c.id cid FROM emt.em_applicantCompany d, emt.em_groupinsurancepolicy a, emt.em_insurancegroup b, emt.em_insurance c \n"
 				+ "where d.id = a.applicantcompanyid and a.id = b.policyid and a.id = c.policyid \n"
 				+ " and d.applicantcompanyname = '" + applicantcompanyname + "'" + " and a.policynumber = '"
@@ -296,6 +302,7 @@ public class EmDataServlet extends Dispatcher {
 			rs = statement.executeQuery(sql);
 			if (rs.next()) {
 				result = new long[] { rs.getLong("aid"), rs.getLong("bid"), rs.getLong("cid") };
+				cacheMap.put(key, result);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

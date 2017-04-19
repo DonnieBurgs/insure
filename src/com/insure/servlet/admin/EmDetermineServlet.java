@@ -125,6 +125,9 @@ public class EmDetermineServlet extends UserSecureDispatcher {
 			String zfjcfremark = Putil.getString(request.getParameter("zfjcfremark"));
 			float jcftcamount = Putil.getFloat(request.getParameter("jcftcamount"));
 			String jcftcremark = Putil.getString(request.getParameter("jcftcremark"));
+			String mentalillnessamount = Putil.getString(request.getParameter("mentalillnessamount"));
+			String dentistryamount = Putil.getString(request.getParameter("dentistryamount"));
+			String rehabilitationamount = Putil.getString(request.getParameter("rehabilitationamount"));
 
 
 
@@ -132,7 +135,7 @@ public class EmDetermineServlet extends UserSecureDispatcher {
 
 
 			
-			StringBuilder select = new StringBuilder("insert into em_determine (claimid,diseaseid,claimtype,claimstatus,cwfamount,tfpfamount,sqamount,dereason,yyfamount,jsbyyfamount,zfyyfamount,fzyyfremark,yyftcamount,yyfremark,jcfamount,gkjjcfamount,gkjjcjgpool,zfjcfamount,zfjcfremark,jcftcamount,jcftcremark) values ("
+			StringBuilder select = new StringBuilder("insert into em_determine (claimid,diseaseid,claimtype,claimstatus,cwfamount,tfpfamount,sqamount,dereason,yyfamount,jsbyyfamount,zfyyfamount,fzyyfremark,yyftcamount,yyfremark,jcfamount,gkjjcfamount,gkjjcjgpool,zfjcfamount,zfjcfremark,jcftcamount,jcftcremark,mentalillnessamount,dentistryamount,rehabilitationamount) values ("
 				+ "" + claimid + ""
 				+ "," + diseaseid + ""
 				+ ",'" + claimtype.replace("'", "''") + "'"
@@ -154,6 +157,9 @@ public class EmDetermineServlet extends UserSecureDispatcher {
 				+ ",'" + zfjcfremark.replace("'", "''") + "'"
 				+ "," + jcftcamount + ""
 				+ ",'" + jcftcremark.replace("'", "''") + "'"
+				+ "," + mentalillnessamount + ""
+				+ "," + dentistryamount + ""
+				+ "," + rehabilitationamount + ""
 				+ ")"
 			);
 
@@ -227,6 +233,9 @@ public class EmDetermineServlet extends UserSecureDispatcher {
 			String zfjcfremark = Putil.getString(request.getParameter("zfjcfremark"));
 			float jcftcamount = Putil.getFloat(request.getParameter("jcftcamount"));
 			String jcftcremark = Putil.getString(request.getParameter("jcftcremark"));
+			String mentalillnessamount = Putil.getString(request.getParameter("mentalillnessamount"));
+			String dentistryamount = Putil.getString(request.getParameter("dentistryamount"));
+			String rehabilitationamount = Putil.getString(request.getParameter("rehabilitationamount"));
 
 
 
@@ -254,6 +263,10 @@ public class EmDetermineServlet extends UserSecureDispatcher {
 					+ ",zfjcfremark='" + zfjcfremark.replace("'", "''") + "'"
 					+ ",jcftcamount=" + jcftcamount + ""
 					+ ",jcftcremark='" + jcftcremark.replace("'", "''") + "'"
+
+					+ ",mentalillnessamount=" + mentalillnessamount + ""
+					+ ",dentistryamount=" + dentistryamount + ""
+					+ ",rehabilitationamount=" + rehabilitationamount + ""
 				+ " where id=" + id + "" 
 			);
 			int result = DbUtils.save(select.toString());

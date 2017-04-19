@@ -15,10 +15,9 @@
 <link type="text/css" rel="stylesheet" href="/admin/style/base.css" />
 <link type="text/css" rel="stylesheet" href="/admin/style/global.css" />
 <link href="/resources/css/main.css" rel="stylesheet" type="text/css" />
-<link href="/resources/js/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-<link href="/resources/js/jquery-ui/themes/base/jquery.ui.autocomplete.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/resources/jquery/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
+<link href="/resources/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/resources/js/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/resources/js/xheditor/xheditor-zh-cn.min.js"></script>
 <script type="text/javascript">var root = "";</script>
 <script type="text/javascript" src="/resources/js/admin.js"></script>

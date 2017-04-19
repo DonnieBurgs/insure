@@ -4,6 +4,8 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
+<%@ taglib prefix="util" uri="/WEB-INF/util.tld" %>
 <%
 String keyword = (String)request.getAttribute("keyword");
 String uf_parentid = (String)request.getAttribute("uf_parentid");
@@ -19,10 +21,9 @@ if(uf_parentid==null) uf_parentid = "";
 <link type="text/css" rel="stylesheet" href="/admin/style/base.css" />
 <link type="text/css" rel="stylesheet" href="/admin/style/global.css" />
 <link href="/resources/css/main.css" rel="stylesheet" type="text/css" />
-<link href="/resources/js/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-<link href="/resources/js/jquery-ui/themes/base/jquery.ui.autocomplete.css" rel="stylesheet" type="text/css" />
 <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
+<link href="/resources/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/resources/js/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">var root = "";</script>
 <script type="text/javascript" src="/resources/js/admin.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script><script type="text/javascript" src="/resources/js/My97DatePicker/config.js"></script>
@@ -48,11 +49,11 @@ if(uf_parentid==null) uf_parentid = "";
 	 <tr class="title">
 	 <th width=10%>案卷</th>
 	  <th width=30% align=left style="background-color:#ffffff;text-align:left;">
-	 	<input type="text" id="emClaimArchive" name="emClaimArchive" value="">
+	 	<input type="text" id="emClaimArchive" name="emClaimArchive" value="<dict:itemdesc name="claimarchivenumber" value="${claimarchiveid }" table="em_claimarchive" path="id"/>">
 	 </th>
 	 <th width=10%>案件</th>
 	 <th width=30% align=left style="background-color:#ffffff;text-align:left;">
-	 	<input type="text" id="emClaim" name="emClaim" value="">
+	 	<input type="text" id="emClaim" name="emClaim" value="<dict:itemdesc name="serialnumber" value="${claimid }" table="em_claim" path="id"/>">
 	 </th>
 	 	<th width="20%" class="operationBtn">
 	 	</th>

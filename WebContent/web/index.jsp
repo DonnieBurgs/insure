@@ -46,26 +46,14 @@
                   <td height="149">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td height="80" align="right" valign="top"><img src="<%=request.getContextPath()%>/resources/images/logo.png" width="279" height="68"/></td>
+                  <td height="80" align="right" valign="top"><img src="<%=request.getContextPath()%>/resources/images/logo.png" width="279"/></td>
                 </tr>
                 <tr>
                   <td height="198" align="right" valign="top"><table width="400" border="0" cellpadding="0" cellspacing="0">
                     <tr>
-                      <td width="35%">&nbsp;</td>
-                      <td height="25" colspan="2" class="left_txt"><p>1- 优扬高尔夫办公自动化OA系统...</p></td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td height="25" colspan="2" class="left_txt"><p>2- 优扬在线专业后台管理系统...</p></td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;</td>
-                      <td height="25" colspan="2" class="left_txt"><p>3- 优扬呼叫中心会员/订单管理系统...</p></td>
-                    </tr>
-                    <tr>
                       <td>&nbsp;</td>
                       <td width="30%" height="40" class="left_txt"><img src="<%=request.getContextPath()%>/resources/images/icon-demo.gif" width="16" height="16" align="absmiddle"/> <a href="help.doc" target="_blank" class="left_txt3">使用说明</a></td>
-                      <td width="35%" class="left_txt"><img src="<%=request.getContextPath()%>/resources/images/icon-login-seaver.gif" width="16" height="16" align="absmiddle"/> <a href="tencent://message/?uin=81542097&Site=优扬后台管理系统&Menu=yes" target="_blank class="left_txt3">在线客服</a></td>
+                      <td width="35%" class="left_txt"><img src="<%=request.getContextPath()%>/resources/images/icon-login-seaver.gif" width="16" height="16" align="absmiddle"/> <a href="tencent://message/?uin=81542097&Site=后台管理系统&Menu=yes" target="_blank class="left_txt3">在线客服</a></td>
                     </tr>
                   </table></td>
                 </tr>
@@ -77,7 +65,7 @@
         <td width="50%" valign="bottom"><table width="100%" height="59" border="0" align="center" cellpadding="0" cellspacing="0">
             <tr>
               <td width="4%">&nbsp;</td>
-              <td width="96%" height="38"><span class="login_txt_bt">登陆优扬后台管理系统</span></td>
+              <td width="96%" height="38"><span class="login_txt_bt">康群健康后台管理系统</span></td>
             </tr>
             <tr>
               <td>&nbsp;</td>
@@ -125,7 +113,7 @@
   <tr>
     <td height="20"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="login-buttom-bg">
       <tr>
-        <td align="center"><span class="login-buttom-txt">Copyright &copy; 2003-2011 广州优扬高尔夫管理顾问有限公司</span></td>
+        <td align="center"><span class="login-buttom-txt">Copyright &copy; 2017-2017 康群健康有限公司</span></td>
       </tr>
     </table></td>
   </tr>

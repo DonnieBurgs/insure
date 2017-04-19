@@ -26,7 +26,7 @@ public class DbUtils2 {
 		try {
 			InitialContext ctx = new InitialContext();
 			Context context = (Context) ctx.lookup("java:comp/env");
-			DataSource dataSource = (DataSource)context.lookup("emt");
+			DataSource dataSource = (DataSource)context.lookup("insure");
 			//javax.naming.Context ctx = new javax.naming.InitialContext();
 			//javax.sql.DataSource ds = (javax.sql.DataSource)ctx.lookup("emt");
 			return dataSource;

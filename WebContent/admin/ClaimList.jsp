@@ -4,6 +4,8 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
+<%@ taglib prefix="util" uri="/WEB-INF/util.tld" %>
 <%
 String keyword = (String)request.getAttribute("keyword");
 String uf_parentid = (String)request.getAttribute("uf_parentid");
@@ -70,16 +72,16 @@ if(uf_parentid==null) uf_parentid = "";
 <c:when test="${not empty resultRows}">
 <c:forEach var="item" items="${resultRows}">
 			<tr>
-<td>${item.claimarchiveid}</td>
+<td><dict:itemdesc name="claimarchivenumber" table="em_claimarchive" value="${item.claimarchiveid }" path="id"/></td>
 <td>${item.serialnumber}</td>
-<td>${item.insuredid}</td>
+<td><dict:itemdesc name="insuredname" table="em_insured" value="${item.insuredid }" path="id"/></td>
 <td>${item.bardh}</td>
 
 				<td width="250" class="operationBtn">
-				<c:if test="${auth44 eq '1'}"><a href="/emClaim.do?method=fill&claimid=${item.claimid}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
-					<a href="javascript:deleteClaim(${item.claimid}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
+				<c:if test="${auth44 eq '1'}"><a href="/emClaim.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
+					<a href="javascript:deleteClaim(${item.id}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
 				</c:if>
-				<c:if test="${auth44 ne '1'}"><a href="/emClaim.do?method=fill&claimid=${item.claimid}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
+				<c:if test="${auth44 ne '1'}"><a href="/emClaim.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
 				</c:if>
 				</td>
 			</tr>

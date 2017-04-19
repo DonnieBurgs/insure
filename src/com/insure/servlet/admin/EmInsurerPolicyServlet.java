@@ -78,27 +78,27 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 		//先保存被保险人
 		int insuredID=0;
 		try {
-			String insuredname = Putil.getString(request.getParameter("insuredname"));
-			String gender = Putil.getString(request.getParameter("gender"));
-			String idtype = Putil.getString(request.getParameter("idtype"));
-			String idnumber = Putil.getString(request.getParameter("idnumber"));
-			String passport = Putil.getString(request.getParameter("passport"));
-			String birthdate = Putil.getString(request.getParameter("birthdate"));
-			String insuredtype = Putil.getString(request.getParameter("insuredtype"));
-			String age = Putil.getString(request.getParameter("age"));
-			String workage = Putil.getString(request.getParameter("workage"));
-			String employer = Putil.getString(request.getParameter("employer"));
-			String jobnumber = Putil.getString(request.getParameter("jobnumber"));
-			String bankname = Putil.getString(request.getParameter("bankname"));
-			String bankprovince = Putil.getString(request.getParameter("bankprovince"));
-			String bankcity = Putil.getString(request.getParameter("bankcity"));
-			String subbranch = Putil.getString(request.getParameter("subbranch"));
-			String accountname = Putil.getString(request.getParameter("accountname"));
-			String accountnumber = Putil.getString(request.getParameter("accountnumber"));
-			String mobile = Putil.getString(request.getParameter("mobile"));
-			String email = Putil.getString(request.getParameter("email"));
-			String department = Putil.getString(request.getParameter("department"));
-			String title = Putil.getString(request.getParameter("title"));
+			String insuredname = Putil.getString(request.getParameter("insured.insuredname"));
+			String gender = Putil.getString(request.getParameter("insured.gender"));
+			String idtype = Putil.getString(request.getParameter("insured.idtype"));
+			String idnumber = Putil.getString(request.getParameter("insured.idnumber"));
+			String passport = Putil.getString(request.getParameter("insured.assport"));
+			String birthdate = Putil.getString(request.getParameter("insured.birthdate"));
+			String insuredtype = Putil.getString(request.getParameter("insured.insuredtype"));
+			String age = Putil.getString(request.getParameter("insured.age"));
+			String workage = Putil.getString(request.getParameter("insured.workage"));
+			String employer = Putil.getString(request.getParameter("insured.employer"));
+			String jobnumber = Putil.getString(request.getParameter("insured.jobnumber"));
+			String bankname = Putil.getString(request.getParameter("insured.bankname"));
+			String bankprovince = Putil.getString(request.getParameter("insured.bankprovince"));
+			String bankcity = Putil.getString(request.getParameter("insured.bankcity"));
+			String subbranch = Putil.getString(request.getParameter("insured.subbranch"));
+			String accountname = Putil.getString(request.getParameter("insured.accountname"));
+			String accountnumber = Putil.getString(request.getParameter("insured.accountnumber"));
+			String mobile = Putil.getString(request.getParameter("minsured.obile"));
+			String email = Putil.getString(request.getParameter("insured.email"));
+			String department = Putil.getString(request.getParameter("dinsured.epartment"));
+			String title = Putil.getString(request.getParameter("insured.title"));
 			
 			StringBuilder select = new StringBuilder("insert into em_insured (insuredname,gender,idtype,idnumber,passport,birthdate,insuredtype,age,workage,employer,jobnumber,bankname,bankprovince,bankcity,subbranch,accountname,accountnumber,mobile,email,department,title) values ("
 					+ "'" + insuredname.replace("'", "''") + "'"
@@ -223,37 +223,56 @@ public class EmInsurerPolicyServlet extends UserSecureDispatcher {
 		request.setAttribute("s", s+"");
 
 		try {
+
 			String id = Putil.getString(request.getParameter("insuredid")) ;
 			String insuredname = Putil.getString(request.getParameter("insured.insuredname"));
 			String gender = Putil.getString(request.getParameter("insured.gender"));
+			String idtype = Putil.getString(request.getParameter("insured.idtype"));
 			String idnumber = Putil.getString(request.getParameter("insured.idnumber"));
 			String passport = Putil.getString(request.getParameter("insured.passport"));
 			String birthdate = Putil.getString(request.getParameter("insured.birthdate"));
+			String insuredtype = Putil.getString(request.getParameter("insured.insuredtype"));
+			String age = Putil.getString(request.getParameter("insured.age"));
+			String workage = Putil.getString(request.getParameter("insured.workage"));
 			String employer = Putil.getString(request.getParameter("insured.employer"));
 			String jobnumber = Putil.getString(request.getParameter("insured.jobnumber"));
 			String bankname = Putil.getString(request.getParameter("insured.bankname"));
+			String bankprovince = Putil.getString(request.getParameter("insured.bankprovince"));
+			String bankcity = Putil.getString(request.getParameter("insured.bankcity"));
+			String subbranch = Putil.getString(request.getParameter("insured.subbranch"));
 			String accountname = Putil.getString(request.getParameter("insured.accountname"));
 			String accountnumber = Putil.getString(request.getParameter("insured.accountnumber"));
+			String mobile = Putil.getString(request.getParameter("insured.mobile"));
 			String email = Putil.getString(request.getParameter("insured.email"));
 			String department = Putil.getString(request.getParameter("insured.department"));
-
+			String title = Putil.getString(request.getParameter("insured.title"));
 
 			
 			StringBuilder select = new StringBuilder("update em_insured set "
 					+ "insuredname='" + insuredname.replace("'", "''") + "'"
 					+ ",gender='" + gender.replace("'", "''") + "'"
+					+ ",idtype='" + idtype.replace("'", "''") + "'"
 					+ ",idnumber='" + idnumber.replace("'", "''") + "'"
 					+ ",passport='" + passport.replace("'", "''") + "'"
 					+ ",birthdate='" + birthdate.replace("'", "''") + "'"
+					+ ",insuredtype='" + insuredtype.replace("'", "''") + "'"
+					+ ",age='" + age.replace("'", "''") + "'"
+					+ ",workage='" + workage.replace("'", "''") + "'"
 					+ ",employer='" + employer.replace("'", "''") + "'"
 					+ ",jobnumber='" + jobnumber.replace("'", "''") + "'"
 					+ ",bankname='" + bankname.replace("'", "''") + "'"
+					+ ",bankprovince='" + bankprovince.replace("'", "''") + "'"
+					+ ",bankcity='" + bankcity.replace("'", "''") + "'"
+					+ ",subbranch='" + subbranch.replace("'", "''") + "'"
 					+ ",accountname='" + accountname.replace("'", "''") + "'"
 					+ ",accountnumber='" + accountnumber.replace("'", "''") + "'"
+					+ ",mobile='" + mobile.replace("'", "''") + "'"
 					+ ",email='" + email.replace("'", "''") + "'"
 					+ ",department='" + department.replace("'", "''") + "'"
+					+ ",title='" + title.replace("'", "''") + "'"
 				+ " where id=" + id + "" 
 			);
+			 
 			int result = DbUtils.save(select.toString());
 
 		} catch (Exception e) {

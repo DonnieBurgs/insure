@@ -204,7 +204,7 @@ function checkf() {
 	if($("#insured.insuredname").val()  == "") {alert("请正确输入被保险人姓名！");return false;}
 	if($("#insured.idnumber").val()  == "") {alert("请正确输入被保险人身份证！");return false;}
 //	if($("#insured.passport").val()  == "") {alert("请正确输入被保险人护照！");return false;}
-//	if($("#insured.birthdate").val()  == "") {alert("请正确输入被保险人出生年月！");return false;}
+	if($("#insured.birthdate").val()  == "") {alert("请正确输入被保险人出生年月！");return false;}
 //	if($("#insured.employer").val()  == "") {alert("请正确输入被保险人工作单位！");return false;}
 //	if($("#insured.insuredname").val()  == "") {alert("请正确输入被保险人工号！");return false;}
 //	if($("#insured.insuredname").val()  == "") {alert("请正确输入被保险人姓名！");return false;}

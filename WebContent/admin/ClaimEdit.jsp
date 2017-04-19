@@ -4,6 +4,8 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
+<%@ taglib prefix="util" uri="/WEB-INF/util.tld" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,7 +16,8 @@
 <link type="text/css" rel="stylesheet" href="/admin/style/global.css" />
 <link href="/resources/css/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/resources/jquery/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
+<link href="/resources/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/resources/js/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/resources/js/xheditor/xheditor-zh-cn.min.js"></script>
 <script type="text/javascript">var root = "";</script>
 <script type="text/javascript" src="/resources/js/admin.js"></script>
@@ -35,18 +38,18 @@
 	</div>
 </div>
 <form id="commonForm" action="/emClaim.do?method=update" method="post">
+<input type="hidden" id="claimarchiveid" name="claimarchiveid" value="${fn:replace(item.claimarchiveid,'"','&quot;')}" size=50>
+<input type="hidden" id="insuredid" name="insuredid">
+
 	<table class="tform">
-<tr>
-<td width="120" class="right">案卷ID：</td>
-<td><input type="text" id="claimarchiveid" name="claimarchiveid" value="${fn:replace(item.claimarchiveid,'"','&quot;')}" size=50></td>
-</tr>
 <tr>
 <td width="120" class="right">序号：</td>
 <td><input type="text" id="serialnumber" name="serialnumber" value="${fn:replace(item.serialnumber,'"','&quot;')}" size=50></td>
 </tr>
 <tr>
 <td width="120" class="right">被保人：</td>
-<td><input type="text" id="insuredid" name="insuredid" value="${fn:replace(item.insuredid,'"','&quot;')}" size=50></td>
+
+<td><input type="text" id="emInsured" name="emInsured" value="<dict:itemdesc name="insuredname" table="em_insured" value="${item.insuredid }" path="id"/>" size=50></td>
 </tr>
 <tr>
 <td width="120" class="right">报案人电话：</td>
@@ -101,5 +104,14 @@ function checkdelete() {
 	}
 	
 }
-
+$(function() {
+	jQuery.curCSS = jQuery.css;
+    $("#emInsured").autocomplete({
+    	source: "/emInsured.do?method=autocomplete",
+	    select: function( event, ui ) {
+	    	$("#insuredid").val(ui.item.id);
+	    	
+	    }
+    });
+ });
 </script>

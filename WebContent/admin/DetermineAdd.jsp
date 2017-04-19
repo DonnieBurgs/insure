@@ -19,10 +19,9 @@ if(uf_parentid==null) uf_parentid = "";
 <link type="text/css" rel="stylesheet" href="/admin/style/base.css" />
 <link type="text/css" rel="stylesheet" href="/admin/style/global.css" />
 <link href="/resources/css/main.css" rel="stylesheet" type="text/css" />
-<link href="/resources/js/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-<link href="/resources/js/jquery-ui/themes/base/jquery.ui.autocomplete.css" rel="stylesheet" type="text/css" />
 <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
+<link href="/resources/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/resources/js/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">var root = "";</script>
 <script type="text/javascript" src="/resources/js/admin.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script><script type="text/javascript" src="/resources/js/My97DatePicker/config.js"></script>
@@ -43,6 +42,7 @@ if(uf_parentid==null) uf_parentid = "";
 	<div class="operationRight f-r">
 	</div>
 </div>
+
 <table class="tlist">
 	 <thead>
 	 <tr class="title">
@@ -177,6 +177,18 @@ if(uf_parentid==null) uf_parentid = "";
 		<tr>
 		<td colspan="6"><input type="text" id="jcftcremark" name="jcftcremark" value=""></td>
 		</tr> 
+	</table>
+	<br/>
+<span>特殊费用</span>
+	<table class="tform">
+		<tr>
+		<td>精神类疾病</td><td>牙科自费项目</td><td>康复治疗及物理治疗</td>
+		</tr>
+		<tr>
+		<td><input type="text" id="mentalillnessamount" name="mentalillnessamount" value=""></td>
+		<td><input type="text" id="dentistryamount" name="dentistryamount" value=""></td>
+		<td><input type="text" id="rehabilitationamount" name="rehabilitationamount" value=""></td>
+		</tr>
 	</table>
 	
 	<br/>
@@ -363,9 +375,6 @@ function checkf() {
 	if($("#receiptr_hospitaldate").val() == "") {alert("请正确输入住院日期！");return false;}
 	if($("#receiptr_dischargedate").val() == "") {alert("请正确输入出院日期！");return false;}
 	var fundpaid = $("#receiptr_fundpaid").val();
-	alert(fundpaid);
-	alert(!is_float(fundpaid));
-	alert(!is_int(fundpaid));
 	if(fundpaid == "" || !(is_float(fundpaid) || is_int(fundpaid))) {alert("请正确输入统筹金额！");return false;}
 	var cashpaid = $("#receiptr_cashpaid").val();
 	if(cashpaid =="" || !(is_float(cashpaid) || is_int(cashpaid))) {alert("请正确输入个人缴费！");return false;}
