@@ -4,8 +4,6 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
-<%@ taglib prefix="util" uri="/WEB-INF/util.tld" %>
 <%
 String keyword = (String)request.getAttribute("keyword");
 String uf_parentid = (String)request.getAttribute("uf_parentid");
@@ -25,17 +23,17 @@ if(uf_parentid==null) uf_parentid = "";
 <script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript">var root = "";</script>
 <script type="text/javascript" src="/resources/js/admin.js"></script>
-<title>理算列表</title>
+<title>赔付信息列表</title>
 </head>
 <body id="right">
 <div class="operation o-h bg-f8">
-	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">理算列表</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<!--<c:if test="${auth44 eq '1'}"><a href="/emDetermine.do?method=blank&uf_parentid=${uf_parentid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增理算</a></c:if>--></div>
+	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">赔付信息列表</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<c:if test="${auth44 eq '1'}"><a href="/emClaimSettlement.do?method=blank&uf_parentid=${uf_parentid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增赔付信息</a></c:if></div>
 	<div class="operationRight f-r">
 	</div>
 </div>
 <table class="tlist">
-	 <form action="/emDetermine.do?method=list" id="searchForm" name="searchForm" method="post">
+	 <form action="/emClaimSettlement.do?method=list" id="searchForm" name="searchForm" method="post">
 	 <thead>
 	 <tr class="title">
 	 <th width=10%>关键字</th>
@@ -58,15 +56,11 @@ if(uf_parentid==null) uf_parentid = "";
 <table class="tlist">
 	<thead>
 		<tr class="title">
-<th>案件</th>
-<th>案件序号</th>
-<th>出险人</th>
-<th>发票号</th>
-<th>赔付类型</th>
-<th>疾病名称</th>
-<th>赔付金额</th>
+<th>发票ID</th>
+<th>拒赔金额</th>
 <th>赔付比例</th>
-<th>住院津贴</th>
+<th>医药费赔付金额</th>
+<th>检查费赔付金额</th>
 
 <th width="60">操作</th>
 		</tr>
@@ -76,23 +70,18 @@ if(uf_parentid==null) uf_parentid = "";
 <c:choose>
 <c:when test="${not empty resultRows}">
 <c:forEach var="item" items="${resultRows}">
-<c:set var="claim" value="${util:queryObject('em_claim','id',item.claimid)}" />
 			<tr>
-<td>${item.claimid}</td>
-<td>${claim.serialnumber }</td>
-<td><dict:itemdesc name="insuredname" value="${claim.insuredid }" table="em_insured" path="id"/> <dict:itemdesc name="idnumber" value="${claim.insuredid }" table="em_insured" path="id"/></td>
-<td><dict:itemdesc name="receiptnumber" value="${item.receiptid }" table="em_receipt" path="id"/></td>
-<td>${claimtypeItems.get(item.claimtype)}</td>
-<td><dict:itemdesc name="diseasename" value="${item.diseaseid }" table="em_disease" path="id"/></td>
-<td>${item.tfpfamount}</td>
-<td></td>
-<td></td>
+<td>${item.receiptid}</td>
+<td>${item.jpamount}</td>
+<td>${item.pfrate}</td>
+<td>${item.yyfpfje}</td>
+<td>${item.jcfpfje}</td>
 
 				<td width="250" class="operationBtn">
-				<c:if test="${auth44 eq '1'}"><a href="/emAdjustment.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
-					<!-- <a href="javascript:deleteDetermine(${item.id}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a> -->
+				<c:if test="${auth44 eq '1'}"><a href="/emClaimSettlement.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看/编辑</a>
+					<a href="javascript:deleteClaimSettlement(${item.id}, 1)" style="margin-left:10px;"><i class="iconfont">&#xe636;</i>删除</a>
 				</c:if>
-				<c:if test="${auth44 ne '1'}"><a href="/emDetermine.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
+				<c:if test="${auth44 ne '1'}"><a href="/emClaimSettlement.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>
 				</c:if>
 				</td>
 			</tr>
@@ -171,8 +160,8 @@ if(uf_parentid==null) uf_parentid = "";
 	
 			StringBuilder buffer = new StringBuilder();
 	
-			String u = "/emDetermine.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid + "&m=" + pageSize;
-			String u1 = "/emDetermine.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid;
+			String u = "/emClaimSettlement.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid + "&m=" + pageSize;
+			String u1 = "/emClaimSettlement.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid;
 	
 			out.write("<div class='bar'><span class=\"disabled\">共: " + totalCount + " 条记录</span> <span class=\"disabled\">每页显示: "
 					+ "<a href=\"" + u1 + "&m=15\"" + (pageSize==15?" class=\"current\"":"") + ">15</a>"
@@ -206,8 +195,8 @@ if(uf_parentid==null) uf_parentid = "";
 %>
 	
 </form>
-<form action="/emDetermine.do?method=delete" id="deleteForm" name="deleteForm" method="post">
-<input type="hidden" id="determineid" name="determineid" value="">
+<form action="/emClaimSettlement.do?method=delete" id="deleteForm" name="deleteForm" method="post">
+<input type="hidden" id="id" name="id" value="">
 <input type="hidden" id="t" name="t" value="">
 <input type="hidden" name="uf_parentid" value="${uf_parentid}">
 <input type="hidden" name="key_isvalid" value="${key_isvalid }">
@@ -220,9 +209,9 @@ if(uf_parentid==null) uf_parentid = "";
 function submitform(){
 	searchForm.submit();
 }
-function deleteDetermine(determineid){
+function deleteClaimSettlement(id){
 	if(confirm("是否删除会员资料？")) {
-		$("#determineid").val(determineid);
+		$("#id").val(id);
 		$("#t").val(t);
 		deleteForm.submit();
 		

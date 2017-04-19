@@ -4,6 +4,8 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="dict" uri="/WEB-INF/dict_tag.tld" %>
+<%@ taglib prefix="util" uri="/WEB-INF/util.tld" %>
 <%
 String keyword = (String)request.getAttribute("keyword");
 String uf_parentid = (String)request.getAttribute("uf_parentid");
@@ -29,7 +31,7 @@ if(uf_parentid==null) uf_parentid = "";
 <link rel="stylesheet" type="text/css" href="/resources/js/My97DatePicker/skin/WdatePicker.css" />
 <link rel="stylesheet" type="text/css" href="/resources/js/My97DatePicker/skin/default/datepicker.css" />
 <script type="text/javascript" src="/resources/js/My97DatePicker/WdatePicker.js"></script>
-<title>理算列表</title>
+<title>理算复核</title>
 <style type="text/css">
 #fff input{width: 120px;}
 #fff span{color: red;}
@@ -37,22 +39,23 @@ if(uf_parentid==null) uf_parentid = "";
 </head>
 <body id="right">
 <div class="operation o-h bg-f8">
-	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">理算列表</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">理算复核</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<!--<c:if test="${auth44 eq '1'}"><a href="/emDetermine.do?method=blank&uf_parentid=${uf_parentid}&keyword=${keyword}&m=${m}&s=${s}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增理算</a></c:if>--></div>
 	<div class="operationRight f-r">
 	</div>
 </div>
-
+<c:set var="emClaim" value="${util:queryObject('em_claim', 'id', item.claimid) }"/>
+<c:set var="emClaimArchive" value="${util:queryObject('em_claimarchive', 'id', emClaim.claimarchiveid) }"/>
 <table class="tlist">
 	 <thead>
 	 <tr class="title">
 	 <th width=10%>案卷</th>
 	  <th width=30% align=left style="background-color:#ffffff;text-align:left;">
-	 	<input type="text" id="emClaimArchive" name="emClaimArchive" value="">
+	 	${emClaimArchive.claimarchivenumber }
 	 </th>
 	 <th width=10%>案件</th>
 	 <th width=30% align=left style="background-color:#ffffff;text-align:left;">
-	 	<input type="text" id="emClaim" name="emClaim" value="">
+	 	${emClaim.serialnumber }
 	 </th>
 	 	<th width="20%" class="operationBtn">
 	 	</th>
@@ -63,8 +66,8 @@ if(uf_parentid==null) uf_parentid = "";
 <tr>
 <td width="48%">
 <form id="commonForm" action="/emDetermine.do?method=add" method="post">
-	 	<input type="hidden" id="claimarchiveid" name="claimarchiveid" value="${claimarchiveid}">
-	 	<input type="hidden" id="claimid" name="claimid" value="${claimid}">
+	 	<input type="hidden" id="claimarchiveid" name="claimarchiveid" value="${emClaimArchive.id}">
+	 	<input type="hidden" id="claimid" name="claimid" value="${item.claimid}">
 <br/>
 <span>发票信息</span>
 	<table class="tform">
@@ -100,31 +103,32 @@ if(uf_parentid==null) uf_parentid = "";
 		<td>疾病</td><td>赔付类型</td><td>赔付状态</td>
 		</tr>
 		<tr>
-		<td><input type="hidden" id="diseaseid" name="diseaseid" value=""><input type="text" id="emDisease" name="emDisease" value=""></td>
+		<td><input type="hidden" id="diseaseid" name="diseaseid" value="${item.diseaseid }">
+		<input type="text" id="emDisease" name="emDisease" value="<dict:itemdesc name="diseasename" value="${item.diseaseid }" table="em_disease" path="id"/>"></td>
 		<td>
 		<select id="claimtype" name="claimtype">
 		<option value="">请选择</option>
-		<c:forEach var="it" items="${claimtypeItems }"><option value="${it.key }">${it.value}</option></c:forEach>
+		<c:forEach var="it" items="${claimtypeItems }"><option value="${it.key }" <c:if test="${it.key eq item.claimtype }">selected="selected"</c:if>>${it.value}</option></c:forEach>
 		</select>
 		</td>
 		<td><select id="claimstatus" name="claimstatus">
 		<option value="">请选择</option>
-		<c:forEach var="it" items="${claimstatusItems }"><option value="${it.key }">${it.value}</option></c:forEach>
+		<c:forEach var="it" items="${claimstatusItems }"><option value="${it.key }" <c:if test="${it.key eq item.claimstatus }">selected="selected"</c:if>>${it.value}</option></c:forEach>
 		</select></td>
 		</tr>
 		<tr>
 		<td>床位费</td><td>他方赔付金额</td><td>公共保额</td>
 		</tr>
 		<tr>
-		<td><input type="text" id="cwfamount" name="cwfamount" value=""></td>
-		<td><input type="text" id="tfpfamount" name="tfpfamount" value=""></td>
-		<td><input type="text" id="sqamount" name="sqamount" value=""></td>
+		<td><input type="text" id="cwfamount" name="cwfamount" value="${fn:replace(item.cwfamount,'"','&quot;')}"></td>
+		<td><input type="text" id="tfpfamount" name="tfpfamount" value="${fn:replace(item.tfpfamount,'"','&quot;')}"></td>
+		<td><input type="text" id="sqamount" name="sqamount" value="${fn:replace(item.sqamount,'"','&quot;')}"></td>
 		</tr>
 		<tr>
 		<td colspan="6">扣除原因</td>
 		</tr>
 		<tr>
-		<td colspan="6"><input type="text" id="dereason" name="dereason" value=""></td>
+		<td colspan="6"><input type="text" id="dereason" name="dereason" value="${fn:replace(item.dereason,'"','&quot;')}"></td>
 		</tr> 
 	</table>
 	<br/>
@@ -134,17 +138,17 @@ if(uf_parentid==null) uf_parentid = "";
 		<td>医药费</td><td>精神病医药费</td><td>自费医药费</td>
 		</tr>
 		<tr>
-		<td><input type="text" id="yyfamount" name="yyfamount" value=""></td>
-		<td><input type="text" id="jsbyyfamount" name="jsbyyfamount" value=""></td>
-		<td><input type="text" id="zfyyfamount" name="zfyyfamount" value=""></td>
+		<td><input type="text" id="yyfamount" name="yyfamount" value="${fn:replace(item.yyfamount,'"','&quot;')}"></td>
+		<td><input type="text" id="jsbyyfamount" name="jsbyyfamount" value="${fn:replace(item.jsbyyfamount,'"','&quot;')}"></td>
+		<td><input type="text" id="zfyyfamount" name="zfyyfamount" value="${fn:replace(item.zfyyfamount,'"','&quot;')}"></td>
 		</tr>
 		<tr>
 		<td>自费医药费说明</td><td>医药费剔除金额</td><td>医药费剔除说明</td>
 		</tr>
 		<tr>
-		<td><input type="text" id="fzyyfremark" name="fzyyfremark" value=""></td>
-		<td><input type="text" id="yyftcamount" name="yyftcamount" value=""></td>
-		<td><input type="text" id="yyfremark" name="yyfremark" value=""></td>
+		<td><input type="text" id="fzyyfremark" name="fzyyfremark" value="${fn:replace(item.fzyyfremark,'"','&quot;')}"></td>
+		<td><input type="text" id="yyftcamount" name="yyftcamount" value="${fn:replace(item.yyftcamount,'"','&quot;')}"></td>
+		<td><input type="text" id="yyfremark" name="yyfremark" value="${fn:replace(item.yyfremark,'"','&quot;')}"></td>
 		</tr>
 	</table>
 	<br/>
@@ -154,42 +158,32 @@ if(uf_parentid==null) uf_parentid = "";
 		<td>检查费</td><td>高科技检查费</td><td>高科技检查结果</td>
 		</tr>
 		<tr>
-		<td><input type="text" id="jcfamount" name="jcfamount" value=""></td>
-		<td><input type="text" id="gkjjcfamount" name="gkjjcfamount" value=""></td>
+		<td><input type="text" id="jcfamount" name="jcfamount" value="${fn:replace(item.jcfamount,'"','&quot;')}"></td>
+		<td><input type="text" id="gkjjcfamount" name="gkjjcfamount" value="${fn:replace(item.gkjjcfamount,'"','&quot;')}"></td>
 		<td>
 		<select id="gkjjcjgpool" name="gkjjcjgpool">
 		<option value="">请选择</option>
-		<option value="0">正常</option>
-		<option value="1">异常</option>
-		</select></td>
+		<option value="0" <c:if test="${'0' eq item.gkjjcjgpool }">selected="selected"</c:if>>正常</option>
+		<option value="1" <c:if test="${'1' eq item.gkjjcjgpool }">selected="selected"</c:if>>异常</option>
+		</select>
+		</td>
 		</tr>
 		<tr>
 		<td>自费检查费</td><td>自费检查费说明</td><td>检查费剔除金额</td>
 		</tr>
 		<tr>
-		<td><input type="text" id="zfjcfamount" name="zfjcfamount" value=""></td>
-		<td><input type="text" id="zfjcfremark" name="zfjcfremark" value=""></td>
-		<td><input type="text" id="jcftcamount" name="jcftcamount" value=""></td>
+		<td><input type="text" id="zfjcfamount" name="zfjcfamount" value="${fn:replace(item.zfjcfamount,'"','&quot;')}"></td>
+		<td><input type="text" id="zfjcfremark" name="zfjcfremark" value="${fn:replace(item.zfjcfremark,'"','&quot;')}"></td>
+		<td><input type="text" id="jcftcamount" name="jcftcamount" value="${fn:replace(item.jcftcamount,'"','&quot;')}"></td>
 		</tr>
 		<tr>
 		<td colspan="6">检查费剔除说明</td>
 		</tr>
 		<tr>
-		<td colspan="6"><input type="text" id="jcftcremark" name="jcftcremark" value=""></td>
+		<td colspan="6"><input type="text" id="jcftcremark" name="jcftcremark" value="${fn:replace(item.jcftcremark,'"','&quot;')}"></td>
 		</tr> 
 	</table>
-	<br/>
-<span>特殊费用</span>
-	<table class="tform">
-		<tr>
-		<td>精神类疾病</td><td>牙科自费项目</td><td>康复治疗及物理治疗</td>
-		</tr>
-		<tr>
-		<td><input type="text" id="mentalillnessamount" name="mentalillnessamount" value=""></td>
-		<td><input type="text" id="dentistryamount" name="dentistryamount" value=""></td>
-		<td><input type="text" id="rehabilitationamount" name="rehabilitationamount" value=""></td>
-		</tr>
-	</table>
+	
 	
 	<br/>
 	<span>赔付信息</span>
@@ -217,6 +211,7 @@ if(uf_parentid==null) uf_parentid = "";
 		<td colspan="3"><input type="text" id="claimsettlement.yyfremark" name="claimsettlement.yyfremark" value=""></td>
 		</tr>
 	</table>
+	<!-- 
 	
 	<br/>
 	<br/>
@@ -231,7 +226,7 @@ if(uf_parentid==null) uf_parentid = "";
 				<input type="button" class="btn1" value=" 提  交 " onclick="checkf()"/>
 			</td>
 		</tr>
-	</table>
+	</table> -->
 </td>
 <td width="2%"></td>
 <td width="48%" valign="top">
@@ -402,6 +397,9 @@ function checkf() {
 	if($("#receiptr_hospitaldate").val() == "") {alert("请正确输入住院日期！");return false;}
 	if($("#receiptr_dischargedate").val() == "") {alert("请正确输入出院日期！");return false;}
 	var fundpaid = $("#receiptr_fundpaid").val();
+	alert(fundpaid);
+	alert(!is_float(fundpaid));
+	alert(!is_int(fundpaid));
 	if(fundpaid == "" || !(is_float(fundpaid) || is_int(fundpaid))) {alert("请正确输入统筹金额！");return false;}
 	var cashpaid = $("#receiptr_cashpaid").val();
 	if(cashpaid =="" || !(is_float(cashpaid) || is_int(cashpaid))) {alert("请正确输入个人缴费！");return false;}

@@ -1,31 +1,24 @@
 package com.insure.servlet.admin;
-/*
-	<servlet>
-		<servlet-name>emDetermine</servlet-name>
-		<servlet-class>com.insure.servlet.admin.EmDetermineServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>emDetermine</servlet-name>
-		<url-pattern>/emDetermine.do</url-pattern>
-	</servlet-mapping>
 
- */
-import java.io.*;
-import java.sql.*;
-import java.util.*;
-import java.util.Date;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import javax.servlet.*;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.db.DbUtils;
-import com.web.util.*;
+import com.web.util.Putil;
 
-public class EmDetermineServlet extends UserSecureDispatcher {
+/**
+* @author liqi
+*/
+public class EmAdjustmentServlet extends UserSecureDispatcher{
 
-	private static final long serialVersionUID = 1491580695604L;
-	
+	private static final long serialVersionUID = 6973603718997655996L;
 	public void blank(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
     	if(checkAuthority("auth44", request, response)) {
@@ -43,7 +36,7 @@ public class EmDetermineServlet extends UserSecureDispatcher {
 		request.setAttribute("claimtypeItems", claimtypeItems);
 		request.setAttribute("claimstatusItems", claimstatusItems);
 
-		forward(request, response, "/admin/DetermineAdd.jsp");
+		forward(request, response, "/admin/AdjustmentAdd.jsp");
 	
 	}
 
@@ -221,7 +214,7 @@ public class EmDetermineServlet extends UserSecureDispatcher {
 			request.setAttribute("item", row);
 		}
 
-		forward(request, response, "/admin/DetermineEdit.jsp");
+		forward(request, response, "/admin/AdjustmentEdit.jsp");
 		
 	}
 
@@ -403,7 +396,6 @@ public class EmDetermineServlet extends UserSecureDispatcher {
     		return false;
     	}
     	return true;
-    	
     }
     
     static final HashMap<String, String> claimtypeItems = new HashMap<>();
@@ -422,4 +414,3 @@ public class EmDetermineServlet extends UserSecureDispatcher {
     	claimstatusItems.put("4", "不受理");
     }
 }
-

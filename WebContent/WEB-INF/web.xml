@@ -453,6 +453,22 @@
 		<url-pattern>/emClaim.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>emClaimSettlement</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmClaimSettlementServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emClaimSettlement</servlet-name>
+		<url-pattern>/emClaimSettlement.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>emAdjustment</servlet-name>
+		<servlet-class>com.insure.servlet.admin.EmAdjustmentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>emAdjustment</servlet-name>
+		<url-pattern>/emAdjustment.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>emCompany</servlet-name>
 		<servlet-class>com.insure.servlet.admin.EmCompanyServlet</servlet-class>
 	</servlet>

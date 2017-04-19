@@ -568,7 +568,7 @@ public class ExcelReader {
     }
 
     public static void main(String [] args) throws Exception {
-    	new ExcelReader().readXlsx("保险数据字典.xlsx");
+    	new ExcelReader().readXlsx("保险数据字典2.xlsx");
 
 
     }

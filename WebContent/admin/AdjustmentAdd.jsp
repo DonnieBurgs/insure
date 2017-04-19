@@ -192,33 +192,6 @@ if(uf_parentid==null) uf_parentid = "";
 	</table>
 	
 	<br/>
-	<span>赔付信息</span>
-	<table class="tform">
-		<tr>
-		<td>拒赔金额</td><td>赔付比例</td><td>医药费赔付金额</td>
-		</tr>
-		<tr>
-		<td><input type="text" id="claimsettlement.jpamount" name="claimsettlement.jpamount" value=""></td>
-		<td><input type="text" id="claimsettlement.pfrate" name="claimsettlement.pfrate" value=""></td>
-		<td><input type="text" id="claimsettlement.yyfpfje" name="claimsettlement.yyfpfje" value=""></td>
-		</tr>
-		<tr>
-		<td>检查费赔付金额</td><td>床位费赔付金额</td><td>总赔付金额</td>
-		</tr>
-		<tr>
-		<td><input type="text" id="claimsettlement.jcfpfje" name="claimsettlement.claimsettlement.jcfpfje" value=""></td>
-		<td><input type="text" id="claimsettlement.cwfpfje" name="claimsettlement.cwfpfje" value=""></td>
-		<td><input type="text" id="claimsettlement.pfamount" name="claimsettlement.pfamount" value=""></td>
-		</tr>
-		<tr>
-		<td>备注</td><td></td><td></td>
-		</tr>
-		<tr>
-		<td colspan="3"><input type="text" id="claimsettlement.yyfremark" name="claimsettlement.yyfremark" value=""></td>
-		</tr>
-	</table>
-	
-	<br/>
 	<br/>
 	<table>
 		<tr>
