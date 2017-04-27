@@ -79,7 +79,7 @@ if(uf_parentid==null) uf_parentid = "";
 
 				<td width="250" class="operationBtn">
 				<c:if test="${auth44 eq '1'}">
-				<a href="/emClaimInfo.do?method=blank&claimid=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>案件资料</a>
+				<a href="/emClaim.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>案件资料</a>
 				<a href="/emReceipt.do?method=list&claimid=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>发票录入</a>
 				</c:if>
 				<c:if test="${auth44 ne '1'}"><a href="/emClaim.do?method=fill&id=${item.id}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:0px;"><i class="iconfont">&#xe6d6;</i>查看</a>

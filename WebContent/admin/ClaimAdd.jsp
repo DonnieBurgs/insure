@@ -27,17 +27,24 @@ if(uf_parentid==null) uf_parentid = "";
 <script type="text/javascript" src="/resources/js/admin.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
 <script type="text/javascript" src="/resources/js/photo.js"></script>
+<script type="text/javascript" src="/resources/js/My97DatePicker/config.js"></script>
+<script type="text/javascript" src="/resources/js/My97DatePicker/lang/zh-cn.js"></script>
+<link rel="stylesheet" type="text/css" href="/resources/js/My97DatePicker/skin/WdatePicker.css" />
+<link rel="stylesheet" type="text/css" href="/resources/js/My97DatePicker/skin/default/datepicker.css" />
+<script type="text/javascript" src="/resources/js/My97DatePicker/WdatePicker.js"></script>
 <title>案件列表</title>
+<style type="text/css">
+input[type="text"]{min-width:50px;width:70px;}
+</style>
 </head>
 <body id="right">
 <div class="operation o-h bg-f8">
-	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">案件列表</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</div>
+	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">案件</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:history.back();" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>返回列表</a></div>
 	<div class="operationRight f-r">
 	</div>
 </div>
 <table class="tlist">
-	 <form action="/emClaim.do?method=list" id="searchForm" name="searchForm" method="post">
 	 <thead>
 	 <tr class="title">
 	 <th width=10%>案卷</th>
@@ -46,35 +53,117 @@ if(uf_parentid==null) uf_parentid = "";
 	 	<input type="text" id="emClaimArchive" name="emClaimArchive" value="<dict:itemdesc name="claimarchivenumber" value="${keyword}" table="em_claimarchive" path="id"/>">
 	 </th>
 	 	<th width="20%" class="operationBtn">
-	 		<a href="javascript:submitform();"><i class="iconfont">&#xe608;</i>搜索</a>
 	 	</th>
 	 </tr></thead>
 	 <tbody>
 
 	 </tbody>
-		<input id="uf_parentid" name="uf_parentid" type="hidden" value="${uf_parentid}"/>
-	 </form>
 </table>
 
-<table width="100%">
-<tr>
-<td width="48%">
 <c:if test="${auth44 eq '1'}">
 <form id="commonForm" action="/emClaim.do?method=add" method="post">
 <input type="hidden" id="claimarchiveid" name="claimarchiveid" value="${keyword}">
 <input type="hidden" id="insuredid" name="insuredid">
-	<table>
+	<table class="tform">
 <tr>
 <td>序号</td>
 <td>被保人</td>
 <td>报案人电话</td>
 </tr>
 <tr>
-<td><input type="text" id="serialnumber" name="serialnumber" value="" style="width: 140px;"></td>
+<td><input type="text" id="serialnumber" name="serialnumber" value="" style="width: 140px;" readonly="readonly"></td>
 <td><input type="text" id="emInsured" name="emInsured" value="" style="width: 140px;"></td>
 <td><input type="text" id="bardh" name="bardh" value="" style="width: 140px;"></td>
 </tr>
+</table>
 
+
+<input type="hidden" id="insured_id" name="insured.id">
+<table class="tform">
+<tr>
+<td>姓名：</td>
+<td><input type="text" id="insured_insuredname" name="insured.insuredname" value="${insured.insuredname }" size=50></td>
+<td>性别：</td>
+<td>
+<select name="insured.gender" id="insured_gender" class="select100">
+<option value="男" <c:if test="${insured.gender eq '男' }">selected="selected"</c:if>>男</option>
+<option value="女" <c:if test="${insured.gender eq '女'}">selected="selected"</c:if>>女</option>
+</select></td>
+<td>证件类型：</td>
+<td><select name="insured.idtype" id="insured_idtype" class="select100">
+<option value="身份证">身份证</option>
+</select></td>
+<td>身份证：</td>
+<td><input type="text" id="insured_idnumber" name="insured.idnumber" value="${insured.idnumber}" size=50></td>
+<td>护照：</td>
+<td><input type="text" id="insured_passport" name="insured.passport" value="${insured.passport }" size=50></td>
+</tr>
+<tr>
+<td>出生年月：</td><td><input type="text" id="insured_birthdate_" name="insured.birthdate" readonly="readonly" value="${insured.birthdate_}" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
+<td>工作单位：</td><td><input type="text" id="insured_employer" name="insured.employer" value="${insured.employer}" size=50></td>
+<td>工号：</td><td><input type="text" id="insured_jobnumber" name="insured.jobnumber" value="${insured.jobnumber }" size=50></td>
+<td>工龄：</td><td><input type="text" id="insured_workage" name="insured.workage" value="${insured.workage}" size=50></td>
+<td>科室：</td><td><input type="text" id="insured_title" name="insured.title" value="${insured.title }" size=50></td>
+</tr>
+<tr>
+<td>人员类别：</td><td><input type="text" id="insured_insuredtype" name="insured.insuredtype" value="${insured.insuredtype}" size=50></td>
+<td>年龄：</td><td><input type="text" id="insured_age" name="insured.age" value="${insured.age }" size=50></td>
+<td>开户行省：</td><td><input type="text" id="insured_bankprovince" name="insured.bankprovince" value="${insured.bankprovince }" size=50></td>
+<td>开户行市：</td><td><input type="text" id="insured_bankcity" name="insured.bankcity" value="${insured.bankcity}" size=50></td>
+<td>开户行支行：</td><td><input type="text" id="insured_subbranch" name="insured.subbranch" value="${insured.subbranch }" size=50></td>
+</tr>
+<tr>
+<td>银行账号：</td><td><input type="text" id="insured_accountnumber" name="insured.accountnumber" value="${insured.accountnumber }" size=50></td>
+<td>开户行：</td><td><input type="text" id="insured_bankname" name="insured.bankname" value="${insured.bankname }" size=50></td>
+<td>账户名：</td><td><input type="text" id="insured_accountname" name="insured.accountname" value="${insured.accountname}" size=50></td>
+<td>电子邮件：</td><td><input type="text" id="insured_email" name="insured.email" value="${insured.email }" size=50></td>
+<td>机构：</td><td><input type="text" id="insured_department" name="insured.department" value="${insured.department }" size=50></td>
+</tr>
+<tr>
+<td>手机号：</td>
+<td colspan="9"><input type="text" id="insured_mobile" name="insured.mobile" value="${insured.mobile }" size=50></td>
+</tr>
+</table>
+
+
+<input type="hidden" id="info_diseaseid" name="info.diseaseid" value="" size=50>
+	<table class="tform">
+<tr>
+<td><font color="red">*</font>案件类型：</td><td><select id="info_claimtype" name="info.claimtype">
+		<c:forEach var="it" items="${claimtypeMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
+<td><font color="red">*</font>出险原因：</td><td><select id="info_claimreason" name="info.claimreason">
+		<c:forEach var="it" items="${claimreasonMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
+<td><font color="red">*</font>出险日期：</td><td><input type="text" id="info_claimdate" name="info.claimdate" readonly="readonly" value="" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
+<td><font color="red">*</font>保险金支付方式：</td><td><select id="info_paytype" name="info.paytype">
+		<c:forEach var="it" items="${paytypeMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
+<td><font color="red">*</font>疾病：</td><td><input type="text" id="info_emDisease" name="info.emDisease" value="" size=50>
+</tr>
+<tr>
+<td><font color="red">*</font>出险类型1：</td><td>
+<select id="info_insuretype1" name="info.insuretype1">
+		<c:forEach var="it" items="${insuretypeMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
+<td><font color="red">*</font>出险类型2：</td><td><select id="info_insuretype2" name="info.insuretype2">
+		<c:forEach var="it" items="${insuretypeMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
+<td><font color="red">*</font>出险类型3：</td><td><select id="info_insuretype3" name="info.insuretype3">
+		<c:forEach var="it" items="${insuretypeMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
+<td><font color="red">*</font>索赔金额：</td><td><input type="text" id="info_spamount" name="info.spamount" value="" size=50></td>
+<td><font color="red">*</font>就诊次数：</td><td><input type="text" id="info_determinecount" name="info.determinecount" value="" size=50></td>
+
+</tr>
+<tr>
+<td><font color="red">*</font>单张数：</td><td><input type="text" id="info_receiptcount" name="info.receiptcount" value="" size=50></td>
+<td><font color="red">*</font>备注：</td><td colspan="7"><input type="text" id="info_mark" name="info.mark" value="" size=50></td>
+</tr>
+	</table>
+
+
+<table>
 		<tr>
 			<td colspan="3" class="right">
 <br/>
@@ -88,151 +177,6 @@ if(uf_parentid==null) uf_parentid = "";
 	</table>
 </form>
 </c:if>
-</td><td></td>
-<td width="48%">
-<form action="" id="op" name="op" method="get">
-<table class="tlist">
-	<thead>
-		<tr class="title">
-<th>案卷</th>
-<th>序号</th>
-<th>被保人</th>
-<th>报案人电话</th>
-		</tr>
-	</thead>
-	<tbody>
-		
-<c:choose>
-<c:when test="${not empty resultRows}">
-<c:forEach var="item" items="${resultRows}">
-			<tr>
-<td><dict:itemdesc name="claimarchivenumber" value="${item.claimarchiveid}" table="em_claimarchive" path="id"/></td>
-<td>${item.serialnumber}</td>
-<td><dict:itemdesc name="insuredname" value="${item.insuredid}" table="em_insured" path="id"/></td>
-<td>${item.bardh}</td>
-			</tr>
-</c:forEach>
-</c:when>
-<c:otherwise>
-			<tr><td colspan=5>
-      <p><span>非常抱歉！</span></p><p>没有找到与您选择的搜索条件相符的资料。</p>
-    	</td></tr>
-</c:otherwise>
-</c:choose>
-		
-	</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="7"></td>
-		</tr>
-	</tfoot>
-</table>
-<div>
-<%@ include file="/inc/pagebar_s.jsp"%> <%
-	startIndex = 1;
-	pageSize = 15;
-	pageIndexCount = 10;
-	pageCount = 0;
-	totalCount = 0;
-	int[] indexs = new int[0];
-	String parameters;
-
-
-	String _page = (String)request.getAttribute("s");
-	if (_page != null && !_page.equals("")) {
-		startIndex = Integer.parseInt(_page);
-	}
-
-	String _maxRows = (String)request.getAttribute("m");
-	if (_maxRows != null && !_maxRows.equals("")) {
-		pageSize = Integer.parseInt(_maxRows);
-	}
-	
-	if(request.getAttribute("totalRow") != null){
-		Integer _totalCount = ((Long) request.getAttribute("totalRow")).intValue();
-	
-		if (_totalCount != null && _totalCount != 0) {
-			totalCount = _totalCount;
-			if (totalCount > 0) {
-				pageCount = totalCount / pageSize + (totalCount % pageSize > 0 ? 1 : 0);
-			} else {
-				totalCount = 0;
-			}
-	
-			if (startIndex >= pageCount) {
-				startIndex = pageCount;
-			} else if (startIndex <= 0) {
-				startIndex = 1;
-			}
-			if (pageIndexCount > pageCount) {
-				pageIndexCount = pageCount;
-			}
-	
-			indexs = new int[pageIndexCount];
-			int istart = startIndex - pageIndexCount / 2 + (pageIndexCount % 2 > 0 ? 0 : 1);
-	
-			int iend = startIndex + pageIndexCount / 2;
-			if (istart <= 0) {
-				istart = 1;
-				iend = pageIndexCount;
-			}
-			if (iend > pageCount) {
-				iend = pageCount;
-				istart = pageCount - pageIndexCount + 1;
-			}
-			for (int i = 0; i < iend - istart + 1; i++) {
-				indexs[i] = istart + i;
-			}
-	
-			StringBuilder buffer = new StringBuilder();
-	
-			String u = "/emClaim.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid + "&m=" + pageSize;
-			String u1 = "/emClaim.do?method=list&keyword=" + keyword + "&uf_parentid=" + uf_parentid;
-	
-			out.write("<div class='bar'><span class=\"disabled\">共: " + totalCount + " 条记录</span> <span class=\"disabled\">每页显示: "
-					+ "<a href=\"" + u1 + "&m=15\"" + (pageSize==15?" class=\"current\"":"") + ">15</a>"
-					+ "<a href=\"" + u1 + "&m=40\"" + (pageSize==40?" class=\"current\"":"") + ">40</a>"
-					+ "<a href=\"" + u1 + "&m=100\"" + (pageSize==100?" class=\"current\"":"") + ">100</a>") ;
-			if (pageCount > 1) {
-				
-				buffer.append("<font style=\"margin-left:250px;\"></font>页码：");
-				if (startIndex > 1) {
-					buffer.append("<a href=\"" + u + "&s=" + (startIndex-1) + "\">上一页</a>");
-					if (startIndex > this.getFirstIndex() + 5 && indexs.length < pageCount) {
-						buffer.append("<a href=\"" + u + "&s=" + getFirstIndex() + "\">" + this.getFirstIndex() + " ...</a>");
-					}
-				}
-				for (int index : indexs) {
-					buffer.append("<a href=\"" + u + "&s=" + index + "\"" + (startIndex == index?" class=\"current\"":"") + ">").append(index).append("</a>");
-				}
-	
-				if (startIndex < pageCount) {
-					if (startIndex < this.getLastIndex() - 5 && indexs.length < pageCount) {
-						buffer.append("<a href=\"" + u + "&s=" + getLastIndex() + "\">... ").append(this.getLastIndex()).append("</a>");
-					}
-					buffer.append("<a href=\"" + u + "&s=" + getNextIndex() + "\">下一页</a>");
-				}
-	
-				out.write(buffer.toString());
-			}
-			out.write("</span></div>");			
-		}
-	}
-%>
-	
-</form>
-<form action="/emClaim.do?method=delete" id="deleteForm" name="deleteForm" method="post">
-<input type="hidden" id="id" name="id" value="">
-<input type="hidden" id="t" name="t" value="">
-<input type="hidden" name="uf_parentid" value="${uf_parentid}">
-<input type="hidden" name="key_isvalid" value="${key_isvalid }">
-<input type="hidden" name="keyword" value="${keyword }">
-<input type="hidden" name="m" value="${m }">
-<input type="hidden" name="s" value="${s }">
-</form>
-</td>
-</tr>
-</table>
 	 
 
 </body>
@@ -265,13 +209,31 @@ $(function() {
 	    	$("#keyword").val(ui.item.id);
 	    	$("#claimarchiveid").val(ui.item.id);
 	    	
+//	    	window.location.href = "/emClaim.do?method=blank&keyword=" + ui.item.id;
+	   
+
+
+	        $.getJSON("/emClaim.do?method=maxNo&claimarchiveid=" + ui.item.id, function(data){
+	    		$("#serialnumber").val(data);
+	    	});
 	    }
     });
     $("#emInsured").autocomplete({
-    	source: "/emInsured.do?method=autocomplete",
+    	source: "/emInsured.do?method=autocomplete&inc=idnumber",
 	    select: function( event, ui ) {
 	    	$("#insuredid").val(ui.item.id);
-	    	
+	    	 $.getJSON("/emInsured.do?method=obj&id=" + ui.item.id, function(data){
+	    		$.each(data, function(i, v){
+	    			var key = "insured_" + i;
+	    			$("#" + key).val(v);
+	    		});
+	    	});
+	    }
+    });
+    $("#info_emDisease").autocomplete({
+    	source: "/emDisease.do?method=autocomplete",
+	    select: function( event, ui ) {
+	    	$("#info_diseaseid").val(ui.item.id);
 	    }
     });
  });

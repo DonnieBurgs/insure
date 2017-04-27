@@ -86,7 +86,6 @@ if(authorityno==null) authorityno = "" ;
                     <a class="d-ib" data-cookie="案卷列表" target="iframe" href="/emClaimArchive.do?method=list"><span class="fs-14">案卷列表</span></a>
                     <a class="d-ib" data-cookie="案件列表" target="iframe" href="/emClaim.do?method=list"><span class="fs-14">案件列表</span></a>
                     <a class="d-ib" data-cookie="费用项列表" target="iframe" href="/emFee.do?method=list"><span class="fs-14">费用项列表</span></a>
-                    <a class="d-ib" data-cookie="案件受理" target="iframe" href="/emClaim.do?method=blank"><span class="fs-14">案件受理</span></a>
                     <a class="d-ib" data-cookie="理算录入2" target="iframe" href="/emClaim2.do?method=list"><span class="fs-14">理算录入</span></a>
                     <a class="d-ib" data-cookie="影像件上传" target="iframe" href="/emClaim.do?method=image"><span class="fs-14">影像件上传</span></a>
                 </li>

@@ -25,6 +25,9 @@
 <link rel="stylesheet" type="text/css" href="/resources/js/My97DatePicker/skin/WdatePicker.css" />
 <link rel="stylesheet" type="text/css" href="/resources/js/My97DatePicker/skin/default/datepicker.css" />
 <script type="text/javascript" src="/resources/js/My97DatePicker/WdatePicker.js"></script>
+<style type="text/css">
+input[type="text"]{min-width:50px;width:140px;}
+</style>
 <title>个人保单添加</title>
 </head>
 <body id="right">
@@ -37,7 +40,7 @@
 <form id="commonForm" action="/emInsurerPolicy.do?method=add" method="post">
 	<table class="tform">
 <tr>
-<td width="120" class="right">团保方案：</td>
+<td>团保方案：</td>
 <td>
 <select id="groupinsurancepolicyid" name="groupinsurancepolicyid">
 <c:forEach items="${groupinsurancepolicyItems}" var="group">
@@ -51,112 +54,108 @@
 <span>被保险人</span>
 <table class="tform">
 <tr>
-<td width="120" class="right">姓名：</td>
+<td>姓名：</td>
+<td>性别：</td>
+<td>证件类型：</td>
+<td>身份证：</td>
+<td>护照：</td>
+</tr>
+<tr>
 <td><input type="text" id="insured.insuredname" name="insured.insuredname" value="${insured.insuredname }" size=50></td>
-<td width="120" class="right">性别：</td>
 <td>
 <select name="insured.gender" id="insured.gender" class="select100">
 <option value="男" <c:if test="${insured.gender eq '男' }">selected="selected"</c:if>>男</option>
 <option value="女" <c:if test="${insured.gender eq '女'}">selected="selected"</c:if>>女</option>
 </select></td>
-</tr>
-<tr>
-<td width="120" class="right">证件类型：</td>
-<td colspan="3"><input type="text" id="insured.idtype" name="insured.idtype" value="${insured.idtype }" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right">身份证：</td>
+<td><input type="text" id="insured.idtype" name="insured.idtype" value="${insured.idtype }" size=50></td>
 <td><input type="text" id="insured.idnumber" name="insured.idnumber" value="${insured.idnumber}" size=50></td>
-<td width="120" class="right">护照：</td>
 <td><input type="text" id="insured.passport" name="insured.passport" value="${insured.passport }" size=50></td>
 </tr>
 <tr>
-<td width="120" class="right">出生年月：</td>
-<td colspan="3"><input type="text" id="insured.birthdate" name="insured.birthdate" readonly="readonly" value="${insured.birthdate_}" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
+<td>出生年月：</td>
+<td>工作单位：</td>
+<td>工号：</td>
+<td>工龄：</td>
+<td>科室：</td>
 </tr>
 <tr>
-<td width="120" class="right">工作单位：</td>
+<td><input type="text" id="insured.birthdate" name="insured.birthdate" readonly="readonly" value="${insured.birthdate_}" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
 <td><input type="text" id="insured.employer" name="insured.employer" value="${insured.employer}" size=50></td>
-<td width="120" class="right">工号：</td>
 <td><input type="text" id="insured.jobnumber" name="insured.jobnumber" value="${insured.jobnumber }" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right">工龄：</td>
 <td><input type="text" id="insured.workage" name="insured.workage" value="${insured.workage}" size=50></td>
-<td width="120" class="right">科室：</td>
 <td><input type="text" id="insured.title" name="insured.title" value="${insured.title }" size=50></td>
 </tr>
 <tr>
-<td width="120" class="right">人员类别：</td>
+<td>人员类别：</td>
+<td>年龄：</td>
+<td>开户行省：</td>
+<td>开户行市：</td>
+<td>开户行支行：</td>
+</tr>
+<tr>
 <td><input type="text" id="insured.insuredtype" name="insured.insuredtype" value="${insured.insuredtype}" size=50></td>
-<td width="120" class="right">年龄：</td>
 <td><input type="text" id="insured.age" name="insured.age" value="${insured.age }" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right">开户行省：</td>
 <td><input type="text" id="insured.bankprovince" name="insured.bankprovince" value="${insured.bankprovince }" size=50></td>
-<td width="120" class="right">开户行市：</td>
 <td><input type="text" id="insured.bankcity" name="insured.bankcity" value="${insured.bankcity}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right">开户行支行：</td>
 <td><input type="text" id="insured.subbranch" name="insured.subbranch" value="${insured.subbranch }" size=50></td>
-<td width="120" class="right">银行账号：</td>
+</tr>
+<tr>
+<td>银行账号：</td>
+<td>开户行：</td>
+<td>账户名：</td>
+<td>电子邮件：</td>
+<td>机构：</td>
+</tr>
+<tr>
 <td><input type="text" id="insured.accountnumber" name="insured.accountnumber" value="${insured.accountnumber }" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right">开户行：</td>
 <td><input type="text" id="insured.bankname" name="insured.bankname" value="${insured.bankname }" size=50></td>
-<td width="120" class="right">账户名：</td>
 <td><input type="text" id="insured.accountname" name="insured.accountname" value="${insured.accountname}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right">电子邮件：</td>
 <td><input type="text" id="insured.email" name="insured.email" value="${insured.email }" size=50></td>
-<td width="120" class="right">机构：</td>
 <td><input type="text" id="insured.department" name="insured.department" value="${insured.department }" size=50></td>
 </tr>
 <tr>
-<td width="120" class="right">手机号：</td>
-<td colspan="3"><input type="text" id="insured.mobile" name="insured.mobile" value="${insured.mobile }" size=50></td>
+<td  colspan="5">手机号：</td>
+</tr>
+<tr>
+<td colspan="5"><input type="text" id="insured.mobile" name="insured.mobile" value="${insured.mobile }" size=50></td>
 </tr>
 </table>
 <br/><br/>
 <span>投保险种</span>
 <table class="tform">
 <tr>
-<td width="120" class="right">险种组：</td>
+<td>险种组：</td>
 <td><select id="insurancegroupid" name="insurancegroupid"></select></td>
-<td width="120" class="right">险种：</td>
+<td>险种：</td>
 <td><select id="insuranceid" name="insuranceid"></select></td>
 </tr>
 <tr>
-<td width="120" class="right">保险编号：</td>
+<td>保险编号：</td>
 <td colspan="3"><input type="text" id="clientid" name="clientid" value="" size=50></td>
 </tr>
 <tr>
-<td width="120" class="right">保险期间（起）：</td>
+<td>保险期间（起）：</td>
 <td><input type="text" id="periodbegin" name="periodbegin" readonly="readonly" value="" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
-<td width="120" class="right">保险期间（止）：</td>
+<td>保险期间（止）：</td>
 <td><input type="text" id="periodend" name="periodend" readonly="readonly" value="" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
 </tr>
 <tr>
-<td width="120" class="right">保险状态：</td>
+<td>保险状态：</td>
 <td><select name="policystate" id="policystate" class="select100">
 <option value="在保">在保</option>
 <option value="停保">停保</option>
 </select></td>
-<td width="120" class="right">医保状态：</td>
+<td>医保状态：</td>
 <td><input type="text" id="shistate" name="shistate" value="" size=50></td>
 </tr>
 <tr>
-<td width="120" class="right">医保地点：</td>
+<td>医保地点：</td>
 <td><input type="text" id="shiarea" name="shiarea" value="" size=50></td>
-<td width="120" class="right">工作地：</td>
+<td>工作地：</td>
 <td><input type="text" id="joblocal" name="joblocal" value="" size=50></td>
 </tr>
 <tr>
-<td width="120" class="right">关系：</td>
+<td>关系：</td>
 <td><select name="relation" id="relation" class="select100">
 <option value="雇员">雇员</option>
 <option value="子女">子女</option>
@@ -164,17 +163,17 @@
 <option value="夫妻">夫妻</option>
 <option value="配偶">配偶</option>
 </select></td>
-<td width="120" class="right">雇员编号：</td>
+<td>雇员编号：</td>
 <td><input type="text" id="jobnumber" name="jobnumber" value="" size=50></td>
 </tr>
 <tr>
-<td width="120" class="right">开户行：</td>
+<td>开户行：</td>
 <td><input type="text" id="bankname" name="bankname" value="" size=50></td>
-<td width="120" class="right">账户名：</td>
+<td>账户名：</td>
 <td><input type="text" id="accountname" name="accountname" value="" size=50></td>
 </tr>
 <tr>
-<td width="120" class="right">银行账号：</td>
+<td>银行账号：</td>
 <td colspan="3"><input type="text" id="accountnumber" name="accountnumber" value="" size=50></td>
 </tr>
 </table>

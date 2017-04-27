@@ -66,80 +66,86 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 		}
 		
 		int receiptID = 0;
-		try {
-			int claimid = Putil.getInt(request.getParameter("claimid"));
-			int receiptno = Putil.getInt(request.getParameter("receiptno"));
-			int insuredno = Putil.getInt(request.getParameter("insuredno"));
-			int receipttype = Putil.getInt(request.getParameter("receipttype"));
-			String receiptnumber = Putil.getString(request.getParameter("receiptnumber"));
-			int hospitalid = Putil.getInt(request.getParameter("hospitalid"));
-			int feetype = Putil.getInt(request.getParameter("feetype"));
-			String visitdate = Putil.getString(request.getParameter("visitdate"));
-			String hospitaldate = Putil.getString(request.getParameter("hospitaldate"));
-			String dischargedate = Putil.getString(request.getParameter("dischargedate"));
-			String claimdate = Putil.getString(request.getParameter("claimdate"));
-			int medicaltype = Putil.getInt(request.getParameter("medicaltype"));
-			String area = Putil.getString(request.getParameter("area"));
-			float fundpaid = Putil.getFloat(request.getParameter("fundpaid"));
-			float cashpaid = Putil.getFloat(request.getParameter("cashpaid"));
-			float total = Putil.getFloat(request.getParameter("total"));
-			int feeid = Putil.getInt(request.getParameter("feeid"));
-			float fee = Putil.getFloat(request.getParameter("fee"));
-			String zfmark = Putil.getString(request.getParameter("zfmark"));
-			float zfamount = Putil.getFloat(request.getParameter("zfamount"));
-			String bfzfmark = Putil.getString(request.getParameter("bfzfmark"));
-			float bfzfamount = Putil.getFloat(request.getParameter("bfzfamount"));
-			String ybbzfmark = Putil.getString(request.getParameter("ybbzfmark"));
-			float ybbzfamount = Putil.getFloat(request.getParameter("ybbzfamount"));
-			String ybzfmark = Putil.getString(request.getParameter("ybzfmark"));
-			float ybzfamount = Putil.getFloat(request.getParameter("ybzfamount"));
-			float mentalillnessamount = Putil.getFloat(request.getParameter("mentalillnessamount"));
-			float dentistryamount = Putil.getFloat(request.getParameter("dentistryamount"));
-			float rehabilitationamount = Putil.getFloat(request.getParameter("rehabilitationamount"));
 
+		String id = Putil.getString(request.getParameter("id")) ;
+		if(StringUtils.hasLength(id)){
+			receiptID = Integer.parseInt(id);
+		}
+		int claimid = Putil.getInt(request.getParameter("claimid"));
+		int receiptno = Putil.getInt(request.getParameter("receiptno"));
+		int insuredno = Putil.getInt(request.getParameter("insuredno"));
+		int receipttype = Putil.getInt(request.getParameter("receipttype"));
+		String receiptnumber = Putil.getString(request.getParameter("receiptnumber"));
+		int hospitalid = Putil.getInt(request.getParameter("hospitalid"));
+		int feetype = Putil.getInt(request.getParameter("feetype"));
+		String visitdate = Putil.getString(request.getParameter("visitdate"));
+		String hospitaldate = Putil.getString(request.getParameter("hospitaldate"));
+		String dischargedate = Putil.getString(request.getParameter("dischargedate"));
+		String claimdate = Putil.getString(request.getParameter("claimdate"));
+		int medicaltype = Putil.getInt(request.getParameter("medicaltype"));
+		String area = Putil.getString(request.getParameter("area"));
+		float mentalillnessamount = Putil.getFloat(request.getParameter("mentalillnessamount"));
+		float dentistryamount = Putil.getFloat(request.getParameter("dentistryamount"));
+		float rehabilitationamount = Putil.getFloat(request.getParameter("rehabilitationamount"));
+		float fundpaid = Putil.getFloat(request.getParameter("fundpaid"));
+		float cashpaid = Putil.getFloat(request.getParameter("cashpaid"));
+		float total = Putil.getFloat(request.getParameter("total"));
+		
+		if(receiptID == 0){
+			try {
+				
+				StringBuilder select = new StringBuilder("insert into em_receipt (claimid,receiptno,insuredno,receipttype,receiptnumber,hospitalid,feetype,visitdate,hospitaldate,dischargedate,claimdate,medicaltype,area,mentalillnessamount,dentistryamount,rehabilitationamount,fundpaid,cashpaid,total) values ("
+						+ "" + claimid + ""
+						+ "," + receiptno + ""
+						+ "," + insuredno + ""
+						+ "," + receipttype + ""
+						+ ",'" + receiptnumber.replace("'", "''") + "'"
+						+ "," + hospitalid + ""
+						+ "," + feetype + ""
+						+ ",'" + visitdate.replace("'", "''") + "'"
+						+ ",'" + hospitaldate.replace("'", "''") + "'"
+						+ ",'" + dischargedate.replace("'", "''") + "'"
+						+ ",'" + claimdate.replace("'", "''") + "'"
+						+ "," + medicaltype + ""
+						+ ",'" + area.replace("'", "''") + "'"
+						+ "," + mentalillnessamount + ""
+						+ "," + dentistryamount + ""
+						+ "," + rehabilitationamount + ""
+						+ "," + fundpaid + ""
+						+ "," + cashpaid + ""
+						+ "," + total + ""
+						+ ")"
+					);
 
-
-
-
-
-			
-			StringBuilder select = new StringBuilder("insert into em_receipt (claimid,receiptno,insuredno,receipttype,receiptnumber,hospitalid,feetype,visitdate,hospitaldate,dischargedate,claimdate,medicaltype,area,fundpaid,cashpaid,total,feeid,fee,zfmark,zfamount,bfzfmark,bfzfamount,ybbzfmark,ybbzfamount,ybzfmark,ybzfamount,mentalillnessamount,dentistryamount,rehabilitationamount) values ("
-				+ "" + claimid + ""
-				+ "," + receiptno + ""
-				+ "," + insuredno + ""
-				+ "," + receipttype + ""
-				+ ",'" + receiptnumber.replace("'", "''") + "'"
-				+ "," + hospitalid + ""
-				+ "," + feetype + ""
-				+ ",'" + visitdate.replace("'", "''") + "'"
-				+ ",'" + hospitaldate.replace("'", "''") + "'"
-				+ ",'" + dischargedate.replace("'", "''") + "'"
-				+ ",'" + claimdate.replace("'", "''") + "'"
-				+ "," + medicaltype + ""
-				+ ",'" + area.replace("'", "''") + "'"
-				+ "," + fundpaid + ""
-				+ "," + cashpaid + ""
-				+ "," + total + ""
-				+ "," + feeid + ""
-				+ "," + fee + ""
-				+ ",'" + zfmark.replace("'", "''") + "'"
-				+ "," + zfamount + ""
-				+ ",'" + bfzfmark.replace("'", "''") + "'"
-				+ "," + bfzfamount + ""
-				+ ",'" + ybbzfmark.replace("'", "''") + "'"
-				+ "," + ybbzfamount + ""
-				+ ",'" + ybzfmark.replace("'", "''") + "'"
-				+ "," + ybzfamount + ""
-				+ "," + mentalillnessamount + ""
-				+ "," + dentistryamount + ""
-				+ "," + rehabilitationamount + ""
-				+ ")"
+				receiptID = DbUtils.save1(select.toString());
+		
+			} catch (Exception e) {
+				e.printStackTrace(System.out);
+			}
+		}else{
+			StringBuilder select = new StringBuilder("update em_receipt set "
+					+ "claimid=" + claimid + ""
+					+ ",receiptno=" + receiptno + ""
+					+ ",insuredno=" + insuredno + ""
+					+ ",receipttype=" + receipttype + ""
+					+ ",receiptnumber='" + receiptnumber.replace("'", "''") + "'"
+					+ ",hospitalid=" + hospitalid + ""
+					+ ",feetype=" + feetype + ""
+					+ ",visitdate='" + visitdate.replace("'", "''") + "'"
+					+ ",hospitaldate='" + hospitaldate.replace("'", "''") + "'"
+					+ ",dischargedate='" + dischargedate.replace("'", "''") + "'"
+					+ ",claimdate='" + claimdate.replace("'", "''") + "'"
+					+ ",medicaltype=" + medicaltype + ""
+					+ ",area='" + area.replace("'", "''") + "'"
+					+ ",mentalillnessamount=" + mentalillnessamount + ""
+					+ ",dentistryamount=" + dentistryamount + ""
+					+ ",rehabilitationamount=" + rehabilitationamount + ""
+					+ ",fundpaid=" + fundpaid + ""
+					+ ",cashpaid=" + cashpaid + ""
+					+ ",total=" + total + ""
+				+ " where id=" + id + "" 
 			);
-
-			receiptID = DbUtils.save1(select.toString());
-	
-		} catch (Exception e) {
-			e.printStackTrace(System.out);
+			int result = DbUtils.save(select.toString());
 		}
 		
 		if(receiptID == 0){
@@ -148,35 +154,51 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 		}
 		
 		try {
-			float jpamount = Putil.getFloat(request.getParameter("claimsettlement.jpamount"));
-			float pfrate = Putil.getFloat(request.getParameter("claimsettlement.pfrate"));
-			float yyfpfje = Putil.getFloat(request.getParameter("claimsettlement.yyfpfje"));
-			String jcfpfje = Putil.getString(request.getParameter("claimsettlement.jcfpfje"));
-			float cwfpfje = Putil.getFloat(request.getParameter("claimsettlement.cwfpfje"));
-			float pfamount = Putil.getFloat(request.getParameter("claimsettlement.pfamount"));
-			String yyfremark = Putil.getString(request.getParameter("claimsettlement.yyfremark"));
-
-
-			
-			StringBuilder select = new StringBuilder("insert into em_claimsettlement (receiptid,jpamount,pfrate,yyfpfje,jcfpfje,cwfpfje,pfamount,yyfremark) values ("
-				+ "" + receiptID + ""
-				+ "," + jpamount + ""
-				+ "," + pfrate + ""
-				+ "," + yyfpfje + ""
-				+ ",'" + jcfpfje.replace("'", "''") + "'"
-				+ "," + cwfpfje + ""
-				+ "," + pfamount + ""
-				+ ",'" + yyfremark.replace("'", "''") + "'"
-				+ ")"
-			);
-
+			StringBuilder select = new StringBuilder("delete from em_receiptinfo "
+					+ " where receiptid=" + receiptID + "" 
+					);
 			int result = DbUtils.save(select.toString());
-	
+			
+			String[] feeid = request.getParameterValues("feeid");
+			String[] fee =request.getParameterValues("fee");
+			String[] zfamount =request.getParameterValues("zfamount");
+			String[] zfmark =request.getParameterValues("zfmark");
+			String[] ybzfamount =request.getParameterValues("ybzfamount");
+			String[] ybzfmark =request.getParameterValues("ybzfmark");
+			
+			if(feeid != null && feeid.length > 0){
+				for (int i = 0; i < feeid.length; i++) {
+					String _feeid = Putil.getString(feeid[i]);
+					String _fee =Putil.getString(fee[i]);
+					String _zfamount =Putil.getString(zfamount[i]);
+					String _zfmark =Putil.getString(zfmark[i]);
+					String _ybzfamount =Putil.getString(ybzfamount[i]);
+					String _ybzfmark =Putil.getString(ybzfmark[i]);
+					
+					StringBuilder sql = new StringBuilder("insert into em_receiptinfo (receiptid,feeid,fee,zfmark,zfamount,bfzfmark,bfzfamount,ybbzfmark,ybbzfamount,ybzfmark,ybzfamount) values ("
+							+ "" + receiptID + ""
+							+ "," + _feeid + ""
+							+ "," + _fee + ""
+							+ ",'" + _zfmark.replace("'", "''") + "'"
+							+ "," + _zfamount + ""
+							+ ",''"
+							+ "," + 0 + ""
+							+ ",''"
+							+ "," + 0 + ""
+							+ ",'" + _ybzfmark.replace("'", "''") + "'"
+							+ "," + _ybzfamount + ""
+							+ ")"
+						);
+		
+						DbUtils.save(sql.toString());
+				}
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 		}
 
-		redirect(request, response, "/emReceipt.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s);
+		redirect(request, response, "/emReceipt.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s+"&claimid="+claimid+"&receiptid="+receiptID);
 		
 	}
 
@@ -232,22 +254,12 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 			String claimdate = Putil.getString(request.getParameter("claimdate"));
 			int medicaltype = Putil.getInt(request.getParameter("medicaltype"));
 			String area = Putil.getString(request.getParameter("area"));
-			float fundpaid = Putil.getFloat(request.getParameter("fundpaid"));
-			float cashpaid = Putil.getFloat(request.getParameter("cashpaid"));
-			float total = Putil.getFloat(request.getParameter("total"));
-			int feeid = Putil.getInt(request.getParameter("feeid"));
-			float fee = Putil.getFloat(request.getParameter("fee"));
-			String zfmark = Putil.getString(request.getParameter("zfmark"));
-			float zfamount = Putil.getFloat(request.getParameter("zfamount"));
-			String bfzfmark = Putil.getString(request.getParameter("bfzfmark"));
-			float bfzfamount = Putil.getFloat(request.getParameter("bfzfamount"));
-			String ybbzfmark = Putil.getString(request.getParameter("ybbzfmark"));
-			float ybbzfamount = Putil.getFloat(request.getParameter("ybbzfamount"));
-			String ybzfmark = Putil.getString(request.getParameter("ybzfmark"));
-			float ybzfamount = Putil.getFloat(request.getParameter("ybzfamount"));
 			float mentalillnessamount = Putil.getFloat(request.getParameter("mentalillnessamount"));
 			float dentistryamount = Putil.getFloat(request.getParameter("dentistryamount"));
 			float rehabilitationamount = Putil.getFloat(request.getParameter("rehabilitationamount"));
+			float fundpaid = Putil.getFloat(request.getParameter("fundpaid"));
+			float cashpaid = Putil.getFloat(request.getParameter("cashpaid"));
+			float total = Putil.getFloat(request.getParameter("total"));
 
 
 
@@ -267,22 +279,12 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 					+ ",claimdate='" + claimdate.replace("'", "''") + "'"
 					+ ",medicaltype=" + medicaltype + ""
 					+ ",area='" + area.replace("'", "''") + "'"
-					+ ",fundpaid=" + fundpaid + ""
-					+ ",cashpaid=" + cashpaid + ""
-					+ ",total=" + total + ""
-					+ ",feeid=" + feeid + ""
-					+ ",fee=" + fee + ""
-					+ ",zfmark='" + zfmark.replace("'", "''") + "'"
-					+ ",zfamount=" + zfamount + ""
-					+ ",bfzfmark='" + bfzfmark.replace("'", "''") + "'"
-					+ ",bfzfamount=" + bfzfamount + ""
-					+ ",ybbzfmark='" + ybbzfmark.replace("'", "''") + "'"
-					+ ",ybbzfamount=" + ybbzfamount + ""
-					+ ",ybzfmark='" + ybzfmark.replace("'", "''") + "'"
-					+ ",ybzfamount=" + ybzfamount + ""
 					+ ",mentalillnessamount=" + mentalillnessamount + ""
 					+ ",dentistryamount=" + dentistryamount + ""
 					+ ",rehabilitationamount=" + rehabilitationamount + ""
+					+ ",fundpaid=" + fundpaid + ""
+					+ ",cashpaid=" + cashpaid + ""
+					+ ",total=" + total + ""
 				+ " where id=" + id + "" 
 			);
 			int result = DbUtils.save(select.toString());
@@ -309,6 +311,7 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 			String o = Putil.getString(request.getParameter("o")); // 排序字
 			String sort = Putil.getString(request.getParameter("sort")); // 顺序
 			String claimid = Putil.getString(request.getParameter("claimid")) ;
+			String receiptid = Putil.getString(request.getParameter("receiptid")) ;
 			
 
 			// 列表
@@ -344,6 +347,25 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 			request.setAttribute("medicaltypeMap", medicaltypeMap);
 			request.setAttribute("areaMap", areaMap);
 
+			if(claimid.length()>0) {
+				Map<String, Object> row = DbUtils.queryOne("select p.* from em_claim p where p.id="+claimid);
+				request.setAttribute("emClaim", row);
+				if(row != null){
+					Map<String, Object> row1 = DbUtils.queryOne("select p.* from em_claiminfo p where p.claimid="+claimid);
+					request.setAttribute("emClaimInfo", row1);
+				}
+			}
+			if(receiptid.length()>0) {
+				Map<String, Object> row = DbUtils.queryOne("select p.* from em_receipt p where p.id="+receiptid);
+				request.setAttribute("emReceipt", row);
+
+				List<Map<String, Object>> receiptinfoRows = DbUtils.query("select p.* from em_receiptinfo p where p.id>=0 and p.receiptid=" + receiptid + " order by p.id asc");
+				request.setAttribute("receiptinfoRows", receiptinfoRows);
+			}
+			
+			List<Map<String, Object>> feeRows = DbUtils.query("select p.* from em_fee p where p.id>=0 order by p.feecode asc");
+			request.setAttribute("feeRows", feeRows);
+			
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 		} finally {

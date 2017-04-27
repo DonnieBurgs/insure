@@ -40,6 +40,11 @@ public class EmClaimServlet extends UserSecureDispatcher {
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("m", m+"");
 		request.setAttribute("s", s+"");
+		
+		request.setAttribute("claimtypeMap", EmClaimInfoServlet.claimtypeMap);
+		request.setAttribute("claimreasonMap", EmClaimInfoServlet.claimreasonMap);
+		request.setAttribute("paytypeMap", EmClaimInfoServlet.paytypeMap);
+		request.setAttribute("insuretypeMap", EmClaimInfoServlet.insuretypeMap);
 
 		forward(request, response, "/admin/ClaimAdd.jsp");
 	
@@ -63,14 +68,108 @@ public class EmClaimServlet extends UserSecureDispatcher {
 		Map<String, Object> admin = LoginManager.getUser(request);
 		if(admin==null) {
 			return ;
-		}int claimarchiveid = Putil.getInt(request.getParameter("claimarchiveid"));
+		}
+		
+		
+		//先保存被保险人
+		int insuredID=0;
+		try {
+			String insuredid = Putil.getString(request.getParameter("insured.id"));
+			String insuredname = Putil.getString(request.getParameter("insured.insuredname"));
+			String gender = Putil.getString(request.getParameter("insured.gender"));
+			String idtype = Putil.getString(request.getParameter("insured.idtype"));
+			String idnumber = Putil.getString(request.getParameter("insured.idnumber"));
+			String passport = Putil.getString(request.getParameter("insured.passport"));
+			String birthdate = Putil.getString(request.getParameter("insured.birthdate"));
+			String insuredtype = Putil.getString(request.getParameter("insured.insuredtype"));
+			String age = Putil.getString(request.getParameter("insured.age"));
+			String workage = Putil.getString(request.getParameter("insured.workage"));
+			String employer = Putil.getString(request.getParameter("insured.employer"));
+			String jobnumber = Putil.getString(request.getParameter("insured.jobnumber"));
+			String bankname = Putil.getString(request.getParameter("insured.bankname"));
+			String bankprovince = Putil.getString(request.getParameter("insured.bankprovince"));
+			String bankcity = Putil.getString(request.getParameter("insured.bankcity"));
+			String subbranch = Putil.getString(request.getParameter("insured.subbranch"));
+			String accountname = Putil.getString(request.getParameter("insured.accountname"));
+			String accountnumber = Putil.getString(request.getParameter("insured.accountnumber"));
+			String mobile = Putil.getString(request.getParameter("insured.mobile"));
+			String email = Putil.getString(request.getParameter("insured.email"));
+			String department = Putil.getString(request.getParameter("insured.department"));
+			String title = Putil.getString(request.getParameter("insured.title"));
+			
+			Map<String, Object> row = DbUtils.queryOne("select p.* from em_insured p where p.insuredname='"+insuredname + "' and p.idnumber = '" + idnumber +"'");
+			if(StringUtils.hasLength(insuredid) || (row != null && !row.isEmpty())){ // 更新
+				insuredID = Integer.parseInt(insuredid);
+				StringBuilder select = new StringBuilder("update em_insured set "
+						+ "insuredname='" + insuredname.replace("'", "''") + "'"
+						+ ",gender='" + gender.replace("'", "''") + "'"
+						+ ",idtype='" + idtype.replace("'", "''") + "'"
+						+ ",idnumber='" + idnumber.replace("'", "''") + "'"
+						+ ",passport='" + passport.replace("'", "''") + "'"
+						+ ",birthdate='" + birthdate.replace("'", "''") + "'"
+						+ ",insuredtype='" + insuredtype.replace("'", "''") + "'"
+						+ ",age='" + age.replace("'", "''") + "'"
+						+ ",workage='" + workage.replace("'", "''") + "'"
+						+ ",employer='" + employer.replace("'", "''") + "'"
+						+ ",jobnumber='" + jobnumber.replace("'", "''") + "'"
+						+ ",bankname='" + bankname.replace("'", "''") + "'"
+						+ ",bankprovince='" + bankprovince.replace("'", "''") + "'"
+						+ ",bankcity='" + bankcity.replace("'", "''") + "'"
+						+ ",subbranch='" + subbranch.replace("'", "''") + "'"
+						+ ",accountname='" + accountname.replace("'", "''") + "'"
+						+ ",accountnumber='" + accountnumber.replace("'", "''") + "'"
+						+ ",mobile='" + mobile.replace("'", "''") + "'"
+						+ ",email='" + email.replace("'", "''") + "'"
+						+ ",department='" + department.replace("'", "''") + "'"
+						+ ",title='" + title.replace("'", "''") + "'"
+					+ " where id=" + insuredid + "" 
+				);
+				int result = DbUtils.save(select.toString());
+			}else{
+				StringBuilder select = new StringBuilder("insert into em_insured (insuredname,gender,idtype,idnumber,passport,birthdate,insuredtype,age,workage,employer,jobnumber,bankname,bankprovince,bankcity,subbranch,accountname,accountnumber,mobile,email,department,title) values ("
+					+ "'" + insuredname.replace("'", "''") + "'"
+					+ ",'" + gender.replace("'", "''") + "'"
+					+ ",'" + idtype.replace("'", "''") + "'"
+					+ ",'" + idnumber.replace("'", "''") + "'"
+					+ ",'" + passport.replace("'", "''") + "'"
+					+ ",'" + birthdate.replace("'", "''") + "'"
+					+ ",'" + insuredtype.replace("'", "''") + "'"
+					+ ",'" + age.replace("'", "''") + "'"
+					+ ",'" + workage.replace("'", "''") + "'"
+					+ ",'" + employer.replace("'", "''") + "'"
+					+ ",'" + jobnumber.replace("'", "''") + "'"
+					+ ",'" + bankname.replace("'", "''") + "'"
+					+ ",'" + bankprovince.replace("'", "''") + "'"
+					+ ",'" + bankcity.replace("'", "''") + "'"
+					+ ",'" + subbranch.replace("'", "''") + "'"
+					+ ",'" + accountname.replace("'", "''") + "'"
+					+ ",'" + accountnumber.replace("'", "''") + "'"
+					+ ",'" + mobile.replace("'", "''") + "'"
+					+ ",'" + email.replace("'", "''") + "'"
+					+ ",'" + department.replace("'", "''") + "'"
+					+ ",'" + title.replace("'", "''") + "'"
+					+ ")"
+				);
+
+			insuredID= DbUtils.save1(select.toString());
+			}
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		}
+		if(insuredID == 0){
+			prompt(response, "被保险人保存失败");
+			return;
+		}
+		
+
+		// 保存后的ID
+		int claimID=0;
+		int claimarchiveid = Putil.getInt(request.getParameter("claimarchiveid"));
 		try {
 			
 			String serialnumber = Putil.getString(request.getParameter("serialnumber"));
 			int insuredid = Putil.getInt(request.getParameter("insuredid"));
 			String bardh = Putil.getString(request.getParameter("bardh"));
-
-
 
 
 
@@ -84,13 +183,51 @@ public class EmClaimServlet extends UserSecureDispatcher {
 				+ ")"
 			);
 
+			claimID = DbUtils.save1(select.toString());
+	
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		}
+		
+		try {
+			int claimtype = Putil.getInt(request.getParameter("info.claimtype"));
+			int claimreason = Putil.getInt(request.getParameter("info.claimreason"));
+			String claimdate = Putil.getString(request.getParameter("info.claimdate"));
+			int paytype = Putil.getInt(request.getParameter("info.paytype"));
+			String insuretype1 = Putil.getString(request.getParameter("info.insuretype1"));
+			String insuretype2 = Putil.getString(request.getParameter("info.insuretype2"));
+			String insuretype3 = Putil.getString(request.getParameter("info.insuretype3"));
+			float spamount = Putil.getFloat(request.getParameter("info.spamount"));
+			int diseaseid = Putil.getInt(request.getParameter("info.diseaseid"));
+			int determinecount = Putil.getInt(request.getParameter("info.determinecount"));
+			int receiptcount = Putil.getInt(request.getParameter("info.receiptcount"));
+			String mark = Putil.getString(request.getParameter("info.mark"));
+
+			
+			StringBuilder select = new StringBuilder("insert into em_claiminfo (claimid,claimtype,claimreason,claimdate,paytype,insuretype1,insuretype2,insuretype3,spamount,diseaseid,determinecount,receiptcount,mark) values ("
+				+ "" + claimID + ""
+				+ "," + claimtype + ""
+				+ "," + claimreason + ""
+				+ ",'" + claimdate.replace("'", "''") + "'"
+				+ "," + paytype + ""
+				+ ",'" + insuretype1.replace("'", "''") + "'"
+				+ ",'" + insuretype2.replace("'", "''") + "'"
+				+ ",'" + insuretype3.replace("'", "''") + "'"
+				+ "," + spamount + ""
+				+ "," + diseaseid + ""
+				+ "," + determinecount + ""
+				+ "," + receiptcount + ""
+				+ ",'" + mark.replace("'", "''") + "'"
+				+ ")"
+			);
+
 			int result = DbUtils.save(select.toString());
 	
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 		}
 
-		redirect(request, response, "/emClaim.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s+"&keyword="+claimarchiveid);
+		redirect(request, response, "/emClaim2.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s+"&keyword="+claimarchiveid);
 		
 	}
 
@@ -110,7 +247,18 @@ public class EmClaimServlet extends UserSecureDispatcher {
 		if(id.length()>0) {
 			Map<String, Object> row = DbUtils.queryOne("select p.* from em_claim p where p.id="+id);
 			request.setAttribute("item", row);
+			
+			Map<String, Object> rowClaiminfo = DbUtils.queryOne("select p.* from em_claiminfo p where p.claimid="+id);
+			request.setAttribute("emClaimInfo", rowClaiminfo);
+			
+			Map<String, Object> rowInsured = DbUtils.queryOne("select p.* from em_insured p where p.id="+String.valueOf(row.get("insuredid")));
+			request.setAttribute("insured", rowInsured);
 		}
+		
+		request.setAttribute("claimtypeMap", EmClaimInfoServlet.claimtypeMap);
+		request.setAttribute("claimreasonMap", EmClaimInfoServlet.claimreasonMap);
+		request.setAttribute("paytypeMap", EmClaimInfoServlet.paytypeMap);
+		request.setAttribute("insuretypeMap", EmClaimInfoServlet.insuretypeMap);
 
 		forward(request, response, "/admin/ClaimEdit.jsp");
 		
@@ -131,8 +279,8 @@ public class EmClaimServlet extends UserSecureDispatcher {
 		request.setAttribute("m", m+"");
 		request.setAttribute("s", s+"");
 
+		String id = Putil.getString(request.getParameter("id")) ;
 		try {
-			String id = Putil.getString(request.getParameter("id")) ;
 			int claimarchiveid = Putil.getInt(request.getParameter("claimarchiveid"));
 			String serialnumber = Putil.getString(request.getParameter("serialnumber"));
 			int insuredid = Putil.getInt(request.getParameter("insuredid"));
@@ -155,8 +303,99 @@ public class EmClaimServlet extends UserSecureDispatcher {
 			e.printStackTrace(System.out);
 		} finally {
 		}
+		
+				try {
+					String insuredid = Putil.getString(request.getParameter("insured.id"));
+					String insuredname = Putil.getString(request.getParameter("insured.insuredname"));
+					String gender = Putil.getString(request.getParameter("insured.gender"));
+					String idtype = Putil.getString(request.getParameter("insured.idtype"));
+					String idnumber = Putil.getString(request.getParameter("insured.idnumber"));
+					String passport = Putil.getString(request.getParameter("insured.passport"));
+					String birthdate = Putil.getString(request.getParameter("insured.birthdate"));
+					String insuredtype = Putil.getString(request.getParameter("insured.insuredtype"));
+					String age = Putil.getString(request.getParameter("insured.age"));
+					String workage = Putil.getString(request.getParameter("insured.workage"));
+					String employer = Putil.getString(request.getParameter("insured.employer"));
+					String jobnumber = Putil.getString(request.getParameter("insured.jobnumber"));
+					String bankname = Putil.getString(request.getParameter("insured.bankname"));
+					String bankprovince = Putil.getString(request.getParameter("insured.bankprovince"));
+					String bankcity = Putil.getString(request.getParameter("insured.bankcity"));
+					String subbranch = Putil.getString(request.getParameter("insured.subbranch"));
+					String accountname = Putil.getString(request.getParameter("insured.accountname"));
+					String accountnumber = Putil.getString(request.getParameter("insured.accountnumber"));
+					String mobile = Putil.getString(request.getParameter("insured.mobile"));
+					String email = Putil.getString(request.getParameter("insured.email"));
+					String department = Putil.getString(request.getParameter("insured.department"));
+					String title = Putil.getString(request.getParameter("insured.title"));
+					
+						StringBuilder select = new StringBuilder("update em_insured set "
+								+ "insuredname='" + insuredname.replace("'", "''") + "'"
+								+ ",gender='" + gender.replace("'", "''") + "'"
+								+ ",idtype='" + idtype.replace("'", "''") + "'"
+								+ ",idnumber='" + idnumber.replace("'", "''") + "'"
+								+ ",passport='" + passport.replace("'", "''") + "'"
+								+ ",birthdate='" + birthdate.replace("'", "''") + "'"
+								+ ",insuredtype='" + insuredtype.replace("'", "''") + "'"
+								+ ",age='" + age.replace("'", "''") + "'"
+								+ ",workage='" + workage.replace("'", "''") + "'"
+								+ ",employer='" + employer.replace("'", "''") + "'"
+								+ ",jobnumber='" + jobnumber.replace("'", "''") + "'"
+								+ ",bankname='" + bankname.replace("'", "''") + "'"
+								+ ",bankprovince='" + bankprovince.replace("'", "''") + "'"
+								+ ",bankcity='" + bankcity.replace("'", "''") + "'"
+								+ ",subbranch='" + subbranch.replace("'", "''") + "'"
+								+ ",accountname='" + accountname.replace("'", "''") + "'"
+								+ ",accountnumber='" + accountnumber.replace("'", "''") + "'"
+								+ ",mobile='" + mobile.replace("'", "''") + "'"
+								+ ",email='" + email.replace("'", "''") + "'"
+								+ ",department='" + department.replace("'", "''") + "'"
+								+ ",title='" + title.replace("'", "''") + "'"
+							+ " where id=" + insuredid + "" 
+						);
+						int result = DbUtils.save(select.toString());
+				} catch (Exception e) {
+					e.printStackTrace(System.out);
+				}
+				
+				try {
+					String claiminfoid = Putil.getString(request.getParameter("claiminfoid"));
+					int claimtype = Putil.getInt(request.getParameter("info.claimtype"));
+					int claimreason = Putil.getInt(request.getParameter("info.claimreason"));
+					String claimdate = Putil.getString(request.getParameter("info.claimdate"));
+					int paytype = Putil.getInt(request.getParameter("info.paytype"));
+					String insuretype1 = Putil.getString(request.getParameter("info.insuretype1"));
+					String insuretype2 = Putil.getString(request.getParameter("info.insuretype2"));
+					String insuretype3 = Putil.getString(request.getParameter("info.insuretype3"));
+					float spamount = Putil.getFloat(request.getParameter("info.spamount"));
+					int diseaseid = Putil.getInt(request.getParameter("info.diseaseid"));
+					int determinecount = Putil.getInt(request.getParameter("info.determinecount"));
+					int receiptcount = Putil.getInt(request.getParameter("info.receiptcount"));
+					String mark = Putil.getString(request.getParameter("info.mark"));
 
-		redirect(request, response, "/emClaim.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s);
+					
+					StringBuilder select = new StringBuilder("update em_claiminfo set "
+							+ "claimid=" + id + ""
+							+ ",claimtype=" + claimtype + ""
+							+ ",claimreason=" + claimreason + ""
+							+ ",claimdate='" + claimdate.replace("'", "''") + "'"
+							+ ",paytype=" + paytype + ""
+							+ ",insuretype1='" + insuretype1.replace("'", "''") + "'"
+							+ ",insuretype2='" + insuretype2.replace("'", "''") + "'"
+							+ ",insuretype3='" + insuretype3.replace("'", "''") + "'"
+							+ ",spamount=" + spamount + ""
+							+ ",diseaseid=" + diseaseid + ""
+							+ ",determinecount=" + determinecount + ""
+							+ ",receiptcount=" + receiptcount + ""
+							+ ",mark='" + mark.replace("'", "''") + "'"
+						+ " where id=" + claiminfoid + "" 
+					);
+					int result = DbUtils.save(select.toString());
+			
+				} catch (Exception e) {
+					e.printStackTrace(System.out);
+				}
+
+		redirect(request, response, "/emClaim2.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s);
 		
 	}
 
@@ -260,12 +499,34 @@ public class EmClaimServlet extends UserSecureDispatcher {
     	  String method = request.getParameter("method");
           if("autocomplete".equals(method)) {
               autocomplate(request, response);
-          } else {
+          } else if("maxNo".equals(method)) {
+        	  maxNo(request, response);
+          }else {
         	  listImage(request, response);
           }
           
     	
     }
+    
+    private void maxNo(HttpServletRequest request, HttpServletResponse response) {
+    	String claimarchiveid = Putil.getString(request.getParameter("claimarchiveid")) ;
+    	StringBuilder sql = new StringBuilder("select max(p.serialnumber) m from em_claim p where p.id>=0");
+		if(claimarchiveid.length() > 0)
+			sql.append(" and p.claimarchiveid = '" + claimarchiveid + "'");
+		Map<String, Object> resultRow = DbUtils.queryOne(sql.toString());
+		long maxNo = 0;
+		if(resultRow != null && !resultRow.isEmpty()){
+			Object r = resultRow.get("m");
+			try {
+				maxNo = Long.parseLong(String.valueOf(r)) + 1;
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		toJson(maxNo, response);
+	}
+
     
     private void autocomplate(HttpServletRequest request, HttpServletResponse response) {
     	String keyword = Putil.getString(request.getParameter("term")) ;

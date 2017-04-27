@@ -325,6 +325,26 @@ public class EmInsuredServlet extends UserSecureDispatcher {
     @Override
     public void def(HttpServletRequest request, HttpServletResponse response)
     		throws ServletException, IOException {
+    	  String method = request.getParameter("method");
+          if("obj".equals(method)) {
+        	  objJson(request, response);
+          } else {
+        	  autocomplate(request, response);
+          }
+          
+    	
+    }
+    
+    private void objJson(HttpServletRequest request, HttpServletResponse response) {
+    	String id = Putil.getString(request.getParameter("id")) ;
+		if(id.length()>0) {
+			Map<String, Object> row = DbUtils.queryOne("select p.* from em_insured p where p.id="+id);
+			toJson(row, response);
+		}
+	}
+
+	public void autocomplate(HttpServletRequest request, HttpServletResponse response)
+    		throws ServletException, IOException {
 
 		String keyword = Putil.getString(request.getParameter("term")) ;
 		String inc = Putil.getString(request.getParameter("inc")) ;
@@ -347,7 +367,7 @@ public class EmInsuredServlet extends UserSecureDispatcher {
     		for (Map<String, Object> map : resultRows) {
     			Map<String, Object> row = new HashMap<>();
     			row.put("id", map.get("id"));
-    			row.put("label", map.get("insuredname"));
+    			row.put("label", map.get("insuredname") + " " + map.get("idnumber"));
     			row.put("value", map.get("insuredname"));
     			rows.add(row);
 			}

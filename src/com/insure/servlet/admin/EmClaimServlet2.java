@@ -260,14 +260,35 @@ public class EmClaimServlet2 extends UserSecureDispatcher {
     	  String method = request.getParameter("method");
           if("autocomplete".equals(method)) {
               autocomplate(request, response);
-          } else {
+          } else if("autocomplete".equals(method)) {
+        	  maxNo(request, response);
+          }else {
         	  listImage(request, response);
           }
           
     	
     }
     
-    private void autocomplate(HttpServletRequest request, HttpServletResponse response) {
+    private void maxNo(HttpServletRequest request, HttpServletResponse response) {
+    	String claimarchiveid = Putil.getString(request.getParameter("claimarchiveid")) ;
+    	StringBuilder sql = new StringBuilder("select max(p.serialnumber) m from em_claim p where p.id>=0");
+		if(claimarchiveid.length() > 0)
+			sql.append(" and p.claimarchiveid = '" + claimarchiveid + "'");
+		Map<String, Object> resultRow = DbUtils.queryOne(sql.toString());
+		long maxNo = 0;
+		if(resultRow != null && !resultRow.isEmpty()){
+			Object r = resultRow.get("m");
+			try {
+				maxNo = Long.parseLong(String.valueOf(r)) + 1;
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		toJson(maxNo, response);
+	}
+
+	private void autocomplate(HttpServletRequest request, HttpServletResponse response) {
     	String keyword = Putil.getString(request.getParameter("term")) ;
     	String claimarchiveid = Putil.getString(request.getParameter("claimarchiveid")) ;
 		String inc = Putil.getString(request.getParameter("inc")) ;

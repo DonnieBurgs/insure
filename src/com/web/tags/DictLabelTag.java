@@ -55,8 +55,10 @@ public class DictLabelTag extends SimpleTagSupport {
 			JspWriter out = getJspContext().getOut();
 			StringBuffer sb = new StringBuffer();
 			try {
+				if(result.get(name) != null){
 				sb.append(String.valueOf(result.get(name)));
 				out.write(sb.toString());
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				throw new JspException(e);

@@ -35,60 +35,63 @@
 	</div>
 </div>
 <form id="commonForm" action="/emClaimInfo.do?method=update" method="post">
+<input type="hidden" id="info_diseaseid" name="info.diseaseid" value="" size=50>
+<input type="hidden" id="claimid" name="claimid" value="" size=50>
 	<table class="tform">
 <tr>
-<td width="120" class="right"><font color="red">*</font>案件ID：</td>
-<td><input type="text" id="claimid" name="claimid" value="${fn:replace(item.claimid,'"','&quot;')}" size=50></td>
+<td><font color="red">*</font>案件类型：</td>
+<td><font color="red">*</font>出险原因：</td>
+<td><font color="red">*</font>出险日期：</td>
+<td><font color="red">*</font>保险金支付方式：</td>
+<td><font color="red">*</font>疾病：</td>
 </tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>案件类型：</td>
-<td><input type="text" id="claimtype" name="claimtype" value="${fn:replace(item.claimtype,'"','&quot;')}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>出险原因：</td>
-<td><input type="text" id="claimreason" name="claimreason" value="${fn:replace(item.claimreason,'"','&quot;')}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>出险日期：</td>
-<td><input type="text" id="claimdate" name="claimdate" readonly="readonly" value="${item.claimdate_}" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
-</tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>保险金支付方式：</td>
-<td><input type="text" id="paytype" name="paytype" value="${fn:replace(item.paytype,'"','&quot;')}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>出险类型1：</td>
-<td><input type="text" id="insuretype1" name="insuretype1" value="${fn:replace(item.insuretype1,'"','&quot;')}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>出险类型2：</td>
-<td><input type="text" id="insuretype2" name="insuretype2" value="${fn:replace(item.insuretype2,'"','&quot;')}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>出险类型3：</td>
-<td><input type="text" id="insuretype3" name="insuretype3" value="${fn:replace(item.insuretype3,'"','&quot;')}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>索赔金额：</td>
-<td><input type="text" id="spamount" name="spamount" value="${fn:replace(item.spamount,'"','&quot;')}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>疾病ID：</td>
-<td><input type="text" id="diseaseid" name="diseaseid" value="${fn:replace(item.diseaseid,'"','&quot;')}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>就诊次数：</td>
-<td><input type="text" id="determinecount" name="determinecount" value="${fn:replace(item.determinecount,'"','&quot;')}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>单张数：</td>
-<td><input type="text" id="receiptcount" name="receiptcount" value="${fn:replace(item.receiptcount,'"','&quot;')}" size=50></td>
-</tr>
-<tr>
-<td width="120" class="right"><font color="red">*</font>备注：</td>
-<td><input type="text" id="mark" name="mark" value="${fn:replace(item.mark,'"','&quot;')}" size=50></td>
-</tr>
+<tr><td><select id="info_claimtype" name="claimtype">
+		<c:forEach var="it" items="${claimtypeMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
+<td><select id="info_claimreason" name="claimreason">
+		<c:forEach var="it" items="${claimreasonMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
+<td><input type="text" id="info_claimdate" name="claimdate" readonly="readonly" value="" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
+<td><select id="info_paytype" name="paytype">
+		<c:forEach var="it" items="${paytypeMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
 
+<td><input type="text" id="info_emDisease" name="emDisease" value="" size=50>
+</tr>
+<tr>
+<td><font color="red">*</font>出险类型1：</td>
+<td><font color="red">*</font>出险类型2：</td>
+<td><font color="red">*</font>出险类型3：</td>
+<td><font color="red">*</font>索赔金额：</td>
+<td><font color="red">*</font>就诊次数：</td>
+
+</tr>
+<tr>
+<td>
+<select id="info_insuretype1" name="insuretype1">
+		<c:forEach var="it" items="${insuretypeMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
+<td><select id="info_insuretype2" name="insuretype2">
+		<c:forEach var="it" items="${insuretypeMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
+<td><select id="info_insuretype3" name="insuretype3">
+		<c:forEach var="it" items="${insuretypeMap }"><option value="${it.key }">${it.value}</option></c:forEach>
+		</select></td>
+
+<td><input type="text" id="info_spamount" name="spamount" value="" size=50></td>
+
+<td><input type="text" id="info_determinecount" name="determinecount" value="" size=50></td>
+</tr>
+<tr>
+<td><font color="red">*</font>单张数：</td>
+<td colspan="4"><font color="red">*</font>备注：</td>
+</tr>
+<tr>
+<td><input type="text" id="info_receiptcount" name="receiptcount" value="" size=50></td>
+<td colspan="4"><input type="text" id="info_mark" name="mark" value="" size=50></td>
+</tr>
+	</table>
+<table class="tform">
 		<tr>
 			<td colspan="2">
 			<input id="id" name="id" type="hidden" value="${item.id}"/>
