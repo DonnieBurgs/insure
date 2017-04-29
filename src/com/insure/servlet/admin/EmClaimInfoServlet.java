@@ -300,8 +300,8 @@ public class EmClaimInfoServlet extends UserSecureDispatcher {
     public final static HashMap<String, String> paytypeMap = new HashMap<>();
     public final static HashMap<String, String> insuretypeMap = new HashMap<>();
     static{
-    	claimtypeMap.put("1", "购药");
     	claimtypeMap.put("2", "门诊");
+    	claimtypeMap.put("1", "购药");
     	claimtypeMap.put("3", "住院");
     	
     	claimreasonMap.put("1", "疾病");

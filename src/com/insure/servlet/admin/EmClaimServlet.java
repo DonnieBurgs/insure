@@ -97,8 +97,13 @@ public class EmClaimServlet extends UserSecureDispatcher {
 			String department = Putil.getString(request.getParameter("insured.department"));
 			String title = Putil.getString(request.getParameter("insured.title"));
 			
-			Map<String, Object> row = DbUtils.queryOne("select p.* from em_insured p where p.insuredname='"+insuredname + "' and p.idnumber = '" + idnumber +"'");
-			if(StringUtils.hasLength(insuredid) || (row != null && !row.isEmpty())){ // 更新
+			if(!StringUtils.hasLength(insuredid)){ // 更新
+				Map<String, Object> row = DbUtils.queryOne("select p.* from em_insured p where p.insuredname='"+insuredname + "' and p.idnumber = '" + idnumber +"'");
+				if(row != null && !row.isEmpty()){
+					insuredid = String.valueOf(row.get("id"));
+				}
+			}
+			if(StringUtils.hasLength(insuredid)){ // 更新
 				insuredID = Integer.parseInt(insuredid);
 				StringBuilder select = new StringBuilder("update em_insured set "
 						+ "insuredname='" + insuredname.replace("'", "''") + "'"
@@ -106,7 +111,7 @@ public class EmClaimServlet extends UserSecureDispatcher {
 						+ ",idtype='" + idtype.replace("'", "''") + "'"
 						+ ",idnumber='" + idnumber.replace("'", "''") + "'"
 						+ ",passport='" + passport.replace("'", "''") + "'"
-						+ ",birthdate='" + birthdate.replace("'", "''") + "'"
+						+ ",birthdate=" + (StringUtils.hasLength(birthdate) ? ("'" + birthdate.replace("'", "''") + "'") : "null")
 						+ ",insuredtype='" + insuredtype.replace("'", "''") + "'"
 						+ ",age='" + age.replace("'", "''") + "'"
 						+ ",workage='" + workage.replace("'", "''") + "'"
@@ -132,7 +137,7 @@ public class EmClaimServlet extends UserSecureDispatcher {
 					+ ",'" + idtype.replace("'", "''") + "'"
 					+ ",'" + idnumber.replace("'", "''") + "'"
 					+ ",'" + passport.replace("'", "''") + "'"
-					+ ",'" + birthdate.replace("'", "''") + "'"
+					+ "," + (StringUtils.hasLength(birthdate) ?  "'" +birthdate.replace("'", "''") + "'": "null")
 					+ ",'" + insuredtype.replace("'", "''") + "'"
 					+ ",'" + age.replace("'", "''") + "'"
 					+ ",'" + workage.replace("'", "''") + "'"
@@ -168,17 +173,14 @@ public class EmClaimServlet extends UserSecureDispatcher {
 		try {
 			
 			String serialnumber = Putil.getString(request.getParameter("serialnumber"));
-			int insuredid = Putil.getInt(request.getParameter("insuredid"));
+//			int insuredid = Putil.getInt(request.getParameter("insuredid"));
 			String bardh = Putil.getString(request.getParameter("bardh"));
-
-
-
 
 			
 			StringBuilder select = new StringBuilder("insert into em_claim (claimarchiveid,serialnumber,insuredid,bardh) values ("
 				+ "" + claimarchiveid + ""
 				+ ",'" + serialnumber.replace("'", "''") + "'"
-				+ "," + insuredid + ""
+				+ "," + insuredID + ""
 				+ ",'" + bardh.replace("'", "''") + "'"
 				+ ")"
 			);
@@ -260,7 +262,7 @@ public class EmClaimServlet extends UserSecureDispatcher {
 		request.setAttribute("paytypeMap", EmClaimInfoServlet.paytypeMap);
 		request.setAttribute("insuretypeMap", EmClaimInfoServlet.insuretypeMap);
 
-		forward(request, response, "/admin/ClaimEdit.jsp");
+		forward(request, response, "/admin/ClaimAdd.jsp");
 		
 	}
 
@@ -514,11 +516,14 @@ public class EmClaimServlet extends UserSecureDispatcher {
 		if(claimarchiveid.length() > 0)
 			sql.append(" and p.claimarchiveid = '" + claimarchiveid + "'");
 		Map<String, Object> resultRow = DbUtils.queryOne(sql.toString());
-		long maxNo = 0;
+		long maxNo = 1;
 		if(resultRow != null && !resultRow.isEmpty()){
 			Object r = resultRow.get("m");
 			try {
-				maxNo = Long.parseLong(String.valueOf(r)) + 1;
+				long value = Long.parseLong(String.valueOf(r));
+				if(value > 0){
+				maxNo = value + 1;
+				}
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

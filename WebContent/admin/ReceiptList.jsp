@@ -211,7 +211,7 @@ input[type="text"]{min-width:50px;width:70px;}
 <form action="/emReceipt.do?method=delete" id="deleteForm" name="deleteForm" method="post">
 <input type="hidden" id="id" name="id" value="${emReceipt.id }">
 <input type="hidden" id="t" name="t" value="">
-<input type="hidden" name="uf_parentid" value="${uf_parentid}">
+<input type="hidden" name="uf_parentid" value="${emClaim.id}">
 <input type="hidden" name="key_isvalid" value="${key_isvalid }">
 <input type="hidden" name="keyword" value="${keyword }">
 <input type="hidden" name="m" value="${m }">
@@ -219,8 +219,9 @@ input[type="text"]{min-width:50px;width:70px;}
 </form>
 <br/>
 <br/>
-<span>新增发票</span>
+<span>发票信息</span>
 <form id="commonForm" action="/emReceipt.do?method=add" method="post">
+<input type="hidden" id="id" name="id" value="${emReceipt.id }">
 <input type="hidden" id="claimid" name="claimid" value="${param.claimid }">
 <input type="hidden" id="hospitalid" name="hospitalid" value="${emReceipt.hospitalid }">
 	<table class="tform">
@@ -229,60 +230,60 @@ input[type="text"]{min-width:50px;width:70px;}
 <td colspan="9"><dict:itemdesc name="serialnumber" value="${param.claimid  }" table="em_claim" path="id"/></td>
 </tr>
 <tr>
-<td width="70" class="right"><font color="red">*</font>账单序号</td>
-<td><input type="text" id="receiptno" name="receiptno" value="${emClaim.serialnumber * 100 + 1 }" style="min-width:50px;width:70px;"></td>
-<td width="80" class="right"><font color="red">*</font>被保险人序号</td>
+<td class="right"><font color="red">*</font>账单序号</td>
+<td><input type="text" id="receiptno" name="receiptno" value="${empty receiptno ? emReceipt.receiptno : receiptno}" style="min-width:50px;width:70px;"></td>
+<td  class="right"><font color="red">*</font>被保险人序号</td>
 <td><input type="text" id="insuredno" name="insuredno" value="${emClaim.serialnumber }" readonly="readonly"></td>
-<td width="70" class="right"><font color="red">*</font>账单类型</td>
+<td  class="right"><font color="red">*</font>账单类型</td>
 <td><select id="receipttype" name="receipttype">
 		<c:forEach var="it" items="${receipttypeMap }"><option value="${it.key }" <c:if test="${it.key eq emReceipt.receipttype }">selected="selected"</c:if>>${it.value}</option></c:forEach>
 		</select></td>
-<td width="80" class="right"><font color="red">*</font>发票号</td>
+<td   class="right"><font color="red">*</font>发票号</td>
 <td><input type="text" id="receiptnumber" name="receiptnumber" value="${emReceipt.receiptnumber }"></td>
-<td width="120" class="right"><font color="red">*</font>费用类型</td>
+<td   class="right"><font color="red">*</font>费用类型</td>
 <td><select id="feetype" name="feetype">
 		<c:forEach var="it" items="${feetypeMap }"><option value="${it.key }" <c:if test="${it.key eq emReceipt.feetype }">selected="selected"</c:if>>${it.value}</option></c:forEach>
 		</select></td>
 </tr>
 <tr>
+<td class="right"><font color="red">*</font>医院</td>
+<td colspan="3"><input type="text" id="emHospital" name="emHospital" value="<dict:itemdesc name="hospitalname" value="${emReceipt.hospitalid}" table="em_hospital" path="id"/>" style="width:280px;"></td>
 <td class="right"><font color="red">*</font>就诊日期</td>
 <td><input type="text" id="visitdate" name="visitdate" readonly="readonly" value="${emReceipt.visitdate_ }" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
 <td class="right"><font color="red">*</font>住院日期</td>
 <td><input type="text" id="hospitaldate" name="hospitaldate" readonly="readonly" value="${emReceipt.hospitaldate_ }" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
 <td class="right"><font color="red">*</font>出院日期</td>
 <td><input type="text" id="dischargedate" name="dischargedate" readonly="readonly" value="${emReceipt.dischargedate_ }" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
-<td class="right"><font color="red">*</font>申报日期</td>
+</tr>
+<tr>
+<td class="right">申报日期</td>
 <td><input type="text" id="claimdate" name="claimdate" readonly="readonly" value="${emReceipt.claimdate_ }" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
-<td class="right"><font color="red">*</font>就医类型</td>
+<td class="right">就医类型</td>
 <td><select id="medicaltype" name="medicaltype">
 		<c:forEach var="it" items="${medicaltypeMap }"><option value="${it.key }" <c:if test="${it.key eq emReceipt.medicaltype }">selected="selected"</c:if>>${it.value}</option></c:forEach>
 		</select></td>
-</tr>
-<tr>
-<td class="right"><font color="red">*</font>医院</td>
-<td colspan="3"><input type="text" id="emHospital" name="emHospital" value="<dict:itemdesc name="hospitalname" value="${emReceipt.hospitalid}" table="em_hospital" path="id"/>" style="width:280px;"></td>
-<td class="right"><font color="red">*</font>统筹金额</td>
+<td class="right">统筹金额</td>
 <td><input type="text" id="fundpaid" name="fundpaid" value="${emReceipt.fundpaid }"></td>
-<td class="right"><font color="red">*</font>个人缴费</td>
+<td class="right">个人缴费</td>
 <td><input type="text" id="cashpaid" name="cashpaid" value="${emReceipt.cashpaid }"></td>
-<td class="right"><font color="red">*</font>合计</td>
+<td class="right">合计</td>
 <td><input type="text" id="total" name="total" value="${emReceipt.total }"></td>
 </tr>
 <tr>
-<td class="right"><font color="red">*</font>就诊区域</td>
+<td class="right">就诊区域</td>
 <td colspan="3"><select id="area" name="area">
 		<c:forEach var="it" items="${areaMap }"><option value="${it.key }" <c:if test="${it.key eq emReceipt.area }">selected="selected"</c:if>>${it.value}</option></c:forEach>
 		</select></td>
-<td class="right"><font color="red">*</font>精神类疾病</td>
+<td class="right">精神类疾病</td>
 <td><input type="text" id="mentalillnessamount" name="mentalillnessamount" value="${emReceipt.mentalillnessamount }"></td>
-<td class="right"><font color="red">*</font>牙科自费项目</td>
+<td class="right">牙科自费项目</td>
 <td><input type="text" id="dentistryamount" name="dentistryamount" value="${emReceipt.dentistryamount }"></td>
-<td class="right"><font color="red">*</font>康复治疗及物理治疗</td>
+<td class="right">康复治疗及物理治疗</td>
 <td><input type="text" id="rehabilitationamount" name="rehabilitationamount" value="${emReceipt.rehabilitationamount }"></td>
 </tr>
 </table>
 
-	<table class="tform">
+	<table class="tform" id="receiptinfoRows">
 
 <tr>
 <td><font color="red">*</font>费用项目</td>
@@ -377,12 +378,12 @@ function checkf() {
 	if(commonForm.visitdate.value=="") {alert("请正确输入就诊日期！");return false;}
 	if(commonForm.hospitaldate.value=="") {alert("请正确输入住院日期！");return false;}
 	if(commonForm.dischargedate.value=="") {alert("请正确输入出院日期！");return false;}
-	if(commonForm.claimdate.value=="") {alert("请正确输入申报日期！");return false;}
-	if(commonForm.medicaltype.value=="" || commonForm.medicaltype.value!="" && !is_int(commonForm.medicaltype.value)) {alert("请正确输入就医类型！");return false;}
+	//if(commonForm.claimdate.value=="") {alert("请正确输入申报日期！");return false;}
+	//if(commonForm.medicaltype.value=="" || commonForm.medicaltype.value!="" && !is_int(commonForm.medicaltype.value)) {alert("请正确输入就医类型！");return false;}
 	if(commonForm.area.value=="") {alert("请正确输入就诊区域！");return false;}
-	if(commonForm.fundpaid.value=="" || commonForm.fundpaid.value!="" && !(is_float(commonForm.fundpaid.value) || is_int(commonForm.fundpaid.value))) {alert("请正确输入统筹金额！");return false;}
-	if(commonForm.cashpaid.value=="" || commonForm.cashpaid.value!="" && !(is_float(commonForm.cashpaid.value) || is_int(commonForm.cashpaid.value))) {alert("请正确输入个人缴费！");return false;}
-	if(commonForm.total.value=="" || commonForm.total.value!="" && !(is_float(commonForm.total.value) || is_int(commonForm.total.value))) {alert("请正确输入合计！");return false;}
+	//if(commonForm.fundpaid.value=="" || commonForm.fundpaid.value!="" && !(is_float(commonForm.fundpaid.value) || is_int(commonForm.fundpaid.value))) {alert("请正确输入统筹金额！");return false;}
+	//if(commonForm.cashpaid.value=="" || commonForm.cashpaid.value!="" && !(is_float(commonForm.cashpaid.value) || is_int(commonForm.cashpaid.value))) {alert("请正确输入个人缴费！");return false;}
+	//if(commonForm.total.value=="" || commonForm.total.value!="" && !(is_float(commonForm.total.value) || is_int(commonForm.total.value))) {alert("请正确输入合计！");return false;}
 	//if(commonForm.feeid.value=="" || commonForm.feeid.value!="" && !is_int(commonForm.feeid.value)) {alert("请正确输入费用项目ID！");return false;}
 	//if(commonForm.fee.value=="" || commonForm.fee.value!="" && !(is_float(commonForm.fee.value) || is_int(commonForm.fee.value))) {alert("请正确输入床位费！");return false;}
 	//if(commonForm.zfmark.value=="") {alert("请正确输入自费描述！");return false;}
@@ -397,6 +398,35 @@ function checkf() {
 	//if(commonForm.dentistryamount.value=="" || commonForm.dentistryamount.value!="" && !(is_float(commonForm.dentistryamount.value) || is_int(commonForm.dentistryamount.value))) {alert("请正确输入牙科自费项目！");return false;}
 	//if(commonForm.rehabilitationamount.value=="" || commonForm.rehabilitationamount.value!="" && !(is_float(commonForm.rehabilitationamount.value) || is_int(commonForm.rehabilitationamount.value))) {alert("请正确输入康复治疗及物理治疗！");return false;}
 
+	var result;
+	$("#receiptinfoRows tr").each(function(i, o){
+		var label = $(o).find("select").find("option:selected").text();
+		$(o).find("input").each(function(ii, oo){
+			var val = $(oo).val();
+			if(val == ''){
+				var name = $(oo).attr("name");
+				if(name == 'fee'){
+					alert("请正确输入" + label + "费用金额！");
+				}else if(name == 'zfamount'){
+					alert("请正确输入" + label + "自费金额！");
+				}else if(name == 'zfmark'){
+					alert("请正确输入" + label + "自费描述！");
+				}else if(name == 'ybzfamount'){
+					alert("请正确输入" + label + "医保支付金额！");
+				}else if(name == 'ybzfmark'){
+					alert("请正确输入" + label + "医保支付金额原因！");
+				}
+				$(oo)[0].focus();
+				result = true;
+				return false;
+			}
+		});
+		if(result)
+			return false;
+	});
+	if(result)
+		return false;
+	
 	document.getElementById("commonForm").submit() ;
   
 }

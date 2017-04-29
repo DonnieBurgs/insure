@@ -271,7 +271,7 @@ public class EmDiseaseServlet extends UserSecureDispatcher {
 			sql.append(" or p.pinyin like '%" + keyword + "%'");
 			sql.append(")");
 		}
-		sql.append(" order by p.id desc limit 50");
+		sql.append(" order by p.diseasecode asc limit 20");
     	resultRows = DbUtils.query(sql.toString());
 		
     	if(resultRows != null && !resultRows.isEmpty()){
@@ -279,7 +279,7 @@ public class EmDiseaseServlet extends UserSecureDispatcher {
     		for (Map<String, Object> map : resultRows) {
     			Map<String, Object> row = new HashMap<>();
     			row.put("id", map.get("id"));
-    			row.put("label", map.get("diseasename"));
+    			row.put("label", String.valueOf(map.get("diseasecode")) +  String.valueOf(map.get("diseasename")));
     			row.put("value", map.get("diseasename"));
     			rows.add(row);
 			}

@@ -128,7 +128,7 @@ public class EmDataExportServlet extends Dispatcher {
 
 				short cellnum = 0;
 				XSSFCell cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emInsured.get("id")));
+				cell.setCellValue(String.valueOf(emClaim.get("serialnumber")));
 				cell = row.createCell(cellnum++);
 				cell.setCellValue(String.valueOf(emInsured.get("insuredname")));
 				cell = row.createCell(cellnum++);
@@ -185,13 +185,14 @@ public class EmDataExportServlet extends Dispatcher {
 					.query("select p.* from em_receipt p where p.claimid=" + emClaim.get("id"));
 			System.out.println("emReceiptList: " + emClaimList.size());
 			for (Map<String, Object> emReceipt : emReceiptList) {
+
 				row = sheet2.createRow(++rownum2);
 
 				short cellnum = 0;
 				XSSFCell cell = row.createCell(cellnum++);
 				cell.setCellValue(String.valueOf(emReceipt.get("receiptno")));
 				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emReceipt.get("insuredno")));
+				cell.setCellValue(String.valueOf(emClaim.get("serialnumber")));
 				cell = row.createCell(cellnum++);
 				cell.setCellValue(String.valueOf(emReceipt.get("receipttype")));
 				cell = row.createCell(cellnum++);
@@ -213,38 +214,45 @@ public class EmDataExportServlet extends Dispatcher {
 				cell = row.createCell(cellnum++);
 				cell.setCellValue(String.valueOf(emReceipt.get("dischargedate_")));
 
-				row = sheet3.createRow(++rownum3);
-				cellnum = 0;
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(rownum3));
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emReceipt.get("receiptno")));
+				// sheet3
 
-				Map<String, Object> em_fee = QueryUtils.queryObject("em_fee", "id",
-						String.valueOf(emReceipt.get("feeid")));
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(em_fee.get("feecode")));
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(em_fee.get("feename")));
+				List<Map<String, Object>> emReceiptInfoList = DbUtils
+						.query("select p.* from em_receiptinfo p where p.receiptid=" + emReceipt.get("id"));
+				for (Map<String, Object> emReceiptInfo : emReceiptInfoList) {
+					row = sheet3.createRow(++rownum3);
+					cellnum = 0;
 
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emReceipt.get("total")));
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emReceipt.get("zfmark")));
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emReceipt.get("zfamount")));
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emReceipt.get("bfzfmark")));
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emReceipt.get("bfzfamount")));
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emReceipt.get("ybbzfamount")));
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emReceipt.get("ybbzfmark")));
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emReceipt.get("ybzfamount")));
-				cell = row.createCell(cellnum++);
-				cell.setCellValue(String.valueOf(emReceipt.get("ybzfmark")));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(rownum3));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(emReceipt.get("receiptno")));
+
+					Map<String, Object> em_fee = QueryUtils.queryObject("em_fee", "id",
+							String.valueOf(emReceiptInfo.get("feeid")));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(em_fee.get("feecode")));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(em_fee.get("feename")));
+
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(emReceiptInfo.get("fee")));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(emReceiptInfo.get("zfmark")));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(emReceiptInfo.get("zfamount")));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(emReceiptInfo.get("bfzfmark")));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(emReceiptInfo.get("bfzfamount")));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(emReceiptInfo.get("ybbzfamount")));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(emReceiptInfo.get("ybbzfmark")));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(emReceiptInfo.get("ybzfamount")));
+					cell = row.createCell(cellnum++);
+					cell.setCellValue(String.valueOf(emReceiptInfo.get("ybzfmark")));
+				}
 			}
 
 		}

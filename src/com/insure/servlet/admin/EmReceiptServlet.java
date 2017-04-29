@@ -105,7 +105,7 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 						+ ",'" + visitdate.replace("'", "''") + "'"
 						+ ",'" + hospitaldate.replace("'", "''") + "'"
 						+ ",'" + dischargedate.replace("'", "''") + "'"
-						+ ",'" + claimdate.replace("'", "''") + "'"
+						+ "," +(StringUtils.hasLength(claimdate) ?  "'"+claimdate.replace("'", "''") +"'": "null")
 						+ "," + medicaltype + ""
 						+ ",'" + area.replace("'", "''") + "'"
 						+ "," + mentalillnessamount + ""
@@ -117,6 +117,7 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 						+ ")"
 					);
 
+				System.out.println(select.toString());
 				receiptID = DbUtils.save1(select.toString());
 		
 			} catch (Exception e) {
@@ -134,7 +135,7 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 					+ ",visitdate='" + visitdate.replace("'", "''") + "'"
 					+ ",hospitaldate='" + hospitaldate.replace("'", "''") + "'"
 					+ ",dischargedate='" + dischargedate.replace("'", "''") + "'"
-					+ ",claimdate='" + claimdate.replace("'", "''") + "'"
+					+ ",claimdate=" + (StringUtils.hasLength(claimdate) ?  "'"+claimdate.replace("'", "''")+"'" : "null")
 					+ ",medicaltype=" + medicaltype + ""
 					+ ",area='" + area.replace("'", "''") + "'"
 					+ ",mentalillnessamount=" + mentalillnessamount + ""
@@ -354,13 +355,35 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 					Map<String, Object> row1 = DbUtils.queryOne("select p.* from em_claiminfo p where p.claimid="+claimid);
 					request.setAttribute("emClaimInfo", row1);
 				}
-			}
-			if(receiptid.length()>0) {
-				Map<String, Object> row = DbUtils.queryOne("select p.* from em_receipt p where p.id="+receiptid);
-				request.setAttribute("emReceipt", row);
-
-				List<Map<String, Object>> receiptinfoRows = DbUtils.query("select p.* from em_receiptinfo p where p.id>=0 and p.receiptid=" + receiptid + " order by p.id asc");
-				request.setAttribute("receiptinfoRows", receiptinfoRows);
+				
+				
+				if(receiptid.length()>0) {
+					Map<String, Object> emReceiptRow = DbUtils.queryOne("select p.* from em_receipt p where p.id="+receiptid);
+					request.setAttribute("emReceipt", emReceiptRow);
+	
+					List<Map<String, Object>> receiptinfoRows = DbUtils.query("select p.* from em_receiptinfo p where p.id>=0 and p.receiptid=" + receiptid + " order by p.id asc");
+					request.setAttribute("receiptinfoRows", receiptinfoRows);
+				}else{
+					StringBuilder sql = new StringBuilder("select max(p.receiptno) m from em_receipt p where p.id>=0");
+						sql.append(" and p.claimid = '" + claimid + "'");
+					Map<String, Object> resultRow = DbUtils.queryOne(sql.toString());
+					
+					long maxNo = Long.parseLong(String.valueOf(row.get("serialnumber"))) * 100 + 1;
+					if(resultRow != null && !resultRow.isEmpty()){
+						Object r = resultRow.get("m");
+						try {
+							long value = Long.parseLong(String.valueOf(r));
+							if(value > 0){
+							maxNo = value + 1;
+							}
+						} catch (NumberFormatException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					request.setAttribute("receiptno", maxNo);
+				}
+				
 			}
 			
 			List<Map<String, Object>> feeRows = DbUtils.query("select p.* from em_fee p where p.id>=0 order by p.feecode asc");
@@ -403,7 +426,7 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 			e.printStackTrace(System.out);
 		}
 
-		redirect(request, response, "/emReceipt.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s);
+		redirect(request, response, "/emReceipt.do?method=list&claimid="+uf_parentid+"&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s);
 		
 	}
 	
