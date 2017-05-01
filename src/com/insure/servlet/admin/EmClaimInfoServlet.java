@@ -295,7 +295,7 @@ public class EmClaimInfoServlet extends UserSecureDispatcher {
     	
     }
     
-    public final static HashMap<String, String> claimtypeMap = new HashMap<>();
+    public final static LinkedHashMap<String, String> claimtypeMap = new LinkedHashMap<>();
     public final static HashMap<String, String> claimreasonMap = new HashMap<>();
     public final static HashMap<String, String> paytypeMap = new HashMap<>();
     public final static HashMap<String, String> insuretypeMap = new HashMap<>();

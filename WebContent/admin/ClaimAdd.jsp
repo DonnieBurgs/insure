@@ -124,18 +124,7 @@ input[type="text"]{min-width:50px;width:70px;}
 <td><font color="red">*</font>账户名：</td><td><input type="text" id="insured_accountname" name="insured.accountname" value="${insured.accountname}" size=50></td>
 </tr>
 <tr>
-<td><font color="red">*</font>开户行：</td><td><input type="text" id="insured_bankname" name="insured.bankname" value="${insured.bankname }" size=50></td>
-<td>出生年月：</td><td><input type="text" id="insured_birthdate_" name="insured.birthdate" readonly="readonly" value="${insured.birthdate_}" onclick="WdatePicker({maxDate:'2018-12-31', dateFmt:'yyyy-MM-dd'})" style="width: 70px;"/></td>
-<td>年龄：</td><td><input type="text" id="insured_age" name="insured.age" value="${insured.age }" size=50></td>
-<td>人员类别：</td><td><input type="text" id="insured_insuredtype" name="insured.insuredtype" value="${insured.insuredtype}" size=50></td>
-<td>电子邮件：</td><td><input type="text" id="insured_email" name="insured.email" value="${insured.email }" size=50></td>
-</tr>
-<tr>
-<td>工作单位：</td><td><input type="text" id="insured_employer" name="insured.employer" value="${insured.employer}" size=50></td>
-<td>工号：</td><td><input type="text" id="insured_jobnumber" name="insured.jobnumber" value="${insured.jobnumber }" size=50></td>
-<td>工龄：</td><td><input type="text" id="insured_workage" name="insured.workage" value="${insured.workage}" size=50></td>
-<td>科室：</td><td><input type="text" id="insured_title" name="insured.title" value="${insured.title }" size=50></td>
-<td>机构：</td><td><input type="text" id="insured_department" name="insured.department" value="${insured.department }" size=50></td>
+<td><font color="red">*</font>开户行：</td><td colspan="9"><input type="text" id="insured_bankname" name="insured.bankname" value="${insured.bankname }" size=50></td>
 </tr>
 </table>
 
@@ -267,6 +256,15 @@ $(function() {
 	    select: function( event, ui ) {
 	    	$("#info_diseaseid").val(ui.item.id);
 	    }
+    });
+    $("#insured_idnumber").blur(function(){
+    	var id = $("#insured_id").val();
+    	if(id =="")
+	    	$.getJSON("/emInsured.do?method=idnumberCheck&idnumber=" + $("#insured_idnumber").val(), function(data){
+	    		if(data == false){
+	    			alert("证件已经存在！");
+	    		}
+	    	});
     });
  });
 </script>

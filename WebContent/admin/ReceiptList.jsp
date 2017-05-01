@@ -41,7 +41,7 @@ input[type="text"]{min-width:50px;width:70px;}
 <body id="right">
 <div class="operation o-h bg-f8">
 	<div class="operationLeft f-l"><font style="margin-left:10px;font-size:14px; font-weight:bold; text-indent:14px; letter-spacing:2px;">发票列表</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</div>
+	<c:if test="${auth44 eq '1'}"><a href="/emReceipt.do?method=list&claimid=${param.claimid}&keyword=${keyword}&uf_parentid=${uf_parentid}&m=${m}&s=${s}" style="margin-left:100px;"><i class="iconfont">&#xe681;</i>新增发票</a></c:if></div>
 	<div class="operationRight f-r">
 	</div>
 </div>
@@ -69,7 +69,7 @@ input[type="text"]{min-width:50px;width:70px;}
 <table class="tlist">
 	<thead>
 		<tr class="title">
-<th>案件ID</th>
+<th>案件</th>
 <th>账单序号</th>
 <th>被保险人序号</th>
 <th>账单类型</th>
@@ -84,10 +84,10 @@ input[type="text"]{min-width:50px;width:70px;}
 <c:when test="${not empty resultRows}">
 <c:forEach var="item" items="${resultRows}">
 			<tr>
-<td>${item.claimid}</td>
+<td><dict:itemdesc name="serialnumber" table="em_claim" value="${item.claimid}" path="id"/></td>
 <td>${item.receiptno}</td>
 <td>${item.insuredno}</td>
-<td>${item.receipttype}</td>
+<td>${receipttypeMap.get(item.receipttype)}</td>
 <td>${item.receiptnumber}</td>
 
 				<td width="250" class="operationBtn">

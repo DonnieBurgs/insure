@@ -59,6 +59,7 @@ if(authorityno==null) authorityno = "" ;
                 </li>
             </ul>
         </li>
+        <!-- 
         <li class="twoLevel-menu-box">
             <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">
                 <i class="iconfont list">&#xe6bc;</i><span class="fw-6 fs-14">理赔管理</span>
@@ -75,10 +76,10 @@ if(authorityno==null) authorityno = "" ;
                     <a class="d-ib" data-cookie="影像件上传" target="iframe" href="/emClaim.do?method=image"><span class="fs-14">影像件上传</span></a>
                 </li>
             </ul>
-        </li>
+        </li> -->
         <li class="twoLevel-menu-box">
             <a class="d-ib p-r twoLevel-menu-sub" href="javascript:;">
-                <i class="iconfont list">&#xe6bc;</i><span class="fw-6 fs-14">理赔管理2</span>
+                <i class="iconfont list">&#xe6bc;</i><span class="fw-6 fs-14">理赔管理</span>
                 <i class="iconfont icon-arrow p-a">&#xe687;</i>
             </a>
             <ul class="twoLevel-menu o-h">

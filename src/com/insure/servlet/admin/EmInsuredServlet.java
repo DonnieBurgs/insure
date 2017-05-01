@@ -328,13 +328,27 @@ public class EmInsuredServlet extends UserSecureDispatcher {
     	  String method = request.getParameter("method");
           if("obj".equals(method)) {
         	  objJson(request, response);
-          } else {
+          } else if("idnumberCheck".equals(method)) {
+        	  idnumberCheck(request, response);
+          }else {
         	  autocomplate(request, response);
           }
           
     	
     }
-    
+    private void idnumberCheck(HttpServletRequest request, HttpServletResponse response) {
+    	String idnumber = Putil.getString(request.getParameter("idnumber")) ;
+		if(idnumber.length()>0) {
+			Map<String, Object> row = DbUtils.queryOne("select p.* from em_insured p where p.idnumber='"+idnumber +"'");
+			if(row != null && !row.isEmpty()){
+				toJson(false, response);
+			}else{
+
+				toJson(true, response);
+			}
+		}
+		
+	}
     private void objJson(HttpServletRequest request, HttpServletResponse response) {
     	String id = Putil.getString(request.getParameter("id")) ;
 		if(id.length()>0) {

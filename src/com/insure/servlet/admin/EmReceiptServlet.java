@@ -199,7 +199,7 @@ public class EmReceiptServlet extends UserSecureDispatcher {
 			e.printStackTrace(System.out);
 		}
 
-		redirect(request, response, "/emReceipt.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s+"&claimid="+claimid+"&receiptid="+receiptID);
+		redirect(request, response, "/emReceipt.do?method=list&uf_parentid="+uf_parentid+"&keyword="+keyword+"&m="+m+"&s="+s+"&claimid="+claimid);
 		
 	}
 
