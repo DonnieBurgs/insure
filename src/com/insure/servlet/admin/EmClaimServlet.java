@@ -131,6 +131,14 @@ public class EmClaimServlet extends UserSecureDispatcher {
 				);
 				int result = DbUtils.save(select.toString());
 			}else{
+				Map<String, Object> row = DbUtils.queryOne("select p.* from em_insured p where p.idnumber='"+idnumber +"'");
+				if(row != null && !row.isEmpty()){
+					if(insuredID == 0){
+						prompt(response, "证件已存在");
+						return;
+					}
+				}
+				
 				StringBuilder select = new StringBuilder("insert into em_insured (insuredname,gender,idtype,idnumber,passport,birthdate,insuredtype,age,workage,employer,jobnumber,bankname,bankprovince,bankcity,subbranch,accountname,accountnumber,mobile,email,department,title) values ("
 					+ "'" + insuredname.replace("'", "''") + "'"
 					+ ",'" + gender.replace("'", "''") + "'"
